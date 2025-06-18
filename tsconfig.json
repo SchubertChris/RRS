@@ -1,0 +1,62 @@
+// tsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": [
+        "*"
+      ],
+      "@components/*": [
+        "Components/*"
+      ],
+      "@layouts/*": [
+        "Components/Layout/*"
+      ],
+      "@pages/*": [
+        "Components/Pages/*"
+      ],
+      "@forms/*": [
+        "Components/Forms/*"
+      ],
+      "@styles/*": [
+        "Assets/Style/Base/*"
+      ],
+      "@themes/*": [
+        "Assets/Style/Base/Themes/*"
+      ],
+      "@fonts/*": [
+        "Assets/Style/Base/Themes/Fonts/*"
+      ],
+      "@images/*": [
+        "Assets/Images/*"
+      ],
+      "@utils/*": [
+        "Utils/*"
+      ],
+      "@routes/*": [
+        "Routes/*"
+      ],
+      "@services/*": [
+        "Services/*"
+      ],
+      "@store/*": [
+        "Store/*"
+      ],
+      "@types/*": [
+        "Types/*"
+      ],
+      "@plugins/*": [
+        "Plugins/*"
+      ]
+    }
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}

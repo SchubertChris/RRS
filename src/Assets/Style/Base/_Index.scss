@@ -1,0 +1,28 @@
+/* ========================================== */
+/* ================Base Import=============== */
+/* ========================================== */
+
+@use "@styles/Variables" as *;
+@use "@styles/Mixins" as *;
+@use "@styles/Reset" as *;
+@use "@styles/Global" as *;
+
+
+/* ========================================== */
+// Themes Import [Beinhaltet BGs, Fonts, Colors, Cards, Buttons, etc.]
+/* ========================================== */
+
+@use "@themes/OliveTheme" as *;
+@use "@themes/DarkTheme" as *;
+@use "@themes/LightTheme" as *;
+@use "@themes/PurpleTheme" as *;
+@use "@themes/RedTheme" as *;
+
+
+/* ========================================== */
+// Fonts Importing
+/* ========================================== */
+
+@use "@fonts/Future" as *;
+@use "@fonts/Vintage" as *;
+@use "@fonts/Default" as *;
