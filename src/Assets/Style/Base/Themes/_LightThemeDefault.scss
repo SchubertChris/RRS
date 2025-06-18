@@ -1,0 +1,399 @@
+/* ========================================== */
+/* ============= LIGHT THEME DEFAULT ======== */
+/* ========================================== */
+/* Klassisches, sauberes Light Theme - Standard Konfiguration */
+
+/* ========================================== */
+// Light Theme Konfiguration
+/* ========================================== */
+
+// Light Theme aktivieren
+[data-theme="light"],
+.theme-light,
+:root:not([data-theme]) {
+    color-scheme: light;
+
+    /* ========================================== */
+    // Base Colors - Clean & Professional
+    /* ========================================== */
+
+    // Backgrounds - Helle, saubere Töne
+    --color-background: #{$white};
+    --color-background-secondary: #{$gray-50};
+    --color-background-tertiary: #{$gray-100};
+    --color-surface: #{$white};
+    --color-surface-secondary: #{$gray-50};
+    --color-surface-elevated: #{$white};
+
+    // Text Colors - Hoher Kontrast für Lesbarkeit
+    --color-text-primary: #{$gray-900};
+    --color-text-secondary: #{$gray-600};
+    --color-text-tertiary: #{$gray-400};
+    --color-text-inverse: #{$white};
+    --color-text-muted: #{$gray-500};
+    --color-text-disabled: #{$gray-300};
+
+    // Primary Colors - Professional Blue
+    --color-primary: #{$blue-600};
+    --color-primary-hover: #{$blue-700};
+    --color-primary-active: #{$blue-800};
+    --color-primary-50: #{rgba($blue-600, 0.05)};
+    --color-primary-100: #{rgba($blue-600, 0.1)};
+    --color-primary-200: #{rgba($blue-600, 0.2)};
+
+    // Secondary Colors - Neutral Gray
+    --color-secondary: #{$gray-100};
+    --color-secondary-hover: #{$gray-200};
+    --color-secondary-active: #{$gray-300};
+
+    // Accent Colors - Fresh Cyan
+    --color-accent: #{$cyan-500};
+    --color-accent-hover: #{$cyan-600};
+    --color-accent-active: #{$cyan-700};
+
+    // Borders - Subtle but defined
+    --color-border: #{$gray-200};
+    --color-border-secondary: #{$gray-300};
+    --color-border-focus: #{$blue-500};
+    --color-divider: #{$gray-100};
+
+    // Semantic Colors - Clear status indicators
+    --color-success: #{$success};
+    --color-warning: #{$warning};
+    --color-error: #{$error};
+    --color-info: #{$info};
+
+    // Status Backgrounds - Soft tints
+    --color-success-bg: #{$success-50};
+    --color-warning-bg: #{$warning-50};
+    --color-error-bg: #{$error-50};
+    --color-info-bg: #{$info-50};
+
+    // Status Text Colors
+    --color-success-text: #{$success-700};
+    --color-warning-text: #{$warning-700};
+    --color-error-text: #{$error-700};
+    --color-info-text: #{$info-700};
+
+    /* ========================================== */
+    // Shadows - Subtle depth
+    /* ========================================== */
+
+    --shadow: #{$shadow-base};
+    --shadow-hover: #{$shadow-md};
+    --shadow-focus: #{$shadow-focus};
+    --shadow-card: #{$shadow-sm};
+    --shadow-card-hover: #{$shadow-lg};
+    --shadow-modal: #{$shadow-xl};
+
+    // No glow effects in light theme
+    --glow-effect: none;
+    --text-glow: none;
+
+    /* ========================================== */
+    // Component Colors - Light Theme spezifisch
+    /* ========================================== */
+
+    // Navigation - Clean header
+    --color-nav-bg: #{rgba($white, 0.95)};
+    --color-nav-text: #{$gray-700};
+    --color-nav-text-hover: #{$blue-600};
+    --color-nav-text-active: #{$blue-700};
+    --color-nav-border: #{$gray-200};
+    --color-nav-backdrop: #{rgba($white, 0.8)};
+
+    // Header - Professional
+    --color-header-bg: #{$white};
+    --color-header-text: #{$gray-900};
+    --color-header-text-secondary: #{$gray-600};
+    --color-header-border: #{$gray-200};
+
+    // Footer - Subtle
+    --color-footer-bg: #{$gray-100};
+    --color-footer-text: #{$gray-600};
+    --color-footer-text-secondary: #{$gray-500};
+    --color-footer-border: #{$gray-200};
+
+    // Sidebar - Clean separation
+    --color-sidebar-bg: #{rgba($gray-50, 0.8)};
+    --color-sidebar-text: #{$gray-700};
+    --color-sidebar-text-hover: #{$gray-900};
+    --color-sidebar-border: #{$gray-200};
+    --color-sidebar-active: #{rgba($blue-600, 0.1)};
+
+    // Cards - Elevated content
+    --color-card-bg: #{$white};
+    --color-card-bg-hover: #{$gray-50};
+    --color-card-border: #{$gray-200};
+    --color-card-border-hover: #{$gray-300};
+
+    /* ========================================== */
+    // Buttons - Light Theme optimiert
+    /* ========================================== */
+
+    // Primary Button - Strong call-to-action
+    --color-btn-primary-bg: #{$blue-600};
+    --color-btn-primary-bg-hover: #{$blue-700};
+    --color-btn-primary-bg-active: #{$blue-800};
+    --color-btn-primary-text: #{$white};
+    --color-btn-primary-border: #{$blue-600};
+
+    // Secondary Button - Subtle alternative
+    --color-btn-secondary-bg: #{$gray-100};
+    --color-btn-secondary-bg-hover: #{$gray-200};
+    --color-btn-secondary-bg-active: #{$gray-300};
+    --color-btn-secondary-text: #{$gray-700};
+    --color-btn-secondary-border: #{$gray-200};
+
+    // Ghost Button - Minimal
+    --color-btn-ghost-bg: transparent;
+    --color-btn-ghost-bg-hover: #{$gray-100};
+    --color-btn-ghost-text: #{$gray-700};
+    --color-btn-ghost-text-hover: #{$gray-900};
+    --color-btn-ghost-border: transparent;
+
+    // Danger Button
+    --color-btn-danger-bg: #{$error};
+    --color-btn-danger-bg-hover: #{$error-hover};
+    --color-btn-danger-text: #{$white};
+    --color-btn-danger-border: #{$error};
+
+    // Success Button
+    --color-btn-success-bg: #{$success};
+    --color-btn-success-bg-hover: #{$success-hover};
+    --color-btn-success-text: #{$white};
+    --color-btn-success-border: #{$success};
+
+    /* ========================================== */
+    // Forms - Clean & accessible
+    /* ========================================== */
+
+    // Input Fields
+    --color-input-bg: #{$white};
+    --color-input-text: #{$gray-900};
+    --color-input-border: #{$gray-300};
+    --color-input-border-hover: #{$gray-400};
+    --color-input-border-focus: #{$blue-500};
+    --color-input-placeholder: #{$gray-400};
+
+    // Input States
+    --color-input-disabled-bg: #{$gray-100};
+    --color-input-disabled-text: #{$gray-400};
+    --color-input-disabled-border: #{$gray-200};
+
+    // Form Validation
+    --color-input-valid-border: #{$success};
+    --color-input-invalid-border: #{$error};
+    --color-input-warning-border: #{$warning};
+
+    /* ========================================== */
+    // E-Commerce Light Theme
+    /* ========================================== */
+
+    // Product Colors - Clear indicators
+    --color-product-new: #{$success};
+    --color-product-sale: #{$error};
+    --color-product-bestseller: #{$warning-600};
+    --color-product-limited: #{$purple-600};
+
+    // Price Colors - Financial clarity
+    --color-price-current: #{$gray-900};
+    --color-price-original: #{$gray-500};
+    --color-price-discount: #{$error};
+    --color-price-free: #{$success};
+
+    // Rating Colors
+    --color-rating-filled: #{$yellow-500};
+    --color-rating-empty: #{$gray-300};
+
+    // Stock Colors
+    --color-stock-in: #{$success};
+    --color-stock-low: #{$warning};
+    --color-stock-out: #{$error};
+
+    /* ========================================== */
+    // Interactive States - Professional feedback
+    /* ========================================== */
+
+    // Hover States
+    --hover-overlay: #{rgba($gray-900, 0.05)};
+    --hover-lift-shadow: var(--shadow-hover);
+
+    // Active States  
+    --active-overlay: #{rgba($gray-900, 0.1)};
+    --active-scale: 0.98;
+
+    // Focus States - Accessible
+    --focus-ring: 0 0 0 2px #{rgba($blue-600, 0.2)};
+    --focus-ring-offset: 2px;
+
+    // Disabled States
+    --disabled-opacity: 0.6;
+    --disabled-cursor: not-allowed;
+
+    /* ========================================== */
+    // Animation & Transition - Smooth & professional
+    /* ========================================== */
+
+    --transition-theme: background-color 200ms ease-out,
+        color 200ms ease-out,
+        border-color 200ms ease-out,
+        box-shadow 200ms ease-out;
+
+    --transition-fast: all 150ms ease-out;
+    --transition-smooth: all 300ms ease-out;
+
+    /* ========================================== */
+    // Layout & Spacing
+    /* ========================================== */
+
+    --border-radius-default: #{$radius};
+    --border-radius-large: #{$radius-lg};
+    --border-radius-small: #{$radius-sm};
+
+    /* ========================================== */
+    // Special Light Theme Features
+    /* ========================================== */
+
+    // Light theme specific gradients
+    --gradient-primary: linear-gradient(135deg, #{$blue-600} 0%, #{$cyan-500} 100%);
+    --gradient-secondary: linear-gradient(135deg, #{$gray-100} 0%, #{$gray-200} 100%);
+    --gradient-surface: linear-gradient(180deg, #{$white} 0%, #{$gray-50} 100%);
+
+    // Light theme backdrop filters
+    --backdrop-filter: blur(10px);
+    --backdrop-filter-strong: blur(20px);
+
+    // Selection colors
+    --selection-bg: #{rgba($blue-600, 0.2)};
+    --selection-text: #{$gray-900};
+
+    /* ========================================== */
+    // Accessibility Enhancements
+    /* ========================================== */
+
+    // High contrast variants
+    &.high-contrast {
+        --color-text-primary: #{$black};
+        --color-background: #{$white};
+        --color-border: #{$black};
+        --shadow: none;
+    }
+
+    // Large text variants
+    &.large-text {
+        font-size: 1.125rem;
+        line-height: 1.6;
+    }
+}
+
+/* ========================================== */
+// Light Theme Component Overrides
+/* ========================================== */
+
+[data-theme="light"] {
+
+    // Selection styling
+    ::selection {
+        background: var(--selection-bg);
+        color: var(--selection-text);
+    }
+
+    ::-moz-selection {
+        background: var(--selection-bg);
+        color: var(--selection-text);
+    }
+
+    // Scrollbar styling
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--color-background-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-border);
+        border-radius: 4px;
+
+        &:hover {
+            background: var(--color-border-secondary);
+        }
+    }
+
+    // Special styling for light theme elements
+    .glass-effect {
+        background: rgba($white, 0.8);
+        backdrop-filter: var(--backdrop-filter);
+        border: 1px solid rgba($white, 0.2);
+    }
+
+    .frosted-glass {
+        background: rgba($white, 0.6);
+        backdrop-filter: var(--backdrop-filter-strong);
+        border: 1px solid rgba($gray-200, 0.3);
+    }
+}
+
+/* ========================================== */
+// Light Theme Media Queries
+/* ========================================== */
+
+// Enhanced contrast for light theme
+@media (prefers-contrast: high) {
+    [data-theme="light"] {
+        --color-border: #{$gray-900};
+        --color-text-primary: #{$black};
+        --color-background: #{$white};
+        --shadow: none;
+    }
+}
+
+// Print optimizations for light theme
+@media print {
+    [data-theme="light"] {
+        --color-background: #{$white};
+        --color-text-primary: #{$black};
+        --color-border: #{$black};
+        --shadow: none;
+
+        // Ensure good contrast in print
+        --color-primary: #{$black};
+        --color-secondary: #{$gray-600};
+    }
+}
+
+/* ========================================== */
+// Light Theme Utilities
+/* ========================================== */
+
+.theme-light {
+
+    // Light theme specific utility classes
+    .bg-gradient-primary {
+        background: var(--gradient-primary);
+    }
+
+    .bg-gradient-secondary {
+        background: var(--gradient-secondary);
+    }
+
+    .bg-gradient-surface {
+        background: var(--gradient-surface);
+    }
+
+    // Light theme text utilities
+    .text-primary-light {
+        color: var(--color-primary);
+    }
+
+    .text-secondary-light {
+        color: var(--color-text-secondary);
+    }
+
+    .text-muted-light {
+        color: var(--color-text-muted);
+    }
+}

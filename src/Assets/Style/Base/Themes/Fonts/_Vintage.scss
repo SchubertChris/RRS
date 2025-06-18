@@ -25,187 +25,590 @@
     .h1 {
         font-family: var(--font-family-display);
         font-weight: $font-weight-bold;
-        letter-spacing: -0.01em;
+        font-size: $font-size-5xl;
         line-height: $line-height-tight;
+        letter-spacing: $letter-spacing-tight;
 
         // Klassische Schrift-Features
-        font-feature-settings: "liga" 1, "kern" 1, "swsh" 1;
-        -webkit-font-feature-settings: "liga" 1, "kern" 1, "swsh" 1;
+        font-feature-settings: "liga" 1, "kern" 1, "swsh" 1, "calt" 1;
+        -webkit-font-feature-settings: "liga" 1, "kern" 1, "swsh" 1, "calt" 1;
 
         // Subtile Eleganz
         text-rendering: optimizeLegibility;
 
         // Dezente Schatten für Tiefe
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+        // Responsive Skalierung
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-4xl;
+            letter-spacing: $letter-spacing-normal;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+            font-size: $font-size-3xl;
+            text-shadow: none;
+        }
     }
 
     h2,
     .h2 {
         font-family: var(--font-family-display);
         font-weight: $font-weight-semibold;
-        letter-spacing: -0.005em;
+        font-size: $font-size-4xl;
         line-height: $line-height-tight;
+        letter-spacing: $letter-spacing-tight;
 
-        font-feature-settings: "liga" 1, "kern" 1;
+        font-feature-settings: "liga" 1, "kern" 1, "swsh" 1;
         text-rendering: optimizeLegibility;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.08);
+
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-3xl;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+            font-size: $font-size-2xl;
+            text-shadow: none;
+        }
     }
 
     h3,
     .h3 {
         font-family: var(--font-family-display);
         font-weight: $font-weight-semibold;
-        letter-spacing: 0;
+        font-size: $font-size-3xl;
+        line-height: $line-height-snug;
+        letter-spacing: $letter-spacing-normal;
         font-style: italic; // Elegante Kursivschrift
 
-        font-feature-settings: "liga" 1, "kern" 1;
+        font-feature-settings: "liga" 1, "kern" 1, "swsh" 1;
+
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-2xl;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+            font-size: $font-size-xl;
+        }
     }
 
     h4,
-    h5,
-    h6,
-    .h4,
-    .h5,
-    .h6 {
+    .h4 {
         font-family: var(--font-family-display);
         font-weight: $font-weight-medium;
-        letter-spacing: 0.01em;
+        font-size: $font-size-2xl;
+        line-height: $line-height-snug;
+        letter-spacing: $letter-spacing-normal;
         font-style: normal;
+    }
+
+    h5,
+    .h5 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-medium;
+        font-size: $font-size-xl;
+        line-height: $line-height-normal;
+        letter-spacing: $letter-spacing-wide;
+
+        // Klassische Kapitälchen
+        font-variant: small-caps;
+        text-transform: lowercase;
+    }
+
+    h6,
+    .h6 {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-normal;
+        font-size: $font-size-lg;
+        line-height: $line-height-normal;
+        letter-spacing: $letter-spacing-widest;
+        text-transform: uppercase;
+        color: var(--color-text-secondary);
+
+        // Dekorative Elemente
+        position: relative;
+        text-align: center;
+
+        &::before,
+        &::after {
+            content: "❦";
+            color: var(--color-text-tertiary);
+            font-size: $font-size-sm;
+            vertical-align: middle;
+        }
+
+        &::before {
+            margin-right: $space-3;
+        }
+
+        &::after {
+            margin-left: $space-3;
+        }
     }
 
     // Body Text - Optimale Lesbarkeit
     p,
     .body-text {
         font-family: var(--font-family-primary);
+        font-size: $font-size-lg;
         font-weight: $font-weight-normal;
-        line-height: $line-height-loose;
-        letter-spacing: 0.005em;
+        line-height: $line-height-loose; // Großzügiger Zeilenabstand
+        letter-spacing: $letter-spacing-normal;
 
         // Klassische Typografie-Features
         font-feature-settings: "liga" 1, "kern" 1, "onum" 1;
-        -webkit-font-feature-settings: "liga" 1, "kern" 1, "onum" 1;
         text-rendering: optimizeLegibility;
 
-        // Erste Zeile einrücken für Buchcharakter
-        text-indent: 1.5em;
+        // Optimale Lesbarkeit
+        max-width: 60ch; // Klassische Zeilenlänge
+        text-align: justify;
+        hyphens: auto;
 
-        &:first-of-type {
-            text-indent: 0; // Erste Paragraph ohne Einrückung
+        // Responsive text
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-base;
+            line-height: $line-height-relaxed;
+            text-align: left;
+        }
 
-            &::first-letter {
-                font-size: 3em;
-                float: left;
-                line-height: 1;
-                margin: 0.1em 0.1em 0 0;
-                font-weight: $font-weight-bold;
-                color: var(--color-primary);
-            }
+        @media (max-width: $breakpoint-sm) {
+            font-size: $font-size-base;
+            line-height: $line-height-normal;
         }
     }
 
-    // Small Text - Klassisch
-    small,
-    .small-text {
+    // Lead Text - Elegante Einführung
+    .lead {
         font-family: var(--font-family-primary);
+        font-size: $font-size-xl;
         font-weight: $font-weight-light;
-        letter-spacing: 0.02em;
+        line-height: $line-height-loose;
+        letter-spacing: $letter-spacing-wide;
+        color: var(--color-text-secondary);
         font-style: italic;
-        font-size: 0.9em;
+
+        // Klassische Anführungszeichen
+        &::before {
+            content: "“";
+            font-size: 1.5em;
+            color: var(--color-text-tertiary);
+            line-height: 0;
+            vertical-align: -0.1em;
+        }
+
+        &::after {
+            content: "”";
+            font-size: 1.5em;
+            color: var(--color-text-tertiary);
+            line-height: 0;
+            vertical-align: -0.1em;
+        }
+
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-lg;
+        }
+    }
+
+    // Small Text - Dezente Details
+    small,
+    .small {
+        font-family: var(--font-family-primary);
+        font-size: $font-size-sm;
+        font-weight: $font-weight-normal;
+        line-height: $line-height-normal;
+        color: var(--color-text-secondary);
+        font-style: italic;
     }
 
     /* ========================================== */
-    // Interface Elemente - Klassisch Modern
+    // Text Emphasis - Klassische Hervorhebungen
     /* ========================================== */
 
-    // Buttons - Elegante Beschilderung
-    .btn {
-        font-family: var(--font-family-primary);
+    strong,
+    b,
+    .bold {
+        font-weight: $font-weight-bold;
+        color: var(--color-text-primary);
+        font-feature-settings: "liga" 1, "kern" 1;
+    }
+
+    em,
+    i,
+    .italic {
+        font-style: italic;
+        font-weight: $font-weight-normal;
+        font-feature-settings: "liga" 1, "kern" 1, "swsh" 1;
+    }
+
+    .highlight {
+        background: linear-gradient(180deg,
+            transparent 0%,
+            transparent 40%,
+            var(--color-warning-100, rgba(#{$yellow-400}, 0.3)) 40%,
+            var(--color-warning-100, rgba(#{$yellow-400}, 0.3)) 80%,
+            transparent 80%);
+        padding: 0 $space-1;
         font-weight: $font-weight-medium;
-        letter-spacing: 0.02em;
-        text-transform: capitalize;
-        font-feature-settings: "smcp" 1; // Small caps
+    }
+
+    .ornamental {
+        font-weight: $font-weight-medium;
+        color: var(--color-primary);
         position: relative;
 
-        // Klassische Button-Verzierung
         &::before,
         &::after {
-            content: '';
-            position: absolute;
-            width: 8px;
-            height: 1px;
-            background: currentColor;
-            opacity: 0.5;
-            transition: all $duration-300 $ease-out;
+            content: "※";
+            color: var(--color-text-tertiary);
+            font-size: 0.8em;
+            vertical-align: super;
         }
 
         &::before {
-            top: 50%;
-            left: $spacing-2;
-            transform: translateY(-50%);
+            margin-right: $space-1;
         }
 
         &::after {
-            top: 50%;
-            right: $spacing-2;
-            transform: translateY(-50%);
+            margin-left: $space-1;
         }
+    }
+
+    /* ========================================== */
+    // Code & Monospace - Typewriter Style
+    /* ========================================== */
+
+    code,
+    .code {
+        font-family: var(--font-family-mono);
+        font-size: 0.85em;
+        font-weight: $font-weight-normal;
+        letter-spacing: $letter-spacing-normal;
+
+        // Typewriter-spezifische Features
+        font-feature-settings: "liga" 0, "kern" 1;
+
+        // Vintage Typewriter-Style
+        background: var(--color-background-secondary);
+        border: 1px solid var(--color-border);
+        border-radius: $radius-sm;
+        padding: $space-0_5 $space-1;
+
+        // Subtle vintage shadow
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    pre {
+        font-family: var(--font-family-mono);
+        font-size: $font-size-sm;
+        font-weight: $font-weight-normal;
+        line-height: $line-height-relaxed;
+        letter-spacing: $letter-spacing-normal;
+
+        font-feature-settings: "liga" 0, "kern" 1;
+
+        // Vintage Paper-Style
+        background: var(--color-background-secondary);
+        border: 2px solid var(--color-border);
+        border-radius: $radius;
+        padding: $space-4;
+        position: relative;
+
+        // Paper texture effect
+        background-image:
+            linear-gradient(90deg, transparent 50%, rgba(0, 0, 0, 0.02) 50%),
+            linear-gradient(0deg, transparent 50%, rgba(0, 0, 0, 0.02) 50%);
+        background-size: 20px 20px;
+
+        // Vintage shadow
+        box-shadow:
+            2px 2px 4px rgba(0, 0, 0, 0.1),
+            inset 0 0 20px rgba(0, 0, 0, 0.02);
+
+        // Typewriter header
+        &::before {
+            content: "— Code —";
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-background);
+            color: var(--color-text-secondary);
+            padding: $space-1 $space-3;
+            font-size: $font-size-xs;
+            font-weight: $font-weight-medium;
+            letter-spacing: $letter-spacing-widest;
+            text-transform: uppercase;
+            border: 1px solid var(--color-border);
+            border-radius: $radius-sm;
+        }
+
+        code {
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: inherit;
+            font-weight: inherit;
+            box-shadow: none;
+        }
+    }
+
+    /* ========================================== */
+    // Lists - Klassische Aufzählungen
+    /* ========================================== */
+
+    ul,
+    ol {
+        font-family: var(--font-family-primary);
+        font-size: $font-size-lg;
+        line-height: $line-height-loose;
+
+        li {
+            margin-bottom: $space-2;
+
+            &::marker {
+                color: var(--color-text-secondary);
+            }
+        }
+
+        // Nested lists
+        ul,
+        ol {
+            font-size: inherit;
+            margin-top: $space-2;
+        }
+    }
+
+    // Custom vintage list styles
+    .list-ornamental {
+        list-style: none;
+        counter-reset: ornamental-counter;
+
+        li {
+            counter-increment: ornamental-counter;
+            position: relative;
+            padding-left: $space-8;
+
+            &::before {
+                content: counter(ornamental-counter, upper-roman) ".";
+                position: absolute;
+                left: 0;
+                font-weight: $font-weight-bold;
+                color: var(--color-primary);
+                font-variant: small-caps;
+            }
+        }
+    }
+
+    .list-decorative {
+        list-style: none;
+
+        li {
+            position: relative;
+            padding-left: $space-6;
+
+            &::before {
+                content: "◦";
+                position: absolute;
+                left: 0;
+                color: var(--color-text-secondary);
+                font-size: 1.2em;
+                line-height: 1;
+            }
+
+            &:nth-child(even)::before {
+                content: "◆";
+            }
+        }
+    }
+
+    /* ========================================== */
+    // Blockquotes - Elegante Zitate
+    /* ========================================== */
+
+    blockquote {
+        font-family: var(--font-family-primary);
+        font-size: $font-size-xl;
+        font-weight: $font-weight-light;
+        line-height: $line-height-loose;
+        font-style: italic;
+        letter-spacing: $letter-spacing-normal;
+
+        // Klassische Zitat-Features
+        font-feature-settings: "liga" 1, "kern" 1, "swsh" 1;
+
+        // Elegante Gestaltung
+        background: linear-gradient(90deg,
+                var(--color-background-secondary) 0%,
+                transparent 100%);
+        border-left: 4px solid var(--color-primary);
+        border-radius: 0 $radius-lg $radius-lg 0;
+        padding: $space-6 $space-8;
+        margin: $space-8 0;
+        position: relative;
+
+        // Vintage shadow
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+
+        // Große Anführungszeichen
+        &::before {
+            content: "“";
+            position: absolute;
+            top: -$space-4;
+            left: $space-4;
+            font-size: 4rem;
+            line-height: 1;
+            color: var(--color-primary);
+            opacity: 0.3;
+            font-weight: $font-weight-bold;
+        }
+
+        &::after {
+            content: "”";
+            position: absolute;
+            bottom: -$space-4;
+            right: $space-4;
+            font-size: 4rem;
+            line-height: 1;
+            color: var(--color-primary);
+            opacity: 0.3;
+            font-weight: $font-weight-bold;
+        }
+
+        cite {
+            font-family: var(--font-family-primary);
+            font-size: $font-size-base;
+            font-style: normal;
+            font-weight: $font-weight-medium;
+            color: var(--color-text-tertiary);
+            display: block;
+            text-align: right;
+            margin-top: $space-4;
+
+            &::before {
+                content: "— ";
+                color: var(--color-text-tertiary);
+            }
+        }
+    }
+
+    /* ========================================== */
+    // Links - Elegante Verlinkung
+    /* ========================================== */
+
+    a {
+        font-family: inherit;
+        font-weight: inherit;
+        text-decoration: none;
+        color: var(--color-primary);
+        position: relative;
+
+        // Elegante Transition
+        transition: color $duration-300 $ease-out;
+
+        // Klassische Unterstreichung
+        border-bottom: 1px solid transparent;
 
         &:hover {
+            color: var(--color-primary-hover);
+            border-bottom-color: currentColor;
+        }
 
-            &::before,
+        &:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+            border-radius: $radius-sm;
+        }
+
+        // Vintage Stil für externe Links
+        &[target="_blank"] {
             &::after {
-                width: 12px;
-                opacity: 1;
+                content: " ⧉";
+                font-size: 0.8em;
+                opacity: 0.7;
+                margin-left: $space-0_5;
             }
         }
     }
 
-    // Navigation - Klassisches Menü
-    .nav,
-    .navbar {
+    /* ========================================== */
+    // Tables - Klassische Datentabellen
+    /* ========================================== */
+
+    table {
         font-family: var(--font-family-primary);
-        font-weight: $font-weight-medium;
-        letter-spacing: 0.01em;
-        text-transform: capitalize;
+        font-size: $font-size-base;
+        line-height: $line-height-normal;
 
-        .nav-link {
-            position: relative;
+        // Klassische Tabellengestaltung
+        border: 2px solid var(--color-border);
+        border-radius: $radius;
+        overflow: hidden;
 
-            &::after {
-                content: '';
-                position: absolute;
-                bottom: -2px;
-                left: 0;
-                width: 0;
-                height: 1px;
-                background: var(--color-primary);
-                transition: width $duration-300 $ease-out;
+        // Vintage shadow
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+
+        th {
+            font-weight: $font-weight-bold;
+            font-size: $font-size-sm;
+            text-transform: uppercase;
+            letter-spacing: $letter-spacing-wide;
+            color: var(--color-text-primary);
+            background: var(--color-background-secondary);
+
+            // Klassische Kapitälchen
+            font-variant: small-caps;
+        }
+
+        td {
+            font-weight: $font-weight-normal;
+            color: var(--color-text-primary);
+        }
+
+        caption {
+            font-size: $font-size-lg;
+            font-weight: $font-weight-medium;
+            color: var(--color-text-secondary);
+            font-style: italic;
+            margin-bottom: $space-4;
+
+            &::before {
+                content: "— ";
             }
 
-            &:hover::after,
-            &.active::after {
-                width: 100%;
+            &::after {
+                content: " —";
             }
         }
     }
 
-    // Forms - Klassisch elegant
+    /* ========================================== */
+    // Form Elements - Klassische Formulare
+    /* ========================================== */
+
     input,
     textarea,
     select {
         font-family: var(--font-family-primary);
+        font-size: $font-size-base;
         font-weight: $font-weight-normal;
-        letter-spacing: 0.01em;
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
-        border-radius: $radius-sm;
+        line-height: $line-height-normal;
+        letter-spacing: $letter-spacing-normal;
 
-        // Klassischer Focus-Stil
+        // Klassische Formulargestaltung
+        background: var(--color-background);
+        border: 2px solid var(--color-border);
+        border-radius: $radius;
+        padding: $space-3 $space-4;
+
+        // Vintage shadow
+        box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+
         &:focus {
-            box-shadow:
-                0 0 0 2px rgba(var(--color-primary), 0.1),
-                inset 0 1px 3px rgba(0, 0, 0, 0.1);
             border-color: var(--color-primary);
+            box-shadow:
+                inset 1px 1px 3px rgba(0, 0, 0, 0.1),
+                0 0 8px rgba(var(--color-primary), 0.2);
         }
 
         &::placeholder {
@@ -216,407 +619,316 @@
 
     label {
         font-family: var(--font-family-primary);
-        font-weight: $font-weight-semibold;
-        letter-spacing: 0.01em;
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
         color: var(--color-text-primary);
 
-        // Dekorative Zwei-Punkte
-        &:not(.inline)::after {
-            content: ':';
-            margin-left: 2px;
-        }
+        // Elegante Kapitälchen
+        font-variant: small-caps;
+        letter-spacing: $letter-spacing-wide;
     }
 
-    // Code - Klassische Schreibmaschine
-    code,
-    pre {
-        font-family: var(--font-family-mono);
-        font-weight: $font-weight-normal;
-        letter-spacing: 0;
-        background: var(--color-background-secondary);
-        border: 1px solid var(--color-border);
-
-        // Schreibmaschinen-Stil
-        box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
-    }
-
-    /* ========================================== */
-    // E-Commerce - Vintage Shop Ästhetik
-    /* ========================================== */
-
-    // Produktnamen - Wie Katalog-Einträge
-    .product-title {
-        font-family: var(--font-family-display);
-        font-weight: $font-weight-semibold;
-        letter-spacing: 0;
-        line-height: $line-height-snug;
-        font-style: italic;
-
-        // Dekorative Anführungszeichen
-        &::before {
-            content: '"';
-            color: var(--color-primary);
-            font-size: 1.2em;
-        }
-
-        &::after {
-            content: '"';
-            color: var(--color-primary);
-            font-size: 1.2em;
-        }
-    }
-
-    // Preise - Klassische Währungsdarstellung
-    .price {
+    .form-help {
         font-family: var(--font-family-primary);
-        font-weight: $font-weight-bold;
-        font-feature-settings: "onum" 1; // Old-style numbers
-        letter-spacing: 0.01em;
-
-        // Währungssymbol stilisiert
-        &::before {
-            content: '';
-            display: inline-block;
-            width: 0.8em;
-            height: 0.8em;
-            background: var(--color-primary);
-            border-radius: 50%;
-            margin-right: 0.3em;
-            vertical-align: middle;
-        }
-    }
-
-    .price-original {
-        font-weight: $font-weight-normal;
-        text-decoration: line-through;
-        opacity: 0.7;
-        font-style: italic;
-    }
-
-    // Bewertungen - Wie Zeitungsrezensionen
-    .rating-text {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-normal;
         font-size: $font-size-sm;
+        font-weight: $font-weight-normal;
+        line-height: $line-height-normal;
+        color: var(--color-text-tertiary);
         font-style: italic;
-        letter-spacing: 0.01em;
-
-        &::before {
-            content: '— ';
-            color: var(--color-primary);
-        }
     }
 
-    // Kategorien - Wie Bibliotheks-Kategorien
-    .category-link {
+    /* ========================================== */
+    // Buttons - Klassische Bedienelemente
+    /* ========================================== */
+
+    button,
+    .btn {
         font-family: var(--font-family-primary);
         font-weight: $font-weight-medium;
-        letter-spacing: 0.02em;
-        font-feature-settings: "smcp" 1; // Small caps
-        font-size: $font-size-sm;
-        text-transform: lowercase;
+        letter-spacing: $letter-spacing-wide;
+        text-transform: none;
 
-        &::before {
-            content: '§ ';
-            color: var(--color-primary);
-            font-weight: $font-weight-bold;
-        }
-    }
+        // Klassische Button-Gestaltung
+        border: 2px solid var(--color-border);
+        border-radius: $radius;
+        padding: $space-3 $space-6;
 
-    // Breadcrumbs - Wie Buchkapitel
-    .breadcrumb {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-normal;
-        font-size: $font-size-sm;
-        letter-spacing: 0.01em;
-        font-style: italic;
+        // Vintage shadow
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 
-        .breadcrumb-separator {
-            color: var(--color-primary);
-            margin: 0 $spacing-2;
-            font-style: normal;
-
-            &::before {
-                content: '→';
-            }
-        }
-    }
-
-    /* ========================================== */
-    // Status & Badge - Klassische Siegel
-    /* ========================================== */
-
-    .badge {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-semibold;
-        font-size: $font-size-xs;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        font-feature-settings: "smcp" 1;
-        padding: $spacing-2 $spacing-4;
-        border: 2px solid var(--color-primary);
-        border-radius: $radius-full;
-        background: var(--color-surface);
-        position: relative;
-
-        // Klassisches Siegel-Design
-        &::before,
-        &::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--color-primary);
-            border-radius: 50%;
+        &:hover {
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            transform: translateY(1px);
         }
 
-        &::before {
-            top: 50%;
-            left: $spacing-1;
-            transform: translateY(-50%);
+        &:active {
+            box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+            transform: translateY(2px);
         }
 
-        &::after {
-            top: 50%;
-            right: $spacing-1;
-            transform: translateY(-50%);
-        }
-    }
-
-    .status-text {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-medium;
-        font-size: $font-size-sm;
-        font-style: italic;
-        letter-spacing: 0.01em;
-
-        &.status-available::before {
-            content: '✓ ';
-            color: var(--color-success);
-            font-style: normal;
-            font-weight: $font-weight-bold;
-        }
-
-        &.status-unavailable::before {
-            content: '✗ ';
-            color: var(--color-error);
-            font-style: normal;
-            font-weight: $font-weight-bold;
-        }
-    }
-
-    /* ========================================== */
-    // Klassische Zitate & Testimonials
-    /* ========================================== */
-
-    blockquote {
-        font-family: var(--font-family-display);
-        font-weight: $font-weight-normal;
-        font-size: $font-size-lg;
-        font-style: italic;
-        line-height: $line-height-loose;
-        letter-spacing: 0.01em;
-        position: relative;
-        padding: $spacing-6 $spacing-8;
-
-        // Klassische Anführungszeichen
-        &::before {
-            content: '"';
-            position: absolute;
-            top: 0;
-            left: 0;
-            font-size: 4em;
-            color: var(--color-primary);
-            opacity: 0.3;
-            line-height: 1;
-        }
-
-        &::after {
-            content: '"';
-            position: absolute;
-            bottom: 0;
-            right: $spacing-4;
-            font-size: 4em;
-            color: var(--color-primary);
-            opacity: 0.3;
-            line-height: 1;
-        }
-
-        cite {
-            display: block;
-            margin-top: $spacing-4;
-            font-family: var(--font-family-primary);
-            font-weight: $font-weight-medium;
+        // Size variants
+        &.btn-sm {
             font-size: $font-size-sm;
-            font-style: normal;
-            text-align: right;
-
-            &::before {
-                content: '— ';
-                color: var(--color-primary);
-            }
+            padding: $space-2 $space-4;
         }
-    }
 
-    /* ========================================== */
-    // Dekorative Elemente
-    /* ========================================== */
-
-    // Klassische Trennlinie
-    hr {
-        border: none;
-        height: 1px;
-        background: linear-gradient(to right,
-                transparent,
-                var(--color-border),
-                transparent);
-        position: relative;
-        margin: $spacing-8 0;
-
-        &::before {
-            content: '❦';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--color-background);
-            color: var(--color-primary);
-            padding: 0 $spacing-4;
+        &.btn-lg {
             font-size: $font-size-lg;
+            padding: $space-4 $space-8;
+        }
+
+        &.btn-xl {
+            font-size: $font-size-xl;
+            padding: $space-6 $space-12;
+            font-weight: $font-weight-semibold;
         }
     }
 
-    // Vintage Drop Caps für erste Paragraphen
+    /* ========================================== */
+    // Special Vintage Elements
+    /* ========================================== */
+
     .drop-cap {
         &::first-letter {
             font-family: var(--font-family-display);
             font-size: 4em;
-            float: left;
-            line-height: 0.8;
-            margin: 0.1em 0.1em 0 0;
             font-weight: $font-weight-bold;
+            line-height: 0.8;
+            float: left;
+            margin: 0.1em 0.1em 0 0;
             color: var(--color-primary);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+            // Dekorative Eigenschaften
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    .manuscript-style {
+        font-family: var(--font-family-primary);
+        font-size: $font-size-lg;
+        line-height: $line-height-loose;
+        text-align: justify;
+        columns: 2;
+        column-gap: $space-8;
+        column-rule: 1px solid var(--color-border);
+
+        @media (max-width: $breakpoint-md) {
+            columns: 1;
+        }
+    }
+
+    .ornamental-divider {
+        text-align: center;
+        margin: $space-8 0;
+        color: var(--color-text-tertiary);
+        font-size: $font-size-lg;
+
+        &::before {
+            content: "❦ ❦ ❦";
+            letter-spacing: $space-4;
+        }
+    }
+
+    .vintage-badge {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-bold;
+        font-size: $font-size-sm;
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-widest;
+        color: var(--color-text-inverse);
+        background: var(--color-primary);
+        border: 2px solid var(--color-primary);
+        border-radius: $radius-full;
+        padding: $space-2 $space-4;
+        display: inline-block;
+        position: relative;
+
+        // Vintage shadow
+        box-shadow:
+            2px 2px 4px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 1px;
+            background: var(--color-primary);
+        }
+
+        &::before {
+            left: -30px;
+        }
+
+        &::after {
+            right: -30px;
         }
     }
 
     /* ========================================== */
-    // Responsive Adjustments - Klassisch
+    // Accessibility & Media Queries
     /* ========================================== */
 
-    @include mobile-only {
+    // High contrast mode
+    @media (prefers-contrast: high) {
+        * {
+            text-shadow: none !important;
+            box-shadow: none !important;
+        }
 
-        // Vereinfachte Dekoration auf Mobile
-        p:first-of-type::first-letter {
-            font-size: 2em;
+        a {
+            text-decoration: underline;
+        }
+
+        blockquote {
+
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    // Reduced motion
+    @media (prefers-reduced-motion: reduce) {
+        button {
+            &:hover {
+                transform: none;
+            }
+
+            &:active {
+                transform: none;
+            }
+        }
+
+        a {
+            transition: none;
+        }
+    }
+
+    // Print optimization
+    @media print {
+        * {
+            color: black !important;
+            text-shadow: none !important;
+            box-shadow: none !important;
+        }
+
+        .drop-cap::first-letter {
+            text-shadow: none !important;
+        }
+
+        blockquote {
+
+            &::before,
+            &::after {
+                color: #666 !important;
+            }
+        }
+
+        a {
+            color: black !important;
+            border-bottom: 1px solid black !important;
+        }
+
+        // Optimized print fonts
+        h1 {
+            font-size: 28pt;
+        }
+
+        h2 {
+            font-size: 24pt;
+        }
+
+        h3 {
+            font-size: 20pt;
+        }
+
+        h4 {
+            font-size: 18pt;
+        }
+
+        h5 {
+            font-size: 16pt;
+        }
+
+        h6 {
+            font-size: 14pt;
+        }
+
+        p,
+        body {
+            font-size: 11pt;
+            line-height: 1.4;
+        }
+
+        .manuscript-style {
+            columns: 2;
+            column-gap: 0.5in;
+        }
+    }
+
+    /* ========================================== */
+    // Responsive Typography - Mobile optimiert
+    /* ========================================== */
+
+    @media (max-width: $breakpoint-md) {
+
+        // Reduzierte Schriftgrößen für mittlere Bildschirme
+        p,
+        .body-text {
+            font-size: $font-size-base;
+            line-height: $line-height-relaxed;
+        }
+
+        .lead {
+            font-size: $font-size-lg;
+        }
+
+        blockquote {
+            font-size: $font-size-lg;
+            padding: $space-4 $space-6;
+
+            &::before,
+            &::after {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+
+        // Mobile optimierte Typografie
+        h6 {
+
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+
+        .vintage-badge {
+
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+
+        .drop-cap::first-letter {
+            font-size: 3em;
             margin: 0.05em 0.05em 0 0;
         }
 
-        .btn {
-
-            &::before,
-            &::after {
-                display: none;
-            }
+        table {
+            font-size: $font-size-sm;
         }
 
-        .badge {
-
-            &::before,
-            &::after {
-                display: none;
-            }
-        }
-
-        blockquote {
-            padding: $spacing-4;
-
-            &::before,
-            &::after {
-                font-size: 2em;
-            }
-        }
-    }
-
-    @include desktop-only {
-
-        // Verstärkte Effekte auf Desktop
-        p {
-            text-indent: 2em;
-        }
-
-        blockquote {
-            padding: $spacing-8 $spacing-12;
-        }
-    }
-
-    /* ========================================== */
-    // Print Optimierung - Zeitungsformat
-    /* ========================================== */
-
-    @media print {
-        * {
-            text-shadow: none !important;
-            color: black !important;
-        }
-
-        h1,
-        h2,
-        h3 {
-            page-break-after: avoid;
-        }
-
-        p {
-            orphans: 3;
-            widows: 3;
-            text-indent: 1.5em;
-        }
-
-        blockquote {
-            page-break-inside: avoid;
-            border-left: 3px solid black;
-            padding-left: $spacing-4;
-        }
-
-        .badge {
-            border: 1px solid black;
-        }
-    }
-
-    /* ========================================== */
-    // Barrierefreiheit
-    /* ========================================== */
-
-    @media (prefers-reduced-motion: reduce) {
-
-        // Keine animierten Dekorationen
-        .nav-link::after {
-            transition: none;
-        }
-
-        .btn::before,
-        .btn::after {
-            transition: none;
-        }
-    }
-
-    @media (prefers-contrast: high) {
-
-        // Verstärkte Kontraste für Vintage
-        h1,
-        h2,
-        h3 {
-            font-weight: $font-weight-black;
-            text-shadow: none;
-        }
-
-        blockquote::before,
-        blockquote::after {
-            opacity: 0.8;
-        }
-
-        .badge {
-            border-width: 3px;
+        pre::before {
+            font-size: $font-size-xs;
+            padding: $space-0_5 $space-2;
         }
     }
 }

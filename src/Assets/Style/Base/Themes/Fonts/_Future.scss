@@ -1,7 +1,7 @@
 /* ========================================== */
 /* ============= FUTURE FONT THEME ========== */
 /* ========================================== */
-/* Futuristisches Font-System mit Glow-Effekten und Tech-Ästhetik */
+/* Futuristisches, technisches Font-System mit Sci-Fi Ästhetik */
 
 /* ========================================== */
 // Future Font Theme Konfiguration
@@ -9,7 +9,7 @@
 
 .font-theme-future {
     /* ========================================== */
-    // Font Family Definitionen - Futuristisch
+    // Font Family Definitionen - Futuristisch & Technisch
     /* ========================================== */
 
     --font-family-primary: #{$font-family-future};
@@ -17,551 +17,977 @@
     --font-family-mono: #{$font-family-mono};
 
     /* ========================================== */
-    // Typografie-Hierarchie - Tech & Futuristisch
+    // Typografie-Hierarchie - Sci-Fi & Technisch
     /* ========================================== */
 
-    // Headlines - Mit Glow-Effekt
+    // Headlines - Futuristische Präsenz
     h1,
     .h1 {
         font-family: var(--font-family-display);
         font-weight: $font-weight-bold;
-        letter-spacing: 0.05em;
+        font-size: $font-size-5xl;
+        line-height: $line-height-tight;
+        letter-spacing: $letter-spacing-wide;
         text-transform: uppercase;
 
+        // Futuristische Features
+        font-feature-settings: "liga" 0, "kern" 1, "swsh" 0;
+        -webkit-font-feature-settings: "liga" 0, "kern" 1, "swsh" 0;
+        text-rendering: geometricPrecision;
+
+        // Glow-Effekt für dunkle Themes
         @if $enable-glow-effects {
-            text-shadow:
-                0 0 10px var(--color-primary),
-                0 0 20px var(--color-primary),
-                0 0 40px var(--color-primary);
+            text-shadow: var(--text-glow-primary, none);
         }
 
-        // Futuristische Schrift-Features
-        font-feature-settings: "ss01" 1,
-        "ss02" 1;
-        -webkit-font-feature-settings: "ss01" 1,
-        "ss02" 1;
+        // Responsive Skalierung
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-4xl;
+            letter-spacing: $letter-spacing-normal;
+        }
 
-        // Leichte Animation
-        transition: text-shadow $duration-300 $ease-out;
+        @media (max-width: $breakpoint-sm) {
+            font-size: $font-size-3xl;
+            letter-spacing: $letter-spacing-tight;
+        }
     }
 
     h2,
     .h2 {
         font-family: var(--font-family-display);
         font-weight: $font-weight-semibold;
-        letter-spacing: 0.03em;
+        font-size: $font-size-4xl;
+        line-height: $line-height-tight;
+        letter-spacing: $letter-spacing-wide;
         text-transform: uppercase;
 
+        font-feature-settings: "liga" 0, "kern" 1;
+        text-rendering: geometricPrecision;
+
         @if $enable-glow-effects {
-            text-shadow:
-                0 0 8px var(--color-primary),
-                0 0 16px var(--color-primary);
+            text-shadow: var(--text-glow-primary, none);
         }
 
-        transition: text-shadow $duration-300 $ease-out;
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-3xl;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+            font-size: $font-size-2xl;
+        }
     }
 
     h3,
     .h3 {
         font-family: var(--font-family-display);
         font-weight: $font-weight-semibold;
-        letter-spacing: 0.02em;
+        font-size: $font-size-3xl;
+        line-height: $line-height-snug;
+        letter-spacing: $letter-spacing-normal;
+        text-transform: capitalize;
 
-        @if $enable-glow-effects {
-            text-shadow: 0 0 6px var(--color-primary);
+        font-feature-settings: "liga" 0, "kern" 1;
+
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-2xl;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+            font-size: $font-size-xl;
         }
     }
 
     h4,
-    h5,
-    h6,
-    .h4,
-    .h5,
-    .h6 {
-        font-family: var(--font-family-primary);
+    .h4 {
+        font-family: var(--font-family-display);
         font-weight: $font-weight-medium;
-        letter-spacing: 0.01em;
-        text-transform: uppercase;
-        font-size: 0.9em;
+        font-size: $font-size-2xl;
+        line-height: $line-height-snug;
+        letter-spacing: $letter-spacing-normal;
+        text-transform: none;
     }
 
-    // Body Text - Tech-optimiert
+    h5,
+    .h5 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-medium;
+        font-size: $font-size-xl;
+        line-height: $line-height-normal;
+        letter-spacing: $letter-spacing-wide;
+        text-transform: uppercase;
+
+        // Digitaler Look
+        position: relative;
+
+        &::before {
+            content: ">";
+            margin-right: $space-2;
+            color: var(--color-accent, #{$cyan-500});
+            font-weight: $font-weight-normal;
+        }
+    }
+
+    h6,
+    .h6 {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-normal;
+        font-size: $font-size-lg;
+        line-height: $line-height-normal;
+        letter-spacing: $letter-spacing-widest;
+        text-transform: uppercase;
+        color: var(--color-text-secondary);
+
+        // Terminal-style
+        position: relative;
+
+        &::before {
+            content: "[";
+            color: var(--color-accent, #{$cyan-500});
+        }
+
+        &::after {
+            content: "]";
+            color: var(--color-accent, #{$cyan-500});
+        }
+    }
+
+    // Body Text - Technische Lesbarkeit
     p,
     .body-text {
         font-family: var(--font-family-primary);
+        font-size: $font-size-base;
         font-weight: $font-weight-light;
         line-height: $line-height-relaxed;
-        letter-spacing: 0.01em;
+        letter-spacing: $letter-spacing-wide;
 
-        // Monospace-ähnliche Zahlen
-        font-feature-settings: "tnum" 1, "zero" 1;
-        -webkit-font-feature-settings: "tnum" 1, "zero" 1;
+        // Technische Features
+        font-feature-settings: "liga" 0, "kern" 1;
+        text-rendering: geometricPrecision;
+
+        // Futuristische Zeilenlänge
+        max-width: 70ch;
+
+        // Responsive text
+        @media (max-width: $breakpoint-sm) {
+            font-size: $font-size-sm;
+            line-height: $line-height-normal;
+            letter-spacing: $letter-spacing-normal;
+        }
     }
 
-    // Small Text - Terminal-Style
-    small,
-    .small-text {
-        font-family: var(--font-family-mono);
-        font-weight: $font-weight-normal;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        font-size: 0.85em;
-        opacity: 0.8;
-    }
-
-    /* ========================================== */
-    // Interface Elemente - Futuristisch
-    /* ========================================== */
-
-    // Buttons - Cyber-Style
-    .btn {
+    // Lead Text - Technische Einführung
+    .lead {
         font-family: var(--font-family-primary);
-        font-weight: $font-weight-medium;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+        font-size: $font-size-xl;
+        font-weight: $font-weight-extralight;
+        line-height: $line-height-relaxed;
+        letter-spacing: $letter-spacing-wide;
+        color: var(--color-text-secondary);
+
+        // Futuristischer Cursor-Effekt
         position: relative;
 
-        @if $enable-glow-effects {
-            &:hover {
-                text-shadow:
-                    0 0 8px currentColor,
-                    0 0 16px currentColor;
-            }
-        }
-
-        // Futuristische Border-Animation
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg,
-                    transparent,
-                    var(--color-primary),
-                    transparent);
-            opacity: 0;
-            z-index: -1;
-            transition: opacity $duration-300 $ease-out;
-        }
-
-        &:hover::before {
-            opacity: 0.1;
-        }
-    }
-
-    // Navigation - Terminal-Style
-    .nav,
-    .navbar {
-        font-family: var(--font-family-mono);
-        font-weight: $font-weight-medium;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        font-size: 0.9em;
-
-        .nav-link {
-            position: relative;
-
-            &::before {
-                content: '>';
-                margin-right: $spacing-2;
-                color: var(--color-primary);
-                opacity: 0;
-                transition: opacity $duration-200 $ease-out;
-            }
-
-            &:hover::before,
-            &.active::before {
-                opacity: 1;
-            }
-        }
-    }
-
-    // Forms - Tech Interface
-    input,
-    textarea,
-    select {
-        font-family: var(--font-family-mono);
-        font-weight: $font-weight-normal;
-        letter-spacing: 0.01em;
-        background: rgba(var(--color-background), 0.8);
-        border: 1px solid var(--color-primary);
-
-        @if $enable-glow-effects {
-            &:focus {
-                box-shadow:
-                    0 0 0 2px rgba(var(--color-primary), 0.3),
-                    0 0 20px rgba(var(--color-primary), 0.2);
-                text-shadow: 0 0 4px var(--color-primary);
-            }
-        }
-
-        &::placeholder {
-            font-family: var(--font-family-mono);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.9em;
-        }
-    }
-
-    label {
-        font-family: var(--font-family-mono);
-        font-weight: $font-weight-medium;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        font-size: 0.85em;
-        color: var(--color-primary);
-    }
-
-    // Code - Enhanced Mono
-    code,
-    pre {
-        font-family: var(--font-family-mono);
-        font-weight: $font-weight-normal;
-        letter-spacing: 0;
-        background: rgba(var(--color-background), 0.9);
-
-        @if $enable-glow-effects {
-            box-shadow:
-                inset 0 0 20px rgba(var(--color-primary), 0.05),
-                0 0 1px var(--color-primary);
-        }
-    }
-
-    /* ========================================== */
-    // E-Commerce - Cyber-Commerce
-    /* ========================================== */
-
-    // Produktnamen - Futuristisch
-    .product-title {
-        font-family: var(--font-family-display);
-        font-weight: $font-weight-semibold;
-        letter-spacing: 0.02em;
-        text-transform: capitalize;
-        line-height: $line-height-snug;
-
-        @if $enable-glow-effects {
-            &:hover {
-                text-shadow: 0 0 8px var(--color-primary);
-            }
-        }
-    }
-
-    // Preise - Digital Style
-    .price {
-        font-family: var(--font-family-mono);
-        font-weight: $font-weight-bold;
-        font-feature-settings: "tnum" 1, "zero" 1;
-        letter-spacing: 0.02em;
-
-        &::before {
-            content: '$';
-            color: var(--color-primary);
-            margin-right: 2px;
-        }
-    }
-
-    .price-original {
-        font-weight: $font-weight-normal;
-        text-decoration: line-through;
-        opacity: 0.6;
-
-        &::before {
-            content: '$';
-            color: var(--color-text-tertiary);
-        }
-    }
-
-    // Bewertungen - Tech Display
-    .rating-text {
-        font-family: var(--font-family-mono);
-        font-weight: $font-weight-medium;
-        font-size: $font-size-sm;
-        letter-spacing: 0.02em;
-
-        &::before {
-            content: '[';
-            color: var(--color-primary);
-        }
-
         &::after {
-            content: ']';
-            color: var(--color-primary);
+            content: "_";
+            animation: futureCursor 1s infinite;
+            color: var(--color-accent, #{$cyan-500});
+            margin-left: $space-1;
+        }
+
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-lg;
         }
     }
 
-    // Kategorien - Terminal Links
-    .category-link {
-        font-family: var(--font-family-mono);
-        font-weight: $font-weight-medium;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-size: $font-size-sm;
+    @keyframes futureCursor {
 
-        &::before {
-            content: '# ';
-            color: var(--color-primary);
-        }
-    }
-
-    // Breadcrumbs - File Path Style
-    .breadcrumb {
-        font-family: var(--font-family-mono);
-        font-weight: $font-weight-normal;
-        font-size: $font-size-sm;
-        letter-spacing: 0.01em;
-
-        .breadcrumb-separator {
-            color: var(--color-primary);
-            margin: 0 $spacing-1;
-
-            &::before {
-                content: '/';
-            }
-        }
-    }
-
-    /* ========================================== */
-    // Status & Badge - HUD Style
-    /* ========================================== */
-
-    .badge {
-        font-family: var(--font-family-mono);
-        font-weight: $font-weight-bold;
-        font-size: $font-size-xs;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        padding: $spacing-1 $spacing-3;
-        background: transparent;
-        border: 1px solid var(--color-primary);
-
-        @if $enable-glow-effects {
-            box-shadow:
-                0 0 10px rgba(var(--color-primary), 0.3),
-                inset 0 0 10px rgba(var(--color-primary), 0.1);
-            text-shadow: 0 0 4px var(--color-primary);
-        }
-
-        &::before {
-            content: '[';
-            margin-right: 2px;
-        }
-
-        &::after {
-            content: ']';
-            margin-left: 2px;
-        }
-    }
-
-    .status-text {
-        font-family: var(--font-family-mono);
-        font-weight: $font-weight-medium;
-        font-size: $font-size-sm;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-
-        &.status-online::before {
-            content: '● ';
-            color: var(--color-success);
-
-            @if $enable-glow-effects {
-                text-shadow: 0 0 4px var(--color-success);
-            }
-        }
-
-        &.status-offline::before {
-            content: '● ';
-            color: var(--color-error);
-        }
-    }
-
-    /* ========================================== */
-    // Futuristische Animationen
-    /* ========================================== */
-
-    // Typing Effect für Headlines
-    .typing-effect {
-        overflow: hidden;
-        border-right: 2px solid var(--color-primary);
-        white-space: nowrap;
-        animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-    }
-
-    @keyframes typing {
-        from {
-            width: 0;
-        }
-
-        to {
-            width: 100%;
-        }
-    }
-
-    @keyframes blink-caret {
-
-        from,
-        to {
-            border-color: transparent;
-        }
-
+        0%,
         50% {
-            border-color: var(--color-primary);
-        }
-    }
-
-    // Matrix-Style Text
-    .matrix-text {
-        font-family: var(--font-family-mono);
-        color: var(--color-primary);
-        animation: matrix-glow 2s ease-in-out infinite alternate;
-
-        @if $enable-glow-effects {
-            text-shadow:
-                0 0 5px currentColor,
-                0 0 10px currentColor,
-                0 0 15px currentColor;
-        }
-    }
-
-    @keyframes matrix-glow {
-        0% {
-            opacity: 0.8;
-        }
-
-        100% {
             opacity: 1;
         }
+
+        51%,
+        100% {
+            opacity: 0;
+        }
     }
 
-    // Scan Line Text Effect
-    .scan-line-text {
-        position: relative;
-        overflow: hidden;
+    // Small Text - Technische Details
+    small,
+    .small {
+        font-family: var(--font-family-mono);
+        font-size: $font-size-xs;
+        font-weight: $font-weight-normal;
+        line-height: $line-height-normal;
+        letter-spacing: $letter-spacing-wide;
+        color: var(--color-text-tertiary);
+        text-transform: uppercase;
+    }
+
+    /* ========================================== */
+    // Text Emphasis - Futuristische Hervorhebungen
+    /* ========================================== */
+
+    strong,
+    b,
+    .bold {
+        font-weight: $font-weight-bold;
+        color: var(--color-primary);
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-wide;
+
+        @if $enable-glow-effects {
+            text-shadow: var(--text-glow-primary, none);
+        }
+    }
+
+    em,
+    i,
+    .italic {
+        font-style: normal; // No italics in future theme
+        font-weight: $font-weight-medium;
+        color: var(--color-accent, #{$cyan-500});
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-wider;
+    }
+
+    .highlight {
+        background: linear-gradient(90deg,
+            transparent 0%,
+            var(--color-accent-50, rgba(#{$cyan-500}, 0.1)) 50%,
+            transparent 100%);
+        padding: $space-0_5 $space-1;
+        border-left: 2px solid var(--color-accent, #{$cyan-500});
+        font-weight: $font-weight-medium;
+    }
+
+    .tech-emphasis {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-semibold;
+        color: var(--color-primary);
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-widest;
+
+        &::before {
+            content: "[";
+        }
 
         &::after {
-            content: '';
+            content: "]";
+        }
+    }
+
+    /* ========================================== */
+    // Code & Monospace - Advanced Terminal Style
+    /* ========================================== */
+
+    code,
+    .code {
+        font-family: var(--font-family-mono);
+        font-size: 0.9em;
+        font-weight: $font-weight-medium;
+        letter-spacing: $letter-spacing-normal;
+
+        // Terminal-spezifische Features
+        font-feature-settings: "liga" 1, "calt" 1;
+        font-variant-ligatures: common-ligatures;
+
+        // Futuristische Code-Styles
+        background: var(--color-background-secondary);
+        border: 1px solid var(--color-accent, #{$cyan-500});
+        border-radius: $radius-sm;
+        padding: $space-0_5 $space-1;
+
+        @if $enable-glow-effects {
+            box-shadow: 0 0 5px rgba(#{$cyan-500}, 0.3);
+        }
+
+        // Syntax highlighting für Future Theme
+        &.language-css {
+            color: var(--color-info);
+            border-color: var(--color-info);
+        }
+
+        &.language-js {
+            color: var(--color-warning);
+            border-color: var(--color-warning);
+        }
+
+        &.language-html {
+            color: var(--color-error);
+            border-color: var(--color-error);
+        }
+
+        &.language-scss {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+    }
+
+    pre {
+        font-family: var(--font-family-mono);
+        font-size: $font-size-sm;
+        font-weight: $font-weight-normal;
+        line-height: $line-height-relaxed;
+        letter-spacing: $letter-spacing-normal;
+
+        font-feature-settings: "liga" 1, "calt" 1;
+        font-variant-ligatures: common-ligatures;
+
+        // Terminal-Style
+        background: var(--color-background-tertiary, #{$gray-900});
+        color: var(--color-success, #{$green-400});
+        border: 2px solid var(--color-accent, #{$cyan-500});
+        border-radius: $radius;
+        padding: $space-4;
+        position: relative;
+
+        @if $enable-glow-effects {
+            box-shadow: 0 0 10px rgba(#{$cyan-500}, 0.3),
+            inset 0 0 20px rgba(#{$cyan-500}, 0.1);
+        }
+
+        // Terminal header
+        &::before {
+            content: "TERMINAL_OUTPUT";
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(var(--color-primary), 0.4),
-                    transparent);
-            animation: scan 2s linear infinite;
-        }
-    }
-
-    @keyframes scan {
-        0% {
-            left: -100%;
+            top: -1px;
+            left: $space-4;
+            background: var(--color-accent, #{$cyan-500});
+            color: var(--color-background, #{$gray-900});
+            padding: $space-1 $space-2;
+            font-size: $font-size-xs;
+            font-weight: $font-weight-bold;
+            letter-spacing: $letter-spacing-widest;
+            border-radius: $radius-sm $radius-sm 0 0;
         }
 
-        100% {
-            left: 100%;
+        // Prompt prefix
+        &::after {
+            content: "$ ";
+            color: var(--color-accent, #{$cyan-500});
+            font-weight: $font-weight-bold;
+        }
+
+        code {
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: inherit;
+            font-weight: inherit;
+            box-shadow: none;
         }
     }
 
     /* ========================================== */
-    // Responsive Adjustments
+    // Lists - Strukturierte Daten (Terminal-Style)
     /* ========================================== */
 
-    @include mobile-only {
+    ul,
+    ol {
+        font-family: var(--font-family-primary);
+        font-size: $font-size-base;
+        line-height: $line-height-relaxed;
+        letter-spacing: $letter-spacing-normal;
 
-        // Reduzierte Effekte auf Mobile
-        h1,
-        h2,
-        h3,
-        .h1,
-        .h2,
-        .h3 {
-            @if $enable-glow-effects {
-                text-shadow: 0 0 4px var(--color-primary);
+        li {
+            margin-bottom: $space-2;
+            position: relative;
+
+            &::marker {
+                color: var(--color-accent, #{$cyan-500});
+                font-weight: $font-weight-bold;
             }
         }
+    }
 
-        .btn {
-            letter-spacing: 0.05em;
-        }
+    // Custom futuristic list styles
+    .list-digital {
+        list-style: none;
+        counter-reset: digital-counter;
 
-        // Kompaktere Terminal-Navigation
-        .nav .nav-link::before {
-            display: none;
+        li {
+            counter-increment: digital-counter;
+            position: relative;
+            padding-left: $space-8;
+
+            &::before {
+                content: "[" counter(digital-counter, decimal-leading-zero) "]";
+                position: absolute;
+                left: 0;
+                font-family: var(--font-family-mono);
+                font-weight: $font-weight-bold;
+                color: var(--color-accent, #{$cyan-500});
+
+                @if $enable-glow-effects {
+                    text-shadow: 0 0 5px currentColor;
+                }
+            }
         }
     }
 
-    @include desktop-only {
+    .list-terminal {
+        list-style: none;
 
-        // Verstärkte Effekte auf Desktop
-        h1,
-        .h1 {
-            @if $enable-glow-effects {
-                &:hover {
-                    text-shadow:
-                        0 0 15px var(--color-primary),
-                        0 0 30px var(--color-primary),
-                        0 0 45px var(--color-primary);
+        li {
+            position: relative;
+            padding-left: $space-4;
+
+            &::before {
+                content: ">";
+                position: absolute;
+                left: 0;
+                color: var(--color-primary);
+                font-weight: $font-weight-bold;
+
+                @if $enable-glow-effects {
+                    text-shadow: 0 0 3px currentColor;
                 }
             }
         }
     }
 
     /* ========================================== */
-    // Performance & Accessibility
+    // Blockquotes - Data Transmission Style
     /* ========================================== */
 
-    @media (prefers-reduced-motion: reduce) {
+    blockquote {
+        font-family: var(--font-family-primary);
+        font-size: $font-size-lg;
+        font-weight: $font-weight-light;
+        line-height: $line-height-relaxed;
+        font-style: normal;
+        letter-spacing: $letter-spacing-wide;
 
-        // Keine Animationen
-        .typing-effect {
+        // Transmission-Style
+        background: linear-gradient(90deg,
+            var(--color-accent-50, rgba(#{$cyan-500}, 0.1)) 0%,
+            transparent 100%);
+        border-left: 4px solid var(--color-accent, #{$cyan-500});
+        border-radius: 0 $radius $radius 0;
+        padding: $space-4 $space-6;
+        position: relative;
+
+        @if $enable-glow-effects {
+            box-shadow: 0 0 10px rgba(#{$cyan-500}, 0.2);
+        }
+
+        // Transmission indicator
+        &::before {
+            content: "DATA_TRANSMISSION";
+            position: absolute;
+            top: -1px;
+            left: $space-4;
+            background: var(--color-accent, #{$cyan-500});
+            color: var(--color-background, #{$white});
+            padding: $space-0_5 $space-2;
+            font-size: $font-size-xs;
+            font-weight: $font-weight-bold;
+            letter-spacing: $letter-spacing-widest;
+            border-radius: 0 0 $radius-sm $radius-sm;
+        }
+
+        cite {
+            font-family: var(--font-family-mono);
+            font-size: $font-size-sm;
+            font-style: normal;
+            font-weight: $font-weight-medium;
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: $letter-spacing-wide;
+
+            &::before {
+                content: "-- SOURCE: ";
+                color: var(--color-accent, #{$cyan-500});
+            }
+        }
+    }
+
+    /* ========================================== */
+    // Links - Network Connections
+    /* ========================================== */
+
+    a {
+        font-family: inherit;
+        font-weight: $font-weight-medium;
+        text-decoration: none;
+        color: var(--color-accent, #{$cyan-500});
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-wide;
+        position: relative;
+
+        // Futuristic transition
+        transition: all $duration-200 $ease-out;
+
+        // Network-style underline
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                var(--color-accent, #{$cyan-500}) 0%,
+                transparent 100%);
+            transition: width $duration-300 $ease-out;
+        }
+
+        &:hover {
+            color: var(--color-primary);
+            transform: translateY(-1px);
+
+            @if $enable-glow-effects {
+                text-shadow: 0 0 8px currentColor;
+            }
+
+            &::after {
+                width: 100%;
+            }
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--color-accent, #{$cyan-500});
+            outline-offset: 2px;
+            border-radius: $radius-sm;
+
+            @if $enable-glow-effects {
+                box-shadow: 0 0 10px rgba(#{$cyan-500}, 0.5);
+            }
+        }
+
+        // External link indicator
+        &[target="_blank"] {
+            &::before {
+                content: "[EXT]";
+                margin-right: $space-1;
+                font-size: $font-size-xs;
+                opacity: 0.7;
+            }
+        }
+    }
+
+    /* ========================================== */
+    // Tables - Data Matrix
+    /* ========================================== */
+
+    table {
+        font-family: var(--font-family-mono);
+        font-size: $font-size-sm;
+        line-height: $line-height-normal;
+        letter-spacing: $letter-spacing-normal;
+
+        // Matrix-style
+        border: 2px solid var(--color-accent, #{$cyan-500});
+        border-radius: $radius;
+        overflow: hidden;
+
+        @if $enable-glow-effects {
+            box-shadow: 0 0 15px rgba(#{$cyan-500}, 0.3);
+        }
+
+        th {
+            font-weight: $font-weight-bold;
+            font-size: $font-size-xs;
+            text-transform: uppercase;
+            letter-spacing: $letter-spacing-widest;
+            color: var(--color-background, #{$white});
+            background: var(--color-accent, #{$cyan-500});
+
+            @if $enable-glow-effects {
+                text-shadow: 0 0 5px rgba(#{$gray-900}, 0.8);
+            }
+        }
+
+        td {
+            font-weight: $font-weight-normal;
+            color: var(--color-text-primary);
+            position: relative;
+
+            // Data cell indicator
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: var(--color-accent, #{$cyan-500});
+                opacity: 0.3;
+            }
+        }
+
+        caption {
+            font-size: $font-size-sm;
+            font-weight: $font-weight-bold;
+            color: var(--color-accent, #{$cyan-500});
+            text-transform: uppercase;
+            letter-spacing: $letter-spacing-widest;
+            margin-bottom: $space-2;
+
+            &::before {
+                content: "DATA_MATRIX: ";
+            }
+        }
+    }
+
+    /* ========================================== */
+    // Form Elements - Interface Controls
+    /* ========================================== */
+
+    input,
+    textarea,
+    select {
+        font-family: var(--font-family-mono);
+        font-size: $font-size-base;
+        font-weight: $font-weight-normal;
+        line-height: $line-height-normal;
+        letter-spacing: $letter-spacing-normal;
+        text-transform: uppercase;
+
+        // Interface styling
+        background: var(--color-background-secondary);
+        border: 2px solid var(--color-border);
+        border-radius: $radius-sm;
+
+        &:focus {
+            border-color: var(--color-accent, #{$cyan-500});
+
+            @if $enable-glow-effects {
+                box-shadow: 0 0 10px rgba(#{$cyan-500}, 0.5);
+            }
+        }
+
+        &::placeholder {
+            font-style: normal;
+            color: var(--color-text-tertiary);
+            text-transform: none;
+            letter-spacing: $letter-spacing-normal;
+        }
+    }
+
+    label {
+        font-family: var(--font-family-primary);
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: var(--color-text-primary);
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-wide;
+
+        &::after {
+            content: ":";
+            color: var(--color-accent, #{$cyan-500});
+        }
+    }
+
+    .form-help {
+        font-family: var(--font-family-mono);
+        font-size: $font-size-xs;
+        font-weight: $font-weight-normal;
+        line-height: $line-height-normal;
+        color: var(--color-text-tertiary);
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-wide;
+
+        &::before {
+            content: "INFO: ";
+            color: var(--color-accent, #{$cyan-500});
+        }
+    }
+
+    /* ========================================== */
+    // Buttons - Control Interface
+    /* ========================================== */
+
+    button,
+    .btn {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-semibold;
+        letter-spacing: $letter-spacing-widest;
+        text-transform: uppercase;
+
+        // Interface styling
+        border: 2px solid var(--color-border);
+        position: relative;
+        overflow: hidden;
+
+        // Hover scan line effect
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(#{$cyan-500}, 0.3) 50%,
+                transparent 100%);
+            transition: left $duration-500 $ease-out;
+        }
+
+        &:hover::before {
+            left: 100%;
+        }
+
+        // Size variants
+        &.btn-sm {
+            font-size: $font-size-xs;
+            line-height: $line-height-normal;
+            letter-spacing: $letter-spacing-wider;
+        }
+
+        &.btn-lg {
+            font-size: $font-size-lg;
+            line-height: $line-height-normal;
+            letter-spacing: $letter-spacing-widest;
+        }
+
+        &.btn-xl {
+            font-size: $font-size-xl;
+            line-height: $line-height-normal;
+            font-weight: $font-weight-bold;
+            letter-spacing: $letter-spacing-widest;
+        }
+    }
+
+    /* ========================================== */
+    // Special Future Elements
+    /* ========================================== */
+
+    .hologram-text {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-widest;
+
+        background: linear-gradient(45deg,
+            var(--color-accent, #{$cyan-500}) 0%,
+            var(--color-primary) 25%,
+            var(--color-accent, #{$cyan-500}) 50%,
+            var(--color-primary) 75%,
+            var(--color-accent, #{$cyan-500}) 100%);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: hologramShift 3s ease-in-out infinite;
+
+        @if $enable-glow-effects {
+            filter: drop-shadow(0 0 10px rgba(#{$cyan-500}, 0.8));
+        }
+    }
+
+    @keyframes hologramShift {
+
+        0%,
+        100% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+
+    .matrix-text {
+        font-family: var(--font-family-mono);
+        color: var(--color-success, #{$green-400});
+        text-shadow: 0 0 10px currentColor;
+        animation: matrixFlicker 2s infinite;
+    }
+
+    @keyframes matrixFlicker {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.8;
+        }
+
+        75% {
+            opacity: 0.9;
+        }
+    }
+
+    .cyber-text {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-widest;
+        color: var(--color-accent, #{$cyan-500});
+        position: relative;
+
+        &::before,
+        &::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        &::before {
+            animation: cyberGlitch1 2s infinite;
+            color: #ff0080;
+            z-index: -1;
+        }
+
+        &::after {
+            animation: cyberGlitch2 2s infinite;
+            color: #00ff80;
+            z-index: -2;
+        }
+    }
+
+    @keyframes cyberGlitch1 {
+
+        0%,
+        100% {
+            transform: translate(0);
+        }
+
+        20% {
+            transform: translate(-2px, 2px);
+        }
+
+        40% {
+            transform: translate(-2px, -2px);
+        }
+
+        60% {
+            transform: translate(2px, 2px);
+        }
+
+        80% {
+            transform: translate(2px, -2px);
+        }
+    }
+
+    @keyframes cyberGlitch2 {
+
+        0%,
+        100% {
+            transform: translate(0);
+        }
+
+        20% {
+            transform: translate(2px, -2px);
+        }
+
+        40% {
+            transform: translate(2px, 2px);
+        }
+
+        60% {
+            transform: translate(-2px, -2px);
+        }
+
+        80% {
+            transform: translate(-2px, 2px);
+        }
+    }
+
+    /* ========================================== */
+    // Accessibility & Media Queries
+    /* ========================================== */
+
+    // Reduced motion
+    @media (prefers-reduced-motion: reduce) {
+        .lead::after {
             animation: none;
-            border-right: none;
+        }
+
+        .hologram-text {
+            animation: none;
+            background: var(--color-accent, #{$cyan-500});
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: initial;
+            background-clip: initial;
         }
 
         .matrix-text {
             animation: none;
         }
 
-        .scan-line-text::after {
-            animation: none;
-            display: none;
+        .cyber-text {
+
+            &::before,
+            &::after {
+                animation: none;
+            }
         }
 
-        // Reduzierte Glow-Effekte
+        button::before {
+            transition: none;
+        }
+    }
+
+    // High contrast mode
+    @media (prefers-contrast: high) {
         * {
             text-shadow: none !important;
         }
+
+        code {
+            box-shadow: none !important;
+        }
+
+        a {
+            text-decoration: underline;
+        }
     }
 
-    @media (prefers-contrast: high) {
+    // Dark mode optimization
+    @media (prefers-color-scheme: dark) {
 
-        // Verstärkte Kontraste
-        h1,
-        h2,
-        h3,
-        .h1,
-        .h2,
-        .h3 {
-            font-weight: $font-weight-black;
+        // Enhanced glow effects in dark mode
+        @if $enable-glow-effects {
+
+            h1,
+            h2 {
+                text-shadow: 0 0 20px var(--color-primary);
+            }
+
+            strong {
+                text-shadow: 0 0 10px currentColor;
+            }
+        }
+    }
+
+    /* ========================================== */
+    // Print Styles - Disable Future Effects
+    /* ========================================== */
+
+    @media print {
+        * {
+            color: black !important;
             text-shadow: none !important;
-        }
-
-        .badge {
-            border-width: 2px;
+            background: white !important;
             box-shadow: none !important;
-        }
-    }
-
-    // Battery-optimized Mode
-    @media (prefers-reduced-motion: reduce) {
-        .badge {
-            box-shadow: none !important;
+            animation: none !important;
         }
 
-        .btn::before {
-            display: none;
+        .hologram-text {
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: initial !important;
+            background-clip: initial !important;
+        }
+
+        code,
+        pre {
+            border: 1px solid black !important;
+            background: white !important;
+        }
+
+        a {
+            color: black !important;
+            text-decoration: underline !important;
         }
     }
 }

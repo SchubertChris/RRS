@@ -68,130 +68,24 @@
     --color-error-bg: #{rgba($error-400, 0.1)};
     --color-info-bg: #{rgba($info-400, 0.1)};
 
-    /* ========================================== */
-    // Component Colors - Dark Theme spezifisch
-    /* ========================================== */
-
-    // Navigation
-    --color-nav-bg: #{rgba($gray-900, 0.8)};
-    --color-nav-text: #{$gray-200};
-    --color-nav-text-hover: #{$blue-400};
-    --color-nav-text-active: #{$blue-300};
-    --color-nav-border: #{$gray-800};
-    --color-nav-backdrop: #{rgba($gray-950, 0.9)};
-
-    // Header
-    --color-header-bg: #{rgba($gray-900, 0.95)};
-    --color-header-text: #{$gray-100};
-    --color-header-text-secondary: #{$gray-400};
-    --color-header-border: #{$gray-800};
-
-    // Footer
-    --color-footer-bg: #{$gray-950};
-    --color-footer-text: #{$gray-400};
-    --color-footer-text-secondary: #{$gray-500};
-    --color-footer-border: #{$gray-800};
-
-    // Sidebar
-    --color-sidebar-bg: #{rgba($gray-900, 0.95)};
-    --color-sidebar-text: #{$gray-200};
-    --color-sidebar-text-hover: #{$gray-100};
-    --color-sidebar-border: #{$gray-800};
-    --color-sidebar-active: #{rgba($blue-400, 0.1)};
-
-    // Cards
-    --color-card-bg: #{rgba($gray-800, 0.8)};
-    --color-card-bg-hover: #{rgba($gray-700, 0.9)};
-    --color-card-border: #{$gray-700};
-    --color-card-border-hover: #{$gray-600};
+    // Status Text Colors
+    --color-success-text: #{$success-300};
+    --color-warning-text: #{$warning-300};
+    --color-error-text: #{$error-300};
+    --color-info-text: #{$info-300};
 
     /* ========================================== */
-    // Buttons - Dark Theme optimiert
+    // Shadows & Glow Effects - Futuristisch
     /* ========================================== */
 
-    // Primary Button
-    --color-btn-primary-bg: #{$blue-500};
-    --color-btn-primary-bg-hover: #{$blue-400};
-    --color-btn-primary-bg-active: #{$blue-300};
-    --color-btn-primary-text: #{$gray-900};
-    --color-btn-primary-border: #{$blue-500};
+    --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    --shadow-focus: 0 0 0 3px #{rgba($blue-400, 0.3)};
+    --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.3);
+    --shadow-card-hover: 0 25px 50px rgba(0, 0, 0, 0.4);
+    --shadow-modal: 0 50px 100px rgba(0, 0, 0, 0.6);
 
-    // Secondary Button
-    --color-btn-secondary-bg: #{rgba($gray-700, 0.8)};
-    --color-btn-secondary-bg-hover: #{rgba($gray-600, 0.9)};
-    --color-btn-secondary-bg-active: #{rgba($gray-500, 1)};
-    --color-btn-secondary-text: #{$gray-200};
-    --color-btn-secondary-border: #{$gray-600};
-
-    // Ghost Button
-    --color-btn-ghost-bg: transparent;
-    --color-btn-ghost-bg-hover: #{rgba($gray-700, 0.3)};
-    --color-btn-ghost-text: #{$gray-300};
-    --color-btn-ghost-text-hover: #{$gray-100};
-    --color-btn-ghost-border: #{$gray-600};
-
-    // Success Button
-    --color-btn-success-bg: #{$success-600};
-    --color-btn-success-bg-hover: #{$success-500};
-    --color-btn-success-text: #{$gray-900};
-
-    // Warning Button
-    --color-btn-warning-bg: #{$warning-600};
-    --color-btn-warning-bg-hover: #{$warning-500};
-    --color-btn-warning-text: #{$gray-900};
-
-    // Error Button
-    --color-btn-error-bg: #{$error-600};
-    --color-btn-error-bg-hover: #{$error-500};
-    --color-btn-error-text: #{$gray-100};
-
-    /* ========================================== */
-    // Forms - Dark Theme optimiert
-    /* ========================================== */
-
-    --color-form-bg: #{rgba($gray-800, 0.6)};
-    --color-form-bg-focus: #{rgba($gray-700, 0.8)};
-    --color-form-border: #{$gray-600};
-    --color-form-border-focus: #{$blue-400};
-    --color-form-border-error: #{$error-400};
-    --color-form-text: #{$gray-200};
-    --color-form-placeholder: #{$gray-500};
-    --color-form-label: #{$gray-300};
-    --color-form-help: #{$gray-400};
-
-    // Form States
-    --color-form-valid: #{$success-400};
-    --color-form-invalid: #{$error-400};
-    --color-form-disabled-bg: #{rgba($gray-800, 0.3)};
-    --color-form-disabled-text: #{$gray-600};
-
-    /* ========================================== */
-    // Shadows & Effects - Dark Theme Enhanced
-    /* ========================================== */
-
-    // Base Shadows - Tiefer und dramatischer
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
-        0 2px 6px rgba(0, 0, 0, 0.3);
-    --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.5),
-        0 4px 12px rgba(0, 0, 0, 0.4);
-    --shadow-focus: 0 0 0 3px rgba(#{$blue-400}, 0.2);
-
-    // Component Shadows
-    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.3),
-        0 2px 8px rgba(0, 0, 0, 0.2);
-    --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.4),
-        0 4px 16px rgba(0, 0, 0, 0.3);
-
-    --shadow-nav: 0 2px 12px rgba(0, 0, 0, 0.4);
-    --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.6),
-        0 8px 24px rgba(0, 0, 0, 0.4);
-    --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.4),
-        0 4px 12px rgba(0, 0, 0, 0.3);
-
-    /* ========================================== */
-    // Glow Effects - Futuristisch
-    /* ========================================== */
-
+    // Glow Effects aktivieren
     @if $enable-glow-effects {
         // Primary Glow
         --glow-primary: 0 0 20px rgba(#{$blue-400}, 0.3),
@@ -269,227 +163,200 @@
     --transition-theme: background-color 300ms ease-out,
     color 300ms ease-out,
     border-color 300ms ease-out,
-    box-shadow 300ms ease-out;
+    box-shadow 300ms ease-out,
+    text-shadow 300ms ease-out;
 
-    // Glow transition
-    @if $enable-glow-effects {
-        --transition-glow: box-shadow 400ms ease-out,
-            filter 400ms ease-out;
+    --transition-glow: box-shadow 500ms ease-out,
+    text-shadow 500ms ease-out;
+
+    /* ========================================== */
+    // Component Colors - Dark Theme spezifisch
+    /* ========================================== */
+
+    // Navigation - Futuristisch
+    --color-nav-bg: #{rgba($gray-900, 0.8)};
+    --color-nav-text: #{$gray-200};
+    --color-nav-text-hover: #{$blue-400};
+    --color-nav-text-active: #{$blue-300};
+    --color-nav-border: #{$gray-800};
+    --color-nav-backdrop: #{rgba($gray-950, 0.9)};
+
+    // Header - Dark elegance
+    --color-header-bg: #{rgba($gray-900, 0.95)};
+    --color-header-text: #{$gray-100};
+    --color-header-text-secondary: #{$gray-400};
+    --color-header-border: #{$gray-800};
+
+    // Footer - Subtle dark
+    --color-footer-bg: #{$gray-950};
+    --color-footer-text: #{$gray-400};
+    --color-footer-text-secondary: #{$gray-500};
+    --color-footer-border: #{$gray-800};
+
+    // Sidebar - Dark panels
+    --color-sidebar-bg: #{rgba($gray-900, 0.95)};
+    --color-sidebar-text: #{$gray-200};
+    --color-sidebar-text-hover: #{$gray-100};
+    --color-sidebar-border: #{$gray-800};
+    --color-sidebar-active: #{rgba($blue-400, 0.1)};
+
+    // Cards - Elevated dark surfaces
+    --color-card-bg: #{rgba($gray-800, 0.8)};
+    --color-card-bg-hover: #{rgba($gray-700, 0.9)};
+    --color-card-border: #{$gray-700};
+    --color-card-border-hover: #{$gray-600};
+
+    /* ========================================== */
+    // Buttons - Dark Theme optimiert
+    /* ========================================== */
+
+    // Primary Button - Glowing call-to-action
+    --color-btn-primary-bg: #{$blue-500};
+    --color-btn-primary-bg-hover: #{$blue-400};
+    --color-btn-primary-bg-active: #{$blue-300};
+    --color-btn-primary-text: #{$gray-900};
+    --color-btn-primary-border: #{$blue-500};
+
+    // Secondary Button - Subtle alternative
+    --color-btn-secondary-bg: #{rgba($gray-700, 0.8)};
+    --color-btn-secondary-bg-hover: #{rgba($gray-600, 0.9)};
+    --color-btn-secondary-bg-active: #{rgba($gray-500, 1)};
+    --color-btn-secondary-text: #{$gray-200};
+    --color-btn-secondary-border: #{$gray-600};
+
+    // Ghost Button - Minimal dark
+    --color-btn-ghost-bg: transparent;
+    --color-btn-ghost-bg-hover: #{rgba($gray-700, 0.3)};
+    --color-btn-ghost-text: #{$gray-300};
+    --color-btn-ghost-text-hover: #{$gray-100};
+    --color-btn-ghost-border: transparent;
+
+    // Danger Button
+    --color-btn-danger-bg: #{$error-500};
+    --color-btn-danger-bg-hover: #{$error-400};
+    --color-btn-danger-text: #{$gray-900};
+    --color-btn-danger-border: #{$error-500};
+
+    // Success Button
+    --color-btn-success-bg: #{$success-500};
+    --color-btn-success-bg-hover: #{$success-400};
+    --color-btn-success-text: #{$gray-900};
+    --color-btn-success-border: #{$success-500};
+
+    /* ========================================== */
+    // Forms - Dark & accessible
+    /* ========================================== */
+
+    // Input Fields
+    --color-input-bg: #{rgba($gray-800, 0.8)};
+    --color-input-text: #{$gray-100};
+    --color-input-border: #{$gray-600};
+    --color-input-border-hover: #{$gray-500};
+    --color-input-border-focus: #{$blue-400};
+    --color-input-placeholder: #{$gray-500};
+
+    // Input States
+    --color-input-disabled-bg: #{rgba($gray-800, 0.4)};
+    --color-input-disabled-text: #{$gray-600};
+    --color-input-disabled-border: #{$gray-700};
+
+    // Form Validation
+    --color-input-valid-border: #{$success-400};
+    --color-input-invalid-border: #{$error-400};
+    --color-input-warning-border: #{$warning-400};
+
+    /* ========================================== */
+    // Layout & Spacing - Dark optimiert
+    /* ========================================== */
+
+    --border-radius-default: #{$radius-lg};
+    --border-radius-large: #{$radius-xl};
+    --border-radius-small: #{$radius};
+
+    /* ========================================== */
+    // Special Dark Theme Features
+    /* ========================================== */
+
+    // Dark theme specific gradients
+    --gradient-primary: linear-gradient(135deg, #{$blue-500} 0%, #{$cyan-400} 100%);
+    --gradient-secondary: linear-gradient(135deg, #{$gray-800} 0%, #{$gray-700} 100%);
+    --gradient-surface: linear-gradient(180deg, #{$gray-900} 0%, #{$gray-800} 100%);
+
+    // Dark theme backdrop filters
+    --backdrop-filter: blur(10px);
+    --backdrop-filter-strong: blur(20px);
+
+    // Selection colors
+    --selection-bg: #{rgba($blue-400, 0.3)};
+    --selection-text: #{$gray-100};
+
+    /* ========================================== */
+    // Neon & Cyberpunk Elements
+    /* ========================================== */
+
+    // Neon borders
+    --neon-border-blue: 0 0 5px #{$blue-400},
+    0 0 10px #{$blue-400},
+    0 0 15px #{$blue-400};
+    --neon-border-cyan: 0 0 5px #{$cyan-400},
+    0 0 10px #{$cyan-400},
+    0 0 15px #{$cyan-400};
+    --neon-border-purple: 0 0 5px #{$purple-400},
+    0 0 10px #{$purple-400},
+    0 0 15px #{$purple-400};
+
+    // Matrix-style colors
+    --color-matrix-green: #00ff41;
+    --color-electric-blue: #00d4ff;
+    --color-neon-pink: #ff006e;
+
+    /* ========================================== */
+    // Accessibility Enhancements für Dark Mode
+    /* ========================================== */
+
+    // High contrast variants
+    &.high-contrast {
+        --color-text-primary: #{$white};
+        --color-background: #{$black};
+        --color-border: #{$white};
+        --shadow: none;
+        --glow-primary: none;
+    }
+
+    // Reduced glow variant
+    &.reduced-glow {
+        --glow-primary: none;
+        --glow-accent: none;
+        --text-glow-primary: none;
+        --text-glow-accent: none;
     }
 }
 
 /* ========================================== */
-// Dark Theme Component Overrides
+// Dark Theme Component Enhancements
 /* ========================================== */
 
-[data-theme="dark"],
-.theme-dark {
-
-    // Enhanced card hover effects
-    .card {
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-
-        &:hover {
-            @if $enable-glow-effects {
-                box-shadow: var(--shadow-card-hover), var(--glow-primary);
-            }
-        }
-    }
-
-    // Enhanced button effects
-    .btn-primary {
-        @if $enable-glow-effects {
-            &:hover:not(:disabled) {
-                box-shadow: var(--glow-primary);
-                filter: brightness(1.1);
-            }
-
-            &:focus-visible {
-                box-shadow: var(--glow-primary), var(--focus-ring);
-            }
-        }
-    }
-
-    // Futuristic navigation
-    .nav,
-    .navbar {
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--color-nav-border);
-
-        @if $enable-glow-effects {
-            box-shadow: var(--shadow-nav),
-            0 1px 0 rgba(#{$blue-400}, 0.1) inset;
-        }
-    }
-
-    // Form focus effects
-    .form-control,
-    input,
-    textarea,
-    select {
-        &:focus {
-            @if $enable-glow-effects {
-                box-shadow: var(--focus-ring),
-                0 0 12px rgba(#{$blue-400}, 0.15);
-            }
-        }
-    }
-
-    // Enhanced table styling
-    .table {
-        background: var(--color-surface);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-
-        th {
-            border-bottom: 2px solid var(--color-border);
-
-            @if $enable-glow-effects {
-                text-shadow: var(--text-glow-primary);
-            }
-        }
-
-        tr:hover {
-            background: var(--hover-overlay);
-
-            @if $enable-glow-effects {
-                box-shadow: 0 0 20px rgba(#{$blue-400}, 0.05) inset;
-            }
-        }
-    }
-
-    // Modal enhancements
-    .modal {
-        .modal-content {
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            background: rgba(var(--color-surface), 0.9);
-            border: 1px solid var(--color-border);
-
-            @if $enable-glow-effects {
-                box-shadow: var(--shadow-modal), var(--glow-primary);
-            }
-        }
-
-        .modal-backdrop {
-            background: rgba(0, 0, 0, 0.8);
-        }
-    }
-
-    // Dropdown enhancements
-    .dropdown-menu {
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        background: rgba(var(--color-surface), 0.95);
-        border: 1px solid var(--color-border);
-
-        .dropdown-item {
-
-            &:hover,
-            &:focus {
-                background: var(--hover-overlay);
-
-                @if $enable-glow-effects {
-                    box-shadow: 0 0 15px rgba(#{$blue-400}, 0.1) inset;
-                }
-            }
-        }
-    }
-
-    // Code blocks
-    pre,
-    code {
-        background: rgba(var(--color-background-tertiary), 0.8);
-        border: 1px solid var(--color-border);
-
-        @if $enable-glow-effects {
-            box-shadow: 0 0 20px rgba(#{$cyan-400}, 0.05) inset;
-        }
-    }
-
-    // Progress bars
-    .progress {
-        background: var(--color-background-tertiary);
-
-        .progress-bar {
-            @if $enable-glow-effects {
-                box-shadow: 0 0 10px rgba(#{$blue-400}, 0.3);
-            }
-        }
-    }
-
-    // Badges
-    .badge {
-        &.badge-primary {
-            @if $enable-glow-effects {
-                box-shadow: var(--glow-primary);
-            }
-        }
-
-        &.badge-success {
-            @if $enable-glow-effects {
-                box-shadow: var(--glow-success);
-            }
-        }
-    }
-
-    // Alerts
-    .alert {
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        border: 1px solid var(--color-border);
-
-        &.alert-primary {
-            background: var(--color-info-bg);
-            border-color: var(--color-info);
-
-            @if $enable-glow-effects {
-                box-shadow: 0 0 20px rgba(#{$info-400}, 0.1);
-            }
-        }
-    }
-
-    // Links with glow
-    a {
-        @if $enable-glow-effects {
-            &:hover {
-                text-shadow: var(--text-glow-primary);
-            }
-        }
-    }
+[data-theme="dark"] {
 
     // Selection styling
     ::selection {
-        background: rgba(#{$blue-400}, 0.3);
-        color: var(--color-text-primary);
+        background: var(--selection-bg);
+        color: var(--selection-text);
     }
 
     ::-moz-selection {
-        background: rgba(#{$blue-400}, 0.3);
-        color: var(--color-text-primary);
-    }
-}
-
-/* ========================================== */
-// Dark Theme Scrollbar
-/* ========================================== */
-
-[data-theme="dark"],
-.theme-dark {
-    * {
-        scrollbar-width: thin;
-        scrollbar-color: var(--color-border) transparent;
+        background: var(--selection-bg);
+        color: var(--selection-text);
     }
 
+    // Dark scrollbar styling
     ::-webkit-scrollbar {
         width: 8px;
         height: 8px;
     }
 
     ::-webkit-scrollbar-track {
-        background: transparent;
+        background: var(--color-background-secondary);
     }
 
     ::-webkit-scrollbar-thumb {
@@ -501,8 +368,74 @@
         }
     }
 
-    ::-webkit-scrollbar-corner {
-        background: transparent;
+    // Special dark theme effects
+    .glass-effect {
+        background: rgba($gray-900, 0.6);
+        backdrop-filter: var(--backdrop-filter);
+        border: 1px solid rgba($gray-700, 0.3);
+    }
+
+    .frosted-glass {
+        background: rgba($gray-800, 0.4);
+        backdrop-filter: var(--backdrop-filter-strong);
+        border: 1px solid rgba($gray-600, 0.2);
+    }
+
+    // Neon effect elements
+    .neon-glow {
+        @if $enable-glow-effects {
+            box-shadow: var(--glow-primary);
+            text-shadow: var(--text-glow-primary);
+        }
+    }
+
+    .neon-border {
+        @if $enable-glow-effects {
+            border: 1px solid var(--color-primary);
+            box-shadow: var(--neon-border-blue);
+        }
+    }
+
+    // Cyberpunk elements
+    .cyberpunk-panel {
+        background: linear-gradient(135deg,
+                rgba($gray-900, 0.9) 0%,
+                rgba($gray-800, 0.9) 50%,
+                rgba($gray-900, 0.9) 100%);
+        border: 1px solid var(--color-primary);
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    var(--color-primary) 50%,
+                    transparent 100%);
+
+            @if $enable-glow-effects {
+                box-shadow: 0 0 10px var(--color-primary);
+            }
+        }
+    }
+
+    // Holographic elements
+    .holographic {
+        background: linear-gradient(45deg,
+            #{$cyan-400} 0%,
+            #{$blue-400} 25%,
+            #{$purple-400} 50%,
+            #{$blue-400} 75%,
+            #{$cyan-400} 100%);
+        background-size: 200% 200%;
+        animation: gradientFlow 3s ease infinite;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 }
 
@@ -510,49 +443,98 @@
 // Dark Theme Media Queries
 /* ========================================== */
 
-// Auto Dark Mode basierend auf System-Präferenz
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-        // Erbt alle Dark Theme Variablen
-        @extend [data-theme="dark"];
+// Enhanced contrast for dark theme
+@media (prefers-contrast: high) {
+    [data-theme="dark"] {
+        --color-border: #{$white};
+        --color-text-primary: #{$white};
+        --color-background: #{$black};
+        --shadow: none;
+        --glow-primary: none;
     }
 }
 
-// Reduzierte Glow-Effekte für Performance
+// Reduced motion for dark theme
 @media (prefers-reduced-motion: reduce) {
+    [data-theme="dark"] {
+        .holographic {
+            animation: none;
+            background: var(--color-primary);
+        }
 
-    [data-theme="dark"],
-    .theme-dark {
-        --glow-primary: none;
-        --glow-accent: none;
-        --glow-success: none;
-        --glow-warning: none;
-        --glow-error: none;
-        --text-glow-primary: none;
-        --text-glow-accent: none;
-        --transition-glow: none;
+        .neon-glow {
+            box-shadow: none;
+            text-shadow: none;
+        }
     }
 }
 
-// Mobile Dark Theme Optimierungen
-@media (max-width: $breakpoint-md) {
+/* ========================================== */
+// Dark Theme Utilities
+/* ========================================== */
 
-    [data-theme="dark"],
-    .theme-dark {
-        // Reduzierte Effekte für bessere Performance
-        --glow-primary: none;
-        --glow-accent: none;
+.theme-dark {
 
-        // Vereinfachte Schatten
-        --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-        --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
+    // Dark theme specific utility classes
+    .bg-gradient-primary {
+        background: var(--gradient-primary);
+    }
 
-        // Weniger Blur für bessere Performance
-        .card,
-        .modal-content,
-        .dropdown-menu {
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
+    .bg-gradient-secondary {
+        background: var(--gradient-secondary);
+    }
+
+    .bg-gradient-surface {
+        background: var(--gradient-surface);
+    }
+
+    // Glow utilities
+    .glow-primary {
+        @if $enable-glow-effects {
+            box-shadow: var(--glow-primary);
         }
+    }
+
+    .glow-accent {
+        @if $enable-glow-effects {
+            box-shadow: var(--glow-accent);
+        }
+    }
+
+    .text-glow-primary {
+        @if $enable-glow-effects {
+            text-shadow: var(--text-glow-primary);
+        }
+    }
+
+    .text-glow-accent {
+        @if $enable-glow-effects {
+            text-shadow: var(--text-glow-accent);
+        }
+    }
+
+    // Dark theme text utilities
+    .text-primary-dark {
+        color: var(--color-primary);
+    }
+
+    .text-secondary-dark {
+        color: var(--color-text-secondary);
+    }
+
+    .text-muted-dark {
+        color: var(--color-text-muted);
+    }
+
+    .text-matrix {
+        color: var(--color-matrix-green);
+    }
+
+    .text-electric {
+        color: var(--color-electric-blue);
+    }
+
+    .text-neon {
+        color: var(--color-neon-pink);
     }
 }

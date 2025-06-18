@@ -1,0 +1,690 @@
+/* ========================================== */
+/* ============== OLIVE THEME =============== */
+/* ========================================== */
+/* Natürliches, beruhigendes Olive Theme mit organischen Akzenten */
+
+/* ========================================== */
+// Olive Theme Konfiguration
+/* ========================================== */
+
+// Olive Theme aktivieren
+[data-theme="olive"],
+.theme-olive {
+    color-scheme: light;
+
+    /* ========================================== */
+    // Base Colors - Natural Earth Tones
+    /* ========================================== */
+
+    // Backgrounds - Natürliche, beruhigende Töne
+    --color-background: #{$olive-50};
+    --color-background-secondary: #{$olive-100};
+    --color-background-tertiary: #{$olive-200};
+    --color-surface: #{$white};
+    --color-surface-secondary: #{$olive-50};
+    --color-surface-elevated: #{$white};
+
+    // Text Colors - Organische Kontraste
+    --color-text-primary: #{$olive-900};
+    --color-text-secondary: #{$olive-700};
+    --color-text-tertiary: #{$olive-500};
+    --color-text-inverse: #{$white};
+    --color-text-muted: #{$olive-400};
+    --color-text-disabled: #{$olive-300};
+
+    // Primary Colors - Erdiges Olive
+    --color-primary: #{$olive-600};
+    --color-primary-hover: #{$olive-700};
+    --color-primary-active: #{$olive-800};
+    --color-primary-50: #{rgba($olive-600, 0.05)};
+    --color-primary-100: #{rgba($olive-600, 0.1)};
+    --color-primary-200: #{rgba($olive-600, 0.2)};
+
+    // Secondary Colors - Natürliche Töne
+    --color-secondary: #{$olive-100};
+    --color-secondary-hover: #{$olive-200};
+    --color-secondary-active: #{$olive-300};
+
+    // Accent Colors - Frisches Grün
+    --color-accent: #{$green-500};
+    --color-accent-hover: #{$green-600};
+    --color-accent-active: #{$green-700};
+
+    // Borders - Subtile Naturtöne
+    --color-border: #{$olive-200};
+    --color-border-secondary: #{$olive-300};
+    --color-border-focus: #{$olive-500};
+    --color-divider: #{$olive-100};
+
+    // Semantic Colors - Natur-harmonische Farben
+    --color-success: #{$green-600};
+    --color-warning: #{$yellow-600};
+    --color-error: #{$red-600};
+    --color-info: #{$blue-600};
+
+    // Status Backgrounds - Natürliche Tints
+    --color-success-bg: #{$green-50};
+    --color-warning-bg: #{$yellow-50};
+    --color-error-bg: #{$red-50};
+    --color-info-bg: #{$blue-50};
+
+    // Status Text Colors
+    --color-success-text: #{$green-700};
+    --color-warning-text: #{$yellow-700};
+    --color-error-text: #{$red-700};
+    --color-info-text: #{$blue-700};
+
+    /* ========================================== */
+    // Shadows & Effects - Natürlich & organisch
+    /* ========================================== */
+
+    --shadow: 0 4px 12px rgba(107, 124, 50, 0.1);
+    --shadow-hover: 0 8px 25px rgba(107, 124, 50, 0.15);
+    --shadow-focus: 0 0 0 3px #{rgba($olive-600, 0.2)};
+    --shadow-card: 0 2px 8px rgba(107, 124, 50, 0.08);
+    --shadow-card-hover: 0 8px 20px rgba(107, 124, 50, 0.12);
+    --shadow-modal: 0 20px 40px rgba(107, 124, 50, 0.15);
+
+    // No glow effects in olive theme (natural look)
+    --glow-effect: none;
+    --text-glow: none;
+
+    /* ========================================== */
+    // E-Commerce Olive Theme
+    /* ========================================== */
+
+    // Product Colors - Natur-orientiert
+    --color-product-new: #{$green-600};
+    --color-product-sale: #{$red-600};
+    --color-product-bestseller: #{$yellow-600};
+    --color-product-limited: #{$olive-800};
+    --color-product-organic: #{$green-700};
+    --color-product-eco: #{$olive-700};
+
+    // Price Colors - Natürliches Pricing
+    --color-price-current: #{$olive-900};
+    --color-price-original: #{$olive-500};
+    --color-price-discount: #{$red-600};
+    --color-price-free: #{$green-600};
+    --color-price-eco: #{$olive-600};
+
+    // Rating Colors
+    --color-rating-filled: #{$yellow-500};
+    --color-rating-empty: #{$olive-200};
+
+    // Stock Colors
+    --color-stock-in: #{$green-600};
+    --color-stock-low: #{$yellow-600};
+    --color-stock-out: #{$red-600};
+
+    /* ========================================== */
+    // Interactive States - Organische Übergänge
+    /* ========================================== */
+
+    // Hover States
+    --hover-overlay: #{rgba($olive-600, 0.06)};
+    --hover-lift-shadow: var(--shadow-hover);
+
+    // Active States  
+    --active-overlay: #{rgba($olive-600, 0.12)};
+    --active-scale: 0.98;
+
+    // Focus States
+    --focus-ring: 0 0 0 2px #{rgba($olive-600, 0.25)};
+    --focus-ring-offset: 2px;
+
+    // Disabled States
+    --disabled-opacity: 0.6;
+    --disabled-cursor: not-allowed;
+
+    /* ========================================== */
+    // Animation & Transition - Beruhigend & natürlich
+    /* ========================================== */
+
+    --transition-theme: background-color 300ms #{$ease-out},
+    color 300ms #{$ease-out},
+    border-color 300ms #{$ease-out},
+    box-shadow 300ms #{$ease-out};
+
+    --transition-organic: all 400ms #{$ease-out};
+    --transition-natural: all 250ms #{$ease-in-out};
+
+    /* ========================================== */
+    // Component Colors - Olive Theme spezifisch
+    /* ========================================== */
+
+    // Navigation - Natürliche Kopfzeile
+    --color-nav-bg: #{rgba($white, 0.95)};
+    --color-nav-text: #{$olive-700};
+    --color-nav-text-hover: #{$olive-600};
+    --color-nav-text-active: #{$olive-800};
+    --color-nav-border: #{$olive-200};
+    --color-nav-backdrop: #{rgba($olive-50, 0.9)};
+
+    // Header - Organische Präsentation
+    --color-header-bg: #{$white};
+    --color-header-text: #{$olive-900};
+    --color-header-text-secondary: #{$olive-600};
+    --color-header-border: #{$olive-200};
+
+    // Footer - Erdige Basis
+    --color-footer-bg: #{$olive-100};
+    --color-footer-text: #{$olive-700};
+    --color-footer-text-secondary: #{$olive-500};
+    --color-footer-border: #{$olive-200};
+
+    // Sidebar - Natürliche Seitenleiste
+    --color-sidebar-bg: #{rgba($olive-50, 0.8)};
+    --color-sidebar-text: #{$olive-700};
+    --color-sidebar-text-hover: #{$olive-800};
+    --color-sidebar-border: #{$olive-200};
+    --color-sidebar-active: #{rgba($olive-600, 0.1)};
+
+    // Cards - Organische Karten
+    --color-card-bg: #{$white};
+    --color-card-bg-hover: #{$olive-50};
+    --color-card-border: #{$olive-200};
+    --color-card-border-hover: #{$olive-300};
+
+    /* ========================================== */
+    // Buttons - Olive Theme optimiert
+    /* ========================================== */
+
+    // Primary Button - Natürliche Call-to-Action
+    --color-btn-primary-bg: #{$olive-600};
+    --color-btn-primary-bg-hover: #{$olive-700};
+    --color-btn-primary-bg-active: #{$olive-800};
+    --color-btn-primary-text: #{$white};
+    --color-btn-primary-border: #{$olive-600};
+
+    // Secondary Button - Organische Alternative
+    --color-btn-secondary-bg: #{$olive-100};
+    --color-btn-secondary-bg-hover: #{$olive-200};
+    --color-btn-secondary-bg-active: #{$olive-300};
+    --color-btn-secondary-text: #{$olive-700};
+    --color-btn-secondary-border: #{$olive-200};
+
+    // Ghost Button - Minimale Natur
+    --color-btn-ghost-bg: transparent;
+    --color-btn-ghost-bg-hover: #{$olive-100};
+    --color-btn-ghost-text: #{$olive-700};
+    --color-btn-ghost-text-hover: #{$olive-800};
+    --color-btn-ghost-border: transparent;
+
+    // Danger Button
+    --color-btn-danger-bg: #{$red-600};
+    --color-btn-danger-bg-hover: #{$red-700};
+    --color-btn-danger-text: #{$white};
+    --color-btn-danger-border: #{$red-600};
+
+    // Success Button
+    --color-btn-success-bg: #{$green-600};
+    --color-btn-success-bg-hover: #{$green-700};
+    --color-btn-success-text: #{$white};
+    --color-btn-success-border: #{$green-600};
+
+    // Eco Button (special olive variant)
+    --color-btn-eco-bg: #{$green-500};
+    --color-btn-eco-bg-hover: #{$green-600};
+    --color-btn-eco-text: #{$white};
+    --color-btn-eco-border: #{$green-500};
+
+    /* ========================================== */
+    // Forms - Natürliche Eingaben
+    /* ========================================== */
+
+    // Input Fields
+    --color-input-bg: #{$white};
+    --color-input-text: #{$olive-900};
+    --color-input-border: #{$olive-300};
+    --color-input-border-hover: #{$olive-400};
+    --color-input-border-focus: #{$olive-500};
+    --color-input-placeholder: #{$olive-400};
+
+    // Input States
+    --color-input-disabled-bg: #{$olive-100};
+    --color-input-disabled-text: #{$olive-400};
+    --color-input-disabled-border: #{$olive-200};
+
+    // Form Validation
+    --color-input-valid-border: #{$green-500};
+    --color-input-invalid-border: #{$red-500};
+    --color-input-warning-border: #{$yellow-500};
+
+    /* ========================================== */
+    // Layout & Spacing - Organisch & natürlich
+    /* ========================================== */
+
+    --border-radius-default: #{$radius-lg};
+    --border-radius-large: #{$radius-xl};
+    --border-radius-small: #{$radius};
+
+    /* ========================================== */
+    // Special Olive Theme Features
+    /* ========================================== */
+
+    // Olive theme specific gradients
+    --gradient-primary: linear-gradient(135deg, #{$olive-600} 0%, #{$green-500} 100%);
+    --gradient-secondary: linear-gradient(135deg, #{$olive-100} 0%, #{$olive-200} 100%);
+    --gradient-surface: linear-gradient(180deg, #{$white} 0%, #{$olive-50} 100%);
+    --gradient-nature: linear-gradient(135deg, #{$olive-700} 0%, #{$olive-500} 50%, #{$green-600} 100%);
+    --gradient-earth: linear-gradient(135deg, #{$olive-800} 0%, #{$olive-600} 100%);
+
+    // Olive theme backdrop filters
+    --backdrop-filter: blur(12px);
+    --backdrop-filter-strong: blur(20px);
+
+    // Selection colors
+    --selection-bg: #{rgba($olive-600, 0.2)};
+    --selection-text: #{$olive-900};
+
+    /* ========================================== */
+    // Nature & Organic Elements
+    /* ========================================== */
+
+    // Nature-inspired colors
+    --color-leaf-green: #{$green-600};
+    --color-bark-brown: #8B4513;
+    --color-earth-brown: #A0522D;
+    --color-moss-green: #{$olive-500};
+
+    // Organic states
+    --color-fresh: #{$green-400};
+    --color-mature: #{$olive-600};
+    --color-aged: #{$olive-700};
+    --color-vintage: #{$olive-800};
+
+    // Natural gradients
+    --gradient-forest: linear-gradient(135deg, #{$olive-700} 0%, #{$green-600} 50%, #{$olive-500} 100%);
+    --gradient-meadow: linear-gradient(45deg, #{$green-400} 0%, #{$olive-400} 50%, #{$green-500} 100%);
+    --gradient-sunset: linear-gradient(135deg, #{$olive-600} 0%, #{$yellow-500} 50%, #{$orange-400} 100%);
+
+    /* ========================================== */
+    // Sustainability & Eco Elements
+    /* ========================================== */
+
+    // Eco-friendly indicators
+    --color-organic: #{$green-700};
+    --color-recycled: #{$olive-600};
+    --color-sustainable: #{$green-600};
+    --color-carbon-neutral: #{$olive-500};
+
+    // Environmental badges
+    --eco-badge-bg: #{$green-600};
+    --organic-badge-bg: #{$olive-700};
+    --sustainable-badge-bg: #{$green-500};
+
+    /* ========================================== */
+    // Accessibility Enhancements
+    /* ========================================== */
+
+    // High contrast variants
+    &.high-contrast {
+        --color-text-primary: #{$black};
+        --color-background: #{$white};
+        --color-border: #{$olive-800};
+        --shadow: none;
+    }
+
+    // Nature mode (enhanced earth tones)
+    &.nature-mode {
+        --color-background: #{$olive-100};
+        --color-surface: #{$olive-50};
+        --color-text-primary: #{$olive-950};
+    }
+}
+
+/* ========================================== */
+// Olive Theme Component Enhancements
+/* ========================================== */
+
+[data-theme="olive"] {
+
+    // Selection styling
+    ::selection {
+        background: var(--selection-bg);
+        color: var(--selection-text);
+    }
+
+    ::-moz-selection {
+        background: var(--selection-bg);
+        color: var(--selection-text);
+    }
+
+    // Olive scrollbar styling
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--color-background-secondary);
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-primary);
+        border-radius: 5px;
+
+        &:hover {
+            background: var(--color-primary-hover);
+        }
+    }
+
+    // Special olive theme effects
+    .glass-effect {
+        background: rgba($white, 0.85);
+        backdrop-filter: var(--backdrop-filter);
+        border: 1px solid rgba($olive-200, 0.3);
+    }
+
+    .frosted-glass {
+        background: rgba($olive-50, 0.7);
+        backdrop-filter: var(--backdrop-filter-strong);
+        border: 1px solid rgba($olive-300, 0.2);
+    }
+
+    // Nature elements
+    .nature-card {
+        background: var(--gradient-nature);
+        color: white;
+        border: 1px solid var(--color-leaf-green);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '🌿';
+            position: absolute;
+            top: $space-2;
+            right: $space-2;
+            font-size: $font-size-lg;
+            opacity: 0.7;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-forest);
+        }
+    }
+
+    // Organic shapes
+    .organic-shape {
+        border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+        background: var(--gradient-meadow);
+        transition: var(--transition-organic);
+
+        &:hover {
+            border-radius: 54% 46% 63% 37% / 48% 52% 55% 45%;
+            transform: rotate(2deg) scale(1.02);
+        }
+    }
+
+    // Eco badges
+    .eco-badge {
+        background: var(--eco-badge-bg);
+        color: white;
+        border-radius: var(--border-radius-large);
+        padding: $space-1 $space-2;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-wide;
+        position: relative;
+
+        &::before {
+            content: '♻️';
+            margin-right: $space-1;
+        }
+
+        &.organic {
+            background: var(--organic-badge-bg);
+
+            &::before {
+                content: '🌱';
+            }
+        }
+
+        &.sustainable {
+            background: var(--sustainable-badge-bg);
+
+            &::before {
+                content: '🌍';
+            }
+        }
+    }
+
+    // Growth animation
+    .growth-element {
+        transform-origin: bottom center;
+        animation: naturalGrowth 3s ease-out;
+    }
+
+    @keyframes naturalGrowth {
+        0% {
+            transform: scaleY(0) rotate(-5deg);
+            opacity: 0;
+        }
+
+        50% {
+            transform: scaleY(0.7) rotate(2deg);
+            opacity: 0.7;
+        }
+
+        100% {
+            transform: scaleY(1) rotate(0deg);
+            opacity: 1;
+        }
+    }
+
+    // Leaf animation
+    .leaf-animation {
+        animation: leafSway 4s ease-in-out infinite;
+    }
+
+    @keyframes leafSway {
+
+        0%,
+        100% {
+            transform: rotate(-3deg) translateY(0);
+        }
+
+        25% {
+            transform: rotate(2deg) translateY(-2px);
+        }
+
+        50% {
+            transform: rotate(-1deg) translateY(-1px);
+        }
+
+        75% {
+            transform: rotate(1deg) translateY(-3px);
+        }
+    }
+
+    // Texture effects
+    .wood-texture {
+        background:
+            linear-gradient(90deg, transparent 50%, rgba($olive-800, 0.1) 50%),
+            var(--gradient-earth);
+        background-size: 4px 100%, 100% 100%;
+    }
+
+    .paper-texture {
+        background: var(--color-surface);
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba($olive-600, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, rgba($olive-600, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 40% 80%, rgba($olive-600, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px, 40px 40px, 25px 25px;
+        }
+    }
+
+    // Natural hover effects
+    .organic-hover {
+        transition: var(--transition-organic);
+
+        &:hover {
+            transform: translateY(-3px) rotate(1deg);
+            box-shadow: var(--shadow-hover);
+            filter: brightness(1.05);
+        }
+    }
+}
+
+/* ========================================== */
+// Olive Theme Media Queries
+/* ========================================== */
+
+// Enhanced contrast for olive theme
+@media (prefers-contrast: high) {
+    [data-theme="olive"] {
+        --color-border: #{$olive-800};
+        --color-text-primary: #{$black};
+        --color-background: #{$white};
+        --shadow: none;
+    }
+}
+
+// Reduced motion for olive theme
+@media (prefers-reduced-motion: reduce) {
+    [data-theme="olive"] {
+        .growth-element {
+            animation: none;
+            opacity: 1;
+            transform: scaleY(1) rotate(0deg);
+        }
+
+        .leaf-animation {
+            animation: none;
+        }
+
+        .organic-hover:hover {
+            transform: none;
+        }
+
+        .organic-shape:hover {
+            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+            transform: none;
+        }
+    }
+}
+
+/* ========================================== */
+// Olive Theme Utilities
+/* ========================================== */
+
+.theme-olive {
+
+    // Olive theme specific utility classes
+    .bg-gradient-primary {
+        background: var(--gradient-primary);
+    }
+
+    .bg-gradient-nature {
+        background: var(--gradient-nature);
+    }
+
+    .bg-gradient-forest {
+        background: var(--gradient-forest);
+    }
+
+    .bg-gradient-meadow {
+        background: var(--gradient-meadow);
+    }
+
+    .bg-gradient-sunset {
+        background: var(--gradient-sunset);
+    }
+
+    // Olive theme text utilities
+    .text-primary-olive {
+        color: var(--color-primary);
+    }
+
+    .text-nature {
+        color: var(--color-leaf-green);
+        font-weight: $font-weight-medium;
+    }
+
+    .text-earth {
+        color: var(--color-earth-brown);
+    }
+
+    .text-organic {
+        color: var(--color-organic);
+        font-weight: $font-weight-semibold;
+    }
+
+    .text-eco {
+        background: var(--gradient-forest);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: $font-weight-bold;
+    }
+
+    // Nature state utilities
+    .state-fresh {
+        color: var(--color-fresh);
+    }
+
+    .state-mature {
+        color: var(--color-mature);
+    }
+
+    .state-aged {
+        color: var(--color-aged);
+    }
+
+    .state-vintage {
+        color: var(--color-vintage);
+    }
+
+    // Sustainability utilities
+    .sustainability-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-1;
+        color: var(--color-organic);
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+
+        &::before {
+            content: '🌱';
+        }
+
+        &.carbon-neutral::before {
+            content: '🌍';
+        }
+
+        &.recycled::before {
+            content: '♻️';
+        }
+
+        &.organic::before {
+            content: '🌿';
+        }
+    }
+
+    // Natural spacing utilities
+    .nature-spacing {
+        padding: $space-6 $space-4;
+        margin: $space-4 0;
+    }
+
+    .organic-spacing {
+        padding: $space-8 $space-6;
+        margin: $space-6 0;
+    }
+}

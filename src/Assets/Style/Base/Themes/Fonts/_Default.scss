@@ -1,7 +1,7 @@
 /* ========================================== */
-/* ============= DEFAULT FONT THEME ========= */
+/* ============ DEFAULT FONT THEME ========== */
 /* ========================================== */
-/* Klassisches, modernes Font-System für optimale Lesbarkeit */
+/* Klassisches, professionelles Font-System mit optimaler Lesbarkeit */
 
 /* ========================================== */
 // Default Font Theme Konfiguration
@@ -9,7 +9,7 @@
 
 .font-theme-default {
     /* ========================================== */
-    // Font Family Definitionen
+    // Font Family Definitionen - Modern & Professional
     /* ========================================== */
 
     --font-family-primary: #{$font-family-sans};
@@ -17,234 +17,676 @@
     --font-family-mono: #{$font-family-mono};
 
     /* ========================================== */
-    // Typografie-Hierarchie - Standard & Lesbar
+    // Typografie-Hierarchie - Ausgewogen & lesbar
     /* ========================================== */
 
-    // Headlines - Klare Hierarchie
+    // Headlines - Professionelle Präsenz
     h1,
     .h1 {
         font-family: var(--font-family-display);
-        font-weight: $font-weight-bold;
-        letter-spacing: -0.02em;
+        font-weight: $font-weight-extrabold;
+        font-size: $font-size-4xl;
+        line-height: $line-height-tight;
+        letter-spacing: $letter-spacing-tight;
 
-        // Subtile Text-Optimierung
+        // Optimale Lesbarkeit
+        font-feature-settings: "liga" 1, "kern" 1;
+        -webkit-font-feature-settings: "liga" 1, "kern" 1;
         text-rendering: optimizeLegibility;
-        -webkit-font-feature-settings: "kern" 1, "liga" 1;
-        font-feature-settings: "kern" 1, "liga" 1;
+
+        // Responsive Skalierung
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-3xl;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+            font-size: $font-size-2xl;
+        }
     }
 
     h2,
     .h2 {
         font-family: var(--font-family-display);
-        font-weight: $font-weight-semibold;
-        letter-spacing: -0.01em;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-3xl;
+        line-height: $line-height-tight;
+        letter-spacing: $letter-spacing-tight;
+
+        font-feature-settings: "liga" 1, "kern" 1;
         text-rendering: optimizeLegibility;
+
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-2xl;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+            font-size: $font-size-xl;
+        }
     }
 
     h3,
     .h3 {
         font-family: var(--font-family-display);
-        font-weight: $font-weight-semibold;
-        letter-spacing: -0.005em;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-2xl;
+        line-height: $line-height-snug;
+        letter-spacing: $letter-spacing-normal;
+
+        font-feature-settings: "liga" 1, "kern" 1;
+
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-xl;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+            font-size: $font-size-lg;
+        }
     }
 
     h4,
+    .h4 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-xl;
+        line-height: $line-height-snug;
+        letter-spacing: $letter-spacing-normal;
+    }
+
     h5,
+    .h5 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-lg;
+        line-height: $line-height-normal;
+        letter-spacing: $letter-spacing-normal;
+    }
+
     h6,
-    .h4,
-    .h5,
     .h6 {
         font-family: var(--font-family-primary);
-        font-weight: $font-weight-medium;
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-base;
+        line-height: $line-height-normal;
+        letter-spacing: $letter-spacing-wide;
+        text-transform: uppercase;
+        color: var(--color-text-secondary);
     }
 
     // Body Text - Optimale Lesbarkeit
     p,
     .body-text {
         font-family: var(--font-family-primary);
+        font-size: $font-size-base;
         font-weight: $font-weight-normal;
         line-height: $line-height-relaxed;
+        letter-spacing: $letter-spacing-normal;
 
-        // Bessere Textdarstellung
+        // Verbesserte Lesbarkeit
+        font-feature-settings: "liga" 1, "kern" 1;
         text-rendering: optimizeLegibility;
-        -webkit-font-feature-settings: "kern" 1, "liga" 1;
-        font-feature-settings: "kern" 1, "liga" 1;
+
+        // Optimal line length
+        max-width: 65ch;
+
+        // Responsive text
+        @media (max-width: $breakpoint-sm) {
+            font-size: $font-size-sm;
+            line-height: $line-height-normal;
+        }
+    }
+
+    // Lead Text - Einführungstext
+    .lead {
+        font-family: var(--font-family-primary);
+        font-size: $font-size-lg;
+        font-weight: $font-weight-light;
+        line-height: $line-height-relaxed;
+        letter-spacing: $letter-spacing-normal;
+        color: var(--color-text-secondary);
+
+        @media (max-width: $breakpoint-md) {
+            font-size: $font-size-base;
+        }
     }
 
     // Small Text
     small,
-    .small-text {
+    .small {
         font-family: var(--font-family-primary);
+        font-size: $font-size-sm;
         font-weight: $font-weight-normal;
-        letter-spacing: 0.01em;
+        line-height: $line-height-normal;
+        color: var(--color-text-secondary);
     }
 
     /* ========================================== */
-    // Interface Elemente
+    // Text Emphasis - Professionelle Hervorhebungen
     /* ========================================== */
 
-    // Buttons - Klare Lesbarkeit
-    .btn {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-medium;
-        letter-spacing: 0.01em;
-        text-transform: none;
+    strong,
+    b,
+    .bold {
+        font-weight: $font-weight-semibold;
+        color: var(--color-text-primary);
     }
 
-    // Navigation
-    .nav,
-    .navbar {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-medium;
-        letter-spacing: 0.005em;
+    em,
+    i,
+    .italic {
+        font-style: italic;
+        font-weight: $font-weight-normal;
     }
 
-    // Forms
+    .semibold {
+        font-weight: $font-weight-semibold;
+    }
+
+    .medium {
+        font-weight: $font-weight-medium;
+    }
+
+    .light {
+        font-weight: $font-weight-light;
+    }
+
+    /* ========================================== */
+    // Code & Monospace - Technische Texte
+    /* ========================================== */
+
+    code,
+    .code {
+        font-family: var(--font-family-mono);
+        font-size: 0.875em;
+        font-weight: $font-weight-normal;
+        letter-spacing: $letter-spacing-normal;
+
+        // Code-spezifische Features
+        font-feature-settings: "liga" 0, "calt" 1;
+        font-variant-ligatures: none;
+
+        // Syntax highlighting support
+        &.language-css {
+            color: var(--color-info);
+        }
+
+        &.language-js {
+            color: var(--color-warning);
+        }
+
+        &.language-html {
+            color: var(--color-error);
+        }
+
+        &.language-scss {
+            color: var(--color-accent);
+        }
+    }
+
+    pre {
+        font-family: var(--font-family-mono);
+        font-size: $font-size-sm;
+        font-weight: $font-weight-normal;
+        line-height: $line-height-relaxed;
+        letter-spacing: $letter-spacing-normal;
+
+        font-feature-settings: "liga" 0, "calt" 1;
+        font-variant-ligatures: none;
+
+        code {
+            font-size: inherit;
+            font-weight: inherit;
+        }
+    }
+
+    /* ========================================== */
+    // Lists - Strukturierte Inhalte
+    /* ========================================== */
+
+    ul,
+    ol {
+        font-family: var(--font-family-primary);
+        font-size: $font-size-base;
+        line-height: $line-height-relaxed;
+
+        li {
+            margin-bottom: $space-1;
+
+            &::marker {
+                color: var(--color-text-secondary);
+            }
+        }
+
+        // Nested lists
+        ul,
+        ol {
+            font-size: inherit;
+            margin-top: $space-1;
+        }
+    }
+
+    // Custom list styles
+    .list-decimal {
+        counter-reset: list-counter;
+
+        li {
+            counter-increment: list-counter;
+            position: relative;
+
+            &::before {
+                content: counter(list-counter) ".";
+                position: absolute;
+                left: -2em;
+                font-weight: $font-weight-semibold;
+                color: var(--color-primary);
+            }
+        }
+    }
+
+    /* ========================================== */
+    // Blockquotes - Zitate
+    /* ========================================== */
+
+    blockquote {
+        font-family: var(--font-family-primary);
+        font-size: $font-size-lg;
+        font-weight: $font-weight-normal;
+        line-height: $line-height-relaxed;
+        font-style: italic;
+        letter-spacing: $letter-spacing-normal;
+
+        // Quote-spezifische Features
+        font-feature-settings: "liga" 1, "kern" 1;
+
+        cite {
+            font-family: var(--font-family-primary);
+            font-size: $font-size-sm;
+            font-style: normal;
+            font-weight: $font-weight-medium;
+            color: var(--color-text-tertiary);
+        }
+    }
+
+    /* ========================================== */
+    // Links - Professionelle Verlinkung
+    /* ========================================== */
+
+    a {
+        font-family: inherit;
+        font-weight: inherit;
+        text-decoration: none;
+        color: var(--color-primary);
+
+        // Smooth transitions
+        transition: color $duration-200 $ease-out;
+
+        &:hover {
+            color: var(--color-primary-hover);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+            border-radius: $radius-sm;
+        }
+    }
+
+    /* ========================================== */
+    // Tables - Strukturierte Daten
+    /* ========================================== */
+
+    table {
+        font-family: var(--font-family-primary);
+        font-size: $font-size-sm;
+        line-height: $line-height-normal;
+
+        th {
+            font-weight: $font-weight-semibold;
+            font-size: $font-size-xs;
+            text-transform: uppercase;
+            letter-spacing: $letter-spacing-wide;
+            color: var(--color-text-secondary);
+        }
+
+        td {
+            font-weight: $font-weight-normal;
+            color: var(--color-text-primary);
+        }
+
+        caption {
+            font-size: $font-size-sm;
+            font-weight: $font-weight-medium;
+            color: var(--color-text-secondary);
+        }
+    }
+
+    /* ========================================== */
+    // Form Elements - Benutzerfreundliche Eingaben
+    /* ========================================== */
+
     input,
     textarea,
     select {
         font-family: var(--font-family-primary);
+        font-size: $font-size-base;
         font-weight: $font-weight-normal;
+        line-height: $line-height-normal;
+        letter-spacing: $letter-spacing-normal;
+
+        &::placeholder {
+            font-style: italic;
+            color: var(--color-text-tertiary);
+        }
     }
 
     label {
         font-family: var(--font-family-primary);
+        font-size: $font-size-sm;
         font-weight: $font-weight-medium;
-        letter-spacing: 0.005em;
+        color: var(--color-text-primary);
     }
 
-    // Code
-    code,
-    pre {
-        font-family: var(--font-family-mono);
+    .form-help {
+        font-family: var(--font-family-primary);
+        font-size: $font-size-xs;
         font-weight: $font-weight-normal;
-        letter-spacing: 0;
+        line-height: $line-height-normal;
+        color: var(--color-text-tertiary);
     }
 
     /* ========================================== */
-    // E-Commerce spezifische Typografie
+    // Buttons - Konsistente Typografie
     /* ========================================== */
 
-    // Produktnamen
-    .product-title {
+    button,
+    .btn {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        letter-spacing: $letter-spacing-normal;
+        text-transform: none;
+
+        // Button size variants
+        &.btn-sm {
+            font-size: $font-size-sm;
+            line-height: $line-height-normal;
+        }
+
+        &.btn-lg {
+            font-size: $font-size-lg;
+            line-height: $line-height-normal;
+        }
+
+        &.btn-xl {
+            font-size: $font-size-xl;
+            line-height: $line-height-normal;
+            font-weight: $font-weight-semibold;
+        }
+    }
+
+    /* ========================================== */
+    // Utility Classes - Typografie-Hilfsmittel
+    /* ========================================== */
+
+    // Font families
+    .font-sans {
+        font-family: var(--font-family-primary);
+    }
+
+    .font-serif {
+        font-family: var(--font-family-serif);
+    }
+
+    .font-mono {
+        font-family: var(--font-family-mono);
+    }
+
+    .font-display {
         font-family: var(--font-family-display);
+    }
+
+    // Font sizes
+    .text-xs {
+        font-size: $font-size-xs;
+    }
+
+    .text-sm {
+        font-size: $font-size-sm;
+    }
+
+    .text-base {
+        font-size: $font-size-base;
+    }
+
+    .text-lg {
+        font-size: $font-size-lg;
+    }
+
+    .text-xl {
+        font-size: $font-size-xl;
+    }
+
+    .text-2xl {
+        font-size: $font-size-2xl;
+    }
+
+    .text-3xl {
+        font-size: $font-size-3xl;
+    }
+
+    .text-4xl {
+        font-size: $font-size-4xl;
+    }
+
+    .text-5xl {
+        font-size: $font-size-5xl;
+    }
+
+    .text-6xl {
+        font-size: $font-size-6xl;
+    }
+
+    // Font weights
+    .font-thin {
+        font-weight: $font-weight-thin;
+    }
+
+    .font-extralight {
+        font-weight: $font-weight-extralight;
+    }
+
+    .font-light {
+        font-weight: $font-weight-light;
+    }
+
+    .font-normal {
+        font-weight: $font-weight-normal;
+    }
+
+    .font-medium {
+        font-weight: $font-weight-medium;
+    }
+
+    .font-semibold {
         font-weight: $font-weight-semibold;
-        letter-spacing: -0.01em;
+    }
+
+    .font-bold {
+        font-weight: $font-weight-bold;
+    }
+
+    .font-extrabold {
+        font-weight: $font-weight-extrabold;
+    }
+
+    .font-black {
+        font-weight: $font-weight-black;
+    }
+
+    // Line heights
+    .leading-none {
+        line-height: $line-height-none;
+    }
+
+    .leading-tight {
+        line-height: $line-height-tight;
+    }
+
+    .leading-snug {
         line-height: $line-height-snug;
     }
 
-    // Preise
-    .price {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-bold;
-        font-feature-settings: "tnum" 1; // Tabular numbers
+    .leading-normal {
+        line-height: $line-height-normal;
     }
 
-    .price-original {
-        font-weight: $font-weight-normal;
-        text-decoration: line-through;
+    .leading-relaxed {
+        line-height: $line-height-relaxed;
     }
 
-    // Bewertungen
-    .rating-text {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-medium;
-        font-size: $font-size-sm;
+    .leading-loose {
+        line-height: $line-height-loose;
     }
 
-    // Kategorien
-    .category-link {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-medium;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-size: $font-size-sm;
+    // Letter spacing
+    .tracking-tighter {
+        letter-spacing: $letter-spacing-tighter;
     }
 
-    // Breadcrumbs
-    .breadcrumb {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-normal;
-        font-size: $font-size-sm;
-        letter-spacing: 0.01em;
+    .tracking-tight {
+        letter-spacing: $letter-spacing-tight;
     }
 
-    /* ========================================== */
-    // Status & Badge Typografie
-    /* ========================================== */
-
-    .badge {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-semibold;
-        font-size: $font-size-xs;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
+    .tracking-normal {
+        letter-spacing: $letter-spacing-normal;
     }
 
-    .status-text {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-medium;
-        font-size: $font-size-sm;
+    .tracking-wide {
+        letter-spacing: $letter-spacing-wide;
+    }
+
+    .tracking-wider {
+        letter-spacing: $letter-spacing-wider;
+    }
+
+    .tracking-widest {
+        letter-spacing: $letter-spacing-widest;
     }
 
     /* ========================================== */
-    // Responsive Font Adjustments
+    // Responsive Typography - Mobile optimiert
     /* ========================================== */
 
-    @include mobile-only {
+    @media (max-width: $breakpoint-sm) {
 
-        // Bessere Lesbarkeit auf kleinen Screens
-        p,
-        .body-text {
-            line-height: $line-height-loose;
+        // Smaller text on mobile for better readability
+        .text-responsive {
+            font-size: $font-size-sm;
+            line-height: $line-height-normal;
         }
 
-        // Kompaktere Headlines
-        h1,
-        .h1 {
-            letter-spacing: -0.01em;
-        }
-    }
-
-    @include desktop-only {
-
-        // Feintuning für Desktop
-        h1,
-        .h1 {
-            letter-spacing: -0.025em;
-        }
-
-        .btn {
-            letter-spacing: 0.008em;
-        }
-    }
-
-    /* ========================================== */
-    // Barrierefreiheit
-    /* ========================================== */
-
-    @media (prefers-reduced-motion: reduce) {
-
-        // Keine animierte Typografie
-        * {
-            text-shadow: none !important;
-        }
-    }
-
-    @media (prefers-contrast: high) {
-
-        // Verstärkte Schriftgewichte
+        // Adjust heading spacing on mobile
         h1,
         h2,
         h3,
-        .h1,
-        .h2,
-        .h3 {
-            font-weight: $font-weight-black;
+        h4,
+        h5,
+        h6 {
+            margin-bottom: $space-3;
         }
 
-        .btn {
+        // Tighter line height on mobile
+        p,
+        .body-text {
+            line-height: $line-height-normal;
+        }
+    }
+
+    /* ========================================== */
+    // Accessibility Enhancements
+    /* ========================================== */
+
+    // High contrast mode
+    @media (prefers-contrast: high) {
+        * {
+            text-shadow: none !important;
+        }
+
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    // Reduced motion
+    @media (prefers-reduced-motion: reduce) {
+        a {
+            transition: none;
+        }
+    }
+
+    // Dark mode adjustments
+    @media (prefers-color-scheme: dark) {
+
+        // Slightly increase font weight for better readability in dark mode
+        body {
+            font-weight: $font-weight-normal;
+        }
+
+        h1,
+        h2,
+        h3 {
             font-weight: $font-weight-bold;
+        }
+    }
+
+    /* ========================================== */
+    // Print Styles - Optimiert für Druck
+    /* ========================================== */
+
+    @media print {
+
+        // Optimize fonts for print
+        * {
+            color: black !important;
+            text-shadow: none !important;
+        }
+
+        // Adjust font sizes for print
+        h1 {
+            font-size: 24pt;
+        }
+
+        h2 {
+            font-size: 20pt;
+        }
+
+        h3 {
+            font-size: 18pt;
+        }
+
+        h4 {
+            font-size: 16pt;
+        }
+
+        h5 {
+            font-size: 14pt;
+        }
+
+        h6 {
+            font-size: 12pt;
+        }
+
+        p,
+        body {
+            font-size: 12pt;
+            line-height: 1.4;
+        }
+
+        // Ensure good contrast
+        a {
+            color: black !important;
+            text-decoration: underline;
         }
     }
 }

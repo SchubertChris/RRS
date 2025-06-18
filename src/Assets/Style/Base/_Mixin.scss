@@ -1,672 +1,513 @@
 /* ========================================== */
-/* ================ MIXINS ================== */
+/* =============== MIXIN LIBRARY ============ */
 /* ========================================== */
-/* Enhanced Mixins mit futuristischen Features */
+/* Best Practice: Wiederverwendbare Mixins für konsistente Styles */
 
 /* ========================================== */
-// Responsive Mixins - Enhanced
+// Layout & Positioning Mixins
 /* ========================================== */
 
-@mixin xs-up {
-    @media (min-width: #{$breakpoint-xs}) {
-        @content;
+// Flexbox Utilities
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-column-center {
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin flex-grid($columns: 3, $gap: $space-4) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap;
+
+    >* {
+        flex: 1 1 calc((100% - (#{$gap} * (#{$columns} - 1))) / #{$columns});
+        min-width: 0;
     }
 }
 
-@mixin sm-up {
-    @media (min-width: #{$breakpoint-sm}) {
-        @content;
-    }
+// Grid Utilities
+@mixin grid-center {
+    display: grid;
+    place-items: center;
 }
 
-@mixin md-up {
-    @media (min-width: #{$breakpoint-md}) {
-        @content;
-    }
+@mixin grid-columns($columns, $gap: $space-4) {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    gap: $gap;
 }
 
-@mixin lg-up {
-    @media (min-width: #{$breakpoint-lg}) {
-        @content;
-    }
+@mixin grid-auto-fit($min-width: 250px, $gap: $space-4) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+    gap: $gap;
 }
 
-@mixin xl-up {
-    @media (min-width: #{$breakpoint-xl}) {
-        @content;
-    }
+@mixin grid-auto-fill($min-width: 250px, $gap: $space-4) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+    gap: $gap;
 }
 
-@mixin xxl-up {
-    @media (min-width: #{$breakpoint-2xl}) {
-        @content;
-    }
+// Positioning
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-// Max-width breakpoints
-@mixin xs-down {
-    @media (max-width: #{$breakpoint-xs - 1px}) {
-        @content;
-    }
+@mixin absolute-full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-@mixin sm-down {
+@mixin fixed-full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@mixin sticky-top($offset: 0) {
+    position: sticky;
+    top: $offset;
+    z-index: $z-index-sticky;
+}
+
+/* ========================================== */
+// Responsive & Breakpoint Mixins
+/* ========================================== */
+
+// Media Query Helpers
+@mixin mobile-only {
     @media (max-width: #{$breakpoint-sm - 1px}) {
         @content;
     }
 }
 
-@mixin md-down {
-    @media (max-width: #{$breakpoint-md - 1px}) {
-        @content;
-    }
-}
-
-@mixin lg-down {
-    @media (max-width: #{$breakpoint-lg - 1px}) {
-        @content;
-    }
-}
-
-@mixin xl-down {
-    @media (max-width: #{$breakpoint-xl - 1px}) {
-        @content;
-    }
-}
-
-// Between breakpoints
-@mixin between($min, $max) {
-    @media (min-width: #{$min}) and (max-width: #{$max - 1px}) {
-        @content;
-    }
-}
-
-// Custom breakpoints
-@mixin min-width($width) {
-    @media (min-width: #{$width}) {
-        @content;
-    }
-}
-
-@mixin max-width($width) {
-    @media (max-width: #{$width}) {
-        @content;
-    }
-}
-
-// Device-specific
-@mixin mobile-only {
-    @include max-width($breakpoint-md) {
+@mixin tablet-up {
+    @media (min-width: $breakpoint-sm) {
         @content;
     }
 }
 
 @mixin tablet-only {
-    @include between($breakpoint-md, $breakpoint-lg) {
+    @media (min-width: $breakpoint-sm) and (max-width: #{$breakpoint-md - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop-up {
+    @media (min-width: $breakpoint-md) {
         @content;
     }
 }
 
 @mixin desktop-only {
-    @include min-width($breakpoint-lg) {
+    @media (min-width: $breakpoint-md) and (max-width: #{$breakpoint-lg - 1px}) {
         @content;
     }
 }
 
-/* ========================================== */
-// Container System - Enhanced
-/* ========================================== */
+@mixin large-desktop-up {
+    @media (min-width: $breakpoint-lg) {
+        @content;
+    }
+}
 
-@mixin container($max-width: null, $padding: null) {
+@mixin xl-desktop-up {
+    @media (min-width: $breakpoint-xl) {
+        @content;
+    }
+}
+
+@mixin xxl-desktop-up {
+    @media (min-width: $breakpoint-2xl) {
+        @content;
+    }
+}
+
+// Custom breakpoint
+@mixin breakpoint($min: null, $max: null) {
+    @if $min and $max {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    }
+
+    @else if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    }
+
+    @else if $max {
+        @media (max-width: $max) {
+            @content;
+        }
+    }
+}
+
+// Container Mixin
+@mixin container($max-width: $container-xl, $padding: $space-4) {
     width: 100%;
+    max-width: $max-width;
     margin-left: auto;
     margin-right: auto;
-
-    @if $padding {
-        padding-left: $padding;
-        padding-right: $padding;
-    }
-
-    @else {
-        padding-left: $spacing-4;
-        padding-right: $spacing-4;
-
-        @include sm-up {
-            padding-left: $spacing-6;
-            padding-right: $spacing-6;
-        }
-    }
-
-    @if $max-width {
-        max-width: $max-width;
-    }
-
-    @else {
-        @include sm-up {
-            max-width: $container-sm;
-        }
-
-        @include md-up {
-            max-width: $container-md;
-        }
-
-        @include lg-up {
-            max-width: $container-lg;
-        }
-
-        @include xl-up {
-            max-width: $container-xl;
-        }
-
-        @include xxl-up {
-            max-width: $container-2xl;
-        }
-    }
-}
-
-@mixin container-fluid($padding: null) {
-    width: 100%;
-
-    @if $padding {
-        padding-left: $padding;
-        padding-right: $padding;
-    }
-
-    @else {
-        padding-left: $spacing-4;
-        padding-right: $spacing-4;
-
-        @include sm-up {
-            padding-left: $spacing-6;
-            padding-right: $spacing-6;
-        }
-    }
+    padding-left: $padding;
+    padding-right: $padding;
 }
 
 /* ========================================== */
-// Flexbox Mixins - Enhanced
+// Typography Mixins
 /* ========================================== */
 
-@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-    align-items: $align;
-    flex-wrap: $wrap;
-}
-
-@mixin flex-center {
-    @include flex(row, center, center);
-}
-
-@mixin flex-between {
-    @include flex(row, space-between, center);
-}
-
-@mixin flex-around {
-    @include flex(row, space-around, center);
-}
-
-@mixin flex-column-center {
-    @include flex(column, center, center);
-}
-
-@mixin flex-column-between {
-    @include flex(column, space-between, stretch);
-}
-
-// Grid Mixins - Enhanced
-@mixin grid($columns: 1, $rows: auto, $gap: $grid-gutter) {
-    display: grid;
-    grid-template-columns: repeat($columns, 1fr);
-
-    @if $rows !=auto {
-        grid-template-rows: repeat($rows, 1fr);
-    }
-
-    gap: $gap;
-}
-
-@mixin grid-auto-fit($min-size: 280px, $gap: $grid-gutter) {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax($min-size, 1fr));
-    gap: $gap;
-}
-
-@mixin grid-auto-fill($min-size: 280px, $gap: $grid-gutter) {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax($min-size, 1fr));
-    gap: $gap;
-}
-
-/* ========================================== */
-// Typography Mixins - Enhanced
-/* ========================================== */
-
-@mixin font-size($size, $line-height: null, $weight: null) {
+// Font Size with Line Height
+@mixin font-size($size, $line-height: null) {
     font-size: $size;
 
     @if $line-height {
         line-height: $line-height;
     }
+}
 
-    @if $weight {
-        font-weight: $weight;
+// Responsive Font Size
+@mixin responsive-font($min-size, $max-size, $min-screen: $breakpoint-sm, $max-screen: $breakpoint-xl) {
+    font-size: $min-size;
+
+    @media (min-width: $min-screen) {
+        font-size: calc(#{$min-size} + (#{strip-unit($max-size)} - #{strip-unit($min-size)}) * ((100vw - #{$min-screen}) / (#{strip-unit($max-screen)} - #{strip-unit($min-screen)})));
+    }
+
+    @media (min-width: $max-screen) {
+        font-size: $max-size;
     }
 }
 
-@mixin text-style($style) {
-    @if $style =='heading-1' {
-        font-size: $font-size-4xl;
-        font-weight: $font-weight-bold;
-        line-height: $line-height-tight;
-
-        @include md-up {
-            font-size: $font-size-5xl;
-        }
-
-        @include lg-up {
-            font-size: $font-size-6xl;
-        }
+// Helper function to remove units
+@function strip-unit($number) {
+    @if type-of($number)=='number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
     }
 
-    @else if $style =='heading-2' {
-        font-size: $font-size-3xl;
-        font-weight: $font-weight-semibold;
-        line-height: $line-height-tight;
-
-        @include md-up {
-            font-size: $font-size-4xl;
-        }
-    }
-
-    @else if $style =='heading-3' {
-        font-size: $font-size-2xl;
-        font-weight: $font-weight-semibold;
-        line-height: $line-height-snug;
-
-        @include md-up {
-            font-size: $font-size-3xl;
-        }
-    }
-
-    @else if $style =='body-large' {
-        font-size: $font-size-lg;
-        line-height: $line-height-relaxed;
-    }
-
-    @else if $style =='body' {
-        font-size: $font-size-base;
-        line-height: $line-height-normal;
-    }
-
-    @else if $style =='body-small' {
-        font-size: $font-size-sm;
-        line-height: $line-height-normal;
-    }
-
-    @else if $style =='caption' {
-        font-size: $font-size-xs;
-        line-height: $line-height-normal;
-    }
+    @return $number;
 }
 
-@mixin text-truncate($lines: 1) {
-    @if $lines ==1 {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    @else {
-        display: -webkit-box;
-        -webkit-line-clamp: $lines;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+// Text Truncation
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-@mixin text-gradient($gradient) {
-    background: $gradient;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% 200%;
+@mixin text-truncate-multiline($lines: 2) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-@mixin text-glow($color: currentColor, $size: 10px) {
-    @if $enable-glow-effects {
-        text-shadow: 0 0 #{$size} #{$color},
-        0 0 #{$size * 2} #{$color},
-        0 0 #{$size * 3} #{$color};
+// Text Selection
+@mixin selection($background: var(--color-primary), $color: var(--color-text-inverse)) {
+    ::selection {
+        background: $background;
+        color: $color;
+        text-shadow: none;
+    }
+
+    ::-moz-selection {
+        background: $background;
+        color: $color;
+        text-shadow: none;
     }
 }
 
 /* ========================================== */
-// Button System - Enhanced & Futuristic
+// Button & Form Mixins
 /* ========================================== */
 
+// Button Base
 @mixin button-base {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: $spacing-2;
+    gap: $space-2;
+
     font-family: var(--font-family-primary);
-    font-weight: $button-font-weight;
-    line-height: $line-height-none;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-base;
+    line-height: $line-height-normal;
     text-decoration: none;
     text-align: center;
     white-space: nowrap;
-    vertical-align: middle;
-    user-select: none;
-    border: 1px solid transparent;
-    border-radius: $button-radius;
-    cursor: pointer;
-    transition: all $duration-200 $ease-out;
-    position: relative;
-    overflow: hidden;
 
-    // GPU Acceleration
-    transform: $gpu-hack;
-    will-change: $will-change-transform;
+    padding: $btn-padding-y $btn-padding-x;
+    border: 1px solid transparent;
+    border-radius: $btn-border-radius;
+
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+
+    transition: $transition-base;
 
     &:focus-visible {
-        outline: $focus-ring-width $focus-ring-style $focus-ring-color;
-        outline-offset: $focus-ring-offset;
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
     }
 
     &:disabled,
     &.disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
+        opacity: var(--disabled-opacity, 0.6);
+        cursor: var(--disabled-cursor, not-allowed);
         pointer-events: none;
     }
 }
 
-@mixin button-size($size: 'base') {
-    @if $size =='sm' {
-        height: $button-height-sm;
-        padding: 0 $button-padding-x-sm;
-        font-size: $font-size-sm;
-    }
-
-    @else if $size =='lg' {
-        height: $button-height-lg;
-        padding: 0 $button-padding-x-lg;
-        font-size: $font-size-lg;
-    }
-
-    @else if $size =='xl' {
-        height: $button-height-xl;
-        padding: 0 $button-padding-x-xl;
-        font-size: $font-size-xl;
-    }
-
-    @else {
-        height: $button-height-base;
-        padding: 0 $button-padding-x-base;
-        font-size: $font-size-base;
-    }
-}
-
-@mixin button-variant($bg, $text, $border: $bg, $hover-bg: null, $hover-text: null, $hover-border: null) {
-    background-color: $bg;
-    color: $text;
-    border-color: $border;
-
-    $computed-hover-bg: if($hover-bg, $hover-bg, darken($bg, 8%));
-    $computed-hover-text: if($hover-text, $hover-text, $text);
-    $computed-hover-border: if($hover-border, $hover-border, $computed-hover-bg);
+// Button Variants
+@mixin button-variant($bg-color, $text-color, $border-color: $bg-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    border-color: $border-color;
 
     &:hover:not(:disabled) {
-        background-color: $computed-hover-bg;
-        color: $computed-hover-text;
-        border-color: $computed-hover-border;
-        transform: translateY(-1px) $gpu-hack;
+        background-color: darken($bg-color, 8%);
+        border-color: darken($border-color, 8%);
+        transform: translateY(-1px);
     }
 
     &:active:not(:disabled) {
-        background-color: darken($bg, 12%);
-        transform: translateY(0) $gpu-hack;
+        background-color: darken($bg-color, 12%);
+        border-color: darken($border-color, 12%);
+        transform: translateY(0);
     }
 }
 
-// Futuristic Button Effects
-@mixin button-glow($glow-color: currentColor) {
-    @if $enable-glow-effects {
-        &:hover:not(:disabled) {
-            box-shadow:
-                0 0 20px rgba($glow-color, 0.4),
-                0 0 40px rgba($glow-color, 0.2),
-                0 4px 8px rgba(black, 0.2);
-        }
+@mixin button-outline($color) {
+    background-color: transparent;
+    color: $color;
+    border-color: $color;
+
+    &:hover:not(:disabled) {
+        background-color: $color;
+        color: var(--color-text-inverse, white);
+    }
+
+    &:active:not(:disabled) {
+        background-color: darken($color, 8%);
+        border-color: darken($color, 8%);
     }
 }
 
-@mixin button-neon($border-color: currentColor) {
-    @if $enable-glow-effects {
-        border: 2px solid $border-color;
-        background: transparent;
-        position: relative;
+@mixin button-ghost($color) {
+    background-color: transparent;
+    color: $color;
+    border-color: transparent;
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: $border-color;
-            opacity: 0;
-            transition: opacity $duration-200 $ease-out;
-            z-index: -1;
-        }
+    &:hover:not(:disabled) {
+        background-color: rgba($color, 0.1);
+    }
 
-        &:hover:not(:disabled) {
-            box-shadow:
-                0 0 10px $border-color,
-                inset 0 0 10px $border-color;
-
-            &::before {
-                opacity: 0.1;
-            }
-        }
+    &:active:not(:disabled) {
+        background-color: rgba($color, 0.2);
     }
 }
 
-@mixin button-shimmer {
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg,
-                transparent,
-                rgba(white, 0.3),
-                transparent);
-        transition: left $duration-500 $ease-out;
-    }
-
-    &:hover::before {
-        left: 100%;
-    }
+// Button Sizes
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius: $btn-border-radius) {
+    padding: $padding-y $padding-x;
+    font-size: $font-size;
+    border-radius: $border-radius;
 }
 
-/* ========================================== */
-// Form Mixins - Enhanced
-/* ========================================== */
-
-@mixin form-field($size: 'base') {
+// Form Input Base
+@mixin input-base {
+    display: block;
     width: 100%;
+
     font-family: var(--font-family-primary);
-    color: var(--color-form-text);
-    background-color: var(--color-form-bg);
-    border: $input-border-width solid var(--color-form-border);
-    border-radius: $input-radius;
-    transition: all $duration-200 $ease-out;
+    font-size: $input-font-size;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-normal;
+    color: var(--color-input-text, var(--color-text-primary));
 
-    @if $size =='sm' {
-        height: $input-height-sm;
-        padding: 0 $input-padding-x;
-        font-size: $font-size-sm;
-    }
+    background-color: var(--color-input-bg, var(--color-surface));
+    border: $input-border-width solid var(--color-input-border, var(--color-border));
+    border-radius: $input-border-radius;
+    padding: $input-padding-y $input-padding-x;
 
-    @else if $size =='lg' {
-        height: $input-height-lg;
-        padding: 0 $input-padding-x;
-        font-size: $font-size-lg;
-    }
-
-    @else {
-        height: $input-height-base;
-        padding: 0 $input-padding-x;
-        font-size: $font-size-base;
-    }
-
-    &::placeholder {
-        color: var(--color-form-placeholder);
-    }
+    transition: $transition-base;
 
     &:focus {
         outline: none;
-        border-color: var(--color-form-border-focus);
-        box-shadow: 0 0 0 3px rgba(var(--color-primary-500), 0.1);
+        border-color: var(--color-input-border-focus, var(--color-primary));
+        box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.1);
     }
 
-    &:invalid,
-    &.error {
-        border-color: var(--color-error);
-
-        &:focus {
-            border-color: var(--color-error);
-            box-shadow: 0 0 0 3px rgba(var(--color-error), 0.1);
-        }
+    &::placeholder {
+        color: var(--color-input-placeholder, var(--color-text-tertiary));
+        opacity: 1;
     }
 
-    &:disabled {
-        opacity: 0.5;
+    &:disabled,
+    &[readonly] {
+        background-color: var(--color-input-disabled-bg, var(--color-background-secondary));
+        color: var(--color-input-disabled-text, var(--color-text-disabled));
+        border-color: var(--color-input-disabled-border, var(--color-border));
+        opacity: 1;
         cursor: not-allowed;
-        background-color: var(--color-background-tertiary);
     }
 }
 
-@mixin form-glow-focus {
-    @if $enable-glow-effects {
-        &:focus {
-            box-shadow:
-                0 0 0 3px rgba(var(--color-primary-500), 0.1),
-                0 0 20px rgba(var(--color-primary-500), 0.2);
-        }
+// Form Validation States
+@mixin input-validation($color) {
+    border-color: $color;
+
+    &:focus {
+        border-color: $color;
+        box-shadow: 0 0 0 3px rgba($color, 0.1);
     }
 }
 
 /* ========================================== */
-// Card System - Enhanced
+// Visual Effects Mixins
 /* ========================================== */
 
-@mixin card-base($padding: 'base', $radius: $card-radius) {
-    background-color: var(--color-card-bg);
-    border: 1px solid var(--color-card-border);
-    border-radius: $radius;
-    box-shadow: var(--shadow-card);
-    transition: all $duration-300 $ease-out;
-    overflow: hidden;
-
-    @if $padding =='sm' {
-        padding: $card-padding-sm;
+// Shadows
+@mixin shadow($level: 'base') {
+    @if $level =='xs' {
+        box-shadow: $shadow-xs;
     }
 
-    @else if $padding =='lg' {
-        padding: $card-padding-lg;
+    @else if $level =='sm' {
+        box-shadow: $shadow-sm;
+    }
+
+    @else if $level =='base' {
+        box-shadow: $shadow-base;
+    }
+
+    @else if $level =='md' {
+        box-shadow: $shadow-md;
+    }
+
+    @else if $level =='lg' {
+        box-shadow: $shadow-lg;
+    }
+
+    @else if $level =='xl' {
+        box-shadow: $shadow-xl;
+    }
+
+    @else if $level =='2xl' {
+        box-shadow: $shadow-2xl;
+    }
+
+    @else if $level =='inner' {
+        box-shadow: $shadow-inner;
     }
 
     @else {
-        padding: $card-padding-base;
+        box-shadow: $level;
     }
 }
 
-@mixin card-hover($lift: true, $glow: false) {
-    &:hover {
-        box-shadow: var(--shadow-card-hover);
-
-        @if $lift {
-            transform: translateY(-4px) $gpu-hack;
-        }
-
-        @if $glow and $enable-glow-effects {
-            box-shadow:
-                var(--shadow-card-hover),
-                0 0 30px rgba(var(--color-primary-500), 0.15);
-        }
-    }
-}
-
-@mixin card-glass($opacity: 0.1) {
-    background: rgba(var(--color-surface), $opacity);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(var(--color-border), 0.2);
-}
-
-/* ========================================== */
-// Visual Effects Mixins - Futuristic
-/* ========================================== */
-
-@mixin glassmorphism($opacity: 0.1, $blur: 10px) {
-    background: rgba(white, $opacity);
-    backdrop-filter: blur($blur);
-    -webkit-backdrop-filter: blur($blur);
-    border: 1px solid rgba(white, 0.2);
-}
-
-@mixin neumorphism($depth: 'normal', $color: var(--color-background)) {
-    @if $depth =='inset' {
-        box-shadow:
-            inset 8px 8px 16px darken($color, 10%),
-            inset -8px -8px 16px lighten($color, 10%);
-    }
-
-    @else if $depth =='pressed' {
-        box-shadow:
-            inset 4px 4px 8px darken($color, 10%),
-            inset -4px -4px 8px lighten($color, 10%);
-    }
-
-    @else {
-        box-shadow:
-            8px 8px 16px darken($color, 10%),
-            -8px -8px 16px lighten($color, 10%);
-    }
-}
-
-@mixin holographic-effect {
-    background: linear-gradient(45deg,
-            var(--color-primary),
-            var(--color-accent),
-            var(--color-primary));
-    background-size: 200% 200%;
-    animation: holographic 3s ease-in-out infinite;
-}
-
-@mixin neon-border($color: var(--color-primary), $width: 2px) {
+// Glow Effect
+@mixin glow($color: var(--color-primary), $intensity: 'base') {
     @if $enable-glow-effects {
-        border: $width solid $color;
-        box-shadow:
-            0 0 10px $color,
-            inset 0 0 10px $color;
+        @if $intensity =='sm' {
+            box-shadow: 0 0 5px rgba($color, 0.5);
+        }
+
+        @else if $intensity =='base' {
+            box-shadow: 0 0 10px rgba($color, 0.5);
+        }
+
+        @else if $intensity =='md' {
+            box-shadow: 0 0 15px rgba($color, 0.5);
+        }
+
+        @else if $intensity =='lg' {
+            box-shadow: 0 0 20px rgba($color, 0.5);
+        }
+
+        @else if $intensity =='xl' {
+            box-shadow: 0 0 30px rgba($color, 0.5);
+        }
     }
 }
 
-@mixin gradient-border($gradient, $width: 2px, $radius: $radius-md) {
+// Text Glow
+@mixin text-glow($color: var(--color-primary), $intensity: 'base') {
+    @if $enable-glow-effects {
+        @if $intensity =='sm' {
+            text-shadow: 0 0 5px rgba($color, 0.8);
+        }
+
+        @else if $intensity =='base' {
+            text-shadow: 0 0 10px rgba($color, 0.8);
+        }
+
+        @else if $intensity =='lg' {
+            text-shadow: 0 0 15px rgba($color, 0.8);
+        }
+
+        @else if $intensity =='xl' {
+            text-shadow: 0 0 20px rgba($color, 0.8);
+        }
+    }
+}
+
+// Gradients
+@mixin gradient-linear($direction: 45deg, $colors...) {
+    background: linear-gradient($direction, $colors);
+}
+
+@mixin gradient-radial($colors...) {
+    background: radial-gradient(circle, $colors);
+}
+
+@mixin gradient-text($gradient) {
+    background: $gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+// Border Effects
+@mixin border-gradient($width: 1px, $gradient: linear-gradient(45deg, var(--color-primary), var(--color-accent))) {
     position: relative;
     background: var(--color-surface);
-    border-radius: $radius;
+    border-radius: inherit;
 
     &::before {
         content: '';
@@ -734,6 +575,34 @@
                 }
             }
         }
+    }
+}
+
+@mixin hover-lift($distance: 2px, $shadow: true) {
+    transition: transform $duration-200 $ease-out, box-shadow $duration-200 $ease-out;
+
+    &:hover {
+        transform: translateY(-$distance);
+
+        @if $shadow {
+            box-shadow: $shadow-hover;
+        }
+    }
+}
+
+@mixin hover-scale($scale: 1.05) {
+    transition: transform $duration-200 $ease-out;
+
+    &:hover {
+        transform: scale($scale) $gpu-hack;
+    }
+}
+
+@mixin hover-glow($color: var(--color-primary)) {
+    transition: box-shadow $duration-300 $ease-out;
+
+    &:hover {
+        @include glow($color, 'md');
     }
 }
 
@@ -860,6 +729,21 @@
     }
 }
 
+@mixin theme-card($hover: true) {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--border-radius-default);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-theme);
+
+    @if $hover {
+        &:hover {
+            box-shadow: var(--shadow-card-hover);
+            border-color: var(--color-card-border-hover);
+        }
+    }
+}
+
 /* ========================================== */
 // Accessibility Mixins
 /* ========================================== */
@@ -883,6 +767,18 @@
     }
 }
 
+@mixin dark-mode {
+    @media (prefers-color-scheme: dark) {
+        @content;
+    }
+}
+
+@mixin light-mode {
+    @media (prefers-color-scheme: light) {
+        @content;
+    }
+}
+
 @mixin print-hidden {
     @media print {
         display: none !important;
@@ -892,4 +788,223 @@
 @mixin print-only {
     @media print {
         @content;
-    } }
+    }
+}
+
+/* ========================================== */
+// Advanced Layout Mixins
+/* ========================================== */
+
+// CSS Grid Areas
+@mixin grid-area($name) {
+    grid-area: $name;
+}
+
+@mixin grid-template($areas, $columns: 1fr, $rows: auto) {
+    display: grid;
+    grid-template-areas: $areas;
+    grid-template-columns: $columns;
+    grid-template-rows: $rows;
+}
+
+// Masonry Layout
+@mixin masonry($columns: 3, $gap: $space-4) {
+    column-count: $columns;
+    column-gap: $gap;
+
+    >* {
+        break-inside: avoid;
+        margin-bottom: $gap;
+    }
+
+    @include mobile-only {
+        column-count: 1;
+    }
+
+    @include tablet-only {
+        column-count: max(2, $columns - 1);
+    }
+}
+
+// Sticky Footer
+@mixin sticky-footer($footer-height) {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    >main {
+        flex: 1 0 auto;
+    }
+
+    >footer {
+        flex-shrink: 0;
+        height: $footer-height;
+    }
+}
+
+/* ========================================== */
+// Performance Mixins
+/* ========================================== */
+
+// GPU Acceleration
+@mixin gpu-accelerated {
+    transform: $gpu-hack;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+// Will Change Optimization
+@mixin will-change($properties...) {
+    will-change: $properties;
+
+    @include reduced-motion {
+        will-change: auto;
+    }
+}
+
+// Image Optimization
+@mixin responsive-image {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+@mixin object-fit($fit: cover, $position: center) {
+    object-fit: $fit;
+    object-position: $position;
+}
+
+/* ========================================== */
+// Custom Property Mixins
+/* ========================================== */
+
+// CSS Custom Property with Fallback
+@mixin css-var($property, $var-name, $fallback) {
+    #{$property}: $fallback;
+    #{$property}: var(--#{$var-name}, #{$fallback});
+}
+
+// Generate CSS Custom Properties
+@mixin generate-custom-properties($map, $prefix: '') {
+    @each $key, $value in $map {
+        @if $prefix !='' {
+            --#{$prefix}-#{$key}: #{$value};
+        }
+
+        @else {
+            --#{$key}: #{$value};
+        }
+    }
+}
+
+/* ========================================== */
+// E-Commerce Specific Mixins
+/* ========================================== */
+
+// Product Card
+@mixin product-card {
+    @include theme-card;
+    position: relative;
+    overflow: hidden;
+
+    .product-image {
+        @include aspect-ratio(1, 1);
+        overflow: hidden;
+
+        img {
+            @include responsive-image;
+            @include object-fit(cover);
+            transition: transform $duration-300 $ease-out;
+        }
+    }
+
+    &:hover .product-image img {
+        transform: scale(1.05);
+    }
+
+    .product-badge {
+        position: absolute;
+        top: $space-2;
+        left: $space-2;
+        z-index: 1;
+    }
+
+    .product-actions {
+        position: absolute;
+        top: $space-2;
+        right: $space-2;
+        opacity: 0;
+        transform: translateY(-$space-2);
+        transition: all $duration-200 $ease-out;
+    }
+
+    &:hover .product-actions {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Price Display
+@mixin price-display {
+    .price-current {
+        font-weight: $font-weight-bold;
+        color: var(--color-price-current, var(--color-text-primary));
+    }
+
+    .price-original {
+        text-decoration: line-through;
+        color: var(--color-price-original, var(--color-text-secondary));
+        font-size: 0.9em;
+    }
+
+    .price-discount {
+        color: var(--color-price-discount, var(--color-error));
+        font-weight: $font-weight-semibold;
+    }
+}
+
+// Rating Stars
+@mixin rating-stars($size: 1rem) {
+    display: inline-flex;
+    gap: $space-0_5;
+
+    .star {
+        width: $size;
+        height: $size;
+        color: var(--color-rating-empty, var(--color-border));
+
+        &.filled {
+            color: var(--color-rating-filled, var(--color-warning));
+        }
+    }
+}
+
+/* ========================================== */
+// Debug & Development Mixins
+/* ========================================== */
+
+// Debug Outline
+@mixin debug-outline($color: red) {
+    outline: 2px solid $color !important;
+    outline-offset: -2px !important;
+
+    * {
+        outline: 1px solid rgba($color, 0.5) !important;
+        outline-offset: -1px !important;
+    }
+}
+
+// Show Grid
+@mixin show-grid($color: rgba(red, 0.1)) {
+    background-image:
+        linear-gradient(to right, $color 1px, transparent 1px),
+        linear-gradient(to bottom, $color 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+// Development Only
+@mixin dev-only {
+    @if $enable-dev-mode {
+        @content;
+    }
+}

@@ -73,90 +73,90 @@ $themes: (
         'surface-secondary': $purple-50,
 
         'text-primary': $gray-900,
-        'text-secondary': $gray-600,
-        'text-tertiary': $gray-400,
+        'text-secondary': $purple-600,
+        'text-tertiary': $purple-400,
         'text-inverse': $white,
 
         'border': $purple-200,
         'border-secondary': $purple-300,
         'divider': $purple-100,
 
-        'shadow': $shadow-base,
-        'shadow-hover': $shadow-md,
+        'shadow': 0 4px 12px rgba($purple-600, 0.15),
+        'shadow-hover': 0 8px 25px rgba($purple-600, 0.2),
         'glow': $glow-purple,
     ),
 
-    'red': ('primary': $error-600,
-        'primary-hover': $error-700,
-        'primary-active': $error-800,
-        'secondary': $error-100,
-        'accent': $error-400,
+    'red': ('primary': $red-600,
+        'primary-hover': $red-700,
+        'primary-active': $red-800,
+        'secondary': $red-100,
+        'accent': $orange-500,
 
         'background': $white,
-        'background-secondary': $error-50,
-        'background-tertiary': $error-100,
+        'background-secondary': $red-50,
+        'background-tertiary': $red-100,
         'surface': $white,
-        'surface-secondary': $error-50,
+        'surface-secondary': $red-50,
 
         'text-primary': $gray-900,
-        'text-secondary': $gray-600,
-        'text-tertiary': $gray-400,
+        'text-secondary': $red-600,
+        'text-tertiary': $red-400,
         'text-inverse': $white,
 
-        'border': $error-200,
-        'border-secondary': $error-300,
-        'divider': $error-100,
+        'border': $red-200,
+        'border-secondary': $red-300,
+        'divider': $red-100,
 
-        'shadow': $shadow-base,
-        'shadow-hover': $shadow-md,
-        'glow': 0 0 20px rgba($error-500, 0.5),
+        'shadow': 0 4px 12px rgba($red-600, 0.15),
+        'shadow-hover': 0 8px 25px rgba($red-600, 0.2),
+        'glow': $glow-red,
     ),
 
-    'olive': ('primary': #6b7c32,
-        'primary-hover': #5a6b2a,
-        'primary-active': #4a5922,
-        'secondary': #f4f5f0,
-        'accent': #8b9c4a,
+    'olive': ('primary': $olive-600,
+        'primary-hover': $olive-700,
+        'primary-active': $olive-800,
+        'secondary': $olive-100,
+        'accent': $green-500,
 
-        'background': #fefffe,
-        'background-secondary': #f9faf6,
-        'background-tertiary': #f4f5f0,
-        'surface': #fefffe,
-        'surface-secondary': #f9faf6,
+        'background': $olive-50,
+        'background-secondary': $olive-100,
+        'background-tertiary': $olive-200,
+        'surface': $white,
+        'surface-secondary': $olive-50,
 
-        'text-primary': #2d3e0f,
-        'text-secondary': #4a5922,
-        'text-tertiary': #6b7c32,
-        'text-inverse': #fefffe,
+        'text-primary': $olive-900,
+        'text-secondary': $olive-600,
+        'text-tertiary': $olive-400,
+        'text-inverse': $white,
 
-        'border': #d4d6c8,
-        'border-secondary': #c4c6b8,
-        'divider': #e4e5e0,
+        'border': $olive-200,
+        'border-secondary': $olive-300,
+        'divider': $olive-100,
 
-        'shadow': $shadow-base,
-        'shadow-hover': $shadow-md,
-        'glow': 0 0 20px rgba(#6b7c32, 0.3),
-    )) !default;
+        'shadow': 0 4px 12px rgba($olive-600, 0.1),
+        'shadow-hover': 0 8px 25px rgba($olive-600, 0.15),
+        'glow': none,
+    )
+);
 
 /* ========================================== */
 // Theme Mixin - Automatische Theme-Generierung
 /* ========================================== */
 
 @mixin theme($theme-name) {
-    $theme-map: map-get($themes, $theme-name
-    );
+    $theme-map: map-get($themes, $theme-name);
 
-@if $theme-map {
+    @if $theme-map {
 
-    &[data-theme="#{$theme-name}"],
-    .theme-#{$theme-name} & {
-        @each $property, $value in $theme-map {
-            --color-#{$property}: #{$value};
+        &[data-theme="#{$theme-name}"],
+        .theme-#{$theme-name} & {
+            @each $property, $value in $theme-map {
+                --color-#{$property}: #{$value};
+            }
+
+            @content;
         }
-
-        @content;
     }
-}
 }
 
 @mixin all-themes {
@@ -210,73 +210,85 @@ $themes: (
     --color-btn-primary-border: var(--color-primary);
 
     --color-btn-secondary-bg: var(--color-secondary);
-    --color-btn-secondary-bg-hover: var(--color-background-tertiary);
+    --color-btn-secondary-bg-hover: var(--color-border-secondary);
     --color-btn-secondary-text: var(--color-text-primary);
     --color-btn-secondary-border: var(--color-border);
 
+    --color-btn-ghost-bg: transparent;
+    --color-btn-ghost-bg-hover: var(--color-secondary);
+    --color-btn-ghost-text: var(--color-text-primary);
+    --color-btn-ghost-border: transparent;
+
     // Form tokens
-    --color-form-bg: var(--color-surface);
-    --color-form-border: var(--color-border);
-    --color-form-border-focus: var(--color-primary);
-    --color-form-text: var(--color-text-primary);
-    --color-form-placeholder: var(--color-text-tertiary);
-    --color-form-label: var(--color-text-secondary);
+    --color-input-bg: var(--color-surface);
+    --color-input-text: var(--color-text-primary);
+    --color-input-border: var(--color-border);
+    --color-input-border-focus: var(--color-primary);
+    --color-input-placeholder: var(--color-text-tertiary);
 
     // Status colors
-    --color-success: #{$success-500};
-    --color-warning: #{$warning-500};
-    --color-error: #{$error-500};
-    --color-info: #{$info-500};
+    --color-success: #{$success};
+    --color-success-bg: #{$success-50};
+    --color-warning: #{$warning};
+    --color-warning-bg: #{$warning-50};
+    --color-error: #{$error};
+    --color-error-bg: #{$error-50};
+    --color-info: #{$info};
+    --color-info-bg: #{$info-50};
 
-    // Glow effects
-    --glow-effect: var(--glow);
+    // Special effects
+    --border-radius-default: #{$radius-lg};
+    --transition-theme: background-color 300ms ease-out,
+    color 300ms ease-out,
+    border-color 300ms ease-out;
 }
 
 /* ========================================== */
-// Theme-specific adjustments
+// Theme Application - Alle Themes generieren
 /* ========================================== */
 
-// Dark Theme Specific
-@include theme('dark') {
-    // Enhanced shadows for dark theme
-    --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    --shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+@each $theme-name, $theme-map in $themes {
 
-    // Glowing elements in dark theme
-    --glow-effect: #{$glow-blue};
+    [data-theme="#{$theme-name}"],
+    .theme-#{$theme-name} {
+        @each $property, $value in $theme-map {
+            --color-#{$property}: #{$value};
+        }
 
-    // Enhanced contrast
-    --color-form-bg: var(--color-background-secondary);
-    --color-card-bg: var(--color-surface-secondary);
-}
+        // Theme-spezifische Optimierungen
+        @if $theme-name =='dark' {
+            color-scheme: dark;
 
-// Purple Theme Specific  
-@include theme('purple') {
-    --glow-effect: #{$glow-purple};
+            // Enhanced shadows für dark theme
+            --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-card-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
 
-    // Purple-specific button variants
-    --color-btn-accent-bg: #{$purple-500};
-    --color-btn-accent-bg-hover: #{$purple-600};
-    --color-btn-accent-text: #{$white};
-}
+            // Glow effects aktivieren
+            @if $enable-glow-effects {
+                --glow-enabled: 1;
+            }
+        }
 
-// Red Theme Specific
-@include theme('red') {
-    --glow-effect: 0 0 20px rgba(#{$error-500}, 0.5);
+        @if $theme-name =='light' {
+            color-scheme: light;
+            --glow-enabled: 0;
+        }
 
-    // Red-specific variants
-    --color-btn-danger-bg: #{$error-600};
-    --color-btn-danger-bg-hover: #{$error-700};
-    --color-btn-danger-text: #{$white};
-}
+        @if $theme-name =='purple' {
+            --border-radius-default: #{$radius-xl};
+            --transition-theme: all 400ms #{$ease-bounce};
+        }
 
-// Olive Theme Specific
-@include theme('olive') {
-    --glow-effect: 0 0 20px rgba(107, 124, 50, 0.3);
+        @if $theme-name =='red' {
+            --border-radius-default: #{$radius-sm};
+            --transition-theme: all 200ms #{$ease-in-out};
+        }
 
-    // Natural, earthy feel
-    --radius-default: #{$radius-lg};
-    --shadow: 0 4px 12px rgba(107, 124, 50, 0.1);
+        @if $theme-name =='olive' {
+            --border-radius-default: #{$radius-lg};
+            --shadow: 0 4px 12px rgba(107, 124, 50, 0.1);
+        }
+    }
 }
 
 /* ========================================== */
@@ -354,94 +366,186 @@ $themes: (
     color: var(--color-text-primary);
 }
 
-.theme-text-primary {
+.theme-card {
+    background-color: var(--color-card-bg);
     color: var(--color-text-primary);
-}
+    border: 1px solid var(--color-card-border);
+    box-shadow: var(--shadow-card);
+    border-radius: var(--border-radius-default);
 
-.theme-text-secondary {
-    color: var(--color-text-secondary);
-}
-
-.theme-text-tertiary {
-    color: var(--color-text-tertiary);
-}
-
-.theme-border {
-    border-color: var(--color-border);
-}
-
-.theme-shadow {
-    box-shadow: var(--shadow);
-}
-
-.theme-glow {
-    @if $enable-glow-effects {
-        box-shadow: var(--glow-effect);
+    &:hover {
+        box-shadow: var(--shadow-card-hover);
     }
 }
 
 /* ========================================== */
-// Responsive Theme Adjustments
+// Theme-specific Component Styles
 /* ========================================== */
 
-// Mobile theme optimizations
-@media (max-width: $breakpoint-md) {
-    :root {
-        // Reduced glow on mobile for performance
-        --glow-effect: none;
+// Buttons mit Theme-Unterstützung
+.btn {
+    border-radius: var(--border-radius-default);
+    transition: var(--transition-theme);
 
-        // Simpler shadows
-        --shadow: #{$shadow-sm};
-        --shadow-hover: #{$shadow-base};
+    &.btn-primary {
+        background-color: var(--color-btn-primary-bg);
+        color: var(--color-btn-primary-text);
+        border-color: var(--color-btn-primary-border);
+
+        &:hover {
+            background-color: var(--color-btn-primary-bg-hover);
+        }
+
+        &:active {
+            background-color: var(--color-btn-primary-bg-active);
+        }
+
+        // Glow effect für futuristische Themes
+        .font-theme-future & {
+            box-shadow: var(--glow-effect, none);
+        }
+    }
+
+    &.btn-secondary {
+        background-color: var(--color-btn-secondary-bg);
+        color: var(--color-btn-secondary-text);
+        border-color: var(--color-btn-secondary-border);
+
+        &:hover {
+            background-color: var(--color-btn-secondary-bg-hover);
+        }
+    }
+
+    &.btn-ghost {
+        background-color: var(--color-btn-ghost-bg);
+        color: var(--color-btn-ghost-text);
+        border-color: var(--color-btn-ghost-border);
+
+        &:hover {
+            background-color: var(--color-btn-ghost-bg-hover);
+        }
     }
 }
 
-// High contrast mode support
+// Form Elements mit Theme-Unterstützung
+.form-input {
+    background-color: var(--color-input-bg);
+    color: var(--color-input-text);
+    border-color: var(--color-input-border);
+    border-radius: var(--border-radius-default);
+    transition: var(--transition-theme);
+
+    &:focus {
+        border-color: var(--color-input-border-focus);
+        box-shadow: 0 0 0 3px var(--color-primary-50, rgba(var(--color-primary), 0.1));
+    }
+
+    &::placeholder {
+        color: var(--color-input-placeholder);
+    }
+}
+
+// Navigation mit Theme-Unterstützung
+.nav {
+    background-color: var(--color-nav-bg);
+    border-color: var(--color-nav-border);
+
+    .nav-link {
+        color: var(--color-nav-text);
+        transition: var(--transition-theme);
+
+        &:hover {
+            color: var(--color-nav-text-hover);
+        }
+    }
+}
+
+/* ========================================== */
+// Media Query Theme Preferences
+/* ========================================== */
+
+// Auto Dark Mode
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        $dark-theme: map-get($themes, 'dark');
+
+        @each $property, $value in $dark-theme {
+            --color-#{$property}: #{$value};
+        }
+
+        color-scheme: dark;
+    }
+}
+
+// Auto Light Mode
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+        $light-theme: map-get($themes, 'light');
+
+        @each $property, $value in $light-theme {
+            --color-#{$property}: #{$value};
+        }
+
+        color-scheme: light;
+    }
+}
+
+// High Contrast Mode
 @media (prefers-contrast: high) {
     :root {
-        --color-border: #{$gray-900};
-        --color-border-secondary: #{$gray-800};
+        --color-border: #{$black};
+        --color-text-primary: #{$black};
+        --color-background: #{$white};
         --shadow: none;
         --glow-effect: none;
     }
 
-    @include theme('dark') {
+    [data-theme="dark"] {
         --color-border: #{$white};
-        --color-border-secondary: #{$gray-200};
+        --color-text-primary: #{$white};
+        --color-background: #{$black};
     }
 }
 
-// Reduced motion support
+// Reduced Motion
 @media (prefers-reduced-motion: reduce) {
-    .theme-transition {
-        transition: none;
+    :root {
+        --transition-theme: none;
     }
 
-    :root {
-        --glow-effect: none;
+    .theme-transition {
+        transition: none !important;
     }
 }
 
 /* ========================================== */
-// Theme Debug Mode (Development only)
+// Theme JavaScript Integration Helper
 /* ========================================== */
 
-@if map-get($themes, 'debug') {
-    .theme-debug {
-        position: relative;
+// Theme-Switch Animation
+.theme-switching {
+    transition: none !important;
 
-        &::before {
-            content: attr(data-theme);
-            position: fixed;
-            top: 0;
-            right: 0;
-            padding: $spacing-2 $spacing-4;
-            background: var(--color-primary);
-            color: var(--color-text-inverse);
-            font-size: $font-size-xs;
-            font-weight: $font-weight-bold;
-            z-index: $z-index-toast;
-            border-radius: 0 0 0 $radius-md;
-        }
+    * {
+        transition: none !important;
+    }
+}
+
+// Theme loaded indicator
+.theme-loaded {
+    transition: var(--transition-theme);
+}
+
+/* ========================================== */
+// Print Theme Overrides
+/* ========================================== */
+
+@media print {
+    :root {
+        --color-background: #{$white} !important;
+        --color-text-primary: #{$black} !important;
+        --color-border: #{$black} !important;
+        --shadow: none !important;
+        --glow-effect: none !important;
     }
 }

@@ -1,0 +1,671 @@
+/* ========================================== */
+/* ================ RED THEME =============== */
+/* ========================================== */
+/* Kraftvolles, energiegeladenes Red Theme mit dynamischen Akzenten */
+
+/* ========================================== */
+// Red Theme Konfiguration
+/* ========================================== */
+
+// Red Theme aktivieren
+[data-theme="red"],
+.theme-red {
+    color-scheme: light;
+
+    /* ========================================== */
+    // Base Colors - Powerful Red Energy
+    /* ========================================== */
+
+    // Backgrounds - Warme, energetische Töne
+    --color-background: #{$white};
+    --color-background-secondary: #{$red-50};
+    --color-background-tertiary: #{$red-100};
+    --color-surface: #{$white};
+    --color-surface-secondary: #{$red-50};
+    --color-surface-elevated: #{$white};
+
+    // Text Colors - Kraftvolle Kontraste
+    --color-text-primary: #{$gray-900};
+    --color-text-secondary: #{$red-700};
+    --color-text-tertiary: #{$red-500};
+    --color-text-inverse: #{$white};
+    --color-text-muted: #{$red-400};
+    --color-text-disabled: #{$red-300};
+
+    // Primary Colors - Intensives Red
+    --color-primary: #{$red-600};
+    --color-primary-hover: #{$red-700};
+    --color-primary-active: #{$red-800};
+    --color-primary-50: #{rgba($red-600, 0.05)};
+    --color-primary-100: #{rgba($red-600, 0.1)};
+    --color-primary-200: #{rgba($red-600, 0.2)};
+
+    // Secondary Colors - Komplemäre Töne
+    --color-secondary: #{$red-100};
+    --color-secondary-hover: #{$red-200};
+    --color-secondary-active: #{$red-300};
+
+    // Accent Colors - Warmer Orange Akzent
+    --color-accent: #{$orange-500};
+    --color-accent-hover: #{$orange-600};
+    --color-accent-active: #{$orange-700};
+
+    // Borders - Red Variation
+    --color-border: #{$red-200};
+    --color-border-secondary: #{$red-300};
+    --color-border-focus: #{$red-500};
+    --color-divider: #{$red-100};
+
+    // Semantic Colors - Red-harmonische Farben
+    --color-success: #{$green-600};
+    --color-warning: #{$yellow-500};
+    --color-error: #{$red-700}; // Slightly darker for differentiation
+    --color-info: #{$blue-600};
+
+    // Status Backgrounds - Warme Tints
+    --color-success-bg: #{$green-50};
+    --color-warning-bg: #{$yellow-50};
+    --color-error-bg: #{$red-50};
+    --color-info-bg: #{$blue-50};
+
+    // Status Text Colors
+    --color-success-text: #{$green-700};
+    --color-warning-text: #{$yellow-700};
+    --color-error-text: #{$red-800};
+    --color-info-text: #{$blue-700};
+
+    /* ========================================== */
+    // Shadows & Effects - Kraftvoll & dynamisch
+    /* ========================================== */
+
+    --shadow: 0 4px 12px rgba(#{$red-600}, 0.15);
+    --shadow-hover: 0 8px 25px rgba(#{$red-600}, 0.2);
+    --shadow-focus: 0 0 0 3px #{rgba($red-600, 0.2)};
+    --shadow-card: 0 2px 8px rgba(#{$red-600}, 0.1);
+    --shadow-card-hover: 0 8px 20px rgba(#{$red-600}, 0.15);
+    --shadow-modal: 0 20px 40px rgba(#{$red-600}, 0.2);
+
+    // Red Glow Effects
+    @if $enable-glow-effects {
+        --glow-primary: 0 0 20px rgba(#{$red-600}, 0.3),
+        0 0 40px rgba(#{$red-600}, 0.2);
+
+        --glow-accent: 0 0 15px rgba(#{$orange-500}, 0.4);
+
+        --text-glow-primary: 0 0 8px rgba(#{$red-600}, 0.3);
+        --text-glow-fire: 0 0 10px #{$red-500},
+        0 0 20px #{$orange-500};
+    }
+
+    /* ========================================== */
+    // E-Commerce Red Theme
+    /* ========================================== */
+
+    // Product Colors - Action-orientiert
+    --color-product-new: #{$green-500};
+    --color-product-sale: #{$red-700}; // Darker red for sales
+    --color-product-bestseller: #{$orange-600};
+    --color-product-limited: #{$red-800};
+    --color-product-hot: #{$red-500};
+
+    // Price Colors - Dynamisches Pricing
+    --color-price-current: #{$gray-900};
+    --color-price-original: #{$red-400};
+    --color-price-discount: #{$red-700};
+    --color-price-free: #{$green-600};
+    --color-price-hot: #{$red-600};
+
+    // Rating Colors
+    --color-rating-filled: #{$yellow-500};
+    --color-rating-empty: #{$red-200};
+
+    // Stock Colors
+    --color-stock-in: #{$green-600};
+    --color-stock-low: #{$orange-500};
+    --color-stock-out: #{$red-700};
+
+    /* ========================================== */
+    // Interactive States - Energetische Übergänge
+    /* ========================================== */
+
+    // Hover States
+    --hover-overlay: #{rgba($red-600, 0.08)};
+    --hover-lift-shadow: var(--shadow-hover);
+
+    // Active States  
+    --active-overlay: #{rgba($red-600, 0.15)};
+    --active-scale: 0.96;
+
+    // Focus States
+    --focus-ring: 0 0 0 2px #{rgba($red-600, 0.3)};
+    --focus-ring-offset: 2px;
+
+    // Disabled States
+    --disabled-opacity: 0.5;
+    --disabled-cursor: not-allowed;
+
+    /* ========================================== */
+    // Animation & Transition - Schnell & direkt
+    /* ========================================== */
+
+    --transition-theme: background-color 200ms #{$ease-in-out},
+    color 200ms #{$ease-in-out},
+    border-color 200ms #{$ease-in-out},
+    box-shadow 200ms #{$ease-in-out};
+
+    --transition-fast: all 150ms #{$ease-out};
+    --transition-energy: all 200ms #{$ease-back};
+
+    /* ========================================== */
+    // Component Colors - Red Theme spezifisch
+    /* ========================================== */
+
+    // Navigation - Kraftvolle Kopfzeile
+    --color-nav-bg: #{rgba($white, 0.95)};
+    --color-nav-text: #{$red-700};
+    --color-nav-text-hover: #{$red-600};
+    --color-nav-text-active: #{$red-800};
+    --color-nav-border: #{$red-200};
+    --color-nav-backdrop: #{rgba($red-50, 0.8)};
+
+    // Header - Energetische Präsentation
+    --color-header-bg: #{$white};
+    --color-header-text: #{$gray-900};
+    --color-header-text-secondary: #{$red-600};
+    --color-header-border: #{$red-200};
+
+    // Footer - Kraftvolle Basis
+    --color-footer-bg: #{$red-100};
+    --color-footer-text: #{$red-700};
+    --color-footer-text-secondary: #{$red-500};
+    --color-footer-border: #{$red-200};
+
+    // Sidebar - Dynamische Seitenleiste
+    --color-sidebar-bg: #{rgba($red-50, 0.8)};
+    --color-sidebar-text: #{$red-700};
+    --color-sidebar-text-hover: #{$red-800};
+    --color-sidebar-border: #{$red-200};
+    --color-sidebar-active: #{rgba($red-600, 0.1)};
+
+    // Cards - Energetische Karten
+    --color-card-bg: #{$white};
+    --color-card-bg-hover: #{$red-50};
+    --color-card-border: #{$red-200};
+    --color-card-border-hover: #{$red-300};
+
+    /* ========================================== */
+    // Buttons - Red Theme optimiert
+    /* ========================================== */
+
+    // Primary Button - Kraftvolle Call-to-Action
+    --color-btn-primary-bg: #{$red-600};
+    --color-btn-primary-bg-hover: #{$red-700};
+    --color-btn-primary-bg-active: #{$red-800};
+    --color-btn-primary-text: #{$white};
+    --color-btn-primary-border: #{$red-600};
+
+    // Secondary Button - Energetische Alternative
+    --color-btn-secondary-bg: #{$red-100};
+    --color-btn-secondary-bg-hover: #{$red-200};
+    --color-btn-secondary-bg-active: #{$red-300};
+    --color-btn-secondary-text: #{$red-700};
+    --color-btn-secondary-border: #{$red-200};
+
+    // Ghost Button - Minimale Power
+    --color-btn-ghost-bg: transparent;
+    --color-btn-ghost-bg-hover: #{$red-100};
+    --color-btn-ghost-text: #{$red-700};
+    --color-btn-ghost-text-hover: #{$red-800};
+    --color-btn-ghost-border: transparent;
+
+    // Danger Button (darker for differentiation)
+    --color-btn-danger-bg: #{$red-700};
+    --color-btn-danger-bg-hover: #{$red-800};
+    --color-btn-danger-text: #{$white};
+    --color-btn-danger-border: #{$red-700};
+
+    // Success Button
+    --color-btn-success-bg: #{$green-600};
+    --color-btn-success-bg-hover: #{$green-700};
+    --color-btn-success-text: #{$white};
+    --color-btn-success-border: #{$green-600};
+
+    // Action Button (special red variant)
+    --color-btn-action-bg: #{$orange-500};
+    --color-btn-action-bg-hover: #{$orange-600};
+    --color-btn-action-text: #{$white};
+    --color-btn-action-border: #{$orange-500};
+
+    /* ========================================== */
+    // Forms - Energetische Eingaben
+    /* ========================================== */
+
+    // Input Fields
+    --color-input-bg: #{$white};
+    --color-input-text: #{$gray-900};
+    --color-input-border: #{$red-300};
+    --color-input-border-hover: #{$red-400};
+    --color-input-border-focus: #{$red-500};
+    --color-input-placeholder: #{$red-400};
+
+    // Input States
+    --color-input-disabled-bg: #{$red-100};
+    --color-input-disabled-text: #{$red-400};
+    --color-input-disabled-border: #{$red-200};
+
+    // Form Validation
+    --color-input-valid-border: #{$green-500};
+    --color-input-invalid-border: #{$red-700};
+    --color-input-warning-border: #{$orange-500};
+
+    /* ========================================== */
+    // Layout & Spacing - Kompakt & direkt
+    /* ========================================== */
+
+    --border-radius-default: #{$radius-sm};
+    --border-radius-large: #{$radius};
+    --border-radius-small: #{$radius-sm};
+
+    /* ========================================== */
+    // Special Red Theme Features
+    /* ========================================== */
+
+    // Red theme specific gradients
+    --gradient-primary: linear-gradient(135deg, #{$red-600} 0%, #{$orange-500} 100%);
+    --gradient-secondary: linear-gradient(135deg, #{$red-100} 0%, #{$red-200} 100%);
+    --gradient-surface: linear-gradient(180deg, #{$white} 0%, #{$red-50} 100%);
+    --gradient-fire: linear-gradient(135deg, #{$red-700} 0%, #{$red-500} 50%, #{$orange-500} 100%);
+    --gradient-energy: linear-gradient(135deg, #{$red-800} 0%, #{$red-600} 100%);
+
+    // Red theme backdrop filters
+    --backdrop-filter: blur(8px);
+    --backdrop-filter-strong: blur(16px);
+
+    // Selection colors
+    --selection-bg: #{rgba($red-600, 0.2)};
+    --selection-text: #{$gray-900};
+
+    /* ========================================== */
+    // Fire & Energy Elements
+    /* ========================================== */
+
+    // Fire-inspired colors
+    --color-fire-red: #{$red-600};
+    --color-fire-orange: #{$orange-500};
+    --color-fire-yellow: #{$yellow-400};
+
+    // Energy states
+    --color-energy-low: #{$red-300};
+    --color-energy-medium: #{$red-500};
+    --color-energy-high: #{$red-700};
+    --color-energy-max: #{$red-800};
+
+    // Dynamic gradients
+    --gradient-flame: linear-gradient(45deg, #{$red-700} 0%, #{$red-500} 25%, #{$orange-500} 50%, #{$yellow-400} 75%, #{$orange-500} 100%);
+    --gradient-heat: radial-gradient(circle, #{$red-600} 0%, #{$red-700} 70%, #{$red-900} 100%);
+
+    /* ========================================== */
+    // Accessibility Enhancements
+    /* ========================================== */
+
+    // High contrast variants
+    &.high-contrast {
+        --color-text-primary: #{$black};
+        --color-background: #{$white};
+        --color-border: #{$red-800};
+        --shadow: none;
+    }
+
+    // Cooler variant (für bessere Lesbarkeit)
+    &.cool-red {
+        --color-primary: #{$red-500};
+        --color-text-secondary: #{$red-600};
+        --color-border: #{$red-300};
+    }
+}
+
+/* ========================================== */
+// Red Theme Component Enhancements
+/* ========================================== */
+
+[data-theme="red"] {
+
+    // Selection styling
+    ::selection {
+        background: var(--selection-bg);
+        color: var(--selection-text);
+    }
+
+    ::-moz-selection {
+        background: var(--selection-bg);
+        color: var(--selection-text);
+    }
+
+    // Red scrollbar styling
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--color-background-secondary);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-primary);
+        border-radius: 4px;
+
+        &:hover {
+            background: var(--color-primary-hover);
+        }
+    }
+
+    // Special red theme effects
+    .glass-effect {
+        background: rgba($white, 0.8);
+        backdrop-filter: var(--backdrop-filter);
+        border: 1px solid rgba($red-200, 0.3);
+    }
+
+    .frosted-glass {
+        background: rgba($red-50, 0.6);
+        backdrop-filter: var(--backdrop-filter-strong);
+        border: 1px solid rgba($red-300, 0.2);
+    }
+
+    // Fire effects
+    .fire-element {
+        background: var(--gradient-flame);
+        background-size: 200% 200%;
+        animation: fireFlicker 2s ease-in-out infinite;
+        color: white;
+        text-shadow: 0 0 10px rgba($red-600, 0.8);
+    }
+
+    @keyframes fireFlicker {
+
+        0%,
+        100% {
+            background-position: 0% 50%;
+            filter: brightness(1);
+        }
+
+        25% {
+            background-position: 25% 25%;
+            filter: brightness(1.1);
+        }
+
+        50% {
+            background-position: 100% 50%;
+            filter: brightness(0.9);
+        }
+
+        75% {
+            background-position: 75% 75%;
+            filter: brightness(1.05);
+        }
+    }
+
+    // Energy bars
+    .energy-bar {
+        background: var(--color-secondary);
+        border-radius: var(--border-radius-default);
+        overflow: hidden;
+        position: relative;
+
+        .energy-fill {
+            background: var(--gradient-energy);
+            height: 100%;
+            transition: width 300ms ease-out;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg,
+                        transparent,
+                        rgba(white, 0.4),
+                        transparent);
+                animation: energyPulse 1.5s infinite;
+            }
+
+            &.low {
+                background: var(--gradient-secondary);
+            }
+
+            &.medium {
+                background: var(--gradient-primary);
+            }
+
+            &.high {
+                background: var(--gradient-energy);
+            }
+
+            &.max {
+                background: var(--gradient-fire);
+            }
+        }
+    }
+
+    @keyframes energyPulse {
+        0% {
+            left: -100%;
+        }
+
+        100% {
+            left: 100%;
+        }
+    }
+
+    // Alert/Action elements
+    .action-alert {
+        background: var(--gradient-fire);
+        color: white;
+        border: 2px solid var(--color-fire-orange);
+        border-radius: var(--border-radius-large);
+        padding: $space-4 $space-6;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '⚡';
+            position: absolute;
+            top: $space-2;
+            right: $space-2;
+            font-size: $font-size-lg;
+            animation: pulse 1s infinite;
+        }
+    }
+
+    // Hot/trending badges
+    .hot-badge {
+        background: var(--gradient-fire);
+        color: white;
+        border-radius: var(--border-radius-large);
+        padding: $space-1 $space-2;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-wide;
+        position: relative;
+
+        &::before {
+            content: '🔥';
+            margin-right: $space-1;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-fire);
+            border-radius: inherit;
+            opacity: 0;
+            animation: hotPulse 2s infinite;
+        }
+    }
+
+    @keyframes hotPulse {
+
+        0%,
+        100% {
+            opacity: 0;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0.3;
+            transform: scale(1.1);
+        }
+    }
+
+    // Dynamic hover effects
+    .energy-hover {
+        transition: var(--transition-energy);
+
+        &:hover {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+
+            @if $enable-glow-effects {
+                box-shadow: var(--shadow-hover), var(--glow-primary);
+            }
+        }
+
+        &:active {
+            transform: translateY(0) scale(0.98);
+        }
+    }
+}
+
+/* ========================================== */
+// Red Theme Media Queries
+/* ========================================== */
+
+// Enhanced contrast for red theme
+@media (prefers-contrast: high) {
+    [data-theme="red"] {
+        --color-border: #{$red-800};
+        --color-text-primary: #{$black};
+        --color-background: #{$white};
+        --shadow: none;
+        --glow-primary: none;
+    }
+}
+
+// Reduced motion for red theme
+@media (prefers-reduced-motion: reduce) {
+    [data-theme="red"] {
+        .fire-element {
+            animation: none;
+            background: var(--color-primary);
+        }
+
+        .energy-fill::after {
+            animation: none;
+        }
+
+        .hot-badge::after {
+            animation: none;
+        }
+
+        .energy-hover:hover {
+            transform: none;
+        }
+    }
+}
+
+/* ========================================== */
+// Red Theme Utilities
+/* ========================================== */
+
+.theme-red {
+
+    // Red theme specific utility classes
+    .bg-gradient-primary {
+        background: var(--gradient-primary);
+    }
+
+    .bg-gradient-fire {
+        background: var(--gradient-fire);
+    }
+
+    .bg-gradient-energy {
+        background: var(--gradient-energy);
+    }
+
+    .bg-gradient-heat {
+        background: var(--gradient-heat);
+    }
+
+    // Red theme text utilities
+    .text-primary-red {
+        color: var(--color-primary);
+    }
+
+    .text-fire {
+        background: var(--gradient-fire);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: $font-weight-bold;
+    }
+
+    .text-energy {
+        color: var(--color-primary);
+        font-weight: $font-weight-semibold;
+    }
+
+    .text-hot {
+        color: var(--color-fire-red);
+        font-weight: $font-weight-bold;
+    }
+
+    // Action utilities
+    .action-primary {
+        background: var(--color-btn-action-bg);
+        color: var(--color-btn-action-text);
+        border: 1px solid var(--color-btn-action-border);
+        transition: var(--transition-energy);
+
+        &:hover {
+            background: var(--color-btn-action-bg-hover);
+            transform: translateY(-1px);
+        }
+    }
+
+    // Energy level utilities
+    .energy-low {
+        color: var(--color-energy-low);
+    }
+
+    .energy-medium {
+        color: var(--color-energy-medium);
+    }
+
+    .energy-high {
+        color: var(--color-energy-high);
+    }
+
+    .energy-max {
+        color: var(--color-energy-max);
+    }
+
+    // Fire color utilities
+    .text-fire-red {
+        color: var(--color-fire-red);
+    }
+
+    .text-fire-orange {
+        color: var(--color-fire-orange);
+    }
+
+    .text-fire-yellow {
+        color: var(--color-fire-yellow);
+    }
+}
