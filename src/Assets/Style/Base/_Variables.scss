@@ -1,0 +1,477 @@
+/* ========================================== */
+/* ================ VARIABLES =============== */
+/* ========================================== */
+/* Best Practice: Modulare, wartbare Variablen-Architektur */
+
+/* ========================================== */
+// Configuration - Zentrale Konfiguration
+/* ========================================== */
+
+// Theme System Configuration
+$enable-themes: true !default;
+$enable-dark-mode: true !default;
+$enable-animations: true !default;
+$enable-glow-effects: true !default;
+
+// Performance Configuration
+$enable-reduced-motion: true !default;
+$enable-print-styles: true !default;
+
+/* ========================================== */
+// Design Tokens - Atomare Design-Werte
+/* ========================================== */
+
+// Base Color Palette - Neutrale Grundfarben
+$white: #ffffff !default;
+$black: #000000 !default;
+
+$gray-50: #f9fafb !default;
+$gray-100: #f3f4f6 !default;
+$gray-200: #e5e7eb !default;
+$gray-300: #d1d5db !default;
+$gray-400: #9ca3af !default;
+$gray-500: #6b7280 !default;
+$gray-600: #4b5563 !default;
+$gray-700: #374151 !default;
+$gray-800: #1f2937 !default;
+$gray-900: #111827 !default;
+$gray-950: #030712 !default;
+
+// Brand Color System - Skalierbare Markenfarben
+$blue-50: #eff6ff !default;
+$blue-100: #dbeafe !default;
+$blue-200: #bfdbfe !default;
+$blue-300: #93c5fd !default;
+$blue-400: #60a5fa !default;
+$blue-500: #3b82f6 !default;
+$blue-600: #2563eb !default;
+$blue-700: #1d4ed8 !default;
+$blue-800: #1e40af !default;
+$blue-900: #1e3a8a !default;
+$blue-950: #172554 !default;
+
+$purple-50: #faf5ff !default;
+$purple-100: #f3e8ff !default;
+$purple-200: #e9d5ff !default;
+$purple-300: #d8b4fe !default;
+$purple-400: #c084fc !default;
+$purple-500: #a855f7 !default;
+$purple-600: #9333ea !default;
+$purple-700: #7c3aed !default;
+$purple-800: #6d28d9 !default;
+$purple-900: #581c87 !default;
+$purple-950: #3b0764 !default;
+
+$cyan-50: #ecfeff !default;
+$cyan-100: #cffafe !default;
+$cyan-200: #a5f3fc !default;
+$cyan-300: #67e8f9 !default;
+$cyan-400: #22d3ee !default;
+$cyan-500: #06b6d4 !default;
+$cyan-600: #0891b2 !default;
+$cyan-700: #0e7490 !default;
+$cyan-800: #155e75 !default;
+$cyan-900: #164e63 !default;
+$cyan-950: #083344 !default;
+
+// Semantic Colors - Bedeutungsvolle Farben
+$success-50: #f0fdf4 !default;
+$success-500: #22c55e !default;
+$success-600: #16a34a !default;
+$success-900: #14532d !default;
+
+$warning-50: #fffbeb !default;
+$warning-500: #f59e0b !default;
+$warning-600: #d97706 !default;
+$warning-900: #78350f !default;
+
+$error-50: #fef2f2 !default;
+$error-500: #ef4444 !default;
+$error-600: #dc2626 !default;
+$error-900: #7f1d1d !default;
+
+$info-50: #eff6ff !default;
+$info-500: #3b82f6 !default;
+$info-600: #2563eb !default;
+$info-900: #1e3a8a !default;
+
+/* ========================================== */
+// Typography System - Skalierbare Typografie
+/* ========================================== */
+
+// Font Families - Hierarchische Schriftarten
+$font-family-sans: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !default;
+$font-family-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace !default;
+$font-family-display: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !default;
+
+// Future Theme Font
+$font-family-future: 'Orbitron', 'Exo 2', 'Rajdhani', $font-family-sans !default;
+
+// Vintage Theme Font  
+$font-family-vintage: 'Playfair Display', 'Crimson Text', Georgia, serif !default;
+
+// Font Size Scale - Perfekte Typografische Skala
+$font-size-xs: clamp(0.75rem, 0.69rem + 0.29vw, 0.875rem) !default; // 12-14px
+$font-size-sm: clamp(0.875rem, 0.81rem + 0.34vw, 1rem) !default; // 14-16px
+$font-size-base: clamp(1rem, 0.93rem + 0.39vw, 1.125rem) !default; // 16-18px
+$font-size-lg: clamp(1.125rem, 1.05rem + 0.44vw, 1.25rem) !default; // 18-20px
+$font-size-xl: clamp(1.25rem, 1.16rem + 0.49vw, 1.5rem) !default; // 20-24px
+$font-size-2xl: clamp(1.5rem, 1.39rem + 0.58vw, 1.875rem) !default; // 24-30px
+$font-size-3xl: clamp(1.875rem, 1.74rem + 0.73vw, 2.25rem) !default; // 30-36px
+$font-size-4xl: clamp(2.25rem, 2.09rem + 0.87vw, 2.75rem) !default; // 36-44px
+$font-size-5xl: clamp(2.75rem, 2.54rem + 1.07vw, 3.5rem) !default; // 44-56px
+$font-size-6xl: clamp(3.5rem, 3.24rem + 1.36vw, 4.5rem) !default; // 56-72px
+
+// Font Weights - Semantische Gewichte
+$font-weight-thin: 100 !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-extrabold: 800 !default;
+$font-weight-black: 900 !default;
+
+// Line Heights - Optimale Lesbarkeit
+$line-height-none: 1 !default;
+$line-height-tight: 1.25 !default;
+$line-height-snug: 1.375 !default;
+$line-height-normal: 1.5 !default;
+$line-height-relaxed: 1.625 !default;
+$line-height-loose: 2 !default;
+
+/* ========================================== */
+// Spacing System - Konsistente Abstände
+/* ========================================== */
+
+// Base spacing unit
+$spacing-unit: 0.25rem !default; // 4px
+
+// Spacing Scale - 8pt Grid System
+$spacing-0: 0 !default;
+$spacing-px: 1px !default;
+$spacing-0-5: (
+    $spacing-unit * 0.5) !default; // 2px
+$spacing-1: $spacing-unit !default; // 4px
+$spacing-1-5: (
+    $spacing-unit * 1.5) !default; // 6px
+$spacing-2: (
+    $spacing-unit * 2) !default; // 8px
+$spacing-2-5: (
+    $spacing-unit * 2.5) !default; // 10px
+$spacing-3: (
+    $spacing-unit * 3) !default; // 12px
+$spacing-3-5: (
+    $spacing-unit * 3.5) !default; // 14px
+$spacing-4: (
+    $spacing-unit * 4) !default; // 16px
+$spacing-5: (
+    $spacing-unit * 5) !default; // 20px
+$spacing-6: (
+    $spacing-unit * 6) !default; // 24px
+$spacing-7: (
+    $spacing-unit * 7) !default; // 28px
+$spacing-8: (
+    $spacing-unit * 8) !default; // 32px
+$spacing-9: (
+    $spacing-unit * 9) !default; // 36px
+$spacing-10: (
+    $spacing-unit * 10) !default; // 40px
+$spacing-11: (
+    $spacing-unit * 11) !default; // 44px
+$spacing-12: (
+    $spacing-unit * 12) !default; // 48px
+$spacing-14: (
+    $spacing-unit * 14) !default; // 56px
+$spacing-16: (
+    $spacing-unit * 16) !default; // 64px
+$spacing-20: (
+    $spacing-unit * 20) !default; // 80px
+$spacing-24: (
+    $spacing-unit * 24) !default; // 96px
+$spacing-28: (
+    $spacing-unit * 28) !default; // 112px
+$spacing-32: (
+    $spacing-unit * 32) !default; // 128px
+$spacing-36: (
+    $spacing-unit * 36) !default; // 144px
+$spacing-40: (
+    $spacing-unit * 40) !default; // 160px
+$spacing-44: (
+    $spacing-unit * 44) !default; // 176px
+$spacing-48: (
+    $spacing-unit * 48) !default; // 192px
+$spacing-52: (
+    $spacing-unit * 52) !default; // 208px
+$spacing-56: (
+    $spacing-unit * 56) !default; // 224px
+$spacing-60: (
+    $spacing-unit * 60) !default; // 240px
+$spacing-64: (
+    $spacing-unit * 64) !default; // 256px
+$spacing-72: (
+    $spacing-unit * 72) !default; // 288px
+$spacing-80: (
+    $spacing-unit * 80) !default; // 320px
+$spacing-96: (
+    $spacing-unit * 96) !default; // 384px
+
+/* ========================================== */
+// Layout & Grid System
+/* ========================================== */
+
+// Breakpoints - Mobile-First
+$breakpoint-xs: 475px !default;
+$breakpoint-sm: 640px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 1024px !default;
+$breakpoint-xl: 1280px !default;
+$breakpoint-2xl: 1536px !default;
+
+// Container Sizes
+$container-xs: 100% !default;
+$container-sm: 640px !default;
+$container-md: 768px !default;
+$container-lg: 1024px !default;
+$container-xl: 1280px !default;
+$container-2xl: 1536px !default;
+
+// Grid System
+$grid-columns: 12 !default;
+$grid-gutter: $spacing-6 !default;
+$grid-gutter-sm: $spacing-4 !default;
+$grid-gutter-lg: $spacing-8 !default;
+
+/* ========================================== */
+// Border Radius System
+/* ========================================== */
+
+$radius-none: 0 !default;
+$radius-sm: 0.125rem !default; // 2px
+$radius-base: 0.25rem !default; // 4px  
+$radius-md: 0.375rem !default; // 6px
+$radius-lg: 0.5rem !default; // 8px
+$radius-xl: 0.75rem !default; // 12px
+$radius-2xl: 1rem !default; // 16px
+$radius-3xl: 1.5rem !default; // 24px
+$radius-full: 9999px !default;
+
+/* ========================================== */
+// Shadow System - Futuristisch optimiert
+/* ========================================== */
+
+$shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !default;
+$shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06) !default;
+$shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06) !default;
+$shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05) !default;
+$shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04) !default;
+$shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !default;
+$shadow-2xl: 0 50px 100px -20px rgba(0, 0, 0, 0.25) !default;
+$shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06) !default;
+
+// Glow Effects - Futuristisch
+$glow-sm: 0 0 5px currentColor !default;
+$glow-base: 0 0 10px currentColor !default;
+$glow-md: 0 0 15px currentColor !default;
+$glow-lg: 0 0 20px currentColor !default;
+$glow-xl: 0 0 30px currentColor !default;
+
+// Neon Glows - Verschiedene Farben
+$glow-blue: 0 0 20px rgba($blue-500, 0.5),
+    0 0 40px rgba($blue-500, 0.3),
+    0 0 60px rgba($blue-500, 0.1) !default;
+$glow-purple: 0 0 20px rgba($purple-500, 0.5),
+    0 0 40px rgba($purple-500, 0.3),
+    0 0 60px rgba($purple-500, 0.1) !default;
+$glow-cyan: 0 0 20px rgba($cyan-500, 0.5),
+    0 0 40px rgba($cyan-500, 0.3),
+    0 0 60px rgba($cyan-500, 0.1) !default;
+
+/* ========================================== */
+// Animation & Transition System
+/* ========================================== */
+
+// Timing Functions - Natürliche Bewegungen
+$ease-linear: linear !default;
+$ease-in: cubic-bezier(0.4, 0, 1, 1) !default;
+$ease-out: cubic-bezier(0, 0, 0.2, 1) !default;
+$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1) !default;
+
+// Custom Easing - Futuristisch
+$ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55) !default;
+$ease-elastic: cubic-bezier(0.25, 0.46, 0.45, 0.94) !default;
+$ease-back: cubic-bezier(0.175, 0.885, 0.32, 1.275) !default;
+
+// Duration Scale
+$duration-75: 75ms !default;
+$duration-100: 100ms !default;
+$duration-150: 150ms !default;
+$duration-200: 200ms !default;
+$duration-300: 300ms !default;
+$duration-500: 500ms !default;
+$duration-700: 700ms !default;
+$duration-1000: 1000ms !default;
+
+// Default Transitions
+$transition-fast: all $duration-150 $ease-out !default;
+$transition-base: all $duration-200 $ease-out !default;
+$transition-slow: all $duration-300 $ease-out !default;
+
+/* ========================================== */
+// Z-Index Scale - Organisierte Ebenen
+/* ========================================== */
+
+$z-index-hide: -1 !default;
+$z-index-auto: auto !default;
+$z-index-base: 0 !default;
+$z-index-docked: 10 !default;
+$z-index-dropdown: 1000 !default;
+$z-index-sticky: 1100 !default;
+$z-index-banner: 1200 !default;
+$z-index-overlay: 1300 !default;
+$z-index-modal: 1400 !default;
+$z-index-popover: 1500 !default;
+$z-index-skipLink: 1600 !default;
+$z-index-toast: 1700 !default;
+$z-index-tooltip: 1800 !default;
+
+/* ========================================== */
+// Component Token System
+/* ========================================== */
+
+// Button System
+$button-height-sm: 2rem !default; // 32px
+$button-height-base: 2.5rem !default; // 40px
+$button-height-lg: 3rem !default; // 48px
+$button-height-xl: 3.5rem !default; // 56px
+
+$button-padding-x-sm: $spacing-3 !default;
+$button-padding-x-base: $spacing-4 !default;
+$button-padding-x-lg: $spacing-6 !default;
+$button-padding-x-xl: $spacing-8 !default;
+
+$button-radius: $radius-md !default;
+$button-font-weight: $font-weight-medium !default;
+
+// Input System
+$input-height-sm: 2rem !default;
+$input-height-base: 2.5rem !default;
+$input-height-lg: 3rem !default;
+
+$input-padding-x: $spacing-3 !default;
+$input-radius: $radius-md !default;
+$input-border-width: 1px !default;
+
+// Card System
+$card-padding-sm: $spacing-4 !default;
+$card-padding-base: $spacing-6 !default;
+$card-padding-lg: $spacing-8 !default;
+$card-radius: $radius-lg !default;
+
+// Navigation System
+$nav-height: 4rem !default; // 64px
+$nav-padding-x: $spacing-6 !default;
+$nav-padding-y: $spacing-4 !default;
+
+$sidebar-width: 16rem !default; // 256px
+$sidebar-width-collapsed: 4rem !default; // 64px
+
+/* ========================================== */
+// Theme System - CSS Custom Properties
+/* ========================================== */
+
+:root {
+    // Base Colors als CSS Variablen für Runtime-Änderungen
+    --color-white: #{$white};
+    --color-black: #{$black};
+
+    // Brand Colors
+    --color-primary-50: #{$blue-50};
+    --color-primary-100: #{$blue-100};
+    --color-primary-200: #{$blue-200};
+    --color-primary-300: #{$blue-300};
+    --color-primary-400: #{$blue-400};
+    --color-primary-500: #{$blue-500};
+    --color-primary-600: #{$blue-600};
+    --color-primary-700: #{$blue-700};
+    --color-primary-800: #{$blue-800};
+    --color-primary-900: #{$blue-900};
+    --color-primary-950: #{$blue-950};
+
+    // Semantic Colors
+    --color-success: #{$success-500};
+    --color-warning: #{$warning-500};
+    --color-error: #{$error-500};
+    --color-info: #{$info-500};
+
+    // Typography
+    --font-family-sans: #{$font-family-sans};
+    --font-family-mono: #{$font-family-mono};
+    --font-family-display: #{$font-family-display};
+
+    // Spacing als CSS Variablen
+    --spacing-unit: #{$spacing-unit};
+
+    // Animation
+    --duration-base: #{$duration-200};
+    --ease-default: #{$ease-out};
+
+    // Layout
+    --nav-height: #{$nav-height};
+    --sidebar-width: #{$sidebar-width};
+    --sidebar-width-collapsed: #{$sidebar-width-collapsed};
+}
+
+/* ========================================== */
+// E-Commerce Specific Variables
+/* ========================================== */
+
+// Product System
+$product-image-aspect: 1 / 1 !default; // Square
+$product-image-aspect-tall: 4 / 5 !default; // Portrait
+$product-image-aspect-wide: 16 / 9 !default; // Landscape
+
+// Price Display
+$price-size-sm: $font-size-sm !default;
+$price-size-base: $font-size-lg !default;
+$price-size-lg: $font-size-xl !default;
+
+// Badge System
+$badge-padding-x: $spacing-2 !default;
+$badge-padding-y: $spacing-1 !default;
+$badge-radius: $radius-full !default;
+$badge-font-size: $font-size-xs !default;
+$badge-font-weight: $font-weight-semibold !default;
+
+// Rating System
+$rating-star-size: 1rem !default;
+$rating-star-gap: $spacing-1 !default;
+
+/* ========================================== */
+// Performance Variables
+/* ========================================== */
+
+// Will-Change Properties für Animationen
+$will-change-transform: transform !default;
+$will-change-opacity: opacity !default;
+$will-change-scroll: scroll-position !default;
+
+// GPU Acceleration Helper
+$gpu-acceleration: translateZ(0) !default;
+
+/* ========================================== */
+// Accessibility Variables
+/* ========================================== */
+
+$focus-ring-width: 2px !default;
+$focus-ring-offset: 2px !default;
+$focus-ring-color: var(--color-primary-500) !default;
+$focus-ring-style: solid !default;
+
+// Skip Link
+$skip-link-height: 2.5rem !default;
+$skip-link-padding: $spacing-4 !default;

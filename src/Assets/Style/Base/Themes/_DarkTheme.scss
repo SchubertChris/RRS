@@ -1,0 +1,558 @@
+/* ========================================== */
+/* ================ DARK THEME ============== */
+/* ========================================== */
+/* Futuristisches Dark Theme mit Glow-Effekten */
+
+/* ========================================== */
+// Dark Theme Konfiguration
+/* ========================================== */
+
+// Dark Theme aktivieren
+[data-theme="dark"],
+.theme-dark {
+    color-scheme: dark;
+
+    /* ========================================== */
+    // Base Colors - Dark Mode optimiert
+    /* ========================================== */
+
+    // Backgrounds - Tiefe, dunkle Töne
+    --color-background: #{$gray-950};
+    --color-background-secondary: #{$gray-900};
+    --color-background-tertiary: #{$gray-800};
+    --color-surface: #{$gray-900};
+    --color-surface-secondary: #{$gray-800};
+    --color-surface-elevated: #{$gray-700};
+
+    // Text Colors - Hoher Kontrast für Lesbarkeit
+    --color-text-primary: #{$gray-100};
+    --color-text-secondary: #{$gray-300};
+    --color-text-tertiary: #{$gray-500};
+    --color-text-inverse: #{$gray-900};
+    --color-text-muted: #{$gray-600};
+    --color-text-disabled: #{$gray-700};
+
+    // Primary Colors - Heller für dunklen Hintergrund
+    --color-primary: #{$blue-400};
+    --color-primary-hover: #{$blue-300};
+    --color-primary-active: #{$blue-200};
+    --color-primary-50: #{rgba($blue-400, 0.1)};
+    --color-primary-100: #{rgba($blue-400, 0.2)};
+    --color-primary-200: #{rgba($blue-400, 0.3)};
+
+    // Secondary Colors
+    --color-secondary: #{$gray-700};
+    --color-secondary-hover: #{$gray-600};
+    --color-secondary-active: #{$gray-500};
+
+    // Accent Colors - Cyan für futuristischen Look
+    --color-accent: #{$cyan-400};
+    --color-accent-hover: #{$cyan-300};
+    --color-accent-active: #{$cyan-200};
+
+    // Borders - Subtil aber sichtbar
+    --color-border: #{$gray-700};
+    --color-border-secondary: #{$gray-600};
+    --color-border-focus: #{$blue-400};
+    --color-divider: #{$gray-800};
+
+    // Semantic Colors - Dark Mode angepasst
+    --color-success: #{$success-400};
+    --color-warning: #{$warning-400};
+    --color-error: #{$error-400};
+    --color-info: #{$info-400};
+
+    // Status Backgrounds
+    --color-success-bg: #{rgba($success-400, 0.1)};
+    --color-warning-bg: #{rgba($warning-400, 0.1)};
+    --color-error-bg: #{rgba($error-400, 0.1)};
+    --color-info-bg: #{rgba($info-400, 0.1)};
+
+    /* ========================================== */
+    // Component Colors - Dark Theme spezifisch
+    /* ========================================== */
+
+    // Navigation
+    --color-nav-bg: #{rgba($gray-900, 0.8)};
+    --color-nav-text: #{$gray-200};
+    --color-nav-text-hover: #{$blue-400};
+    --color-nav-text-active: #{$blue-300};
+    --color-nav-border: #{$gray-800};
+    --color-nav-backdrop: #{rgba($gray-950, 0.9)};
+
+    // Header
+    --color-header-bg: #{rgba($gray-900, 0.95)};
+    --color-header-text: #{$gray-100};
+    --color-header-text-secondary: #{$gray-400};
+    --color-header-border: #{$gray-800};
+
+    // Footer
+    --color-footer-bg: #{$gray-950};
+    --color-footer-text: #{$gray-400};
+    --color-footer-text-secondary: #{$gray-500};
+    --color-footer-border: #{$gray-800};
+
+    // Sidebar
+    --color-sidebar-bg: #{rgba($gray-900, 0.95)};
+    --color-sidebar-text: #{$gray-200};
+    --color-sidebar-text-hover: #{$gray-100};
+    --color-sidebar-border: #{$gray-800};
+    --color-sidebar-active: #{rgba($blue-400, 0.1)};
+
+    // Cards
+    --color-card-bg: #{rgba($gray-800, 0.8)};
+    --color-card-bg-hover: #{rgba($gray-700, 0.9)};
+    --color-card-border: #{$gray-700};
+    --color-card-border-hover: #{$gray-600};
+
+    /* ========================================== */
+    // Buttons - Dark Theme optimiert
+    /* ========================================== */
+
+    // Primary Button
+    --color-btn-primary-bg: #{$blue-500};
+    --color-btn-primary-bg-hover: #{$blue-400};
+    --color-btn-primary-bg-active: #{$blue-300};
+    --color-btn-primary-text: #{$gray-900};
+    --color-btn-primary-border: #{$blue-500};
+
+    // Secondary Button
+    --color-btn-secondary-bg: #{rgba($gray-700, 0.8)};
+    --color-btn-secondary-bg-hover: #{rgba($gray-600, 0.9)};
+    --color-btn-secondary-bg-active: #{rgba($gray-500, 1)};
+    --color-btn-secondary-text: #{$gray-200};
+    --color-btn-secondary-border: #{$gray-600};
+
+    // Ghost Button
+    --color-btn-ghost-bg: transparent;
+    --color-btn-ghost-bg-hover: #{rgba($gray-700, 0.3)};
+    --color-btn-ghost-text: #{$gray-300};
+    --color-btn-ghost-text-hover: #{$gray-100};
+    --color-btn-ghost-border: #{$gray-600};
+
+    // Success Button
+    --color-btn-success-bg: #{$success-600};
+    --color-btn-success-bg-hover: #{$success-500};
+    --color-btn-success-text: #{$gray-900};
+
+    // Warning Button
+    --color-btn-warning-bg: #{$warning-600};
+    --color-btn-warning-bg-hover: #{$warning-500};
+    --color-btn-warning-text: #{$gray-900};
+
+    // Error Button
+    --color-btn-error-bg: #{$error-600};
+    --color-btn-error-bg-hover: #{$error-500};
+    --color-btn-error-text: #{$gray-100};
+
+    /* ========================================== */
+    // Forms - Dark Theme optimiert
+    /* ========================================== */
+
+    --color-form-bg: #{rgba($gray-800, 0.6)};
+    --color-form-bg-focus: #{rgba($gray-700, 0.8)};
+    --color-form-border: #{$gray-600};
+    --color-form-border-focus: #{$blue-400};
+    --color-form-border-error: #{$error-400};
+    --color-form-text: #{$gray-200};
+    --color-form-placeholder: #{$gray-500};
+    --color-form-label: #{$gray-300};
+    --color-form-help: #{$gray-400};
+
+    // Form States
+    --color-form-valid: #{$success-400};
+    --color-form-invalid: #{$error-400};
+    --color-form-disabled-bg: #{rgba($gray-800, 0.3)};
+    --color-form-disabled-text: #{$gray-600};
+
+    /* ========================================== */
+    // Shadows & Effects - Dark Theme Enhanced
+    /* ========================================== */
+
+    // Base Shadows - Tiefer und dramatischer
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
+        0 2px 6px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.5),
+        0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-focus: 0 0 0 3px rgba(#{$blue-400}, 0.2);
+
+    // Component Shadows
+    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.4),
+        0 4px 16px rgba(0, 0, 0, 0.3);
+
+    --shadow-nav: 0 2px 12px rgba(0, 0, 0, 0.4);
+    --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.6),
+        0 8px 24px rgba(0, 0, 0, 0.4);
+    --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.3);
+
+    /* ========================================== */
+    // Glow Effects - Futuristisch
+    /* ========================================== */
+
+    @if $enable-glow-effects {
+        // Primary Glow
+        --glow-primary: 0 0 20px rgba(#{$blue-400}, 0.3),
+        0 0 40px rgba(#{$blue-400}, 0.2),
+        0 0 60px rgba(#{$blue-400}, 0.1);
+
+        // Accent Glow
+        --glow-accent: 0 0 20px rgba(#{$cyan-400}, 0.3),
+        0 0 40px rgba(#{$cyan-400}, 0.2);
+
+        // Success Glow
+        --glow-success: 0 0 15px rgba(#{$success-400}, 0.3);
+
+        // Warning Glow
+        --glow-warning: 0 0 15px rgba(#{$warning-400}, 0.3);
+
+        // Error Glow
+        --glow-error: 0 0 15px rgba(#{$error-400}, 0.3);
+
+        // Text Glow
+        --text-glow-primary: 0 0 8px rgba(#{$blue-400}, 0.4);
+        --text-glow-accent: 0 0 8px rgba(#{$cyan-400}, 0.4);
+    }
+
+    /* ========================================== */
+    // E-Commerce Dark Theme
+    /* ========================================== */
+
+    // Product Colors
+    --color-product-new: #{$success-400};
+    --color-product-sale: #{$error-400};
+    --color-product-bestseller: #{$warning-400};
+    --color-product-limited: #{$purple-400};
+
+    // Price Colors
+    --color-price-current: #{$gray-100};
+    --color-price-original: #{$gray-500};
+    --color-price-discount: #{$error-400};
+    --color-price-free: #{$success-400};
+
+    // Rating Colors
+    --color-rating-filled: #{$warning-400};
+    --color-rating-empty: #{$gray-600};
+
+    // Stock Colors
+    --color-stock-in: #{$success-400};
+    --color-stock-low: #{$warning-400};
+    --color-stock-out: #{$error-400};
+
+    /* ========================================== */
+    // Interactive States - Enhanced
+    /* ========================================== */
+
+    // Hover States
+    --hover-overlay: #{rgba($gray-700, 0.1)};
+    --hover-lift-shadow: var(--shadow-hover);
+
+    // Active States  
+    --active-overlay: #{rgba($gray-600, 0.2)};
+    --active-scale: 0.98;
+
+    // Focus States
+    --focus-ring: 0 0 0 2px #{rgba($blue-400, 0.3)};
+    --focus-ring-offset: 2px;
+
+    // Disabled States
+    --disabled-opacity: 0.4;
+    --disabled-cursor: not-allowed;
+
+    /* ========================================== */
+    // Animation & Transition Overrides
+    /* ========================================== */
+
+    // Enhanced transitions für Dark Theme
+    --transition-theme: background-color 300ms ease-out,
+    color 300ms ease-out,
+    border-color 300ms ease-out,
+    box-shadow 300ms ease-out;
+
+    // Glow transition
+    @if $enable-glow-effects {
+        --transition-glow: box-shadow 400ms ease-out,
+            filter 400ms ease-out;
+    }
+}
+
+/* ========================================== */
+// Dark Theme Component Overrides
+/* ========================================== */
+
+[data-theme="dark"],
+.theme-dark {
+
+    // Enhanced card hover effects
+    .card {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+
+        &:hover {
+            @if $enable-glow-effects {
+                box-shadow: var(--shadow-card-hover), var(--glow-primary);
+            }
+        }
+    }
+
+    // Enhanced button effects
+    .btn-primary {
+        @if $enable-glow-effects {
+            &:hover:not(:disabled) {
+                box-shadow: var(--glow-primary);
+                filter: brightness(1.1);
+            }
+
+            &:focus-visible {
+                box-shadow: var(--glow-primary), var(--focus-ring);
+            }
+        }
+    }
+
+    // Futuristic navigation
+    .nav,
+    .navbar {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--color-nav-border);
+
+        @if $enable-glow-effects {
+            box-shadow: var(--shadow-nav),
+            0 1px 0 rgba(#{$blue-400}, 0.1) inset;
+        }
+    }
+
+    // Form focus effects
+    .form-control,
+    input,
+    textarea,
+    select {
+        &:focus {
+            @if $enable-glow-effects {
+                box-shadow: var(--focus-ring),
+                0 0 12px rgba(#{$blue-400}, 0.15);
+            }
+        }
+    }
+
+    // Enhanced table styling
+    .table {
+        background: var(--color-surface);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+
+        th {
+            border-bottom: 2px solid var(--color-border);
+
+            @if $enable-glow-effects {
+                text-shadow: var(--text-glow-primary);
+            }
+        }
+
+        tr:hover {
+            background: var(--hover-overlay);
+
+            @if $enable-glow-effects {
+                box-shadow: 0 0 20px rgba(#{$blue-400}, 0.05) inset;
+            }
+        }
+    }
+
+    // Modal enhancements
+    .modal {
+        .modal-content {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: rgba(var(--color-surface), 0.9);
+            border: 1px solid var(--color-border);
+
+            @if $enable-glow-effects {
+                box-shadow: var(--shadow-modal), var(--glow-primary);
+            }
+        }
+
+        .modal-backdrop {
+            background: rgba(0, 0, 0, 0.8);
+        }
+    }
+
+    // Dropdown enhancements
+    .dropdown-menu {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        background: rgba(var(--color-surface), 0.95);
+        border: 1px solid var(--color-border);
+
+        .dropdown-item {
+
+            &:hover,
+            &:focus {
+                background: var(--hover-overlay);
+
+                @if $enable-glow-effects {
+                    box-shadow: 0 0 15px rgba(#{$blue-400}, 0.1) inset;
+                }
+            }
+        }
+    }
+
+    // Code blocks
+    pre,
+    code {
+        background: rgba(var(--color-background-tertiary), 0.8);
+        border: 1px solid var(--color-border);
+
+        @if $enable-glow-effects {
+            box-shadow: 0 0 20px rgba(#{$cyan-400}, 0.05) inset;
+        }
+    }
+
+    // Progress bars
+    .progress {
+        background: var(--color-background-tertiary);
+
+        .progress-bar {
+            @if $enable-glow-effects {
+                box-shadow: 0 0 10px rgba(#{$blue-400}, 0.3);
+            }
+        }
+    }
+
+    // Badges
+    .badge {
+        &.badge-primary {
+            @if $enable-glow-effects {
+                box-shadow: var(--glow-primary);
+            }
+        }
+
+        &.badge-success {
+            @if $enable-glow-effects {
+                box-shadow: var(--glow-success);
+            }
+        }
+    }
+
+    // Alerts
+    .alert {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid var(--color-border);
+
+        &.alert-primary {
+            background: var(--color-info-bg);
+            border-color: var(--color-info);
+
+            @if $enable-glow-effects {
+                box-shadow: 0 0 20px rgba(#{$info-400}, 0.1);
+            }
+        }
+    }
+
+    // Links with glow
+    a {
+        @if $enable-glow-effects {
+            &:hover {
+                text-shadow: var(--text-glow-primary);
+            }
+        }
+    }
+
+    // Selection styling
+    ::selection {
+        background: rgba(#{$blue-400}, 0.3);
+        color: var(--color-text-primary);
+    }
+
+    ::-moz-selection {
+        background: rgba(#{$blue-400}, 0.3);
+        color: var(--color-text-primary);
+    }
+}
+
+/* ========================================== */
+// Dark Theme Scrollbar
+/* ========================================== */
+
+[data-theme="dark"],
+.theme-dark {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-border) transparent;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-border);
+        border-radius: 4px;
+
+        &:hover {
+            background: var(--color-border-secondary);
+        }
+    }
+
+    ::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+}
+
+/* ========================================== */
+// Dark Theme Media Queries
+/* ========================================== */
+
+// Auto Dark Mode basierend auf System-Präferenz
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        // Erbt alle Dark Theme Variablen
+        @extend [data-theme="dark"];
+    }
+}
+
+// Reduzierte Glow-Effekte für Performance
+@media (prefers-reduced-motion: reduce) {
+
+    [data-theme="dark"],
+    .theme-dark {
+        --glow-primary: none;
+        --glow-accent: none;
+        --glow-success: none;
+        --glow-warning: none;
+        --glow-error: none;
+        --text-glow-primary: none;
+        --text-glow-accent: none;
+        --transition-glow: none;
+    }
+}
+
+// Mobile Dark Theme Optimierungen
+@media (max-width: $breakpoint-md) {
+
+    [data-theme="dark"],
+    .theme-dark {
+        // Reduzierte Effekte für bessere Performance
+        --glow-primary: none;
+        --glow-accent: none;
+
+        // Vereinfachte Schatten
+        --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
+
+        // Weniger Blur für bessere Performance
+        .card,
+        .modal-content,
+        .dropdown-menu {
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+    }
+}

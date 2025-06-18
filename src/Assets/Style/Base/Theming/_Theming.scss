@@ -1,0 +1,447 @@
+/* ========================================== */
+/* ================ THEMING SYSTEM ========== */
+/* ========================================== */
+/* Best Practice: Modulares, wartbares Theme-Management */
+
+/* ========================================== */
+// Theme Configuration Map - Zentrale Theme-Verwaltung
+/* ========================================== */
+
+$themes: (
+    'light': ('primary': $blue-600,
+        'primary-hover': $blue-700,
+        'primary-active': $blue-800,
+        'secondary': $gray-100,
+        'accent': $cyan-500,
+
+        'background': $white,
+        'background-secondary': $gray-50,
+        'background-tertiary': $gray-100,
+        'surface': $white,
+        'surface-secondary': $gray-50,
+
+        'text-primary': $gray-900,
+        'text-secondary': $gray-600,
+        'text-tertiary': $gray-400,
+        'text-inverse': $white,
+
+        'border': $gray-200,
+        'border-secondary': $gray-300,
+        'divider': $gray-100,
+
+        'shadow': $shadow-base,
+        'shadow-hover': $shadow-md,
+        'glow': none,
+    ),
+
+    'dark': ('primary': $blue-500,
+        'primary-hover': $blue-400,
+        'primary-active': $blue-300,
+        'secondary': $gray-800,
+        'accent': $cyan-400,
+
+        'background': $gray-950,
+        'background-secondary': $gray-900,
+        'background-tertiary': $gray-800,
+        'surface': $gray-900,
+        'surface-secondary': $gray-800,
+
+        'text-primary': $gray-100,
+        'text-secondary': $gray-300,
+        'text-tertiary': $gray-500,
+        'text-inverse': $gray-900,
+
+        'border': $gray-700,
+        'border-secondary': $gray-600,
+        'divider': $gray-800,
+
+        'shadow': 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        'shadow-hover': 0 25px 50px -12px rgba(0, 0, 0, 0.7),
+        'glow': $glow-blue,
+    ),
+
+    'purple': ('primary': $purple-600,
+        'primary-hover': $purple-700,
+        'primary-active': $purple-800,
+        'secondary': $purple-100,
+        'accent': $purple-400,
+
+        'background': $white,
+        'background-secondary': $purple-50,
+        'background-tertiary': $purple-100,
+        'surface': $white,
+        'surface-secondary': $purple-50,
+
+        'text-primary': $gray-900,
+        'text-secondary': $gray-600,
+        'text-tertiary': $gray-400,
+        'text-inverse': $white,
+
+        'border': $purple-200,
+        'border-secondary': $purple-300,
+        'divider': $purple-100,
+
+        'shadow': $shadow-base,
+        'shadow-hover': $shadow-md,
+        'glow': $glow-purple,
+    ),
+
+    'red': ('primary': $error-600,
+        'primary-hover': $error-700,
+        'primary-active': $error-800,
+        'secondary': $error-100,
+        'accent': $error-400,
+
+        'background': $white,
+        'background-secondary': $error-50,
+        'background-tertiary': $error-100,
+        'surface': $white,
+        'surface-secondary': $error-50,
+
+        'text-primary': $gray-900,
+        'text-secondary': $gray-600,
+        'text-tertiary': $gray-400,
+        'text-inverse': $white,
+
+        'border': $error-200,
+        'border-secondary': $error-300,
+        'divider': $error-100,
+
+        'shadow': $shadow-base,
+        'shadow-hover': $shadow-md,
+        'glow': 0 0 20px rgba($error-500, 0.5),
+    ),
+
+    'olive': ('primary': #6b7c32,
+        'primary-hover': #5a6b2a,
+        'primary-active': #4a5922,
+        'secondary': #f4f5f0,
+        'accent': #8b9c4a,
+
+        'background': #fefffe,
+        'background-secondary': #f9faf6,
+        'background-tertiary': #f4f5f0,
+        'surface': #fefffe,
+        'surface-secondary': #f9faf6,
+
+        'text-primary': #2d3e0f,
+        'text-secondary': #4a5922,
+        'text-tertiary': #6b7c32,
+        'text-inverse': #fefffe,
+
+        'border': #d4d6c8,
+        'border-secondary': #c4c6b8,
+        'divider': #e4e5e0,
+
+        'shadow': $shadow-base,
+        'shadow-hover': $shadow-md,
+        'glow': 0 0 20px rgba(#6b7c32, 0.3),
+    )) !default;
+
+/* ========================================== */
+// Theme Mixin - Automatische Theme-Generierung
+/* ========================================== */
+
+@mixin theme($theme-name) {
+    $theme-map: map-get($themes, $theme-name
+    );
+
+@if $theme-map {
+
+    &[data-theme="#{$theme-name}"],
+    .theme-#{$theme-name} & {
+        @each $property, $value in $theme-map {
+            --color-#{$property}: #{$value};
+        }
+
+        @content;
+    }
+}
+}
+
+@mixin all-themes {
+    @each $theme-name, $theme-map in $themes {
+        @include theme($theme-name) {
+            @content;
+        }
+    }
+}
+
+/* ========================================== */
+// Semantic Token System - CSS Custom Properties
+/* ========================================== */
+
+:root {
+    // Default Theme (Light)
+    $light-theme: map-get($themes, 'light');
+
+    @each $property, $value in $light-theme {
+        --color-#{$property}: #{$value};
+    }
+
+    // Component-specific tokens
+    --color-nav-bg: var(--color-surface);
+    --color-nav-text: var(--color-text-primary);
+    --color-nav-text-hover: var(--color-primary);
+    --color-nav-border: var(--color-border);
+
+    --color-header-bg: var(--color-surface);
+    --color-header-text: var(--color-text-primary);
+    --color-header-border: var(--color-border);
+
+    --color-footer-bg: var(--color-background-tertiary);
+    --color-footer-text: var(--color-text-secondary);
+    --color-footer-border: var(--color-border);
+
+    --color-sidebar-bg: var(--color-background-secondary);
+    --color-sidebar-text: var(--color-text-primary);
+    --color-sidebar-border: var(--color-border);
+
+    --color-card-bg: var(--color-surface);
+    --color-card-border: var(--color-border);
+    --shadow-card: var(--shadow);
+    --shadow-card-hover: var(--shadow-hover);
+
+    // Button tokens
+    --color-btn-primary-bg: var(--color-primary);
+    --color-btn-primary-bg-hover: var(--color-primary-hover);
+    --color-btn-primary-bg-active: var(--color-primary-active);
+    --color-btn-primary-text: var(--color-text-inverse);
+    --color-btn-primary-border: var(--color-primary);
+
+    --color-btn-secondary-bg: var(--color-secondary);
+    --color-btn-secondary-bg-hover: var(--color-background-tertiary);
+    --color-btn-secondary-text: var(--color-text-primary);
+    --color-btn-secondary-border: var(--color-border);
+
+    // Form tokens
+    --color-form-bg: var(--color-surface);
+    --color-form-border: var(--color-border);
+    --color-form-border-focus: var(--color-primary);
+    --color-form-text: var(--color-text-primary);
+    --color-form-placeholder: var(--color-text-tertiary);
+    --color-form-label: var(--color-text-secondary);
+
+    // Status colors
+    --color-success: #{$success-500};
+    --color-warning: #{$warning-500};
+    --color-error: #{$error-500};
+    --color-info: #{$info-500};
+
+    // Glow effects
+    --glow-effect: var(--glow);
+}
+
+/* ========================================== */
+// Theme-specific adjustments
+/* ========================================== */
+
+// Dark Theme Specific
+@include theme('dark') {
+    // Enhanced shadows for dark theme
+    --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+
+    // Glowing elements in dark theme
+    --glow-effect: #{$glow-blue};
+
+    // Enhanced contrast
+    --color-form-bg: var(--color-background-secondary);
+    --color-card-bg: var(--color-surface-secondary);
+}
+
+// Purple Theme Specific  
+@include theme('purple') {
+    --glow-effect: #{$glow-purple};
+
+    // Purple-specific button variants
+    --color-btn-accent-bg: #{$purple-500};
+    --color-btn-accent-bg-hover: #{$purple-600};
+    --color-btn-accent-text: #{$white};
+}
+
+// Red Theme Specific
+@include theme('red') {
+    --glow-effect: 0 0 20px rgba(#{$error-500}, 0.5);
+
+    // Red-specific variants
+    --color-btn-danger-bg: #{$error-600};
+    --color-btn-danger-bg-hover: #{$error-700};
+    --color-btn-danger-text: #{$white};
+}
+
+// Olive Theme Specific
+@include theme('olive') {
+    --glow-effect: 0 0 20px rgba(107, 124, 50, 0.3);
+
+    // Natural, earthy feel
+    --radius-default: #{$radius-lg};
+    --shadow: 0 4px 12px rgba(107, 124, 50, 0.1);
+}
+
+/* ========================================== */
+// Font Theme Integration
+/* ========================================== */
+
+// Default Font Theme
+.font-theme-default {
+    --font-family-primary: #{$font-family-sans};
+    --font-family-display: #{$font-family-display};
+    --font-family-mono: #{$font-family-mono};
+}
+
+// Future Font Theme
+.font-theme-future {
+    --font-family-primary: #{$font-family-future};
+    --font-family-display: #{$font-family-future};
+    --font-family-mono: #{$font-family-mono};
+
+    // Enhanced glow for future theme
+    @if $enable-glow-effects {
+        --glow-effect: #{$glow-cyan};
+
+        // Futuristic text shadow
+        --text-glow: 0 0 10px currentColor;
+    }
+}
+
+// Vintage Font Theme
+.font-theme-vintage {
+    --font-family-primary: #{$font-family-vintage};
+    --font-family-display: #{$font-family-vintage};
+    --font-family-mono: #{$font-family-mono};
+
+    // Softer shadows for vintage
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.15);
+    --glow-effect: none;
+}
+
+/* ========================================== */
+// Dynamic Theme Functions (für JavaScript Integration)
+/* ========================================== */
+
+// Theme Utility Classes
+.theme-transition {
+    transition: background-color $duration-300 $ease-out,
+        color $duration-300 $ease-out,
+        border-color $duration-300 $ease-out,
+        box-shadow $duration-300 $ease-out;
+}
+
+// Glow Toggle
+.glow-enabled {
+    --enable-glow: 1;
+}
+
+.glow-disabled {
+    --enable-glow: 0;
+    --glow-effect: none;
+}
+
+/* ========================================== */
+// Theme-aware Components Base Classes
+/* ========================================== */
+
+.theme-surface {
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+}
+
+.theme-background {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+}
+
+.theme-text-primary {
+    color: var(--color-text-primary);
+}
+
+.theme-text-secondary {
+    color: var(--color-text-secondary);
+}
+
+.theme-text-tertiary {
+    color: var(--color-text-tertiary);
+}
+
+.theme-border {
+    border-color: var(--color-border);
+}
+
+.theme-shadow {
+    box-shadow: var(--shadow);
+}
+
+.theme-glow {
+    @if $enable-glow-effects {
+        box-shadow: var(--glow-effect);
+    }
+}
+
+/* ========================================== */
+// Responsive Theme Adjustments
+/* ========================================== */
+
+// Mobile theme optimizations
+@media (max-width: $breakpoint-md) {
+    :root {
+        // Reduced glow on mobile for performance
+        --glow-effect: none;
+
+        // Simpler shadows
+        --shadow: #{$shadow-sm};
+        --shadow-hover: #{$shadow-base};
+    }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+    :root {
+        --color-border: #{$gray-900};
+        --color-border-secondary: #{$gray-800};
+        --shadow: none;
+        --glow-effect: none;
+    }
+
+    @include theme('dark') {
+        --color-border: #{$white};
+        --color-border-secondary: #{$gray-200};
+    }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+    .theme-transition {
+        transition: none;
+    }
+
+    :root {
+        --glow-effect: none;
+    }
+}
+
+/* ========================================== */
+// Theme Debug Mode (Development only)
+/* ========================================== */
+
+@if map-get($themes, 'debug') {
+    .theme-debug {
+        position: relative;
+
+        &::before {
+            content: attr(data-theme);
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: $spacing-2 $spacing-4;
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+            font-size: $font-size-xs;
+            font-weight: $font-weight-bold;
+            z-index: $z-index-toast;
+            border-radius: 0 0 0 $radius-md;
+        }
+    }
+}

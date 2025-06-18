@@ -2,27 +2,32 @@
 /* ================Base Import=============== */
 /* ========================================== */
 
-@use "@styles/Variables" as *;
-@use "@styles/Mixins" as *;
-@use "@styles/Reset" as *;
-@use "@styles/Global" as *;
+@use "@s/Variables" as *;
+@use "@s/Mixin" as *;
+@use "@s/Reset" as *;
+@use "@s/Global" as *;
+@use "@s/Animation" as *;
 
+/* ========================================== */
+// Theming System Import
+/* ========================================== */
+
+@use "@s/Theming/Theming" as *;
 
 /* ========================================== */
 // Themes Import [Beinhaltet BGs, Fonts, Colors, Cards, Buttons, etc.]
 /* ========================================== */
 
-@use "@themes/OliveTheme" as *;
-@use "@themes/DarkTheme" as *;
-@use "@themes/LightTheme" as *;
-@use "@themes/PurpleTheme" as *;
-@use "@themes/RedTheme" as *;
-
+@use "@t/OliveTheme" as *;
+@use "@t/DarkTheme" as *;
+@use "@t/LightThemeDefault" as *;
+@use "@t/PurpleTheme" as *;
+@use "@t/RedTheme" as *;
 
 /* ========================================== */
-// Fonts Importing
+// Font Themes Import
 /* ========================================== */
 
-@use "@fonts/Future" as *;
-@use "@fonts/Vintage" as *;
-@use "@fonts/Default" as *;
+@use "@ft/Future" as *;
+@use "@ft/Vintage" as *;
+@use "@ft/Default" as *;

@@ -6,46 +6,46 @@
       "@/*": [
         "*"
       ],
-      "@components/*": [
+      "@c/*": [
         "Components/*"
       ],
-      "@layouts/*": [
+      "@l/*": [
         "Components/Layout/*"
       ],
-      "@pages/*": [
+      "@p/*": [
         "Components/Pages/*"
       ],
-      "@forms/*": [
+      "@f/*": [
         "Components/Forms/*"
       ],
-      "@styles/*": [
+      "@s/*": [
         "Assets/Style/Base/*"
       ],
-      "@themes/*": [
+      "@t/*": [
         "Assets/Style/Base/Themes/*"
       ],
-      "@fonts/*": [
+      "@ft/*": [
         "Assets/Style/Base/Themes/Fonts/*"
       ],
-      "@images/*": [
+      "@img/*": [
         "Assets/Images/*"
       ],
-      "@utils/*": [
+      "@u/*": [
         "Utils/*"
       ],
-      "@routes/*": [
+      "@r/*": [
         "Routes/*"
       ],
-      "@services/*": [
+      "@svc/*": [
         "Services/*"
       ],
-      "@store/*": [
+      "@st/*": [
         "Store/*"
       ],
-      "@types/*": [
+      "@ty/*": [
         "Types/*"
       ],
-      "@plugins/*": [
+      "@pl/*": [
         "Plugins/*"
       ]
     }
