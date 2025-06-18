@@ -1,0 +1,567 @@
+/* ========================================== */
+/* ============= FUTURE FONT THEME ========== */
+/* ========================================== */
+/* Futuristisches Font-System mit Glow-Effekten und Tech-Ästhetik */
+
+/* ========================================== */
+// Future Font Theme Konfiguration
+/* ========================================== */
+
+.font-theme-future {
+    /* ========================================== */
+    // Font Family Definitionen - Futuristisch
+    /* ========================================== */
+
+    --font-family-primary: #{$font-family-future};
+    --font-family-display: #{$font-family-future};
+    --font-family-mono: #{$font-family-mono};
+
+    /* ========================================== */
+    // Typografie-Hierarchie - Tech & Futuristisch
+    /* ========================================== */
+
+    // Headlines - Mit Glow-Effekt
+    h1,
+    .h1 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-bold;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+
+        @if $enable-glow-effects {
+            text-shadow:
+                0 0 10px var(--color-primary),
+                0 0 20px var(--color-primary),
+                0 0 40px var(--color-primary);
+        }
+
+        // Futuristische Schrift-Features
+        font-feature-settings: "ss01" 1,
+        "ss02" 1;
+        -webkit-font-feature-settings: "ss01" 1,
+        "ss02" 1;
+
+        // Leichte Animation
+        transition: text-shadow $duration-300 $ease-out;
+    }
+
+    h2,
+    .h2 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-semibold;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+
+        @if $enable-glow-effects {
+            text-shadow:
+                0 0 8px var(--color-primary),
+                0 0 16px var(--color-primary);
+        }
+
+        transition: text-shadow $duration-300 $ease-out;
+    }
+
+    h3,
+    .h3 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-semibold;
+        letter-spacing: 0.02em;
+
+        @if $enable-glow-effects {
+            text-shadow: 0 0 6px var(--color-primary);
+        }
+    }
+
+    h4,
+    h5,
+    h6,
+    .h4,
+    .h5,
+    .h6 {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        font-size: 0.9em;
+    }
+
+    // Body Text - Tech-optimiert
+    p,
+    .body-text {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-light;
+        line-height: $line-height-relaxed;
+        letter-spacing: 0.01em;
+
+        // Monospace-ähnliche Zahlen
+        font-feature-settings: "tnum" 1, "zero" 1;
+        -webkit-font-feature-settings: "tnum" 1, "zero" 1;
+    }
+
+    // Small Text - Terminal-Style
+    small,
+    .small-text {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-normal;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        font-size: 0.85em;
+        opacity: 0.8;
+    }
+
+    /* ========================================== */
+    // Interface Elemente - Futuristisch
+    /* ========================================== */
+
+    // Buttons - Cyber-Style
+    .btn {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        position: relative;
+
+        @if $enable-glow-effects {
+            &:hover {
+                text-shadow:
+                    0 0 8px currentColor,
+                    0 0 16px currentColor;
+            }
+        }
+
+        // Futuristische Border-Animation
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg,
+                    transparent,
+                    var(--color-primary),
+                    transparent);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity $duration-300 $ease-out;
+        }
+
+        &:hover::before {
+            opacity: 0.1;
+        }
+    }
+
+    // Navigation - Terminal-Style
+    .nav,
+    .navbar {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-medium;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-size: 0.9em;
+
+        .nav-link {
+            position: relative;
+
+            &::before {
+                content: '>';
+                margin-right: $spacing-2;
+                color: var(--color-primary);
+                opacity: 0;
+                transition: opacity $duration-200 $ease-out;
+            }
+
+            &:hover::before,
+            &.active::before {
+                opacity: 1;
+            }
+        }
+    }
+
+    // Forms - Tech Interface
+    input,
+    textarea,
+    select {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-normal;
+        letter-spacing: 0.01em;
+        background: rgba(var(--color-background), 0.8);
+        border: 1px solid var(--color-primary);
+
+        @if $enable-glow-effects {
+            &:focus {
+                box-shadow:
+                    0 0 0 2px rgba(var(--color-primary), 0.3),
+                    0 0 20px rgba(var(--color-primary), 0.2);
+                text-shadow: 0 0 4px var(--color-primary);
+            }
+        }
+
+        &::placeholder {
+            font-family: var(--font-family-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9em;
+        }
+    }
+
+    label {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-medium;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-size: 0.85em;
+        color: var(--color-primary);
+    }
+
+    // Code - Enhanced Mono
+    code,
+    pre {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-normal;
+        letter-spacing: 0;
+        background: rgba(var(--color-background), 0.9);
+
+        @if $enable-glow-effects {
+            box-shadow:
+                inset 0 0 20px rgba(var(--color-primary), 0.05),
+                0 0 1px var(--color-primary);
+        }
+    }
+
+    /* ========================================== */
+    // E-Commerce - Cyber-Commerce
+    /* ========================================== */
+
+    // Produktnamen - Futuristisch
+    .product-title {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-semibold;
+        letter-spacing: 0.02em;
+        text-transform: capitalize;
+        line-height: $line-height-snug;
+
+        @if $enable-glow-effects {
+            &:hover {
+                text-shadow: 0 0 8px var(--color-primary);
+            }
+        }
+    }
+
+    // Preise - Digital Style
+    .price {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-bold;
+        font-feature-settings: "tnum" 1, "zero" 1;
+        letter-spacing: 0.02em;
+
+        &::before {
+            content: '$';
+            color: var(--color-primary);
+            margin-right: 2px;
+        }
+    }
+
+    .price-original {
+        font-weight: $font-weight-normal;
+        text-decoration: line-through;
+        opacity: 0.6;
+
+        &::before {
+            content: '$';
+            color: var(--color-text-tertiary);
+        }
+    }
+
+    // Bewertungen - Tech Display
+    .rating-text {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-medium;
+        font-size: $font-size-sm;
+        letter-spacing: 0.02em;
+
+        &::before {
+            content: '[';
+            color: var(--color-primary);
+        }
+
+        &::after {
+            content: ']';
+            color: var(--color-primary);
+        }
+    }
+
+    // Kategorien - Terminal Links
+    .category-link {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-medium;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: $font-size-sm;
+
+        &::before {
+            content: '# ';
+            color: var(--color-primary);
+        }
+    }
+
+    // Breadcrumbs - File Path Style
+    .breadcrumb {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-normal;
+        font-size: $font-size-sm;
+        letter-spacing: 0.01em;
+
+        .breadcrumb-separator {
+            color: var(--color-primary);
+            margin: 0 $spacing-1;
+
+            &::before {
+                content: '/';
+            }
+        }
+    }
+
+    /* ========================================== */
+    // Status & Badge - HUD Style
+    /* ========================================== */
+
+    .badge {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-bold;
+        font-size: $font-size-xs;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: $spacing-1 $spacing-3;
+        background: transparent;
+        border: 1px solid var(--color-primary);
+
+        @if $enable-glow-effects {
+            box-shadow:
+                0 0 10px rgba(var(--color-primary), 0.3),
+                inset 0 0 10px rgba(var(--color-primary), 0.1);
+            text-shadow: 0 0 4px var(--color-primary);
+        }
+
+        &::before {
+            content: '[';
+            margin-right: 2px;
+        }
+
+        &::after {
+            content: ']';
+            margin-left: 2px;
+        }
+    }
+
+    .status-text {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-medium;
+        font-size: $font-size-sm;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+
+        &.status-online::before {
+            content: '● ';
+            color: var(--color-success);
+
+            @if $enable-glow-effects {
+                text-shadow: 0 0 4px var(--color-success);
+            }
+        }
+
+        &.status-offline::before {
+            content: '● ';
+            color: var(--color-error);
+        }
+    }
+
+    /* ========================================== */
+    // Futuristische Animationen
+    /* ========================================== */
+
+    // Typing Effect für Headlines
+    .typing-effect {
+        overflow: hidden;
+        border-right: 2px solid var(--color-primary);
+        white-space: nowrap;
+        animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: 100%;
+        }
+    }
+
+    @keyframes blink-caret {
+
+        from,
+        to {
+            border-color: transparent;
+        }
+
+        50% {
+            border-color: var(--color-primary);
+        }
+    }
+
+    // Matrix-Style Text
+    .matrix-text {
+        font-family: var(--font-family-mono);
+        color: var(--color-primary);
+        animation: matrix-glow 2s ease-in-out infinite alternate;
+
+        @if $enable-glow-effects {
+            text-shadow:
+                0 0 5px currentColor,
+                0 0 10px currentColor,
+                0 0 15px currentColor;
+        }
+    }
+
+    @keyframes matrix-glow {
+        0% {
+            opacity: 0.8;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    // Scan Line Text Effect
+    .scan-line-text {
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(var(--color-primary), 0.4),
+                    transparent);
+            animation: scan 2s linear infinite;
+        }
+    }
+
+    @keyframes scan {
+        0% {
+            left: -100%;
+        }
+
+        100% {
+            left: 100%;
+        }
+    }
+
+    /* ========================================== */
+    // Responsive Adjustments
+    /* ========================================== */
+
+    @include mobile-only {
+
+        // Reduzierte Effekte auf Mobile
+        h1,
+        h2,
+        h3,
+        .h1,
+        .h2,
+        .h3 {
+            @if $enable-glow-effects {
+                text-shadow: 0 0 4px var(--color-primary);
+            }
+        }
+
+        .btn {
+            letter-spacing: 0.05em;
+        }
+
+        // Kompaktere Terminal-Navigation
+        .nav .nav-link::before {
+            display: none;
+        }
+    }
+
+    @include desktop-only {
+
+        // Verstärkte Effekte auf Desktop
+        h1,
+        .h1 {
+            @if $enable-glow-effects {
+                &:hover {
+                    text-shadow:
+                        0 0 15px var(--color-primary),
+                        0 0 30px var(--color-primary),
+                        0 0 45px var(--color-primary);
+                }
+            }
+        }
+    }
+
+    /* ========================================== */
+    // Performance & Accessibility
+    /* ========================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        // Keine Animationen
+        .typing-effect {
+            animation: none;
+            border-right: none;
+        }
+
+        .matrix-text {
+            animation: none;
+        }
+
+        .scan-line-text::after {
+            animation: none;
+            display: none;
+        }
+
+        // Reduzierte Glow-Effekte
+        * {
+            text-shadow: none !important;
+        }
+    }
+
+    @media (prefers-contrast: high) {
+
+        // Verstärkte Kontraste
+        h1,
+        h2,
+        h3,
+        .h1,
+        .h2,
+        .h3 {
+            font-weight: $font-weight-black;
+            text-shadow: none !important;
+        }
+
+        .badge {
+            border-width: 2px;
+            box-shadow: none !important;
+        }
+    }
+
+    // Battery-optimized Mode
+    @media (prefers-reduced-motion: reduce) {
+        .badge {
+            box-shadow: none !important;
+        }
+
+        .btn::before {
+            display: none;
+        }
+    }
+}

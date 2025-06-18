@@ -1,0 +1,250 @@
+/* ========================================== */
+/* ============= DEFAULT FONT THEME ========= */
+/* ========================================== */
+/* Klassisches, modernes Font-System für optimale Lesbarkeit */
+
+/* ========================================== */
+// Default Font Theme Konfiguration
+/* ========================================== */
+
+.font-theme-default {
+    /* ========================================== */
+    // Font Family Definitionen
+    /* ========================================== */
+
+    --font-family-primary: #{$font-family-sans};
+    --font-family-display: #{$font-family-display};
+    --font-family-mono: #{$font-family-mono};
+
+    /* ========================================== */
+    // Typografie-Hierarchie - Standard & Lesbar
+    /* ========================================== */
+
+    // Headlines - Klare Hierarchie
+    h1,
+    .h1 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-bold;
+        letter-spacing: -0.02em;
+
+        // Subtile Text-Optimierung
+        text-rendering: optimizeLegibility;
+        -webkit-font-feature-settings: "kern" 1, "liga" 1;
+        font-feature-settings: "kern" 1, "liga" 1;
+    }
+
+    h2,
+    .h2 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-semibold;
+        letter-spacing: -0.01em;
+        text-rendering: optimizeLegibility;
+    }
+
+    h3,
+    .h3 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-semibold;
+        letter-spacing: -0.005em;
+    }
+
+    h4,
+    h5,
+    h6,
+    .h4,
+    .h5,
+    .h6 {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+    }
+
+    // Body Text - Optimale Lesbarkeit
+    p,
+    .body-text {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-normal;
+        line-height: $line-height-relaxed;
+
+        // Bessere Textdarstellung
+        text-rendering: optimizeLegibility;
+        -webkit-font-feature-settings: "kern" 1, "liga" 1;
+        font-feature-settings: "kern" 1, "liga" 1;
+    }
+
+    // Small Text
+    small,
+    .small-text {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-normal;
+        letter-spacing: 0.01em;
+    }
+
+    /* ========================================== */
+    // Interface Elemente
+    /* ========================================== */
+
+    // Buttons - Klare Lesbarkeit
+    .btn {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        letter-spacing: 0.01em;
+        text-transform: none;
+    }
+
+    // Navigation
+    .nav,
+    .navbar {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        letter-spacing: 0.005em;
+    }
+
+    // Forms
+    input,
+    textarea,
+    select {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-normal;
+    }
+
+    label {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        letter-spacing: 0.005em;
+    }
+
+    // Code
+    code,
+    pre {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-normal;
+        letter-spacing: 0;
+    }
+
+    /* ========================================== */
+    // E-Commerce spezifische Typografie
+    /* ========================================== */
+
+    // Produktnamen
+    .product-title {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-semibold;
+        letter-spacing: -0.01em;
+        line-height: $line-height-snug;
+    }
+
+    // Preise
+    .price {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-bold;
+        font-feature-settings: "tnum" 1; // Tabular numbers
+    }
+
+    .price-original {
+        font-weight: $font-weight-normal;
+        text-decoration: line-through;
+    }
+
+    // Bewertungen
+    .rating-text {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        font-size: $font-size-sm;
+    }
+
+    // Kategorien
+    .category-link {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: $font-size-sm;
+    }
+
+    // Breadcrumbs
+    .breadcrumb {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-normal;
+        font-size: $font-size-sm;
+        letter-spacing: 0.01em;
+    }
+
+    /* ========================================== */
+    // Status & Badge Typografie
+    /* ========================================== */
+
+    .badge {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-xs;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+    }
+
+    .status-text {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        font-size: $font-size-sm;
+    }
+
+    /* ========================================== */
+    // Responsive Font Adjustments
+    /* ========================================== */
+
+    @include mobile-only {
+
+        // Bessere Lesbarkeit auf kleinen Screens
+        p,
+        .body-text {
+            line-height: $line-height-loose;
+        }
+
+        // Kompaktere Headlines
+        h1,
+        .h1 {
+            letter-spacing: -0.01em;
+        }
+    }
+
+    @include desktop-only {
+
+        // Feintuning für Desktop
+        h1,
+        .h1 {
+            letter-spacing: -0.025em;
+        }
+
+        .btn {
+            letter-spacing: 0.008em;
+        }
+    }
+
+    /* ========================================== */
+    // Barrierefreiheit
+    /* ========================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        // Keine animierte Typografie
+        * {
+            text-shadow: none !important;
+        }
+    }
+
+    @media (prefers-contrast: high) {
+
+        // Verstärkte Schriftgewichte
+        h1,
+        h2,
+        h3,
+        .h1,
+        .h2,
+        .h3 {
+            font-weight: $font-weight-black;
+        }
+
+        .btn {
+            font-weight: $font-weight-bold;
+        }
+    }
+}

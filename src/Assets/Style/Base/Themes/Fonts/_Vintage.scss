@@ -1,0 +1,622 @@
+/* ========================================== */
+/* ============= VINTAGE FONT THEME ========= */
+/* ========================================== */
+/* Klassisches, elegantes Font-System mit Vintage-Ästhetik */
+
+/* ========================================== */
+// Vintage Font Theme Konfiguration
+/* ========================================== */
+
+.font-theme-vintage {
+    /* ========================================== */
+    // Font Family Definitionen - Klassisch & Elegant
+    /* ========================================== */
+
+    --font-family-primary: #{$font-family-vintage};
+    --font-family-display: #{$font-family-vintage};
+    --font-family-mono: #{$font-family-mono};
+
+    /* ========================================== */
+    // Typografie-Hierarchie - Elegant & Zeitlos
+    /* ========================================== */
+
+    // Headlines - Klassische Eleganz
+    h1,
+    .h1 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-bold;
+        letter-spacing: -0.01em;
+        line-height: $line-height-tight;
+
+        // Klassische Schrift-Features
+        font-feature-settings: "liga" 1, "kern" 1, "swsh" 1;
+        -webkit-font-feature-settings: "liga" 1, "kern" 1, "swsh" 1;
+
+        // Subtile Eleganz
+        text-rendering: optimizeLegibility;
+
+        // Dezente Schatten für Tiefe
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    h2,
+    .h2 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-semibold;
+        letter-spacing: -0.005em;
+        line-height: $line-height-tight;
+
+        font-feature-settings: "liga" 1, "kern" 1;
+        text-rendering: optimizeLegibility;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.08);
+    }
+
+    h3,
+    .h3 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-semibold;
+        letter-spacing: 0;
+        font-style: italic; // Elegante Kursivschrift
+
+        font-feature-settings: "liga" 1, "kern" 1;
+    }
+
+    h4,
+    h5,
+    h6,
+    .h4,
+    .h5,
+    .h6 {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-medium;
+        letter-spacing: 0.01em;
+        font-style: normal;
+    }
+
+    // Body Text - Optimale Lesbarkeit
+    p,
+    .body-text {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-normal;
+        line-height: $line-height-loose;
+        letter-spacing: 0.005em;
+
+        // Klassische Typografie-Features
+        font-feature-settings: "liga" 1, "kern" 1, "onum" 1;
+        -webkit-font-feature-settings: "liga" 1, "kern" 1, "onum" 1;
+        text-rendering: optimizeLegibility;
+
+        // Erste Zeile einrücken für Buchcharakter
+        text-indent: 1.5em;
+
+        &:first-of-type {
+            text-indent: 0; // Erste Paragraph ohne Einrückung
+
+            &::first-letter {
+                font-size: 3em;
+                float: left;
+                line-height: 1;
+                margin: 0.1em 0.1em 0 0;
+                font-weight: $font-weight-bold;
+                color: var(--color-primary);
+            }
+        }
+    }
+
+    // Small Text - Klassisch
+    small,
+    .small-text {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-light;
+        letter-spacing: 0.02em;
+        font-style: italic;
+        font-size: 0.9em;
+    }
+
+    /* ========================================== */
+    // Interface Elemente - Klassisch Modern
+    /* ========================================== */
+
+    // Buttons - Elegante Beschilderung
+    .btn {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        letter-spacing: 0.02em;
+        text-transform: capitalize;
+        font-feature-settings: "smcp" 1; // Small caps
+        position: relative;
+
+        // Klassische Button-Verzierung
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.5;
+            transition: all $duration-300 $ease-out;
+        }
+
+        &::before {
+            top: 50%;
+            left: $spacing-2;
+            transform: translateY(-50%);
+        }
+
+        &::after {
+            top: 50%;
+            right: $spacing-2;
+            transform: translateY(-50%);
+        }
+
+        &:hover {
+
+            &::before,
+            &::after {
+                width: 12px;
+                opacity: 1;
+            }
+        }
+    }
+
+    // Navigation - Klassisches Menü
+    .nav,
+    .navbar {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        letter-spacing: 0.01em;
+        text-transform: capitalize;
+
+        .nav-link {
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                width: 0;
+                height: 1px;
+                background: var(--color-primary);
+                transition: width $duration-300 $ease-out;
+            }
+
+            &:hover::after,
+            &.active::after {
+                width: 100%;
+            }
+        }
+    }
+
+    // Forms - Klassisch elegant
+    input,
+    textarea,
+    select {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-normal;
+        letter-spacing: 0.01em;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: $radius-sm;
+
+        // Klassischer Focus-Stil
+        &:focus {
+            box-shadow:
+                0 0 0 2px rgba(var(--color-primary), 0.1),
+                inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-primary);
+        }
+
+        &::placeholder {
+            font-style: italic;
+            color: var(--color-text-tertiary);
+        }
+    }
+
+    label {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-semibold;
+        letter-spacing: 0.01em;
+        color: var(--color-text-primary);
+
+        // Dekorative Zwei-Punkte
+        &:not(.inline)::after {
+            content: ':';
+            margin-left: 2px;
+        }
+    }
+
+    // Code - Klassische Schreibmaschine
+    code,
+    pre {
+        font-family: var(--font-family-mono);
+        font-weight: $font-weight-normal;
+        letter-spacing: 0;
+        background: var(--color-background-secondary);
+        border: 1px solid var(--color-border);
+
+        // Schreibmaschinen-Stil
+        box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ========================================== */
+    // E-Commerce - Vintage Shop Ästhetik
+    /* ========================================== */
+
+    // Produktnamen - Wie Katalog-Einträge
+    .product-title {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-semibold;
+        letter-spacing: 0;
+        line-height: $line-height-snug;
+        font-style: italic;
+
+        // Dekorative Anführungszeichen
+        &::before {
+            content: '"';
+            color: var(--color-primary);
+            font-size: 1.2em;
+        }
+
+        &::after {
+            content: '"';
+            color: var(--color-primary);
+            font-size: 1.2em;
+        }
+    }
+
+    // Preise - Klassische Währungsdarstellung
+    .price {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-bold;
+        font-feature-settings: "onum" 1; // Old-style numbers
+        letter-spacing: 0.01em;
+
+        // Währungssymbol stilisiert
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 0.8em;
+            height: 0.8em;
+            background: var(--color-primary);
+            border-radius: 50%;
+            margin-right: 0.3em;
+            vertical-align: middle;
+        }
+    }
+
+    .price-original {
+        font-weight: $font-weight-normal;
+        text-decoration: line-through;
+        opacity: 0.7;
+        font-style: italic;
+    }
+
+    // Bewertungen - Wie Zeitungsrezensionen
+    .rating-text {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-normal;
+        font-size: $font-size-sm;
+        font-style: italic;
+        letter-spacing: 0.01em;
+
+        &::before {
+            content: '— ';
+            color: var(--color-primary);
+        }
+    }
+
+    // Kategorien - Wie Bibliotheks-Kategorien
+    .category-link {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        letter-spacing: 0.02em;
+        font-feature-settings: "smcp" 1; // Small caps
+        font-size: $font-size-sm;
+        text-transform: lowercase;
+
+        &::before {
+            content: '§ ';
+            color: var(--color-primary);
+            font-weight: $font-weight-bold;
+        }
+    }
+
+    // Breadcrumbs - Wie Buchkapitel
+    .breadcrumb {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-normal;
+        font-size: $font-size-sm;
+        letter-spacing: 0.01em;
+        font-style: italic;
+
+        .breadcrumb-separator {
+            color: var(--color-primary);
+            margin: 0 $spacing-2;
+            font-style: normal;
+
+            &::before {
+                content: '→';
+            }
+        }
+    }
+
+    /* ========================================== */
+    // Status & Badge - Klassische Siegel
+    /* ========================================== */
+
+    .badge {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-xs;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-feature-settings: "smcp" 1;
+        padding: $spacing-2 $spacing-4;
+        border: 2px solid var(--color-primary);
+        border-radius: $radius-full;
+        background: var(--color-surface);
+        position: relative;
+
+        // Klassisches Siegel-Design
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--color-primary);
+            border-radius: 50%;
+        }
+
+        &::before {
+            top: 50%;
+            left: $spacing-1;
+            transform: translateY(-50%);
+        }
+
+        &::after {
+            top: 50%;
+            right: $spacing-1;
+            transform: translateY(-50%);
+        }
+    }
+
+    .status-text {
+        font-family: var(--font-family-primary);
+        font-weight: $font-weight-medium;
+        font-size: $font-size-sm;
+        font-style: italic;
+        letter-spacing: 0.01em;
+
+        &.status-available::before {
+            content: '✓ ';
+            color: var(--color-success);
+            font-style: normal;
+            font-weight: $font-weight-bold;
+        }
+
+        &.status-unavailable::before {
+            content: '✗ ';
+            color: var(--color-error);
+            font-style: normal;
+            font-weight: $font-weight-bold;
+        }
+    }
+
+    /* ========================================== */
+    // Klassische Zitate & Testimonials
+    /* ========================================== */
+
+    blockquote {
+        font-family: var(--font-family-display);
+        font-weight: $font-weight-normal;
+        font-size: $font-size-lg;
+        font-style: italic;
+        line-height: $line-height-loose;
+        letter-spacing: 0.01em;
+        position: relative;
+        padding: $spacing-6 $spacing-8;
+
+        // Klassische Anführungszeichen
+        &::before {
+            content: '"';
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 4em;
+            color: var(--color-primary);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        &::after {
+            content: '"';
+            position: absolute;
+            bottom: 0;
+            right: $spacing-4;
+            font-size: 4em;
+            color: var(--color-primary);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        cite {
+            display: block;
+            margin-top: $spacing-4;
+            font-family: var(--font-family-primary);
+            font-weight: $font-weight-medium;
+            font-size: $font-size-sm;
+            font-style: normal;
+            text-align: right;
+
+            &::before {
+                content: '— ';
+                color: var(--color-primary);
+            }
+        }
+    }
+
+    /* ========================================== */
+    // Dekorative Elemente
+    /* ========================================== */
+
+    // Klassische Trennlinie
+    hr {
+        border: none;
+        height: 1px;
+        background: linear-gradient(to right,
+                transparent,
+                var(--color-border),
+                transparent);
+        position: relative;
+        margin: $spacing-8 0;
+
+        &::before {
+            content: '❦';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--color-background);
+            color: var(--color-primary);
+            padding: 0 $spacing-4;
+            font-size: $font-size-lg;
+        }
+    }
+
+    // Vintage Drop Caps für erste Paragraphen
+    .drop-cap {
+        &::first-letter {
+            font-family: var(--font-family-display);
+            font-size: 4em;
+            float: left;
+            line-height: 0.8;
+            margin: 0.1em 0.1em 0 0;
+            font-weight: $font-weight-bold;
+            color: var(--color-primary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    /* ========================================== */
+    // Responsive Adjustments - Klassisch
+    /* ========================================== */
+
+    @include mobile-only {
+
+        // Vereinfachte Dekoration auf Mobile
+        p:first-of-type::first-letter {
+            font-size: 2em;
+            margin: 0.05em 0.05em 0 0;
+        }
+
+        .btn {
+
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+
+        .badge {
+
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+
+        blockquote {
+            padding: $spacing-4;
+
+            &::before,
+            &::after {
+                font-size: 2em;
+            }
+        }
+    }
+
+    @include desktop-only {
+
+        // Verstärkte Effekte auf Desktop
+        p {
+            text-indent: 2em;
+        }
+
+        blockquote {
+            padding: $spacing-8 $spacing-12;
+        }
+    }
+
+    /* ========================================== */
+    // Print Optimierung - Zeitungsformat
+    /* ========================================== */
+
+    @media print {
+        * {
+            text-shadow: none !important;
+            color: black !important;
+        }
+
+        h1,
+        h2,
+        h3 {
+            page-break-after: avoid;
+        }
+
+        p {
+            orphans: 3;
+            widows: 3;
+            text-indent: 1.5em;
+        }
+
+        blockquote {
+            page-break-inside: avoid;
+            border-left: 3px solid black;
+            padding-left: $spacing-4;
+        }
+
+        .badge {
+            border: 1px solid black;
+        }
+    }
+
+    /* ========================================== */
+    // Barrierefreiheit
+    /* ========================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        // Keine animierten Dekorationen
+        .nav-link::after {
+            transition: none;
+        }
+
+        .btn::before,
+        .btn::after {
+            transition: none;
+        }
+    }
+
+    @media (prefers-contrast: high) {
+
+        // Verstärkte Kontraste für Vintage
+        h1,
+        h2,
+        h3 {
+            font-weight: $font-weight-black;
+            text-shadow: none;
+        }
+
+        blockquote::before,
+        blockquote::after {
+            opacity: 0.8;
+        }
+
+        .badge {
+            border-width: 3px;
+        }
+    }
+}
