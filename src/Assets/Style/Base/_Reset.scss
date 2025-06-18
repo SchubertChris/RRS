@@ -1,80 +1,57 @@
 /* ========================================== */
-/* ================ CSS RESET =============== */
+/* =============== RESET SYSTEM ============= */
 /* ========================================== */
-/* Enhanced Modern CSS Reset für maximale Browser-Kompatibilität */
+/* Moderner CSS Reset für konsistente Browser-Basis */
+
+// WICHTIG: Falls Variablen benötigt werden (optional)
+// @use "Variables" as *;
 
 /* ========================================== */
-// Modern Box Model Reset
+// Box Sizing & Basis Reset
 /* ========================================== */
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-
-    // Performance optimization
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 /* ========================================== */
-// Root & Document Reset
+// HTML & Body Foundation
 /* ========================================== */
 
 html {
-    // Verhindert horizontales Scrollen
-    overflow-x: hidden;
-
-    // Optimale Text-Rendering
+    line-height: 1.15;
     -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-
-    // Verbesserte Schriftglättung
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    // Tab-Größe für Code-Darstellung
-    -moz-tab-size: 4;
-    tab-size: 4;
-
-    // Basis-Schriftart als Fallback
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-
-    // Performance für Animationen
+    text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
+}
 
-    @media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
+    html {
         scroll-behavior: auto;
     }
 }
 
 body {
-    // Margin/Padding Reset
     margin: 0;
     padding: 0;
-
-    // Verhindert horizontales Scrollen
-    overflow-x: hidden;
-
-    // Mindesthöhe für Full-Viewport-Layouts
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    background-color: inherit;
     min-height: 100vh;
-
-    // Optimale Text-Rendering
-    text-rendering: optimizeSpeed;
-
-    // Mobile Safari Fixes
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-
-    // Font-Smoothing
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 /* ========================================== */
-// Typography Reset - Hierarchie entfernen
+// Typography Reset
 /* ========================================== */
 
 h1,
@@ -85,437 +62,178 @@ h5,
 h6 {
     margin: 0;
     padding: 0;
-    font-weight: inherit;
     font-size: inherit;
+    font-weight: inherit;
     line-height: inherit;
 }
 
-p,
-blockquote,
-pre,
-address,
-hr,
-table,
-fieldset,
-figure {
+p {
     margin: 0;
     padding: 0;
 }
 
-// Listen-Reset
+a {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+/* ========================================== */
+// Media Reset
+/* ========================================== */
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    vertical-align: middle;
+}
+
+/* ========================================== */
+// Form Reset
+/* ========================================== */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+input,
+textarea,
+select {
+    outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+    outline: none;
+}
+
+/* Remove default button styles */
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    outline: inherit;
+    padding: 0;
+    color: inherit;
+}
+
+/* Remove default input styles */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+textarea {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+}
+
+/* Remove search input styling */
+input[type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+/* Remove number input arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* File input styling */
+input[type="file"] {
+    font: inherit;
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+}
+
+/* ========================================== */
+// List Reset
+/* ========================================== */
+
 ul,
-ol,
-dl {
+ol {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-li,
-dt,
-dd {
+li {
     margin: 0;
     padding: 0;
 }
 
-// Blockquote Reset
-blockquote {
-    quotes: none;
-
-    &::before,
-    &::after {
-        content: '';
-        content: none;
-    }
-}
-
-// Address Reset
-address {
-    font-style: inherit;
-}
-
 /* ========================================== */
-// Link Reset - Alle Defaults entfernen
-/* ========================================== */
-
-a {
-    background-color: transparent;
-    color: inherit;
-    text-decoration: inherit;
-
-    // Mobile optimizations
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-
-    // Focus outline (wird später neu definiert)
-    outline: none;
-
-    &:hover,
-    &:focus,
-    &:active,
-    &:visited {
-        outline: none;
-        color: inherit;
-        text-decoration: inherit;
-    }
-}
-
-/* ========================================== */
-// Media Reset - Responsive & Performance optimiert
-/* ========================================== */
-
-img,
-picture,
-video,
-canvas,
-svg {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    border: 0;
-
-    // Performance optimization
-    image-rendering: optimizeQuality;
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
-    user-drag: none;
-}
-
-// SVG spezifisches Reset
-svg {
-    fill: currentColor;
-    vertical-align: middle;
-
-    // Bessere Darstellung
-    shape-rendering: auto;
-
-    &:not(:root) {
-        overflow: hidden;
-    }
-}
-
-// Picture Element
-picture {
-    display: contents;
-}
-
-// Audio & Video
-audio,
-video {
-    display: inline-block;
-    vertical-align: baseline;
-}
-
-audio:not([controls]) {
-    display: none;
-    height: 0;
-}
-
-/* ========================================== */
-// Form Elements Reset - Komplett normalisiert
-/* ========================================== */
-
-// Base Form Reset
-input,
-button,
-textarea,
-select,
-optgroup,
-option {
-    font: inherit;
-    color: inherit;
-    background: transparent;
-    border: none;
-    outline: none;
-    margin: 0;
-    padding: 0;
-    line-height: inherit;
-
-    // Webkit fixes
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    // Mobile optimizations
-    -webkit-tap-highlight-color: transparent;
-}
-
-// Input spezifisches Reset
-input {
-
-    // Autofill Styling entfernen
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus,
-    &:-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 30px transparent inset !important;
-        -webkit-text-fill-color: inherit !important;
-        transition: background-color 5000s ease-in-out 0s;
-    }
-
-    // Suchfeld-Styling entfernen
-    &[type="search"] {
-        -webkit-appearance: none;
-
-        &::-webkit-search-decoration,
-        &::-webkit-search-cancel-button,
-        &::-webkit-search-results-button,
-        &::-webkit-search-results-decoration {
-            -webkit-appearance: none;
-        }
-    }
-
-    // Number Input Spinner entfernen
-    &[type="number"] {
-        -webkit-appearance: textfield;
-        -moz-appearance: textfield;
-
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-    }
-
-    // Date/Time Input Resets
-    &[type="date"],
-    &[type="time"],
-    &[type="datetime-local"],
-    &[type="month"],
-    &[type="week"] {
-        &::-webkit-calendar-picker-indicator {
-            opacity: 0;
-            position: absolute;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-    }
-
-    // Color Input Reset
-    &[type="color"] {
-        width: 100%;
-        height: 100%;
-        border: none;
-        cursor: pointer;
-
-        &::-webkit-color-swatch-wrapper {
-            padding: 0;
-            border: none;
-        }
-
-        &::-webkit-color-swatch {
-            border: none;
-            border-radius: inherit;
-        }
-
-        &::-moz-color-swatch {
-            border: none;
-            border-radius: inherit;
-        }
-    }
-
-    // File Input Reset
-    &[type="file"] {
-        cursor: pointer;
-
-        &::-webkit-file-upload-button {
-            -webkit-appearance: none;
-            font: inherit;
-            background: transparent;
-            border: none;
-            outline: none;
-        }
-    }
-
-    // Range Input Reset
-    &[type="range"] {
-        width: 100%;
-        background: transparent;
-        cursor: pointer;
-
-        &::-webkit-slider-track,
-        &::-webkit-slider-thumb {
-            -webkit-appearance: none;
-        }
-
-        &::-moz-range-track,
-        &::-moz-range-thumb {
-            border: none;
-            background: transparent;
-        }
-
-        &::-ms-track,
-        &::-ms-thumb {
-            border: none;
-            background: transparent;
-        }
-    }
-
-    // Checkbox & Radio Reset
-    &[type="checkbox"],
-    &[type="radio"] {
-        width: auto;
-        height: auto;
-        cursor: pointer;
-
-        &::-ms-check {
-            display: none;
-        }
-    }
-}
-
-// Button Reset
-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font: inherit;
-    color: inherit;
-    outline: none;
-    text-align: inherit;
-    text-transform: inherit;
-    letter-spacing: inherit;
-    word-spacing: inherit;
-    line-height: inherit;
-
-    // Firefox Button-Styling entfernen
-    &::-moz-focus-inner {
-        border: 0;
-        padding: 0;
-        margin: 0;
-    }
-
-    // Disabled state
-    &:disabled {
-        cursor: default;
-    }
-
-    // Mobile optimizations
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-}
-
-// Textarea Reset
-textarea {
-    resize: vertical;
-    overflow: auto;
-    vertical-align: top;
-
-    // Webkit fixes
-    -webkit-appearance: none;
-
-    // Scrollbar optimization
-    scrollbar-width: thin;
-}
-
-// Select Reset
-select {
-    cursor: pointer;
-
-    // Entfernt Standard-Dropdown-Pfeil
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    // Firefox spezifisches Reset
-    &:-moz-focusring {
-        color: transparent;
-        text-shadow: 0 0 0 currentColor;
-    }
-
-    // IE/Edge Reset
-    &::-ms-expand {
-        display: none;
-    }
-}
-
-// Option & Optgroup Reset
-option,
-optgroup {
-    font: inherit;
-    color: inherit;
-    background: inherit;
-}
-
-// Fieldset & Legend Reset
-fieldset {
-    border: none;
-    margin: 0;
-    padding: 0;
-    min-width: 0;
-}
-
-legend {
-    padding: 0;
-    margin: 0;
-    border: 0;
-    display: block;
-    width: 100%;
-    color: inherit;
-    font: inherit;
-    white-space: normal;
-}
-
-// Label Reset
-label {
-    margin: 0;
-    padding: 0;
-    font: inherit;
-    color: inherit;
-    cursor: pointer;
-}
-
-// Progress & Meter Reset
-progress,
-meter {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    background: transparent;
-
-    &::-webkit-progress-bar,
-    &::-webkit-progress-value,
-    &::-webkit-meter-bar,
-    &::-webkit-meter-optimum-value,
-    &::-webkit-meter-suboptimum-value,
-    &::-webkit-meter-even-less-good-value {
-        background: transparent;
-        border: none;
-    }
-
-    &::-moz-progress-bar,
-    &::-moz-meter-bar {
-        background: transparent;
-        border: none;
-    }
-}
-
-/* ========================================== */
-// Table Reset - Komplett normalisiert
+// Table Reset
 /* ========================================== */
 
 table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-    font: inherit;
-    color: inherit;
-    background: transparent;
 }
 
-caption,
 th,
 td {
-    padding: 0;
     margin: 0;
-    border: 0;
-    font: inherit;
-    color: inherit;
+    padding: 0;
     text-align: inherit;
     vertical-align: inherit;
     background: transparent;
@@ -529,7 +247,6 @@ th {
 // Interactive Elements Reset
 /* ========================================== */
 
-// Details & Summary
 details {
     display: block;
     margin: 0;
@@ -541,29 +258,27 @@ summary {
     margin: 0;
     padding: 0;
     cursor: pointer;
-
-    &::-webkit-details-marker {
-        display: none;
-    }
 }
 
-// Dialog Reset
+summary::-webkit-details-marker {
+    display: none;
+}
+
 dialog {
     background: transparent;
     border: none;
     padding: 0;
     margin: 0;
+}
 
-    &::backdrop {
-        background: transparent;
-    }
+dialog::backdrop {
+    background: transparent;
 }
 
 /* ========================================== */
-// Misc Elements Reset
+// Miscellaneous Elements Reset
 /* ========================================== */
 
-// HR Reset
 hr {
     border: none;
     margin: 0;
@@ -573,20 +288,17 @@ hr {
     overflow: visible;
 }
 
-// Abbreviation Reset
 abbr[title] {
     border-bottom: none;
     text-decoration: none;
     cursor: help;
 }
 
-// Mark Reset
 mark {
     background: transparent;
     color: inherit;
 }
 
-// Emphasis Reset
 strong,
 b {
     font-weight: inherit;
@@ -597,7 +309,6 @@ i {
     font-style: inherit;
 }
 
-// Code Reset
 code,
 kbd,
 samp,
@@ -611,12 +322,10 @@ pre {
     padding: 0;
 }
 
-// Small Reset
 small {
     font-size: inherit;
 }
 
-// Sub & Sup Reset
 sub,
 sup {
     font-size: inherit;
@@ -625,29 +334,26 @@ sup {
     vertical-align: baseline;
 }
 
-// Quote Reset
 q {
     quotes: none;
+}
 
-    &::before,
-    &::after {
-        content: '';
-        content: none;
-    }
+q::before,
+q::after {
+    content: '';
+    content: none;
 }
 
 /* ========================================== */
 // Focus & Selection Reset
 /* ========================================== */
 
-// Focus Reset (wird in Global.scss neu definiert)
 :focus,
 :focus-visible,
 :focus-within {
     outline: none;
 }
 
-// Selection Reset (wird in Themes neu definiert)
 ::selection {
     background: transparent;
     color: inherit;
@@ -664,7 +370,6 @@ q {
 // Scrollbar Reset
 /* ========================================== */
 
-// Webkit Scrollbar Reset
 ::-webkit-scrollbar {
     width: 0;
     height: 0;
@@ -684,105 +389,6 @@ q {
     background: transparent;
 }
 
-// Firefox Scrollbar Reset
-* {
-    scrollbar-width: none;
-    scrollbar-color: transparent transparent;
-}
-
-/* ========================================== */
-// Browser-spezifische Resets
-/* ========================================== */
-
-// iOS/Safari spezifische Resets
-@media screen and (max-device-width: 767px) {
-
-    // Verhindert Zoom bei Input-Focus
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="password"],
-    input[type="search"],
-    input[type="url"],
-    input[type="number"],
-    textarea,
-    select {
-        font-size: 16px;
-    }
-}
-
-// Safari Button Reset
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-button {
-    -webkit-appearance: none;
-    border-radius: 0;
-}
-
-// Firefox spezifische Resets
-::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-    margin: 0;
-}
-
-// Edge/IE spezifische Resets
-input::-ms-clear,
-input::-ms-reveal {
-    display: none;
-    width: 0;
-    height: 0;
-}
-
-input::-ms-expand {
-    display: none;
-}
-
-// Chrome Autofill Icon Reset
-input::-webkit-contacts-auto-fill-button,
-input::-webkit-credentials-auto-fill-button {
-    visibility: hidden;
-    display: none !important;
-    pointer-events: none;
-    height: 0;
-    width: 0;
-    margin: 0;
-}
-
-/* ========================================== */
-// Performance & Accessibility
-/* ========================================== */
-
-// Reduced Motion Reset
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-// High Contrast Mode Reset
-@media (prefers-contrast: high) {
-    * {
-        text-shadow: none !important;
-        box-shadow: none !important;
-    }
-}
-
-// Reduced Transparency Reset
-@media (prefers-reduced-transparency: reduce) {
-    * {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
-}
-
 /* ========================================== */
 // Print Reset
 /* ========================================== */
@@ -796,19 +402,57 @@ input::-webkit-credentials-auto-fill-button {
         color: black !important;
         box-shadow: none !important;
         text-shadow: none !important;
-        filter: none !important;
-        transform: none !important;
     }
 
-    // Form elements in print
-    input,
-    textarea,
-    select {
-        border: 1px solid black !important;
-        background: white !important;
+    a,
+    a:visited {
+        text-decoration: underline;
     }
 
-    // Hide interactive elements in print
+    a[href]::after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]::after {
+        content: " (" attr(title) ")";
+    }
+
+    a[href^="#"]::after,
+    a[href^="javascript:"]::after {
+        content: "";
+    }
+
+    pre {
+        white-space: pre-wrap !important;
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+
     button,
     input[type="submit"],
     input[type="reset"],
@@ -821,7 +465,6 @@ input::-webkit-credentials-auto-fill-button {
 // Feature Detection Fallbacks
 /* ========================================== */
 
-// Grid Fallback
 @supports not (display: grid) {
     .grid-fallback {
         display: flex;
@@ -829,23 +472,19 @@ input::-webkit-credentials-auto-fill-button {
     }
 }
 
-// Flexbox Fallback
 @supports not (display: flex) {
     .flex-fallback {
         display: block;
     }
 }
 
-// CSS Variables Fallback
 @supports not (--css: variables) {
     .css-vars-fallback {
-        // Fallback styles für Browser ohne CSS Custom Properties
         color: #333;
         background: #fff;
     }
 }
 
-// Backdrop Filter Fallback
 @supports not (backdrop-filter: blur(1px)) {
     .backdrop-fallback {
         background: rgba(0, 0, 0, 0.8);
@@ -857,8 +496,6 @@ input::-webkit-credentials-auto-fill-button {
 /* ========================================== */
 
 @media (hover: none) and (pointer: coarse) {
-
-    // Touch-optimierte Resets
     * {
         -webkit-tap-highlight-color: transparent;
         -webkit-touch-callout: none;
@@ -868,7 +505,6 @@ input::-webkit-credentials-auto-fill-button {
         user-select: none;
     }
 
-    // Touchable elements
     a,
     button,
     [role="button"],
@@ -888,8 +524,6 @@ input::-webkit-credentials-auto-fill-button {
 
 @media (-webkit-min-device-pixel-ratio: 2),
 (min-resolution: 192dpi) {
-
-    // Optimierungen für Retina Displays
     * {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -901,8 +535,6 @@ input::-webkit-credentials-auto-fill-button {
 /* ========================================== */
 
 @media (prefers-color-scheme: dark) {
-
-    // Basis-Reset für Dark Mode (wird in Themes überschrieben)
     :root {
         color-scheme: dark;
     }
@@ -911,5 +543,44 @@ input::-webkit-credentials-auto-fill-button {
 @media (prefers-color-scheme: light) {
     :root {
         color-scheme: light;
+    }
+}
+
+/* ========================================== */
+// Accessibility Enhancements
+/* ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    * {
+        text-shadow: none !important;
+        box-shadow: none !important;
+    }
+}
+
+/* ========================================== */
+// Modern Browser Support
+/* ========================================== */
+
+/* Support for older browsers */
+@supports not (gap: 1rem) {
+    .grid-gap-fallback>* {
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+    }
+
+    .grid-gap-fallback>*:last-child {
+        margin-right: 0;
     }
 }

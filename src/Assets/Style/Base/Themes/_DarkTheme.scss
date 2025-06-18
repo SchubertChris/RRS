@@ -1,19 +1,21 @@
 /* ========================================== */
-/* ================ DARK THEME ============== */
+/* ============== DARK THEME ================ */
 /* ========================================== */
-/* Futuristisches Dark Theme mit Glow-Effekten */
+/* Modernes Dark Theme mit Neon-Akzenten */
+
+// WICHTIG: Variablen importieren
+@use "../Variables" as *;
 
 /* ========================================== */
 // Dark Theme Konfiguration
 /* ========================================== */
 
-// Dark Theme aktivieren
 [data-theme="dark"],
 .theme-dark {
     color-scheme: dark;
 
     /* ========================================== */
-    // Base Colors - Dark Mode optimiert
+    // Base Colors - Dark Mode Foundation
     /* ========================================== */
 
     // Backgrounds - Tiefe, dunkle Töne
@@ -22,187 +24,107 @@
     --color-background-tertiary: #{$gray-800};
     --color-surface: #{$gray-900};
     --color-surface-secondary: #{$gray-800};
-    --color-surface-elevated: #{$gray-700};
+    --color-surface-elevated: #{$gray-800};
 
-    // Text Colors - Hoher Kontrast für Lesbarkeit
+    // Text Colors - Helle Kontraste
     --color-text-primary: #{$gray-100};
     --color-text-secondary: #{$gray-300};
     --color-text-tertiary: #{$gray-500};
     --color-text-inverse: #{$gray-900};
-    --color-text-muted: #{$gray-600};
-    --color-text-disabled: #{$gray-700};
+    --color-text-muted: #{$gray-400};
+    --color-text-disabled: #{$gray-600};
 
-    // Primary Colors - Heller für dunklen Hintergrund
-    --color-primary: #{$blue-400};
-    --color-primary-hover: #{$blue-300};
-    --color-primary-active: #{$blue-200};
-    --color-primary-50: #{rgba($blue-400, 0.1)};
-    --color-primary-100: #{rgba($blue-400, 0.2)};
-    --color-primary-200: #{rgba($blue-400, 0.3)};
+    // Primary Colors - Heller für Kontrast
+    --color-primary: #{$blue-500};
+    --color-primary-hover: #{$blue-400};
+    --color-primary-active: #{$blue-300};
+    --color-primary-50: #{rgba($blue-500, 0.05)};
+    --color-primary-100: #{rgba($blue-500, 0.1)};
+    --color-primary-200: #{rgba($blue-500, 0.2)};
 
     // Secondary Colors
-    --color-secondary: #{$gray-700};
-    --color-secondary-hover: #{$gray-600};
-    --color-secondary-active: #{$gray-500};
+    --color-secondary: #{$gray-800};
+    --color-secondary-hover: #{$gray-700};
+    --color-secondary-active: #{$gray-600};
 
-    // Accent Colors - Cyan für futuristischen Look
+    // Accent Colors - Cyan für Sci-Fi Look
     --color-accent: #{$cyan-400};
     --color-accent-hover: #{$cyan-300};
     --color-accent-active: #{$cyan-200};
 
-    // Borders - Subtil aber sichtbar
+    // Borders - Subtile dunkle Linien
     --color-border: #{$gray-700};
     --color-border-secondary: #{$gray-600};
     --color-border-focus: #{$blue-400};
     --color-divider: #{$gray-800};
 
-    // Semantic Colors - Dark Mode angepasst
-    --color-success: #{$success-400};
-    --color-warning: #{$warning-400};
-    --color-error: #{$error-400};
-    --color-info: #{$info-400};
+    // Semantic Colors - Angepasst für Dark Mode
+    --color-success: #{$green-400};
+    --color-warning: #{$yellow-400};
+    --color-error: #{$red-400};
+    --color-info: #{$blue-400};
 
     // Status Backgrounds
-    --color-success-bg: #{rgba($success-400, 0.1)};
-    --color-warning-bg: #{rgba($warning-400, 0.1)};
-    --color-error-bg: #{rgba($error-400, 0.1)};
-    --color-info-bg: #{rgba($info-400, 0.1)};
+    --color-success-bg: #{rgba($green-400, 0.1)};
+    --color-warning-bg: #{rgba($yellow-400, 0.1)};
+    --color-error-bg: #{rgba($red-400, 0.1)};
+    --color-info-bg: #{rgba($blue-400, 0.1)};
 
     // Status Text Colors
-    --color-success-text: #{$success-300};
-    --color-warning-text: #{$warning-300};
-    --color-error-text: #{$error-300};
-    --color-info-text: #{$info-300};
+    --color-success-text: #{$green-300};
+    --color-warning-text: #{$yellow-300};
+    --color-error-text: #{$red-300};
+    --color-info-text: #{$blue-300};
 
     /* ========================================== */
-    // Shadows & Glow Effects - Futuristisch
+    // Shadows & Effects - Dark Mode optimiert
     /* ========================================== */
 
     --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     --shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    --shadow-focus: 0 0 0 3px #{rgba($blue-400, 0.3)};
-    --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.3);
-    --shadow-card-hover: 0 25px 50px rgba(0, 0, 0, 0.4);
-    --shadow-modal: 0 50px 100px rgba(0, 0, 0, 0.6);
+    --shadow-focus: 0 0 0 3px #{rgba($blue-500, 0.3)};
+    --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-card-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    --shadow-modal: 0 40px 80px rgba(0, 0, 0, 0.6);
 
-    // Glow Effects aktivieren
-    @if $enable-glow-effects {
-        // Primary Glow
-        --glow-primary: 0 0 20px rgba(#{$blue-400}, 0.3),
-        0 0 40px rgba(#{$blue-400}, 0.2),
-        0 0 60px rgba(#{$blue-400}, 0.1);
-
-        // Accent Glow
-        --glow-accent: 0 0 20px rgba(#{$cyan-400}, 0.3),
-        0 0 40px rgba(#{$cyan-400}, 0.2);
-
-        // Success Glow
-        --glow-success: 0 0 15px rgba(#{$success-400}, 0.3);
-
-        // Warning Glow
-        --glow-warning: 0 0 15px rgba(#{$warning-400}, 0.3);
-
-        // Error Glow
-        --glow-error: 0 0 15px rgba(#{$error-400}, 0.3);
-
-        // Text Glow
-        --text-glow-primary: 0 0 8px rgba(#{$blue-400}, 0.4);
-        --text-glow-accent: 0 0 8px rgba(#{$cyan-400}, 0.4);
-    }
-
-    /* ========================================== */
-    // E-Commerce Dark Theme
-    /* ========================================== */
-
-    // Product Colors
-    --color-product-new: #{$success-400};
-    --color-product-sale: #{$error-400};
-    --color-product-bestseller: #{$warning-400};
-    --color-product-limited: #{$purple-400};
-
-    // Price Colors
-    --color-price-current: #{$gray-100};
-    --color-price-original: #{$gray-500};
-    --color-price-discount: #{$error-400};
-    --color-price-free: #{$success-400};
-
-    // Rating Colors
-    --color-rating-filled: #{$warning-400};
-    --color-rating-empty: #{$gray-600};
-
-    // Stock Colors
-    --color-stock-in: #{$success-400};
-    --color-stock-low: #{$warning-400};
-    --color-stock-out: #{$error-400};
-
-    /* ========================================== */
-    // Interactive States - Enhanced
-    /* ========================================== */
-
-    // Hover States
-    --hover-overlay: #{rgba($gray-700, 0.1)};
-    --hover-lift-shadow: var(--shadow-hover);
-
-    // Active States  
-    --active-overlay: #{rgba($gray-600, 0.2)};
-    --active-scale: 0.98;
-
-    // Focus States
-    --focus-ring: 0 0 0 2px #{rgba($blue-400, 0.3)};
-    --focus-ring-offset: 2px;
-
-    // Disabled States
-    --disabled-opacity: 0.4;
-    --disabled-cursor: not-allowed;
-
-    /* ========================================== */
-    // Animation & Transition Overrides
-    /* ========================================== */
-
-    // Enhanced transitions für Dark Theme
-    --transition-theme: background-color 300ms ease-out,
-    color 300ms ease-out,
-    border-color 300ms ease-out,
-    box-shadow 300ms ease-out,
-    text-shadow 300ms ease-out;
-
-    --transition-glow: box-shadow 500ms ease-out,
-    text-shadow 500ms ease-out;
+    // Glow Effects - Aktiviert für Dark Theme
+    --glow-effect: #{$glow-blue};
+    --text-glow: 0 0 10px #{rgba($blue-400, 0.5)};
 
     /* ========================================== */
     // Component Colors - Dark Theme spezifisch
     /* ========================================== */
 
-    // Navigation - Futuristisch
-    --color-nav-bg: #{rgba($gray-900, 0.8)};
-    --color-nav-text: #{$gray-200};
+    // Navigation - Dunkle Kopfzeile
+    --color-nav-bg: #{rgba($gray-900, 0.95)};
+    --color-nav-text: #{$gray-300};
     --color-nav-text-hover: #{$blue-400};
     --color-nav-text-active: #{$blue-300};
-    --color-nav-border: #{$gray-800};
+    --color-nav-border: #{$gray-700};
     --color-nav-backdrop: #{rgba($gray-950, 0.9)};
 
-    // Header - Dark elegance
-    --color-header-bg: #{rgba($gray-900, 0.95)};
+    // Header
+    --color-header-bg: #{$gray-900};
     --color-header-text: #{$gray-100};
-    --color-header-text-secondary: #{$gray-400};
-    --color-header-border: #{$gray-800};
+    --color-header-text-secondary: #{$gray-300};
+    --color-header-border: #{$gray-700};
 
-    // Footer - Subtle dark
+    // Footer
     --color-footer-bg: #{$gray-950};
-    --color-footer-text: #{$gray-400};
+    --color-footer-text: #{$gray-300};
     --color-footer-text-secondary: #{$gray-500};
     --color-footer-border: #{$gray-800};
 
-    // Sidebar - Dark panels
-    --color-sidebar-bg: #{rgba($gray-900, 0.95)};
-    --color-sidebar-text: #{$gray-200};
-    --color-sidebar-text-hover: #{$gray-100};
-    --color-sidebar-border: #{$gray-800};
-    --color-sidebar-active: #{rgba($blue-400, 0.1)};
+    // Sidebar
+    --color-sidebar-bg: #{rgba($gray-900, 0.8)};
+    --color-sidebar-text: #{$gray-300};
+    --color-sidebar-text-hover: #{$blue-400};
+    --color-sidebar-border: #{$gray-700};
+    --color-sidebar-active: #{rgba($blue-500, 0.2)};
 
-    // Cards - Elevated dark surfaces
-    --color-card-bg: #{rgba($gray-800, 0.8)};
-    --color-card-bg-hover: #{rgba($gray-700, 0.9)};
+    // Cards
+    --color-card-bg: #{$gray-900};
+    --color-card-bg-hover: #{$gray-800};
     --color-card-border: #{$gray-700};
     --color-card-border-hover: #{$gray-600};
 
@@ -210,126 +132,94 @@
     // Buttons - Dark Theme optimiert
     /* ========================================== */
 
-    // Primary Button - Glowing call-to-action
+    // Primary Button
     --color-btn-primary-bg: #{$blue-500};
     --color-btn-primary-bg-hover: #{$blue-400};
     --color-btn-primary-bg-active: #{$blue-300};
     --color-btn-primary-text: #{$gray-900};
     --color-btn-primary-border: #{$blue-500};
 
-    // Secondary Button - Subtle alternative
-    --color-btn-secondary-bg: #{rgba($gray-700, 0.8)};
-    --color-btn-secondary-bg-hover: #{rgba($gray-600, 0.9)};
-    --color-btn-secondary-bg-active: #{rgba($gray-500, 1)};
-    --color-btn-secondary-text: #{$gray-200};
-    --color-btn-secondary-border: #{$gray-600};
+    // Secondary Button
+    --color-btn-secondary-bg: #{$gray-800};
+    --color-btn-secondary-bg-hover: #{$gray-700};
+    --color-btn-secondary-bg-active: #{$gray-600};
+    --color-btn-secondary-text: #{$gray-300};
+    --color-btn-secondary-border: #{$gray-700};
 
-    // Ghost Button - Minimal dark
+    // Ghost Button
     --color-btn-ghost-bg: transparent;
-    --color-btn-ghost-bg-hover: #{rgba($gray-700, 0.3)};
-    --color-btn-ghost-text: #{$gray-300};
-    --color-btn-ghost-text-hover: #{$gray-100};
+    --color-btn-ghost-bg-hover: #{rgba($blue-500, 0.1)};
+    --color-btn-ghost-text: #{$blue-400};
+    --color-btn-ghost-text-hover: #{$blue-300};
     --color-btn-ghost-border: transparent;
 
     // Danger Button
-    --color-btn-danger-bg: #{$error-500};
-    --color-btn-danger-bg-hover: #{$error-400};
-    --color-btn-danger-text: #{$gray-900};
-    --color-btn-danger-border: #{$error-500};
-
-    // Success Button
-    --color-btn-success-bg: #{$success-500};
-    --color-btn-success-bg-hover: #{$success-400};
-    --color-btn-success-text: #{$gray-900};
-    --color-btn-success-border: #{$success-500};
+    --color-btn-danger-bg: #{$red-500};
+    --color-btn-danger-bg-hover: #{$red-400};
+    --color-btn-danger-text: #{$white};
 
     /* ========================================== */
-    // Forms - Dark & accessible
+    // Forms - Dark Mode optimiert
     /* ========================================== */
 
-    // Input Fields
-    --color-input-bg: #{rgba($gray-800, 0.8)};
+    --color-input-bg: #{$gray-800};
     --color-input-text: #{$gray-100};
     --color-input-border: #{$gray-600};
-    --color-input-border-hover: #{$gray-500};
     --color-input-border-focus: #{$blue-400};
     --color-input-placeholder: #{$gray-500};
-
-    // Input States
-    --color-input-disabled-bg: #{rgba($gray-800, 0.4)};
+    --color-input-disabled-bg: #{$gray-900};
     --color-input-disabled-text: #{$gray-600};
-    --color-input-disabled-border: #{$gray-700};
-
-    // Form Validation
-    --color-input-valid-border: #{$success-400};
-    --color-input-invalid-border: #{$error-400};
-    --color-input-warning-border: #{$warning-400};
 
     /* ========================================== */
-    // Layout & Spacing - Dark optimiert
+    // Interactive States - Dark Mode
     /* ========================================== */
 
-    --border-radius-default: #{$radius-lg};
-    --border-radius-large: #{$radius-xl};
-    --border-radius-small: #{$radius};
+    // Hover States
+    --hover-overlay: #{rgba($blue-500, 0.08)};
+    --hover-lift-shadow: var(--shadow-hover);
+
+    // Active States
+    --active-overlay: #{rgba($blue-500, 0.15)};
+    --active-scale: 0.98;
+
+    // Focus States
+    --focus-ring: 0 0 0 2px #{rgba($blue-500, 0.4)};
+    --focus-ring-offset: 2px;
+
+    // Disabled States
+    --disabled-opacity: 0.5;
+    --disabled-cursor: not-allowed;
 
     /* ========================================== */
-    // Special Dark Theme Features
+    // Animation & Transition
     /* ========================================== */
 
-    // Dark theme specific gradients
-    --gradient-primary: linear-gradient(135deg, #{$blue-500} 0%, #{$cyan-400} 100%);
-    --gradient-secondary: linear-gradient(135deg, #{$gray-800} 0%, #{$gray-700} 100%);
-    --gradient-surface: linear-gradient(180deg, #{$gray-900} 0%, #{$gray-800} 100%);
+    --transition-theme: background-color 300ms #{$ease-out},
+    color 300ms #{$ease-out},
+    border-color 300ms #{$ease-out},
+    box-shadow 300ms #{$ease-out};
 
-    // Dark theme backdrop filters
-    --backdrop-filter: blur(10px);
-    --backdrop-filter-strong: blur(20px);
-
-    // Selection colors
-    --selection-bg: #{rgba($blue-400, 0.3)};
-    --selection-text: #{$gray-100};
+    --transition-glow: box-shadow 400ms #{$ease-out};
+    --transition-neon: all 300ms #{$ease-out};
 
     /* ========================================== */
-    // Neon & Cyberpunk Elements
+    // Special Dark Theme Elements
     /* ========================================== */
 
-    // Neon borders
-    --neon-border-blue: 0 0 5px #{$blue-400},
-    0 0 10px #{$blue-400},
-    0 0 15px #{$blue-400};
-    --neon-border-cyan: 0 0 5px #{$cyan-400},
-    0 0 10px #{$cyan-400},
-    0 0 15px #{$cyan-400};
-    --neon-border-purple: 0 0 5px #{$purple-400},
-    0 0 10px #{$purple-400},
-    0 0 15px #{$purple-400};
+    // Neon Colors
+    --neon-blue: #{$cyan-400};
+    --neon-purple: #{$purple-400};
+    --neon-green: #{$green-400};
+    --neon-pink: #{$pink-400};
 
-    // Matrix-style colors
-    --color-matrix-green: #00ff41;
-    --color-electric-blue: #00d4ff;
-    --color-neon-pink: #ff006e;
+    // Gradients - Cyber/Sci-Fi
+    --gradient-cyber: linear-gradient(135deg, #{$blue-500} 0%, #{$cyan-400} 50%, #{$purple-500} 100%);
+    --gradient-neon: linear-gradient(45deg, #{$cyan-400} 0%, #{$blue-500} 50%, #{$purple-500} 100%);
+    --gradient-matrix: linear-gradient(180deg, #{$green-400} 0%, #{$cyan-400} 100%);
 
-    /* ========================================== */
-    // Accessibility Enhancements für Dark Mode
-    /* ========================================== */
-
-    // High contrast variants
-    &.high-contrast {
-        --color-text-primary: #{$white};
-        --color-background: #{$black};
-        --color-border: #{$white};
-        --shadow: none;
-        --glow-primary: none;
-    }
-
-    // Reduced glow variant
-    &.reduced-glow {
-        --glow-primary: none;
-        --glow-accent: none;
-        --text-glow-primary: none;
-        --text-glow-accent: none;
-    }
+    // Backdrop Effects
+    --backdrop-filter: blur(20px) saturate(180%);
+    --backdrop-filter-strong: blur(40px) saturate(200%);
 }
 
 /* ========================================== */
@@ -338,133 +228,55 @@
 
 [data-theme="dark"] {
 
+    // Enhanced image contrast in dark mode
+    img {
+        opacity: 0.9;
+        transition: opacity $duration-200 $ease-out;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    // Code blocks in dark theme
+    pre,
+    code {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--color-text-primary);
+    }
+
     // Selection styling
     ::selection {
-        background: var(--selection-bg);
-        color: var(--selection-text);
+        background: rgba($blue-500, 0.3);
+        color: var(--color-text-primary);
+        text-shadow: none;
     }
 
     ::-moz-selection {
-        background: var(--selection-bg);
-        color: var(--selection-text);
+        background: rgba($blue-500, 0.3);
+        color: var(--color-text-primary);
+        text-shadow: none;
     }
 
     // Dark scrollbar styling
     ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
+        width: 12px;
+        height: 12px;
     }
 
     ::-webkit-scrollbar-track {
         background: var(--color-background-secondary);
+        border-radius: 6px;
     }
 
     ::-webkit-scrollbar-thumb {
         background: var(--color-border);
-        border-radius: 4px;
+        border-radius: 6px;
+        border: 2px solid var(--color-background-secondary);
 
         &:hover {
             background: var(--color-border-secondary);
-        }
-    }
-
-    // Special dark theme effects
-    .glass-effect {
-        background: rgba($gray-900, 0.6);
-        backdrop-filter: var(--backdrop-filter);
-        border: 1px solid rgba($gray-700, 0.3);
-    }
-
-    .frosted-glass {
-        background: rgba($gray-800, 0.4);
-        backdrop-filter: var(--backdrop-filter-strong);
-        border: 1px solid rgba($gray-600, 0.2);
-    }
-
-    // Neon effect elements
-    .neon-glow {
-        @if $enable-glow-effects {
-            box-shadow: var(--glow-primary);
-            text-shadow: var(--text-glow-primary);
-        }
-    }
-
-    .neon-border {
-        @if $enable-glow-effects {
-            border: 1px solid var(--color-primary);
-            box-shadow: var(--neon-border-blue);
-        }
-    }
-
-    // Cyberpunk elements
-    .cyberpunk-panel {
-        background: linear-gradient(135deg,
-                rgba($gray-900, 0.9) 0%,
-                rgba($gray-800, 0.9) 50%,
-                rgba($gray-900, 0.9) 100%);
-        border: 1px solid var(--color-primary);
-        position: relative;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg,
-                    transparent 0%,
-                    var(--color-primary) 50%,
-                    transparent 100%);
-
-            @if $enable-glow-effects {
-                box-shadow: 0 0 10px var(--color-primary);
-            }
-        }
-    }
-
-    // Holographic elements
-    .holographic {
-        background: linear-gradient(45deg,
-            #{$cyan-400} 0%,
-            #{$blue-400} 25%,
-            #{$purple-400} 50%,
-            #{$blue-400} 75%,
-            #{$cyan-400} 100%);
-        background-size: 200% 200%;
-        animation: gradientFlow 3s ease infinite;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-}
-
-/* ========================================== */
-// Dark Theme Media Queries
-/* ========================================== */
-
-// Enhanced contrast for dark theme
-@media (prefers-contrast: high) {
-    [data-theme="dark"] {
-        --color-border: #{$white};
-        --color-text-primary: #{$white};
-        --color-background: #{$black};
-        --shadow: none;
-        --glow-primary: none;
-    }
-}
-
-// Reduced motion for dark theme
-@media (prefers-reduced-motion: reduce) {
-    [data-theme="dark"] {
-        .holographic {
-            animation: none;
-            background: var(--color-primary);
-        }
-
-        .neon-glow {
-            box-shadow: none;
-            text-shadow: none;
         }
     }
 }
@@ -475,66 +287,112 @@
 
 .theme-dark {
 
-    // Dark theme specific utility classes
-    .bg-gradient-primary {
-        background: var(--gradient-primary);
-    }
-
-    .bg-gradient-secondary {
-        background: var(--gradient-secondary);
-    }
-
-    .bg-gradient-surface {
-        background: var(--gradient-surface);
-    }
-
     // Glow utilities
     .glow-primary {
-        @if $enable-glow-effects {
-            box-shadow: var(--glow-primary);
+        box-shadow: var(--glow-effect);
+    }
+
+    .glow-text {
+        text-shadow: var(--text-glow);
+    }
+
+    // Neon effects
+    .neon-border {
+        border: 1px solid var(--neon-blue);
+        box-shadow: 0 0 10px rgba($cyan-400, 0.5);
+    }
+
+    .cyber-card {
+        background: var(--gradient-cyber);
+        border: 1px solid var(--neon-blue);
+        border-radius: $radius-lg;
+        padding: $space-6;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
         }
     }
 
-    .glow-accent {
-        @if $enable-glow-effects {
-            box-shadow: var(--glow-accent);
+    @keyframes shimmer {
+        0% {
+            left: -100%;
+        }
+
+        100% {
+            left: 100%;
         }
     }
 
-    .text-glow-primary {
-        @if $enable-glow-effects {
-            text-shadow: var(--text-glow-primary);
+    // Matrix effect
+    .matrix-bg {
+        background: var(--gradient-matrix);
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 25% 25%, #{rgba($green-400, 0.1)} 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, #{rgba($cyan-400, 0.1)} 0%, transparent 50%);
+            animation: matrixPulse 4s ease-in-out infinite;
         }
     }
 
-    .text-glow-accent {
-        @if $enable-glow-effects {
-            text-shadow: var(--text-glow-accent);
+    @keyframes matrixPulse {
+
+        0%,
+        100% {
+            opacity: 0.3;
+        }
+
+        50% {
+            opacity: 0.6;
         }
     }
 
-    // Dark theme text utilities
-    .text-primary-dark {
-        color: var(--color-primary);
+    // Glass morphism effects
+    .glass-dark {
+        background: rgba($gray-900, 0.7);
+        backdrop-filter: var(--backdrop-filter);
+        border: 1px solid rgba($gray-600, 0.3);
+        border-radius: $radius-lg;
     }
 
-    .text-secondary-dark {
-        color: var(--color-text-secondary);
+    .frosted-dark {
+        background: rgba($gray-800, 0.8);
+        backdrop-filter: var(--backdrop-filter-strong);
+        border: 1px solid rgba($gray-500, 0.2);
+        border-radius: $radius-xl;
     }
+}
 
-    .text-muted-dark {
-        color: var(--color-text-muted);
-    }
+/* ========================================== */
+// Reduced Motion Support
+/* ========================================== */
 
-    .text-matrix {
-        color: var(--color-matrix-green);
-    }
+@media (prefers-reduced-motion: reduce) {
+    .theme-dark {
+        .cyber-card::before {
+            animation: none;
+        }
 
-    .text-electric {
-        color: var(--color-electric-blue);
-    }
+        .matrix-bg::after {
+            animation: none;
+        }
 
-    .text-neon {
-        color: var(--color-neon-pink);
+        --transition-glow: none;
+        --transition-neon: none;
     }
 }

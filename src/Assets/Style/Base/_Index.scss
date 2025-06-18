@@ -1,33 +1,84 @@
 /* ========================================== */
 /* ================Base Import=============== */
 /* ========================================== */
+/* Best Practice: Korrekte Import-Reihenfolge für SASS-Variablen */
 
-@use "@s/Variables" as *;
-@use "@s/Mixin" as *;
-@use "@s/Reset" as *;
-@use "@s/Animation" as *;
-@use "@s/Global" as *;
+// 1. VARIABLEN zuerst (KRITISCH - müssen vor allem anderen stehen)
+@use "Variables" as *;
+
+// 2. MIXINS (benötigen Variablen)
+@use "Mixin" as *;
+
+// 3. RESET (kann Mixins verwenden)
+@use "Reset" as *;
+
+// 4. ANIMATIONS (benötigen Variablen)
+@use "Animation" as *;
+
+// 5. GLOBAL STYLES (benötigen Variablen und Mixins)
+@use "Global" as *;
 
 /* ========================================== */
 // Theming System Import
 /* ========================================== */
 
-@use "@s/Theming/Theming" as *;
+@use "Theming/Theming" as *;
 
 /* ========================================== */
-// Themes Import [Beinhaltet BGs, Fonts, Colors, Cards, Buttons, etc.]
+// Theme Imports [Beinhaltet BGs, Fonts, Colors, Cards, Buttons, etc.]
 /* ========================================== */
 
-@use "@t/OliveTheme" as *;
-@use "@t/DarkTheme" as *;
-@use "@t/LightThemeDefault" as *;
-@use "@t/PurpleTheme" as *;
-@use "@t/RedTheme" as *;
+@use "Themes/OliveTheme" as *;
+@use "Themes/DarkTheme" as *;
+@use "Themes/LightThemeDefault" as *;
+@use "Themes/PurpleTheme" as *;
+@use "Themes/RedTheme" as *;
 
 /* ========================================== */
-// Font Themes Import
+// Font Theme Imports
 /* ========================================== */
 
-@use "@ft/Future" as *;
-@use "@ft/Vintage" as *;
-@use "@ft/Default" as *;
+@use "Themes/Fonts/Future" as *;
+@use "Themes/Fonts/Vintage" as *;
+@use "Themes/Fonts/Default" as *;
+
+/* ========================================== */
+// Performance & Debug Information
+/* ========================================== */
+
+// Uncomment für Development-Debugging:
+// @debug "✅ All SASS modules loaded successfully";
+// @debug "✅ Variables available: duration-500 = #{$duration-500}";
+// @debug "✅ Import order: Variables → Mixins → Reset → Animation → Global → Themes";
+
+/* ========================================== */
+// Critical CSS Performance Hint
+/* ========================================== */
+
+// Aktiviert Hardware-Beschleunigung für alle Animationen
+@media (prefers-reduced-motion: no-preference) {
+    * {
+        // Smooth animations für bessere Performance
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000px;
+        perspective: 1000px;
+    }
+}
+
+/* ========================================== */
+// Import Validation
+/* ========================================== */
+
+// Diese Regeln würden Fehler verursachen, wenn Variablen nicht korrekt geladen sind
+.import-validation-test {
+    // Test ob Variablen verfügbar sind
+    animation-duration: $duration-500;
+    font-size: $font-size-base;
+    color: $color-primary;
+    margin: $space-4;
+    border-radius: $radius;
+
+    // Wenn diese Klasse ohne Fehler kompiliert, sind alle Imports korrekt! ✅
+    display: none; // Versteckt, da nur für Validierung
+}

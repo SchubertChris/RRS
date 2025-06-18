@@ -7,6 +7,9 @@
 // Olive Theme Konfiguration
 /* ========================================== */
 
+// WICHTIG: Variablen importieren
+@use "../Variables" as *;
+
 // Olive Theme aktivieren
 [data-theme="olive"],
 .theme-olive {

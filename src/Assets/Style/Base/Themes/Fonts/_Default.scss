@@ -1,692 +1,460 @@
 /* ========================================== */
-/* ============ DEFAULT FONT THEME ========== */
+/* ============= DEFAULT FONT THEME ========= */
 /* ========================================== */
-/* Klassisches, professionelles Font-System mit optimaler Lesbarkeit */
+/* Standard Font Theme - Clean & Professional */
+
+// WICHTIG: Variablen importieren (zwei Ebenen nach oben)
+@use "../../Variables" as *;
 
 /* ========================================== */
-// Default Font Theme Konfiguration
+// Default Font Theme Configuration
 /* ========================================== */
 
-.font-theme-default {
+.font-theme-default,
+[data-font-theme="default"],
+:root {
+
     /* ========================================== */
-    // Font Family Definitionen - Modern & Professional
+    // Font Family Definitions - Standard Sans-Serif
     /* ========================================== */
 
     --font-family-primary: #{$font-family-sans};
-    --font-family-display: #{$font-family-display};
+    --font-family-display: #{$font-family-sans};
+    --font-family-body: #{$font-family-sans};
+    --font-family-heading: #{$font-family-sans};
     --font-family-mono: #{$font-family-mono};
 
     /* ========================================== */
-    // Typografie-Hierarchie - Ausgewogen & lesbar
+    // Font Weights - Professional Balance
     /* ========================================== */
 
-    // Headlines - Professionelle Präsenz
+    --font-weight-heading: #{$font-weight-bold};
+    --font-weight-body: #{$font-weight-normal};
+    --font-weight-strong: #{$font-weight-semibold};
+    --font-weight-light: #{$font-weight-light};
+    --font-weight-medium: #{$font-weight-medium};
+
+    /* ========================================== */
+    // Font Sizes - Comfortable Reading
+    /* ========================================== */
+
+    --font-size-base: #{$font-size-base};
+    --font-size-heading-1: #{$font-size-4xl};
+    --font-size-heading-2: #{$font-size-3xl};
+    --font-size-heading-3: #{$font-size-2xl};
+    --font-size-heading-4: #{$font-size-xl};
+    --font-size-heading-5: #{$font-size-lg};
+    --font-size-heading-6: #{$font-size-base};
+    --font-size-small: #{$font-size-sm};
+    --font-size-large: #{$font-size-lg};
+
+    /* ========================================== */
+    // Line Heights - Optimized Readability
+    /* ========================================== */
+
+    --line-height-base: #{$line-height-normal};
+    --line-height-heading: #{$line-height-tight};
+    --line-height-tight: #{$line-height-tight};
+    --line-height-relaxed: #{$line-height-relaxed};
+
+    /* ========================================== */
+    // Letter Spacing - Natural Flow
+    /* ========================================== */
+
+    --letter-spacing-base: #{$letter-spacing-normal};
+    --letter-spacing-heading: #{$letter-spacing-tight};
+    --letter-spacing-tight: #{$letter-spacing-tight};
+    --letter-spacing-wide: #{$letter-spacing-wide};
+
+    /* ========================================== */
+    // Apply Default Styling to Elements
+    /* ========================================== */
+
+    // Body Text - Clean Foundation
+    body {
+        font-family: var(--font-family-primary);
+        font-weight: var(--font-weight-body);
+        font-size: var(--font-size-base);
+        line-height: var(--line-height-base);
+        letter-spacing: var(--letter-spacing-base);
+    }
+
+    // Headlines - Clear Hierarchy
     h1,
-    .h1 {
-        font-family: var(--font-family-display);
-        font-weight: $font-weight-extrabold;
-        font-size: $font-size-4xl;
-        line-height: $line-height-tight;
-        letter-spacing: $letter-spacing-tight;
-
-        // Optimale Lesbarkeit
-        font-feature-settings: "liga" 1, "kern" 1;
-        -webkit-font-feature-settings: "liga" 1, "kern" 1;
-        text-rendering: optimizeLegibility;
-
-        // Responsive Skalierung
-        @media (max-width: $breakpoint-md) {
-            font-size: $font-size-3xl;
-        }
-
-        @media (max-width: $breakpoint-sm) {
-            font-size: $font-size-2xl;
-        }
-    }
-
     h2,
-    .h2 {
-        font-family: var(--font-family-display);
-        font-weight: $font-weight-bold;
-        font-size: $font-size-3xl;
-        line-height: $line-height-tight;
-        letter-spacing: $letter-spacing-tight;
-
-        font-feature-settings: "liga" 1, "kern" 1;
-        text-rendering: optimizeLegibility;
-
-        @media (max-width: $breakpoint-md) {
-            font-size: $font-size-2xl;
-        }
-
-        @media (max-width: $breakpoint-sm) {
-            font-size: $font-size-xl;
-        }
-    }
-
     h3,
-    .h3 {
-        font-family: var(--font-family-display);
-        font-weight: $font-weight-bold;
-        font-size: $font-size-2xl;
-        line-height: $line-height-snug;
-        letter-spacing: $letter-spacing-normal;
-
-        font-feature-settings: "liga" 1, "kern" 1;
-
-        @media (max-width: $breakpoint-md) {
-            font-size: $font-size-xl;
-        }
-
-        @media (max-width: $breakpoint-sm) {
-            font-size: $font-size-lg;
-        }
-    }
-
     h4,
-    .h4 {
-        font-family: var(--font-family-display);
-        font-weight: $font-weight-semibold;
-        font-size: $font-size-xl;
-        line-height: $line-height-snug;
-        letter-spacing: $letter-spacing-normal;
-    }
-
     h5,
-    .h5 {
+    h6 {
         font-family: var(--font-family-display);
-        font-weight: $font-weight-semibold;
-        font-size: $font-size-lg;
-        line-height: $line-height-normal;
-        letter-spacing: $letter-spacing-normal;
+        font-weight: var(--font-weight-heading);
+        line-height: var(--line-height-heading);
+        letter-spacing: var(--letter-spacing-heading);
+        margin-bottom: $space-4;
     }
 
-    h6,
-    .h6 {
-        font-family: var(--font-family-primary);
-        font-weight: $font-weight-semibold;
-        font-size: $font-size-base;
-        line-height: $line-height-normal;
-        letter-spacing: $letter-spacing-wide;
+    h1 {
+        font-size: var(--font-size-heading-1);
+        margin-bottom: $space-6;
+    }
+
+    h2 {
+        font-size: var(--font-size-heading-2);
+        margin-bottom: $space-5;
+    }
+
+    h3 {
+        font-size: var(--font-size-heading-3);
+        margin-bottom: $space-4;
+    }
+
+    h4 {
+        font-size: var(--font-size-heading-4);
+        margin-bottom: $space-3;
+    }
+
+    h5 {
+        font-size: var(--font-size-heading-5);
+        margin-bottom: $space-3;
+    }
+
+    h6 {
+        font-size: var(--font-size-heading-6);
+        margin-bottom: $space-2;
         text-transform: uppercase;
-        color: var(--color-text-secondary);
+        letter-spacing: var(--letter-spacing-wide);
     }
 
-    // Body Text - Optimale Lesbarkeit
-    p,
-    .body-text {
-        font-family: var(--font-family-primary);
-        font-size: $font-size-base;
-        font-weight: $font-weight-normal;
-        line-height: $line-height-relaxed;
-        letter-spacing: $letter-spacing-normal;
-
-        // Verbesserte Lesbarkeit
-        font-feature-settings: "liga" 1, "kern" 1;
-        text-rendering: optimizeLegibility;
-
-        // Optimal line length
+    // Paragraphs - Comfortable Reading
+    p {
+        font-family: var(--font-family-body);
+        font-size: var(--font-size-base);
+        line-height: var(--line-height-relaxed);
+        margin-bottom: $space-4;
         max-width: 65ch;
 
-        // Responsive text
-        @media (max-width: $breakpoint-sm) {
-            font-size: $font-size-sm;
-            line-height: $line-height-normal;
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &.lead {
+            font-size: var(--font-size-large);
+            font-weight: var(--font-weight-light);
+            line-height: var(--line-height-relaxed);
+            color: var(--color-text-secondary, #{$gray-600});
+        }
+
+        &.small {
+            font-size: var(--font-size-small);
+            color: var(--color-text-secondary, #{$gray-600});
         }
     }
 
-    // Lead Text - Einführungstext
-    .lead {
-        font-family: var(--font-family-primary);
-        font-size: $font-size-lg;
-        font-weight: $font-weight-light;
-        line-height: $line-height-relaxed;
-        letter-spacing: $letter-spacing-normal;
-        color: var(--color-text-secondary);
-
-        @media (max-width: $breakpoint-md) {
-            font-size: $font-size-base;
-        }
-    }
-
-    // Small Text
-    small,
-    .small {
-        font-family: var(--font-family-primary);
-        font-size: $font-size-sm;
-        font-weight: $font-weight-normal;
-        line-height: $line-height-normal;
-        color: var(--color-text-secondary);
-    }
-
-    /* ========================================== */
-    // Text Emphasis - Professionelle Hervorhebungen
-    /* ========================================== */
-
+    // Text Elements
     strong,
-    b,
-    .bold {
-        font-weight: $font-weight-semibold;
-        color: var(--color-text-primary);
+    b {
+        font-weight: var(--font-weight-strong);
+        color: var(--color-text-primary, #{$gray-900});
     }
 
     em,
-    i,
-    .italic {
+    i {
         font-style: italic;
-        font-weight: $font-weight-normal;
     }
 
-    .semibold {
-        font-weight: $font-weight-semibold;
+    small {
+        font-size: var(--font-size-small);
+        color: var(--color-text-secondary, #{$gray-600});
     }
 
-    .medium {
-        font-weight: $font-weight-medium;
-    }
-
-    .light {
-        font-weight: $font-weight-light;
-    }
-
-    /* ========================================== */
-    // Code & Monospace - Technische Texte
-    /* ========================================== */
-
-    code,
-    .code {
-        font-family: var(--font-family-mono);
-        font-size: 0.875em;
-        font-weight: $font-weight-normal;
-        letter-spacing: $letter-spacing-normal;
-
-        // Code-spezifische Features
-        font-feature-settings: "liga" 0, "calt" 1;
-        font-variant-ligatures: none;
-
-        // Syntax highlighting support
-        &.language-css {
-            color: var(--color-info);
-        }
-
-        &.language-js {
-            color: var(--color-warning);
-        }
-
-        &.language-html {
-            color: var(--color-error);
-        }
-
-        &.language-scss {
-            color: var(--color-accent);
-        }
-    }
-
-    pre {
-        font-family: var(--font-family-mono);
-        font-size: $font-size-sm;
-        font-weight: $font-weight-normal;
-        line-height: $line-height-relaxed;
-        letter-spacing: $letter-spacing-normal;
-
-        font-feature-settings: "liga" 0, "calt" 1;
-        font-variant-ligatures: none;
-
-        code {
-            font-size: inherit;
-            font-weight: inherit;
-        }
-    }
-
-    /* ========================================== */
-    // Lists - Strukturierte Inhalte
-    /* ========================================== */
-
-    ul,
-    ol {
-        font-family: var(--font-family-primary);
-        font-size: $font-size-base;
-        line-height: $line-height-relaxed;
-
-        li {
-            margin-bottom: $space-1;
-
-            &::marker {
-                color: var(--color-text-secondary);
-            }
-        }
-
-        // Nested lists
-        ul,
-        ol {
-            font-size: inherit;
-            margin-top: $space-1;
-        }
-    }
-
-    // Custom list styles
-    .list-decimal {
-        counter-reset: list-counter;
-
-        li {
-            counter-increment: list-counter;
-            position: relative;
-
-            &::before {
-                content: counter(list-counter) ".";
-                position: absolute;
-                left: -2em;
-                font-weight: $font-weight-semibold;
-                color: var(--color-primary);
-            }
-        }
-    }
-
-    /* ========================================== */
-    // Blockquotes - Zitate
-    /* ========================================== */
-
-    blockquote {
-        font-family: var(--font-family-primary);
-        font-size: $font-size-lg;
-        font-weight: $font-weight-normal;
-        line-height: $line-height-relaxed;
-        font-style: italic;
-        letter-spacing: $letter-spacing-normal;
-
-        // Quote-spezifische Features
-        font-feature-settings: "liga" 1, "kern" 1;
-
-        cite {
-            font-family: var(--font-family-primary);
-            font-size: $font-size-sm;
-            font-style: normal;
-            font-weight: $font-weight-medium;
-            color: var(--color-text-tertiary);
-        }
-    }
-
-    /* ========================================== */
-    // Links - Professionelle Verlinkung
-    /* ========================================== */
-
+    // Links - Professional
     a {
-        font-family: inherit;
-        font-weight: inherit;
+        color: var(--color-primary, #{$blue-600});
         text-decoration: none;
-        color: var(--color-primary);
-
-        // Smooth transitions
-        transition: color $duration-200 $ease-out;
+        transition: color $duration-150 $ease-out;
 
         &:hover {
-            color: var(--color-primary-hover);
+            color: var(--color-primary-hover, #{$blue-700});
             text-decoration: underline;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 2px;
         }
 
         &:focus-visible {
-            outline: 2px solid var(--color-primary);
+            outline: 2px solid var(--color-primary, #{$blue-600});
             outline-offset: 2px;
             border-radius: $radius-sm;
         }
     }
 
     /* ========================================== */
-    // Tables - Strukturierte Daten
+    // Lists - Clean Structure
     /* ========================================== */
 
-    table {
-        font-family: var(--font-family-primary);
-        font-size: $font-size-sm;
-        line-height: $line-height-normal;
+    ul,
+    ol {
+        margin-bottom: $space-4;
+        padding-left: $space-6;
 
-        th {
-            font-weight: $font-weight-semibold;
-            font-size: $font-size-xs;
-            text-transform: uppercase;
-            letter-spacing: $letter-spacing-wide;
-            color: var(--color-text-secondary);
+        li {
+            margin-bottom: $space-1;
+            line-height: var(--line-height-relaxed);
+
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
 
-        td {
-            font-weight: $font-weight-normal;
-            color: var(--color-text-primary);
+        // Nested lists
+        ul,
+        ol {
+            margin-top: $space-1;
+            margin-bottom: $space-1;
         }
+    }
 
-        caption {
-            font-size: $font-size-sm;
-            font-weight: $font-weight-medium;
-            color: var(--color-text-secondary);
+    .list-unstyled {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .list-inline {
+        padding-left: 0;
+        list-style: none;
+
+        li {
+            display: inline-block;
+            margin-right: $space-2;
+            margin-bottom: 0;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    /* ========================================== */
+    // Code Elements - Monospace
+    /* ========================================== */
+
+    code {
+        font-family: var(--font-family-mono);
+        font-size: 0.875em;
+        background-color: var(--color-secondary, #{$gray-100});
+        color: var(--color-text-primary, #{$gray-900});
+        padding: $space-0-5 $space-1;
+        border-radius: $radius-sm;
+        border: 1px solid var(--color-border, #{$gray-200});
+    }
+
+    pre {
+        font-family: var(--font-family-mono);
+        font-size: var(--font-size-small);
+        background-color: var(--color-secondary, #{$gray-100});
+        color: var(--color-text-primary, #{$gray-900});
+        padding: $space-4;
+        border-radius: $radius;
+        border: 1px solid var(--color-border, #{$gray-200});
+        overflow-x: auto;
+        line-height: var(--line-height-relaxed);
+        margin: $space-4 0;
+
+        code {
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: inherit;
         }
     }
 
     /* ========================================== */
-    // Form Elements - Benutzerfreundliche Eingaben
+    // Quotes - Elegant
     /* ========================================== */
 
-    input,
-    textarea,
-    select {
-        font-family: var(--font-family-primary);
-        font-size: $font-size-base;
-        font-weight: $font-weight-normal;
-        line-height: $line-height-normal;
-        letter-spacing: $letter-spacing-normal;
+    blockquote {
+        margin: $space-6 0;
+        padding: $space-4 $space-6;
+        border-left: 4px solid var(--color-primary, #{$blue-600});
+        background-color: var(--color-secondary, #{$gray-50});
+        font-style: italic;
+        color: var(--color-text-secondary, #{$gray-600});
 
-        &::placeholder {
-            font-style: italic;
-            color: var(--color-text-tertiary);
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        cite {
+            display: block;
+            margin-top: $space-2;
+            font-size: var(--font-size-small);
+            font-style: normal;
+            color: var(--color-text-tertiary, #{$gray-500});
+
+            &::before {
+                content: '— ';
+            }
         }
     }
 
-    label {
-        font-family: var(--font-family-primary);
-        font-size: $font-size-sm;
-        font-weight: $font-weight-medium;
-        color: var(--color-text-primary);
-    }
-
-    .form-help {
-        font-family: var(--font-family-primary);
-        font-size: $font-size-xs;
-        font-weight: $font-weight-normal;
-        line-height: $line-height-normal;
-        color: var(--color-text-tertiary);
-    }
-
     /* ========================================== */
-    // Buttons - Konsistente Typografie
+    // Forms - Professional
     /* ========================================== */
 
     button,
     .btn {
         font-family: var(--font-family-primary);
-        font-weight: $font-weight-medium;
-        letter-spacing: $letter-spacing-normal;
-        text-transform: none;
+        font-weight: var(--font-weight-medium);
+        font-size: var(--font-size-base);
+        line-height: var(--line-height-base);
+        text-decoration: none;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        user-select: none;
+        transition: all $duration-200 $ease-out;
 
-        // Button size variants
-        &.btn-sm {
-            font-size: $font-size-sm;
-            line-height: $line-height-normal;
-        }
-
-        &.btn-lg {
-            font-size: $font-size-lg;
-            line-height: $line-height-normal;
-        }
-
-        &.btn-xl {
-            font-size: $font-size-xl;
-            line-height: $line-height-normal;
-            font-weight: $font-weight-semibold;
+        &:focus-visible {
+            outline: 2px solid var(--color-primary, #{$blue-600});
+            outline-offset: 2px;
         }
     }
 
-    /* ========================================== */
-    // Utility Classes - Typografie-Hilfsmittel
-    /* ========================================== */
-
-    // Font families
-    .font-sans {
+    input,
+    textarea,
+    select {
         font-family: var(--font-family-primary);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-normal);
+        line-height: var(--line-height-base);
+        transition: border-color $duration-200 $ease-out, box-shadow $duration-200 $ease-out;
+
+        &:focus {
+            outline: none;
+            border-color: var(--color-primary, #{$blue-600});
+            box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.1);
+        }
+
+        &::placeholder {
+            color: var(--color-text-tertiary, #{$gray-500});
+            opacity: 1;
+        }
     }
 
-    .font-serif {
-        font-family: var(--font-family-serif);
+    /* ========================================== */
+    // Tables - Clean Data Display
+    /* ========================================== */
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-bottom: $space-4;
     }
 
-    .font-mono {
-        font-family: var(--font-family-mono);
+    th,
+    td {
+        padding: $space-2 $space-3;
+        text-align: left;
+        border-bottom: 1px solid var(--color-border, #{$gray-200});
     }
 
-    .font-display {
+    th {
+        font-weight: var(--font-weight-strong);
+        color: var(--color-text-primary, #{$gray-900});
+        background-color: var(--color-secondary, #{$gray-50});
+    }
+
+    tbody tr:hover {
+        background-color: var(--color-background-secondary, #{$gray-50});
+    }
+
+    /* ========================================== */
+    // Utility Classes
+    /* ========================================== */
+
+    .text-small {
+        font-size: var(--font-size-small);
+    }
+
+    .text-large {
+        font-size: var(--font-size-large);
+    }
+
+    .text-bold {
+        font-weight: var(--font-weight-strong);
+    }
+
+    .text-normal {
+        font-weight: var(--font-weight-body);
+    }
+
+    .text-light {
+        font-weight: var(--font-weight-light);
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-left {
+        text-align: left;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .text-uppercase {
+        text-transform: uppercase;
+        letter-spacing: var(--letter-spacing-wide);
+    }
+
+    .text-lowercase {
+        text-transform: lowercase;
+    }
+
+    .text-capitalize {
+        text-transform: capitalize;
+    }
+
+    /* ========================================== */
+    // Professional Elements
+    /* ========================================== */
+
+    .professional-heading {
         font-family: var(--font-family-display);
-    }
+        font-weight: var(--font-weight-heading);
+        font-size: var(--font-size-heading-2);
+        line-height: var(--line-height-heading);
+        letter-spacing: var(--letter-spacing-heading);
+        color: var(--color-text-primary, #{$gray-900});
+        margin-bottom: $space-4;
+        position: relative;
 
-    // Font sizes
-    .text-xs {
-        font-size: $font-size-xs;
-    }
-
-    .text-sm {
-        font-size: $font-size-sm;
-    }
-
-    .text-base {
-        font-size: $font-size-base;
-    }
-
-    .text-lg {
-        font-size: $font-size-lg;
-    }
-
-    .text-xl {
-        font-size: $font-size-xl;
-    }
-
-    .text-2xl {
-        font-size: $font-size-2xl;
-    }
-
-    .text-3xl {
-        font-size: $font-size-3xl;
-    }
-
-    .text-4xl {
-        font-size: $font-size-4xl;
-    }
-
-    .text-5xl {
-        font-size: $font-size-5xl;
-    }
-
-    .text-6xl {
-        font-size: $font-size-6xl;
-    }
-
-    // Font weights
-    .font-thin {
-        font-weight: $font-weight-thin;
-    }
-
-    .font-extralight {
-        font-weight: $font-weight-extralight;
-    }
-
-    .font-light {
-        font-weight: $font-weight-light;
-    }
-
-    .font-normal {
-        font-weight: $font-weight-normal;
-    }
-
-    .font-medium {
-        font-weight: $font-weight-medium;
-    }
-
-    .font-semibold {
-        font-weight: $font-weight-semibold;
-    }
-
-    .font-bold {
-        font-weight: $font-weight-bold;
-    }
-
-    .font-extrabold {
-        font-weight: $font-weight-extrabold;
-    }
-
-    .font-black {
-        font-weight: $font-weight-black;
-    }
-
-    // Line heights
-    .leading-none {
-        line-height: $line-height-none;
-    }
-
-    .leading-tight {
-        line-height: $line-height-tight;
-    }
-
-    .leading-snug {
-        line-height: $line-height-snug;
-    }
-
-    .leading-normal {
-        line-height: $line-height-normal;
-    }
-
-    .leading-relaxed {
-        line-height: $line-height-relaxed;
-    }
-
-    .leading-loose {
-        line-height: $line-height-loose;
-    }
-
-    // Letter spacing
-    .tracking-tighter {
-        letter-spacing: $letter-spacing-tighter;
-    }
-
-    .tracking-tight {
-        letter-spacing: $letter-spacing-tight;
-    }
-
-    .tracking-normal {
-        letter-spacing: $letter-spacing-normal;
-    }
-
-    .tracking-wide {
-        letter-spacing: $letter-spacing-wide;
-    }
-
-    .tracking-wider {
-        letter-spacing: $letter-spacing-wider;
-    }
-
-    .tracking-widest {
-        letter-spacing: $letter-spacing-widest;
-    }
-
-    /* ========================================== */
-    // Responsive Typography - Mobile optimiert
-    /* ========================================== */
-
-    @media (max-width: $breakpoint-sm) {
-
-        // Smaller text on mobile for better readability
-        .text-responsive {
-            font-size: $font-size-sm;
-            line-height: $line-height-normal;
-        }
-
-        // Adjust heading spacing on mobile
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            margin-bottom: $space-3;
-        }
-
-        // Tighter line height on mobile
-        p,
-        .body-text {
-            line-height: $line-height-normal;
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -$space-2;
+            left: 0;
+            width: $space-12;
+            height: 3px;
+            background: var(--color-primary, #{$blue-600});
+            border-radius: $radius-full;
         }
     }
 
-    /* ========================================== */
-    // Accessibility Enhancements
-    /* ========================================== */
-
-    // High contrast mode
-    @media (prefers-contrast: high) {
-        * {
-            text-shadow: none !important;
-        }
-
-        a {
-            text-decoration: underline;
-        }
+    .subtitle {
+        font-family: var(--font-family-body);
+        font-size: var(--font-size-large);
+        font-weight: var(--font-weight-light);
+        line-height: var(--line-height-relaxed);
+        color: var(--color-text-secondary, #{$gray-600});
+        margin-bottom: $space-6;
     }
 
-    // Reduced motion
-    @media (prefers-reduced-motion: reduce) {
-        a {
-            transition: none;
-        }
-    }
-
-    // Dark mode adjustments
-    @media (prefers-color-scheme: dark) {
-
-        // Slightly increase font weight for better readability in dark mode
-        body {
-            font-weight: $font-weight-normal;
-        }
-
-        h1,
-        h2,
-        h3 {
-            font-weight: $font-weight-bold;
-        }
-    }
-
-    /* ========================================== */
-    // Print Styles - Optimiert für Druck
-    /* ========================================== */
-
-    @media print {
-
-        // Optimize fonts for print
-        * {
-            color: black !important;
-            text-shadow: none !important;
-        }
-
-        // Adjust font sizes for print
-        h1 {
-            font-size: 24pt;
-        }
-
-        h2 {
-            font-size: 20pt;
-        }
-
-        h3 {
-            font-size: 18pt;
-        }
-
-        h4 {
-            font-size: 16pt;
-        }
-
-        h5 {
-            font-size: 14pt;
-        }
-
-        h6 {
-            font-size: 12pt;
-        }
-
-        p,
-        body {
-            font-size: 12pt;
-            line-height: 1.4;
-        }
-
-        // Ensure good contrast
-        a {
-            color: black !important;
-            text-decoration: underline;
-        }
+    .caption {
+        font-family: var(--font-family-body);
+        font-size: var(--font-size-small);
+        font-weight: var(--font-weight-normal);
+        color: var(--color-text-tertiary, #{$gray-500});
+        margin-top: $space-2;
     }
 }

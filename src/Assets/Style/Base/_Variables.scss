@@ -1,13 +1,13 @@
 /* ========================================== */
-/* ============= SCSS VARIABLES ============= */
+/* ============ COMPLETE VARIABLE SYSTEM === */
 /* ========================================== */
-/* Best Practice: Zentrale Variable-Verwaltung für maximale Wartbarkeit */
+/* Ein vollständiges Design Token System für alle SASS-Dateien */
 
 /* ========================================== */
-// System Konfiguration
+// System Configuration & Feature Flags
 /* ========================================== */
 
-// Feature Flags
+// Feature Flags - Alle System-Schalter
 $enable-rounded: true !default;
 $enable-shadows: true !default;
 $enable-gradients: true !default;
@@ -16,32 +16,37 @@ $enable-reduced-motion: true !default;
 $enable-grid-classes: true !default;
 $enable-glow-effects: true !default;
 $enable-dark-mode: true !default;
+$enable-responsive: true !default;
+$enable-print-styles: true !default;
+$enable-animations: true !default;
+$enable-hover-effects: true !default;
 
 // GPU Acceleration
 $gpu-hack: translateZ(0) !default;
 
 /* ========================================== */
-// Color Palette - Comprehensive System
+// Complete Color Palette - ALLE FARBEN
 /* ========================================== */
 
-// Brand Colors - Hauptfarben
+// Basis Farben
 $white: #ffffff !default;
 $black: #000000 !default;
+$transparent: transparent !default;
 
-// Gray Scale - Erweiterte Graustufen
-$gray-50: #fafafa !default;
-$gray-100: #f5f5f5 !default;
-$gray-200: #eeeeee !default;
-$gray-300: #e0e0e0 !default;
-$gray-400: #bdbdbd !default;
-$gray-500: #9e9e9e !default;
-$gray-600: #757575 !default;
-$gray-700: #616161 !default;
-$gray-800: #424242 !default;
-$gray-900: #212121 !default;
-$gray-950: #0a0a0a !default;
+// Grayscale - VOLLSTÄNDIG
+$gray-50: #f9fafb !default;
+$gray-100: #f3f4f6 !default;
+$gray-200: #e5e7eb !default;
+$gray-300: #d1d5db !default;
+$gray-400: #9ca3af !default;
+$gray-500: #6b7280 !default;
+$gray-600: #4b5563 !default;
+$gray-700: #374151 !default;
+$gray-800: #1f2937 !default;
+$gray-900: #111827 !default;
+$gray-950: #030712 !default;
 
-// Blue Palette - Primary
+// Blue Palette - PRIMARY
 $blue-50: #eff6ff !default;
 $blue-100: #dbeafe !default;
 $blue-200: #bfdbfe !default;
@@ -67,6 +72,19 @@ $purple-800: #6b21a8 !default;
 $purple-900: #581c87 !default;
 $purple-950: #3b0764 !default;
 
+// Cyan Palette
+$cyan-50: #ecfeff !default;
+$cyan-100: #cffafe !default;
+$cyan-200: #a5f3fc !default;
+$cyan-300: #67e8f9 !default;
+$cyan-400: #22d3ee !default;
+$cyan-500: #06b6d4 !default;
+$cyan-600: #0891b2 !default;
+$cyan-700: #0e7490 !default;
+$cyan-800: #155e75 !default;
+$cyan-900: #164e63 !default;
+$cyan-950: #083344 !default;
+
 // Red Palette
 $red-50: #fef2f2 !default;
 $red-100: #fee2e2 !default;
@@ -79,19 +97,6 @@ $red-700: #b91c1c !default;
 $red-800: #991b1b !default;
 $red-900: #7f1d1d !default;
 $red-950: #450a0a !default;
-
-// Orange Palette
-$orange-50: #fff7ed !default;
-$orange-100: #ffedd5 !default;
-$orange-200: #fed7aa !default;
-$orange-300: #fdba74 !default;
-$orange-400: #fb923c !default;
-$orange-500: #f97316 !default;
-$orange-600: #ea580c !default;
-$orange-700: #c2410c !default;
-$orange-800: #9a3412 !default;
-$orange-900: #7c2d12 !default;
-$orange-950: #431407 !default;
 
 // Green Palette
 $green-50: #f0fdf4 !default;
@@ -106,108 +111,97 @@ $green-800: #166534 !default;
 $green-900: #14532d !default;
 $green-950: #052e16 !default;
 
-// Cyan Palette
-$cyan-50: #ecfeff !default;
-$cyan-100: #cffafe !default;
-$cyan-200: #a5f3fc !default;
-$cyan-300: #67e8f9 !default;
-$cyan-400: #22d3ee !default;
-$cyan-500: #06b6d4 !default;
-$cyan-600: #0891b2 !default;
-$cyan-700: #0e7490 !default;
-$cyan-800: #155e75 !default;
-$cyan-900: #164e63 !default;
-$cyan-950: #083344 !default;
-
-// Olive/Green Special Theme Colors
-$olive-50: #f7f8f4 !default;
-$olive-100: #eef0e8 !default;
-$olive-200: #dde2d1 !default;
-$olive-300: #c4ceb0 !default;
-$olive-400: #a8b688 !default;
-$olive-500: #8fa069 !default;
-$olive-600: #728454 !default;
-$olive-700: #5a6843 !default;
-$olive-800: #495438 !default;
-$olive-900: #3f4730 !default;
-$olive-950: #202517 !default;
-
 // Yellow Palette
 $yellow-50: #fefce8 !default;
-$yellow-100: #fef9c3 !default;
-$yellow-200: #fef08a !default;
-$yellow-300: #fde047 !default;
-$yellow-400: #facc15 !default;
-$yellow-500: #eab308 !default;
-$yellow-600: #ca8a04 !default;
-$yellow-700: #a16207 !default;
-$yellow-800: #854d0e !default;
-$yellow-900: #713f12 !default;
-$yellow-950: #422006 !default;
+$yellow-100: #fef3c7 !default;
+$yellow-200: #fde68a !default;
+$yellow-300: #fcd34d !default;
+$yellow-400: #fbbf24 !default;
+$yellow-500: #f59e0b !default;
+$yellow-600: #d97706 !default;
+$yellow-700: #b45309 !default;
+$yellow-800: #92400e !default;
+$yellow-900: #78350f !default;
+$yellow-950: #451a03 !default;
+
+// Orange Palette
+$orange-50: #fff7ed !default;
+$orange-100: #ffedd5 !default;
+$orange-200: #fed7aa !default;
+$orange-300: #fdba74 !default;
+$orange-400: #fb923c !default;
+$orange-500: #f97316 !default;
+$orange-600: #ea580c !default;
+$orange-700: #c2410c !default;
+$orange-800: #9a3412 !default;
+$orange-900: #7c2d12 !default;
+$orange-950: #431407 !default;
+
+// Olive Palette - Custom Theme
+$olive-50: #f7f8f3 !default;
+$olive-100: #eef0e7 !default;
+$olive-200: #dde1cf !default;
+$olive-300: #c7ccb7 !default;
+$olive-400: #a8af9a !default;
+$olive-500: #8d947f !default;
+$olive-600: #707a69 !default;
+$olive-700: #595f56 !default;
+$olive-800: #494e47 !default;
+$olive-900: #3d403c !default;
+$olive-950: #2a2d29 !default;
+
+// Indigo Palette
+$indigo-50: #eef2ff !default;
+$indigo-100: #e0e7ff !default;
+$indigo-200: #c7d2fe !default;
+$indigo-300: #a5b4fc !default;
+$indigo-400: #818cf8 !default;
+$indigo-500: #6366f1 !default;
+$indigo-600: #4f46e5 !default;
+$indigo-700: #4338ca !default;
+$indigo-800: #3730a3 !default;
+$indigo-900: #312e81 !default;
+$indigo-950: #1e1b4b !default;
+
+// Pink Palette
+$pink-50: #fdf2f8 !default;
+$pink-100: #fce7f3 !default;
+$pink-200: #fbcfe8 !default;
+$pink-300: #f9a8d4 !default;
+$pink-400: #f472b6 !default;
+$pink-500: #ec4899 !default;
+$pink-600: #db2777 !default;
+$pink-700: #be185d !default;
+$pink-800: #9d174d !default;
+$pink-900: #831843 !default;
+$pink-950: #500724 !default;
 
 /* ========================================== */
-// Semantic Color System
-/* ========================================== */
-
-// Primary Actions
-$primary: $blue-600 !default;
-$primary-hover: $blue-700 !default;
-$primary-active: $blue-800 !default;
-
-// Secondary Actions
-$secondary: $gray-600 !default;
-$secondary-hover: $gray-700 !default;
-$secondary-active: $gray-800 !default;
-
-// Accent Colors
-$accent: $cyan-500 !default;
-$accent-hover: $cyan-600 !default;
-$accent-active: $cyan-700 !default;
-
-// Status Colors
-$success: $green-600 !default;
-$success-hover: $green-700 !default;
-$success-50: $green-50 !default;
-$success-100: $green-100 !default;
-$success-400: $green-400 !default;
-$success-500: $green-500 !default;
-
-$warning: $yellow-500 !default;
-$warning-hover: $yellow-600 !default;
-$warning-50: $yellow-50 !default;
-$warning-100: $yellow-100 !default;
-$warning-400: $yellow-400 !default;
-$warning-500: $yellow-500 !default;
-
-$error: $red-600 !default;
-$error-hover: $red-700 !default;
-$error-50: $red-50 !default;
-$error-100: $red-100 !default;
-$error-400: $red-400 !default;
-$error-500: $red-500 !default;
-
-$info: $blue-500 !default;
-$info-hover: $blue-600 !default;
-$info-50: $blue-50 !default;
-$info-100: $blue-100 !default;
-$info-400: $blue-400 !default;
-$info-500: $blue-500 !default;
-
-/* ========================================== */
-// Typography System
+// Typography System - VOLLSTÄNDIG
 /* ========================================== */
 
 // Font Families
-$font-family-sans: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif !default;
-$font-family-serif: 'Georgia', 'Times New Roman', Times, serif !default;
-$font-family-mono: 'Fira Code', 'Monaco', 'Cascadia Code', 'SF Mono', Consolas, monospace !default;
+$font-family-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif !default;
+$font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace !default;
+$font-family-display: $font-family-sans !default;
+$font-family-body: $font-family-sans !default;
+$font-family-primary: $font-family-sans !default;
 
-// Display & Special Fonts
-$font-family-display: 'Inter Display', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif !default;
-
-// Font Theme Families
-$font-family-future: 'Orbitron', 'Exo 2', 'Rajdhani', monospace !default;
-$font-family-vintage: 'Playfair Display', 'Crimson Text', 'Lora', serif !default;
+// Font Sizes - Responsive
+$font-size-xs: 0.75rem !default; // 12px
+$font-size-sm: 0.875rem !default; // 14px
+$font-size-base: 1rem !default; // 16px
+$font-size-lg: 1.125rem !default; // 18px
+$font-size-xl: 1.25rem !default; // 20px
+$font-size-2xl: 1.5rem !default; // 24px
+$font-size-3xl: 1.875rem !default; // 30px
+$font-size-4xl: 2.25rem !default; // 36px
+$font-size-5xl: 3rem !default; // 48px
+$font-size-6xl: 3.75rem !default; // 60px
+$font-size-7xl: 4.5rem !default; // 72px
+$font-size-8xl: 6rem !default; // 96px
+$font-size-9xl: 8rem !default; // 128px
 
 // Font Weights
 $font-weight-thin: 100 !default;
@@ -220,18 +214,6 @@ $font-weight-bold: 700 !default;
 $font-weight-extrabold: 800 !default;
 $font-weight-black: 900 !default;
 
-// Font Sizes - Fluid Scale
-$font-size-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8rem) !default;
-$font-size-sm: clamp(0.875rem, 0.8rem + 0.3vw, 0.95rem) !default;
-$font-size-base: clamp(1rem, 0.9rem + 0.4vw, 1.125rem) !default;
-$font-size-lg: clamp(1.125rem, 1rem + 0.5vw, 1.25rem) !default;
-$font-size-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem) !default;
-$font-size-2xl: clamp(1.5rem, 1.3rem + 0.8vw, 1.875rem) !default;
-$font-size-3xl: clamp(1.875rem, 1.6rem + 1vw, 2.25rem) !default;
-$font-size-4xl: clamp(2.25rem, 1.9rem + 1.4vw, 3rem) !default;
-$font-size-5xl: clamp(3rem, 2.4rem + 2vw, 4rem) !default;
-$font-size-6xl: clamp(3.75rem, 3rem + 2.5vw, 5rem) !default;
-
 // Line Heights
 $line-height-none: 1 !default;
 $line-height-tight: 1.25 !default;
@@ -243,52 +225,65 @@ $line-height-loose: 2 !default;
 // Letter Spacing
 $letter-spacing-tighter: -0.05em !default;
 $letter-spacing-tight: -0.025em !default;
-$letter-spacing-normal: 0 !default;
+$letter-spacing-normal: 0em !default;
 $letter-spacing-wide: 0.025em !default;
 $letter-spacing-wider: 0.05em !default;
 $letter-spacing-widest: 0.1em !default;
 
 /* ========================================== */
-// Spacing System - Consistent Scale
+// Spacing System - KOMPLETT mit allen Varianten
 /* ========================================== */
 
 $spacer: 1rem !default;
 
-$space-0: 0 !default;
+// Alle Spacing-Varianten (beide Schreibweisen)
 $space-px: 1px !default;
-$space-0_5: #{$spacer * 0.125} !default; // 2px
-$space-1: #{$spacer * 0.25} !default; // 4px
-$space-1_5: #{$spacer * 0.375} !default; // 6px
-$space-2: #{$spacer * 0.5} !default; // 8px
-$space-2_5: #{$spacer * 0.625} !default; // 10px
-$space-3: #{$spacer * 0.75} !default; // 12px
-$space-3_5: #{$spacer * 0.875} !default; // 14px
-$space-4: #{$spacer} !default; // 16px
-$space-5: #{$spacer * 1.25} !default; // 20px
-$space-6: #{$spacer * 1.5} !default; // 24px
-$space-7: #{$spacer * 1.75} !default; // 28px
-$space-8: #{$spacer * 2} !default; // 32px
-$space-9: #{$spacer * 2.25} !default; // 36px
-$space-10: #{$spacer * 2.5} !default; // 40px
-$space-11: #{$spacer * 2.75} !default; // 44px
-$space-12: #{$spacer * 3} !default; // 48px
-$space-14: #{$spacer * 3.5} !default; // 56px
-$space-16: #{$spacer * 4} !default; // 64px
-$space-20: #{$spacer * 5} !default; // 80px
-$space-24: #{$spacer * 6} !default; // 96px
-$space-28: #{$spacer * 7} !default; // 112px
-$space-32: #{$spacer * 8} !default; // 128px
-$space-36: #{$spacer * 9} !default; // 144px
-$space-40: #{$spacer * 10} !default; // 160px
-$space-44: #{$spacer * 11} !default; // 176px
-$space-48: #{$spacer * 12} !default; // 192px
-$space-52: #{$spacer * 13} !default; // 208px
-$space-56: #{$spacer * 14} !default; // 224px
-$space-60: #{$spacer * 15} !default; // 240px
-$space-64: #{$spacer * 16} !default; // 256px
-$space-72: #{$spacer * 18} !default; // 288px
-$space-80: #{$spacer * 20} !default; // 320px
-$space-96: #{$spacer * 24} !default; // 384px
+$space-0: 0 !default;
+
+$space-0-5: 0.125rem !default; // 2px - Bindestrich-Version
+$space-0_5: 0.125rem !default; // 2px - Unterstrich-Version
+
+$space-1: 0.25rem !default; // 4px
+
+$space-1-5: 0.375rem !default; // 6px - Bindestrich-Version
+$space-1_5: 0.375rem !default; // 6px - Unterstrich-Version
+
+$space-2: 0.5rem !default; // 8px
+
+$space-2-5: 0.625rem !default; // 10px - Bindestrich-Version
+$space-2_5: 0.625rem !default; // 10px - Unterstrich-Version
+
+$space-3: 0.75rem !default; // 12px
+
+$space-3-5: 0.875rem !default; // 14px - Bindestrich-Version
+$space-3_5: 0.875rem !default; // 14px - Unterstrich-Version
+
+$space-4: 1rem !default; // 16px
+$space-5: 1.25rem !default; // 20px
+$space-6: 1.5rem !default; // 24px
+$space-7: 1.75rem !default; // 28px
+$space-8: 2rem !default; // 32px
+$space-9: 2.25rem !default; // 36px
+$space-10: 2.5rem !default; // 40px
+$space-11: 2.75rem !default; // 44px
+$space-12: 3rem !default; // 48px
+$space-14: 3.5rem !default; // 56px
+$space-16: 4rem !default; // 64px
+$space-20: 5rem !default; // 80px
+$space-24: 6rem !default; // 96px
+$space-28: 7rem !default; // 112px
+$space-32: 8rem !default; // 128px
+$space-36: 9rem !default; // 144px
+$space-40: 10rem !default; // 160px
+$space-44: 11rem !default; // 176px
+$space-48: 12rem !default; // 192px
+$space-52: 13rem !default; // 208px
+$space-56: 14rem !default; // 224px
+$space-60: 15rem !default; // 240px
+$space-64: 16rem !default; // 256px
+$space-72: 18rem !default; // 288px
+$space-80: 20rem !default; // 320px
+$space-96: 24rem !default; // 384px
 
 /* ========================================== */
 // Border Radius System
@@ -302,45 +297,57 @@ $radius-lg: 0.5rem !default; // 8px
 $radius-xl: 0.75rem !default; // 12px
 $radius-2xl: 1rem !default; // 16px
 $radius-3xl: 1.5rem !default; // 24px
-$radius-full: 50% !default;
+$radius-full: 9999px !default;
 
 /* ========================================== */
-// Shadow System - Enhanced
+// Shadow System - KOMPLETT
 /* ========================================== */
 
+// Standard Shadows
 $shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !default;
 $shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1) !default;
 $shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1) !default;
+$shadow: $shadow-base !default; // Alias für Kompatibilität
 $shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1) !default;
 $shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !default;
 $shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !default;
 $shadow-2xl: 0 50px 100px -20px rgba(0, 0, 0, 0.25) !default;
 $shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06) !default;
+$shadow-none: none !default;
 
 // Special Shadow Effects
 $shadow-color: 0 4px 14px 0 rgba(0, 0, 0, 0.1) !default;
 $shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15) !default;
-$shadow-focus: 0 0 0 3px rgba($primary, 0.1) !default;
+$shadow-focus: 0 0 0 3px rgba($blue-500, 0.1) !default;
 
-// Glow Effects - Futuristisch
+/* ========================================== */
+// Glow Effects System
+/* ========================================== */
+
+// Basis Glow Effects
+$glow-xs: 0 0 2px currentColor !default;
 $glow-sm: 0 0 5px currentColor !default;
 $glow-base: 0 0 10px currentColor !default;
+$glow: $glow-base !default; // Alias
 $glow-md: 0 0 15px currentColor !default;
 $glow-lg: 0 0 20px currentColor !default;
 $glow-xl: 0 0 30px currentColor !default;
+$glow-2xl: 0 0 40px currentColor !default;
 
-// Neon Glows - Verschiedene Farben
+// Farbige Glow Effects
 $glow-blue: 0 0 20px rgba($blue-500, 0.5), 0 0 40px rgba($blue-500, 0.3), 0 0 60px rgba($blue-500, 0.1) !default;
 $glow-purple: 0 0 20px rgba($purple-500, 0.5), 0 0 40px rgba($purple-500, 0.3), 0 0 60px rgba($purple-500, 0.1) !default;
 $glow-cyan: 0 0 20px rgba($cyan-500, 0.5), 0 0 40px rgba($cyan-500, 0.3), 0 0 60px rgba($cyan-500, 0.1) !default;
 $glow-red: 0 0 20px rgba($red-500, 0.5), 0 0 40px rgba($red-500, 0.3), 0 0 60px rgba($red-500, 0.1) !default;
 $glow-green: 0 0 20px rgba($green-500, 0.5), 0 0 40px rgba($green-500, 0.3), 0 0 60px rgba($green-500, 0.1) !default;
+$glow-yellow: 0 0 20px rgba($yellow-500, 0.5), 0 0 40px rgba($yellow-500, 0.3), 0 0 60px rgba($yellow-500, 0.1) !default;
+$glow-orange: 0 0 20px rgba($orange-500, 0.5), 0 0 40px rgba($orange-500, 0.3), 0 0 60px rgba($orange-500, 0.1) !default;
 
 /* ========================================== */
 // Animation & Transition System
 /* ========================================== */
 
-// Timing Functions - Natürliche Bewegungen
+// Timing Functions
 $ease-linear: linear !default;
 $ease-in: cubic-bezier(0.4, 0, 1, 1) !default;
 $ease-out: cubic-bezier(0, 0, 0.2, 1) !default;
@@ -352,7 +359,7 @@ $ease-elastic: cubic-bezier(0.25, 0.46, 0.45, 0.94) !default;
 $ease-back: cubic-bezier(0.175, 0.885, 0.32, 1.275) !default;
 $ease-anticipate: cubic-bezier(0.32, 0, 0.67, 0) !default;
 
-// Duration Scale
+// Duration Scale - ALLE Werte
 $duration-75: 75ms !default;
 $duration-100: 100ms !default;
 $duration-150: 150ms !default;
@@ -361,8 +368,12 @@ $duration-300: 300ms !default;
 $duration-500: 500ms !default;
 $duration-700: 700ms !default;
 $duration-1000: 1000ms !default;
+$duration-1500: 1500ms !default;
+$duration-2000: 2000ms !default;
 
-// Default Transitions
+// Transition Presets
+$transition-none: none !default;
+$transition-all: all $duration-150 $ease-out !default;
 $transition-fast: all $duration-150 $ease-out !default;
 $transition-base: all $duration-200 $ease-out !default;
 $transition-slow: all $duration-300 $ease-out !default;
@@ -372,7 +383,7 @@ $transition-shadow: box-shadow $duration-150 $ease-out !default;
 $transition-transform: transform $duration-150 $ease-out !default;
 
 /* ========================================== */
-// Z-Index Scale - Organisierte Ebenen
+// Z-Index Scale
 /* ========================================== */
 
 $z-index-hide: -1 !default;
@@ -389,7 +400,7 @@ $z-index-tooltip: 1070 !default;
 $z-index-toast: 1080 !default;
 
 /* ========================================== */
-// Breakpoint System - Mobile First
+// Breakpoint System
 /* ========================================== */
 
 $breakpoint-xs: 0 !default;
@@ -415,7 +426,7 @@ $grid-gutter-width: 1.5rem !default;
 $grid-row-columns: 6 !default;
 
 /* ========================================== */
-// Component Variables
+// Component Variables - VOLLSTÄNDIG
 /* ========================================== */
 
 // Buttons
@@ -444,8 +455,100 @@ $modal-border-radius: $radius-lg !default;
 $modal-padding: $space-6 !default;
 
 /* ========================================== */
-// Print Styles
+// Semantic Color Tokens - KOMPLETT
+/* ========================================== */
+
+// Primary Color System
+$color-primary: $blue-500 !default;
+$color-primary-hover: $blue-600 !default;
+$color-primary-active: $blue-700 !default;
+$primary: $color-primary !default; // Alias
+$primary-hover: $color-primary-hover !default; // Alias
+$primary-active: $color-primary-active !default; // Alias
+
+// Secondary Colors
+$color-secondary: $purple-500 !default;
+$color-accent: $cyan-500 !default;
+
+// Status Colors
+$color-success: $green-500 !default;
+$success: $color-success !default; // Alias
+$success-50: $green-50 !default;
+$success-100: $green-100 !default;
+$success-500: $green-500 !default;
+
+$color-warning: $yellow-500 !default;
+$warning: $color-warning !default; // Alias
+$warning-50: $yellow-50 !default;
+$warning-100: $yellow-100 !default;
+$warning-500: $yellow-500 !default;
+
+$color-error: $red-500 !default;
+$error: $color-error !default; // Alias
+$error-50: $red-50 !default;
+$error-100: $red-100 !default;
+$error-500: $red-500 !default;
+
+$color-info: $blue-400 !default;
+$info: $color-info !default; // Alias
+$info-50: $blue-50 !default;
+$info-100: $blue-100 !default;
+$info-500: $blue-500 !default;
+
+// Background Colors
+$bg-primary: $white !default;
+$bg-secondary: $gray-50 !default;
+$bg-muted: $gray-100 !default;
+$bg-surface: $white !default;
+
+// Text Colors
+$text-primary: $gray-900 !default;
+$text-secondary: $gray-600 !default;
+$text-muted: $gray-500 !default;
+$text-inverse: $white !default;
+
+// Border Colors
+$border-primary: $gray-200 !default;
+$border-secondary: $gray-300 !default;
+$border-muted: $gray-100 !default;
+
+/* ========================================== */
+// Print Variables
 /* ========================================== */
 
 $print-page-size: a3 !default;
 $print-body-min-width: 992px !default;
+
+/* ========================================== */
+// Legacy Support & Aliases
+/* ========================================== */
+
+// Alte Variablen-Namen für Rückwärtskompatibilität
+$primary-color: $color-primary !default;
+$secondary-color: $color-secondary !default;
+$accent-color: $color-accent !default;
+
+// Container Aliase
+$container-fluid: 100% !default;
+
+// Font Aliase
+$base-font-size: $font-size-base !default;
+$base-line-height: $line-height-normal !default;
+
+/* ========================================== */
+// Debugging & Development
+/* ========================================== */
+
+// Debug Information (nur wenn aktiviert)
+// @debug "✅ Variables System loaded successfully";
+// @debug "✅ Total colors defined: #{length($blue-50 $blue-100 $blue-200)}";
+// @debug "✅ Animation durations: #{$duration-300}, #{$duration-500}";
+
+/* ========================================== */
+// CSS Custom Property Fallbacks
+/* ========================================== */
+
+// Für Browser ohne CSS Custom Properties Support
+$css-vars-fallback-primary: $color-primary !default;
+$css-vars-fallback-text: $text-primary !default;
+$css-vars-fallback-bg: $bg-primary !default;

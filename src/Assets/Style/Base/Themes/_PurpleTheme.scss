@@ -1,22 +1,24 @@
 /* ========================================== */
-/* ============== PURPLE THEME ============== */
+/* ============= PURPLE THEME =============== */
 /* ========================================== */
-/* Elegantes, luxuriöses Purple Theme mit modernen Akzenten */
+/* Kreatives Purple Theme mit verspielten Animationen */
+
+// WICHTIG: Variablen importieren
+@use "../Variables" as *;
 
 /* ========================================== */
 // Purple Theme Konfiguration
 /* ========================================== */
 
-// Purple Theme aktivieren
 [data-theme="purple"],
 .theme-purple {
     color-scheme: light;
 
     /* ========================================== */
-    // Base Colors - Purple Elegance
+    // Base Colors - Purple Foundation
     /* ========================================== */
 
-    // Backgrounds - Sanfte Purple Töne
+    // Backgrounds - Lila-getönte Basis
     --color-background: #{$white};
     --color-background-secondary: #{$purple-50};
     --color-background-tertiary: #{$purple-100};
@@ -24,15 +26,15 @@
     --color-surface-secondary: #{$purple-50};
     --color-surface-elevated: #{$white};
 
-    // Text Colors - Kontrastreiche Purple Palette
+    // Text Colors - Lila Kontraste
     --color-text-primary: #{$gray-900};
     --color-text-secondary: #{$purple-700};
-    --color-text-tertiary: #{$purple-500};
+    --color-text-tertiary: #{$purple-400};
     --color-text-inverse: #{$white};
     --color-text-muted: #{$purple-400};
     --color-text-disabled: #{$purple-300};
 
-    // Primary Colors - Reiches Purple
+    // Primary Colors - Kräftiges Purple
     --color-primary: #{$purple-600};
     --color-primary-hover: #{$purple-700};
     --color-primary-active: #{$purple-800};
@@ -40,152 +42,87 @@
     --color-primary-100: #{rgba($purple-600, 0.1)};
     --color-primary-200: #{rgba($purple-600, 0.2)};
 
-    // Secondary Colors - Komplemäre Töne
+    // Secondary Colors
     --color-secondary: #{$purple-100};
     --color-secondary-hover: #{$purple-200};
     --color-secondary-active: #{$purple-300};
 
-    // Accent Colors - Leuchtender Akzent
-    --color-accent: #{$purple-400};
-    --color-accent-hover: #{$purple-500};
-    --color-accent-active: #{$purple-600};
+    // Accent Colors - Kontrastierendes Pink
+    --color-accent: #{$pink-500};
+    --color-accent-hover: #{$pink-600};
+    --color-accent-active: #{$pink-700};
 
-    // Borders - Purple Variation
+    // Borders - Lila Linien
     --color-border: #{$purple-200};
     --color-border-secondary: #{$purple-300};
     --color-border-focus: #{$purple-500};
     --color-divider: #{$purple-100};
 
-    // Semantic Colors - Purple-harmonische Farben
-    --color-success: #{$green-600};
-    --color-warning: #{$orange-500};
-    --color-error: #{$red-600};
-    --color-info: #{$blue-600};
+    // Semantic Colors - Lila-harmonische Farben
+    --color-success: #{$green-500};
+    --color-warning: #{$yellow-500};
+    --color-error: #{$red-500};
+    --color-info: #{$purple-500};
 
-    // Status Backgrounds - Sanfte Tints
+    // Status Backgrounds
     --color-success-bg: #{$green-50};
-    --color-warning-bg: #{$orange-50};
+    --color-warning-bg: #{$yellow-50};
     --color-error-bg: #{$red-50};
-    --color-info-bg: #{$blue-50};
+    --color-info-bg: #{$purple-50};
 
     // Status Text Colors
     --color-success-text: #{$green-700};
-    --color-warning-text: #{$orange-700};
+    --color-warning-text: #{$yellow-700};
     --color-error-text: #{$red-700};
-    --color-info-text: #{$blue-700};
+    --color-info-text: #{$purple-700};
 
     /* ========================================== */
-    // Shadows & Effects - Luxuriös
+    // Shadows & Effects - Purple optimiert
     /* ========================================== */
 
-    --shadow: 0 4px 12px rgba(#{$purple-600}, 0.15);
-    --shadow-hover: 0 8px 25px rgba(#{$purple-600}, 0.2);
+    --shadow: 0 4px 12px rgba(#{red($purple-600)}, #{green($purple-600)}, #{blue($purple-600)}, 0.15);
+    --shadow-hover: 0 8px 25px rgba(#{red($purple-600)}, #{green($purple-600)}, #{blue($purple-600)}, 0.2);
     --shadow-focus: 0 0 0 3px #{rgba($purple-600, 0.2)};
-    --shadow-card: 0 2px 8px rgba(#{$purple-600}, 0.1);
-    --shadow-card-hover: 0 8px 20px rgba(#{$purple-600}, 0.15);
-    --shadow-modal: 0 20px 40px rgba(#{$purple-600}, 0.2);
+    --shadow-card: 0 2px 8px rgba(#{red($purple-600)}, #{green($purple-600)}, #{blue($purple-600)}, 0.08);
+    --shadow-card-hover: 0 8px 20px rgba(#{red($purple-600)}, #{green($purple-600)}, #{blue($purple-600)}, 0.12);
+    --shadow-modal: 0 20px 40px rgba(#{red($purple-600)}, #{green($purple-600)}, #{blue($purple-600)}, 0.15);
 
-    // Purple Glow Effects
-    @if $enable-glow-effects {
-        --glow-primary: 0 0 20px rgba(#{$purple-600}, 0.3),
-        0 0 40px rgba(#{$purple-600}, 0.2);
-
-        --glow-accent: 0 0 15px rgba(#{$purple-400}, 0.4);
-
-        --text-glow-primary: 0 0 8px rgba(#{$purple-600}, 0.3);
-    }
-
-    /* ========================================== */
-    // E-Commerce Purple Theme
-    /* ========================================== */
-
-    // Product Colors - Luxus-orientiert
-    --color-product-new: #{$green-500};
-    --color-product-sale: #{$red-500};
-    --color-product-bestseller: #{$orange-500};
-    --color-product-limited: #{$purple-700};
-    --color-product-exclusive: #{$purple-800};
-
-    // Price Colors - Premium feeling
-    --color-price-current: #{$gray-900};
-    --color-price-original: #{$purple-400};
-    --color-price-discount: #{$red-600};
-    --color-price-free: #{$green-600};
-    --color-price-premium: #{$purple-700};
-
-    // Rating Colors
-    --color-rating-filled: #{$yellow-500};
-    --color-rating-empty: #{$purple-200};
-
-    // Stock Colors
-    --color-stock-in: #{$green-600};
-    --color-stock-low: #{$orange-500};
-    --color-stock-out: #{$red-600};
-
-    /* ========================================== */
-    // Interactive States - Elegante Übergänge
-    /* ========================================== */
-
-    // Hover States
-    --hover-overlay: #{rgba($purple-600, 0.08)};
-    --hover-lift-shadow: var(--shadow-hover);
-
-    // Active States  
-    --active-overlay: #{rgba($purple-600, 0.15)};
-    --active-scale: 0.97;
-
-    // Focus States
-    --focus-ring: 0 0 0 2px #{rgba($purple-600, 0.3)};
-    --focus-ring-offset: 2px;
-
-    // Disabled States
-    --disabled-opacity: 0.5;
-    --disabled-cursor: not-allowed;
-
-    /* ========================================== */
-    // Animation & Transition - Elegant & bouncy
-    /* ========================================== */
-
-    --transition-theme: background-color 400ms #{$ease-bounce},
-    color 400ms #{$ease-bounce},
-    border-color 400ms #{$ease-bounce},
-    box-shadow 400ms #{$ease-bounce};
-
-    --transition-elegant: all 300ms #{$ease-out};
-    --transition-luxury: all 500ms #{$ease-elastic};
+    // Glow Effects - Purple Glow
+    --glow-effect: #{$glow-purple};
+    --text-glow: 0 0 10px #{rgba($purple-500, 0.5)};
 
     /* ========================================== */
     // Component Colors - Purple Theme spezifisch
     /* ========================================== */
 
-    // Navigation - Elegante Kopfzeile
+    // Navigation - Lila Kopfzeile
     --color-nav-bg: #{rgba($white, 0.95)};
     --color-nav-text: #{$purple-700};
     --color-nav-text-hover: #{$purple-600};
     --color-nav-text-active: #{$purple-800};
     --color-nav-border: #{$purple-200};
-    --color-nav-backdrop: #{rgba($purple-50, 0.8)};
+    --color-nav-backdrop: #{rgba($purple-50, 0.9)};
 
-    // Header - Luxuriöse Präsentation
+    // Header
     --color-header-bg: #{$white};
     --color-header-text: #{$gray-900};
     --color-header-text-secondary: #{$purple-600};
     --color-header-border: #{$purple-200};
 
-    // Footer - Subtile Eleganz
-    --color-footer-bg: #{$purple-100};
+    // Footer
+    --color-footer-bg: #{$purple-50};
     --color-footer-text: #{$purple-700};
     --color-footer-text-secondary: #{$purple-500};
     --color-footer-border: #{$purple-200};
 
-    // Sidebar - Luxuriöse Seitenleiste
+    // Sidebar
     --color-sidebar-bg: #{rgba($purple-50, 0.8)};
     --color-sidebar-text: #{$purple-700};
     --color-sidebar-text-hover: #{$purple-800};
     --color-sidebar-border: #{$purple-200};
     --color-sidebar-active: #{rgba($purple-600, 0.1)};
 
-    // Cards - Elegante Karten
+    // Cards
     --color-card-bg: #{$white};
     --color-card-bg-hover: #{$purple-50};
     --color-card-border: #{$purple-200};
@@ -195,124 +132,91 @@
     // Buttons - Purple Theme optimiert
     /* ========================================== */
 
-    // Primary Button - Luxuriöse Call-to-Action
+    // Primary Button - Lila Call-to-Action
     --color-btn-primary-bg: #{$purple-600};
     --color-btn-primary-bg-hover: #{$purple-700};
     --color-btn-primary-bg-active: #{$purple-800};
     --color-btn-primary-text: #{$white};
     --color-btn-primary-border: #{$purple-600};
 
-    // Secondary Button - Elegante Alternative
+    // Secondary Button - Lila Alternative
     --color-btn-secondary-bg: #{$purple-100};
     --color-btn-secondary-bg-hover: #{$purple-200};
     --color-btn-secondary-bg-active: #{$purple-300};
     --color-btn-secondary-text: #{$purple-700};
     --color-btn-secondary-border: #{$purple-200};
 
-    // Ghost Button - Minimale Eleganz
+    // Ghost Button - Minimales Lila
     --color-btn-ghost-bg: transparent;
     --color-btn-ghost-bg-hover: #{$purple-100};
     --color-btn-ghost-text: #{$purple-700};
     --color-btn-ghost-text-hover: #{$purple-800};
     --color-btn-ghost-border: transparent;
 
-    // Danger Button
-    --color-btn-danger-bg: #{$red-600};
-    --color-btn-danger-bg-hover: #{$red-700};
-    --color-btn-danger-text: #{$white};
-    --color-btn-danger-border: #{$red-600};
-
-    // Success Button
-    --color-btn-success-bg: #{$green-600};
-    --color-btn-success-bg-hover: #{$green-700};
-    --color-btn-success-text: #{$white};
-    --color-btn-success-border: #{$green-600};
+    // Accent Button - Pink Highlight
+    --color-btn-accent-bg: #{$pink-500};
+    --color-btn-accent-bg-hover: #{$pink-600};
+    --color-btn-accent-text: #{$white};
 
     /* ========================================== */
-    // Forms - Elegante Eingaben
+    // Forms - Purple Mode optimiert
     /* ========================================== */
 
-    // Input Fields
     --color-input-bg: #{$white};
     --color-input-text: #{$gray-900};
     --color-input-border: #{$purple-300};
-    --color-input-border-hover: #{$purple-400};
     --color-input-border-focus: #{$purple-500};
     --color-input-placeholder: #{$purple-400};
-
-    // Input States
     --color-input-disabled-bg: #{$purple-100};
-    --color-input-disabled-text: #{$purple-400};
-    --color-input-disabled-border: #{$purple-200};
-
-    // Form Validation
-    --color-input-valid-border: #{$green-500};
-    --color-input-invalid-border: #{$red-500};
-    --color-input-warning-border: #{$orange-500};
+    --color-input-disabled-text: #{$purple-500};
 
     /* ========================================== */
-    // Layout & Spacing - Großzügig & elegant
+    // Interactive States - Purple Mode
     /* ========================================== */
 
-    --border-radius-default: #{$radius-xl};
-    --border-radius-large: #{$radius-2xl};
-    --border-radius-small: #{$radius-lg};
+    // Hover States
+    --hover-overlay: #{rgba($purple-600, 0.06)};
+    --hover-lift-shadow: var(--shadow-hover);
+
+    // Active States
+    --active-overlay: #{rgba($purple-600, 0.12)};
+    --active-scale: 0.98;
+
+    // Focus States
+    --focus-ring: 0 0 0 2px #{rgba($purple-600, 0.25)};
+    --focus-ring-offset: 2px;
+
+    // Disabled States
+    --disabled-opacity: 0.6;
+    --disabled-cursor: not-allowed;
 
     /* ========================================== */
-    // Special Purple Theme Features
+    // Animation & Transition - Verspielt & bouncy
     /* ========================================== */
 
-    // Purple theme specific gradients
-    --gradient-primary: linear-gradient(135deg, #{$purple-600} 0%, #{$purple-400} 100%);
-    --gradient-secondary: linear-gradient(135deg, #{$purple-100} 0%, #{$purple-200} 100%);
-    --gradient-surface: linear-gradient(180deg, #{$white} 0%, #{$purple-50} 100%);
-    --gradient-luxury: linear-gradient(135deg, #{$purple-800} 0%, #{$purple-600} 50%, #{$purple-400} 100%);
-
-    // Purple theme backdrop filters
-    --backdrop-filter: blur(12px);
-    --backdrop-filter-strong: blur(24px);
-
-    // Selection colors
-    --selection-bg: #{rgba($purple-600, 0.2)};
-    --selection-text: #{$gray-900};
+    --transition-theme: all 400ms #{$ease-bounce};
+    --transition-playful: all 300ms #{$ease-elastic};
+    --transition-bounce: all 250ms #{$ease-back};
 
     /* ========================================== */
-    // Luxury & Premium Elements
+    // Purple Theme Special Elements
     /* ========================================== */
 
-    // Metallic accents
-    --color-gold: #ffd700;
-    --color-rose-gold: #e8b4b8;
-    --color-platinum: #e5e4e2;
+    // Magic Colors
+    --magic-purple: #{$purple-600};
+    --magic-pink: #{$pink-500};
+    --magic-violet: #{$purple-700};
+    --magic-lavender: #{$purple-300};
 
-    // Gem-inspired colors
-    --color-amethyst: #{$purple-500};
-    --color-sapphire: #{$blue-600};
-    --color-emerald: #{$green-600};
-    --color-ruby: #{$red-600};
+    // Gradients - Magisch & kreativ
+    --gradient-magic: linear-gradient(135deg, #{$purple-600} 0%, #{$pink-500} 50%, #{$purple-700} 100%);
+    --gradient-dreamy: radial-gradient(circle, #{$purple-300} 0%, #{$purple-600} 50%, #{$purple-900} 100%);
+    --gradient-cosmic: linear-gradient(45deg, #{$purple-600} 0%, #{$blue-600} 25%, #{$pink-500} 50%, #{$purple-800} 100%);
+    --gradient-crystal: linear-gradient(135deg, #{$purple-200} 0%, #{$purple-400} 50%, #{$purple-600} 100%);
 
-    // Luxury gradients
-    --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-    --gradient-amethyst: linear-gradient(135deg, #{$purple-600} 0%, #{$purple-300} 100%);
-    --gradient-royal: linear-gradient(135deg, #{$purple-800} 0%, #{$purple-500} 50%, #{$purple-300} 100%);
-
-    /* ========================================== */
-    // Accessibility Enhancements
-    /* ========================================== */
-
-    // High contrast variants
-    &.high-contrast {
-        --color-text-primary: #{$black};
-        --color-background: #{$white};
-        --color-border: #{$purple-800};
-        --shadow: none;
-    }
-
-    // Large text variants
-    &.large-text {
-        font-size: 1.125rem;
-        line-height: 1.7;
-    }
+    // Backdrop Effects
+    --backdrop-filter: blur(15px) saturate(160%);
+    --backdrop-filter-magic: blur(25px) saturate(200%) hue-rotate(30deg);
 }
 
 /* ========================================== */
@@ -323,13 +227,15 @@
 
     // Selection styling
     ::selection {
-        background: var(--selection-bg);
-        color: var(--selection-text);
+        background: rgba($purple-600, 0.25);
+        color: var(--color-text-primary);
+        text-shadow: none;
     }
 
     ::-moz-selection {
-        background: var(--selection-bg);
-        color: var(--selection-text);
+        background: rgba($purple-600, 0.25);
+        color: var(--color-text-primary);
+        text-shadow: none;
     }
 
     // Purple scrollbar styling
@@ -344,144 +250,25 @@
     }
 
     ::-webkit-scrollbar-thumb {
-        background: var(--color-primary);
+        background: linear-gradient(45deg, #{$purple-500}, #{$pink-500});
         border-radius: 5px;
+        border: 1px solid var(--color-background-secondary);
 
         &:hover {
-            background: var(--color-primary-hover);
+            background: linear-gradient(45deg, #{$purple-600}, #{$pink-600});
         }
     }
 
-    // Special purple theme effects
-    .glass-effect {
-        background: rgba($white, 0.8);
-        backdrop-filter: var(--backdrop-filter);
-        border: 1px solid rgba($purple-200, 0.3);
-    }
-
-    .frosted-glass {
-        background: rgba($purple-50, 0.6);
-        backdrop-filter: var(--backdrop-filter-strong);
-        border: 1px solid rgba($purple-300, 0.2);
-    }
-
-    // Luxury elements
-    .luxury-card {
-        background: var(--gradient-luxury);
-        color: white;
-        border: 1px solid var(--color-gold);
-        position: relative;
-        overflow: hidden;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(white, 0.3),
-                    transparent);
-            animation: shimmer 2s infinite;
-        }
-    }
-
-    @keyframes shimmer {
-        0% {
-            left: -100%;
-        }
-
-        100% {
-            left: 100%;
-        }
-    }
-
-    // Premium badges
-    .premium-badge {
-        background: var(--gradient-gold);
-        color: var(--color-text-primary);
-        border: 2px solid var(--color-gold);
-        border-radius: var(--border-radius-large);
-        padding: $space-1 $space-3;
-        font-weight: $font-weight-bold;
-        text-transform: uppercase;
-        letter-spacing: $letter-spacing-wide;
-        position: relative;
-
-        &::after {
-            content: '✦';
-            margin-left: $space-1;
-        }
-    }
-
-    // Elegant hover effects
-    .elegant-hover {
-        transition: var(--transition-luxury);
+    // Enhanced button animations
+    button {
+        transition: var(--transition-bounce);
 
         &:hover {
             transform: translateY(-2px) scale(1.02);
-            box-shadow: var(--shadow-hover);
-
-            @if $enable-glow-effects {
-                box-shadow: var(--shadow-hover), var(--glow-primary);
-            }
-        }
-    }
-
-    // Royal elements
-    .royal-header {
-        background: var(--gradient-royal);
-        color: white;
-        text-align: center;
-        padding: $space-8 $space-4;
-        position: relative;
-
-        &::before,
-        &::after {
-            content: '♦';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: $font-size-2xl;
-            color: var(--color-gold);
         }
 
-        &::before {
-            left: $space-4;
-        }
-
-        &::after {
-            right: $space-4;
-        }
-    }
-}
-
-/* ========================================== */
-// Purple Theme Media Queries
-/* ========================================== */
-
-// Enhanced contrast for purple theme
-@media (prefers-contrast: high) {
-    [data-theme="purple"] {
-        --color-border: #{$purple-800};
-        --color-text-primary: #{$black};
-        --color-background: #{$white};
-        --shadow: none;
-        --glow-primary: none;
-    }
-}
-
-// Reduced motion for purple theme
-@media (prefers-reduced-motion: reduce) {
-    [data-theme="purple"] {
-        .luxury-card::before {
-            animation: none;
-        }
-
-        .elegant-hover:hover {
-            transform: none;
+        &:active {
+            transform: translateY(0) scale(0.98);
         }
     }
 }
@@ -492,65 +279,271 @@
 
 .theme-purple {
 
-    // Purple theme specific utility classes
-    .bg-gradient-primary {
-        background: var(--gradient-primary);
+    // Magic card effects
+    .magic-card {
+        background: var(--gradient-magic);
+        color: white;
+        border: 1px solid var(--magic-purple);
+        border-radius: $radius-xl;
+        padding: $space-6;
+        position: relative;
+        overflow: hidden;
+        transition: var(--transition-playful);
+
+        &::before {
+            content: '✨';
+            position: absolute;
+            top: $space-2;
+            right: $space-2;
+            font-size: $font-size-lg;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: magicShimmer 4s linear infinite;
+            pointer-events: none;
+        }
+
+        &:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-hover), var(--glow-effect);
+        }
     }
 
-    .bg-gradient-secondary {
-        background: var(--gradient-secondary);
+    @keyframes sparkle {
+
+        0%,
+        100% {
+            opacity: 0.5;
+            transform: scale(1) rotate(0deg);
+        }
+
+        50% {
+            opacity: 1;
+            transform: scale(1.2) rotate(180deg);
+        }
     }
 
-    .bg-gradient-luxury {
-        background: var(--gradient-luxury);
+    @keyframes magicShimmer {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
     }
 
-    .bg-gradient-royal {
-        background: var(--gradient-royal);
+    // Crystal effects
+    .crystal-card {
+        background: var(--gradient-crystal);
+        border: 2px solid var(--magic-lavender);
+        border-radius: $radius-2xl;
+        padding: $space-8;
+        position: relative;
+        transition: var(--transition-playful);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 255, 255, 0.1) 10px,
+                    rgba(255, 255, 255, 0.1) 20px);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        &:hover {
+            transform: rotate(1deg) scale(1.05);
+            border-color: var(--magic-purple);
+        }
     }
 
-    .bg-gradient-gold {
-        background: var(--gradient-gold);
+    // Dreamy elements
+    .dreamy-bg {
+        background: var(--gradient-dreamy);
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: dreamyFloat 6s ease-in-out infinite;
+        }
     }
 
-    // Purple theme text utilities
-    .text-primary-purple {
-        color: var(--color-primary);
+    @keyframes dreamyFloat {
+
+        0%,
+        100% {
+            transform: translateY(0px);
+            opacity: 0.7;
+        }
+
+        33% {
+            transform: translateY(-10px);
+            opacity: 0.9;
+        }
+
+        66% {
+            transform: translateY(-5px);
+            opacity: 0.8;
+        }
     }
 
-    .text-secondary-purple {
-        color: var(--color-text-secondary);
+    // Cosmic background
+    .cosmic-hero {
+        background: var(--gradient-cosmic);
+        color: white;
+        text-align: center;
+        padding: $space-20 $space-6;
+        border-radius: $radius-3xl;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(2px 2px at 20px 30px, white, transparent),
+                radial-gradient(2px 2px at 40px 70px, white, transparent),
+                radial-gradient(1px 1px at 90px 40px, white, transparent),
+                radial-gradient(1px 1px at 130px 80px, white, transparent),
+                radial-gradient(2px 2px at 160px 30px, white, transparent);
+            background-size: 200px 100px;
+            animation: starfield 20s linear infinite;
+            opacity: 0.6;
+        }
     }
 
-    .text-luxury {
-        color: var(--color-primary);
+    @keyframes starfield {
+        0% {
+            transform: translateY(0);
+        }
+
+        100% {
+            transform: translateY(-100px);
+        }
+    }
+
+    // Bouncy buttons
+    .bouncy-btn {
+        background: var(--gradient-magic);
+        border: none;
+        color: white;
+        padding: $space-3 $space-6;
+        border-radius: $radius-full;
         font-weight: $font-weight-semibold;
+        transition: var(--transition-bounce);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            transition: all 0.6s ease;
+            border-radius: 50%;
+        }
+
+        &:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-hover);
+
+            &::before {
+                width: 300px;
+                height: 300px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        &:active {
+            transform: translateY(-1px) scale(1.02);
+        }
     }
 
-    .text-gold {
-        color: var(--color-gold);
-    }
-
-    .text-amethyst {
-        color: var(--color-amethyst);
-    }
-
-    .text-royal {
-        background: var(--gradient-royal);
+    // Magical text effects
+    .magic-text {
+        background: var(--gradient-magic);
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
         font-weight: $font-weight-bold;
+        position: relative;
+
+        &::after {
+            content: '✨';
+            position: absolute;
+            top: -5px;
+            right: -20px;
+            font-size: 0.8em;
+            -webkit-text-fill-color: var(--magic-pink);
+            color: var(--magic-pink);
+            animation: sparkle 2s ease-in-out infinite;
+        }
     }
 
-    // Spacing utilities für luxury design
-    .luxury-spacing {
-        padding: $space-8 $space-6;
-        margin: $space-6 0;
-    }
+    // Purple glow utilities
+    .glow-purple {
+        box-shadow: var(--glow-effect);
+        transition: var(--transition-playful);
 
-    .premium-spacing {
-        padding: $space-12 $space-8;
-        margin: $space-8 0;
+        &:hover {
+            box-shadow: var(--glow-effect), var(--shadow-hover);
+        }
+    }
+}
+
+/* ========================================== */
+// Reduced Motion Support
+/* ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-purple {
+        --transition-theme: none;
+        --transition-playful: none;
+        --transition-bounce: none;
+
+        .magic-card::before,
+        .magic-card::after,
+        .dreamy-bg::after,
+        .cosmic-hero::before {
+            animation: none;
+        }
+
+        button:hover {
+            transform: none;
+        }
     }
 }
