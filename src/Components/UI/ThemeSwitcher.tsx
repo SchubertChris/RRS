@@ -1,445 +1,676 @@
-import React, { useState, useEffect } from 'react';
-import { Modal } from './Modal';
-import { useTheme, type ColorTheme, type FontTheme } from '../../Utils/useTheme';
+// src/Components/UI/ThemeSwitcher.tsx
 
-interface ThemeSwitcherProps {
-    isOpen: boolean;
-    onClose: () => void;
+import React, { useState, useEffect, useRef } from 'react';
+import {
+    FaCog, FaPalette, FaFont, FaSun, FaMoon, FaTimes,
+    FaCheck, FaKeyboard, FaRedo, FaChevronLeft, FaChevronRight,
+    FaEye, FaDownload, FaUpload, FaHeart
+} from 'react-icons/fa';
+import { useTheme } from '@u/useTheme';
+
+type ColorTheme = 'light' | 'dark' | 'purple' | 'red' | 'olive';
+type FontTheme = 'default' | 'future' | 'vintage';
+
+interface ThemeInfo {
+    name: string;
+    description: string;
+    icon: string;
+    preview: {
+        primary: string;
+        background: string;
+        surface: string;
+        text: string;
+        accent: string;
+    };
 }
 
-const COLOR_THEME_INFO = {
+interface FontInfo {
+    name: string;
+    description: string;
+    icon: string;
+    example: string;
+    className: string;
+}
+
+const COLOR_THEMES: Record<ColorTheme, ThemeInfo> = {
     light: {
-        name: 'Light',
-        description: 'Clean & Professional',
-        preview: '#ffffff',
-        accent: '#2563eb'
+        name: 'Light Theme',
+        description: 'Clean und professionell für den täglichen Gebrauch',
+        icon: '☀️',
+        preview: {
+            primary: '#2563eb',
+            background: '#ffffff',
+            surface: '#f8fafc',
+            text: '#1e293b',
+            accent: '#0ea5e9'
+        }
     },
     dark: {
-        name: 'Dark',
-        description: 'Modern & Sleek',
-        preview: '#030712',
-        accent: '#3b82f6'
+        name: 'Dark Theme',
+        description: 'Cyberpunk-inspiriert für nächtliche Sessions',
+        icon: '🌙',
+        preview: {
+            primary: '#00ffff',
+            background: '#0a0a0f',
+            surface: '#1a1a2e',
+            text: '#ffffff',
+            accent: '#8000ff'
+        }
     },
     purple: {
-        name: 'Purple',
-        description: 'Creative & Playful',
-        preview: '#faf5ff',
-        accent: '#9333ea'
+        name: 'Purple Theme',
+        description: 'Kreativ und verspielt für Designer',
+        icon: '💜',
+        preview: {
+            primary: '#9333ea',
+            background: '#faf5ff',
+            surface: '#f3e8ff',
+            text: '#581c87',
+            accent: '#c084fc'
+        }
     },
     red: {
-        name: 'Red',
-        description: 'Bold & Energetic',
-        preview: '#fef2f2',
-        accent: '#dc2626'
+        name: 'Red Theme',
+        description: 'Kraftvoll und energisch für Produktivität',
+        icon: '❤️',
+        preview: {
+            primary: '#dc2626',
+            background: '#fef2f2',
+            surface: '#fee2e2',
+            text: '#7f1d1d',
+            accent: '#f87171'
+        }
     },
     olive: {
-        name: 'Olive',
-        description: 'Natural & Organic',
-        preview: '#f7f8f3',
-        accent: '#707a69'
+        name: 'Olive Theme',
+        description: 'Natürlich und beruhigend für entspanntes Arbeiten',
+        icon: '🌿',
+        preview: {
+            primary: '#65a30d',
+            background: '#f7f8f3',
+            surface: '#ecfccb',
+            text: '#365314',
+            accent: '#84cc16'
+        }
     }
 };
 
-const FONT_THEME_INFO = {
+const FONT_THEMES: Record<FontTheme, FontInfo> = {
     default: {
         name: 'Default',
-        description: 'Sans-serif, professional',
-        example: 'The quick brown fox'
+        description: 'Inter - Modern Sans-Serif',
+        icon: '📝',
+        example: 'The quick brown fox jumps over the lazy dog',
+        className: 'font-theme-default'
     },
     future: {
         name: 'Future',
-        description: 'Monospace, tech-style',
-        example: 'THE QUICK BROWN FOX'
+        description: 'JetBrains Mono - Tech Monospace',
+        icon: '🚀',
+        example: 'THE.QUICK.BROWN.FOX.JUMPS.OVER.LAZY.DOG',
+        className: 'font-theme-future'
     },
     vintage: {
         name: 'Vintage',
-        description: 'Serif, classical',
-        example: 'The Quick Brown Fox'
+        description: 'Playfair Display - Classical Serif',
+        icon: '📜',
+        example: 'The Quick Brown Fox Jumps Over the Lazy Dog',
+        className: 'font-theme-vintage'
     }
 };
 
-export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ isOpen, onClose }) => {
-    const { colorTheme, fontTheme, setColorTheme, setFontTheme, resetThemes } = useTheme();
-    const [activeTab, setActiveTab] = useState<'colors' | 'fonts'>('colors');
+export const ThemeSwitcher: React.FC = () => {
+    const { colorTheme, fontTheme, setColorTheme, setFontTheme } = useTheme();
+    const [isOpen, setIsOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState<'colors' | 'fonts' | 'advanced'>('colors');
+    const [showKeyboardHelp, setShowKeyboardHelp] = useState(false);
+    const [previewMode, setPreviewMode] = useState<ColorTheme | null>(null);
+    const switcherRef = useRef<HTMLDivElement>(null);
 
-    // Keyboard shortcuts
+    // Keyboard Shortcuts
     useEffect(() => {
-        if (!isOpen) return;
-
         const handleKeydown = (event: KeyboardEvent) => {
-            if (event.key >= '1' && event.key <= '5') {
-                const index = parseInt(event.key) - 1;
-                const themes: ColorTheme[] = ['light', 'dark', 'purple', 'red', 'olive'];
-                if (themes[index]) {
-                    setColorTheme(themes[index]);
-                }
-            }
-
-            if (event.key === 'Tab' || event.key === 'ArrowRight') {
+            // Global shortcut to open theme switcher
+            if ((event.ctrlKey || event.metaKey) && event.key === 't') {
                 event.preventDefault();
-                setActiveTab(prev => prev === 'colors' ? 'fonts' : 'colors');
+                setIsOpen(!isOpen);
+                return;
             }
 
-            if (event.key === 'r' || event.key === 'R') {
-                resetThemes();
+            // Only handle shortcuts when switcher is open
+            if (!isOpen) return;
+
+            switch (event.key) {
+                case 'Escape':
+                    setIsOpen(false);
+                    setPreviewMode(null);
+                    break;
+
+                case 'Tab':
+                    event.preventDefault();
+                    setActiveTab(prev => {
+                        if (prev === 'colors') return 'fonts';
+                        if (prev === 'fonts') return 'advanced';
+                        return 'colors';
+                    });
+                    break;
+
+                case 'ArrowLeft':
+                    event.preventDefault();
+                    if (activeTab === 'colors') {
+                        const themes = Object.keys(COLOR_THEMES) as ColorTheme[];
+                        const currentIndex = themes.indexOf(colorTheme);
+                        const newIndex = currentIndex > 0 ? currentIndex - 1 : themes.length - 1;
+                        const newTheme = themes[newIndex];
+                        setPreviewMode(newTheme);
+                    }
+                    break;
+
+                case 'ArrowRight':
+                    event.preventDefault();
+                    if (activeTab === 'colors') {
+                        const themes = Object.keys(COLOR_THEMES) as ColorTheme[];
+                        const currentIndex = themes.indexOf(colorTheme);
+                        const newIndex = currentIndex < themes.length - 1 ? currentIndex + 1 : 0;
+                        const newTheme = themes[newIndex];
+                        setPreviewMode(newTheme);
+                    }
+                    break;
+
+                case 'Enter':
+                    if (previewMode) {
+                        setColorTheme(previewMode);
+                        setPreviewMode(null);
+                    }
+                    break;
+
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                    event.preventDefault();
+                    if (activeTab === 'colors') {
+                        const themes = Object.keys(COLOR_THEMES) as ColorTheme[];
+                        const index = parseInt(event.key) - 1;
+                        if (themes[index]) {
+                            setColorTheme(themes[index]);
+                        }
+                    }
+                    break;
+
+                case 'h':
+                case 'H':
+                    event.preventDefault();
+                    setShowKeyboardHelp(!showKeyboardHelp);
+                    break;
             }
         };
 
         document.addEventListener('keydown', handleKeydown);
         return () => document.removeEventListener('keydown', handleKeydown);
-    }, [isOpen, setColorTheme, resetThemes]);
+    }, [isOpen, activeTab, colorTheme, previewMode, setColorTheme, showKeyboardHelp]);
 
-    const ThemeCard: React.FC<{
-        theme: ColorTheme;
-        isActive: boolean;
-        onClick: () => void;
-    }> = ({ theme, isActive, onClick }) => {
-        const info = COLOR_THEME_INFO[theme];
+    // Close on click outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (switcherRef.current && !switcherRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+                setPreviewMode(null);
+            }
+        };
 
-        return (
-            <button
-                onClick={onClick}
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    padding: '1rem',
-                    border: `2px solid ${isActive ? info.accent : 'var(--color-border, #e5e7eb)'}`,
-                    borderRadius: '0.75rem',
-                    background: 'var(--color-surface, #ffffff)',
-                    cursor: 'pointer',
-                    transition: 'all 200ms ease-out',
-                    transform: isActive ? 'scale(1.05)' : 'scale(1)',
-                    boxShadow: isActive ? 'var(--shadow-hover, 0 8px 25px rgba(0, 0, 0, 0.15))' : 'var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.1))'
-                }}
-                onMouseEnter={(e) => {
-                    if (!isActive) {
-                        e.currentTarget.style.transform = 'scale(1.02)';
-                        e.currentTarget.style.borderColor = info.accent;
-                    }
-                }}
-                onMouseLeave={(e) => {
-                    if (!isActive) {
-                        e.currentTarget.style.transform = 'scale(1)';
-                        e.currentTarget.style.borderColor = 'var(--color-border, #e5e7eb)';
-                    }
-                }}
-            >
-                {/* Preview Circle */}
-                <div
-                    style={{
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '50%',
-                        background: `linear-gradient(135deg, ${info.preview} 0%, ${info.accent} 100%)`,
-                        marginBottom: '0.75rem',
-                        border: '3px solid var(--color-border, #e5e7eb)',
-                        position: 'relative',
-                        overflow: 'hidden'
-                    }}
-                >
-                    <div
-                        style={{
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
-                            width: '20px',
-                            height: '20px',
-                            background: info.accent,
-                            borderRadius: '50%',
-                            opacity: 0.8
-                        }}
-                    />
-                </div>
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
 
-                {/* Theme Info */}
-                <h3
-                    style={{
-                        margin: '0 0 0.25rem 0',
-                        fontSize: '0.875rem',
-                        fontWeight: 600,
-                        color: 'var(--color-text-primary, #1f2937)'
-                    }}
-                >
-                    {info.name}
-                </h3>
-                <p
-                    style={{
-                        margin: 0,
-                        fontSize: '0.75rem',
-                        color: 'var(--color-text-secondary, #6b7280)',
-                        textAlign: 'center'
-                    }}
-                >
-                    {info.description}
-                </p>
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [isOpen]);
 
-                {isActive && (
-                    <div
-                        style={{
-                            marginTop: '0.5rem',
-                            padding: '0.25rem 0.5rem',
-                            background: info.accent,
-                            color: 'white',
-                            borderRadius: '0.25rem',
-                            fontSize: '0.75rem',
-                            fontWeight: 500
-                        }}
-                    >
-                        Active
-                    </div>
-                )}
-            </button>
-        );
+    const handleColorThemeSelect = (theme: ColorTheme) => {
+        setColorTheme(theme);
+        setPreviewMode(null);
     };
 
-    const FontCard: React.FC<{
-        theme: FontTheme;
-        isActive: boolean;
-        onClick: () => void;
-    }> = ({ theme, isActive, onClick }) => {
-        const info = FONT_THEME_INFO[theme];
-
-        return (
-            <button
-                onClick={onClick}
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    padding: '1.5rem 1rem',
-                    border: `2px solid ${isActive ? 'var(--color-primary, #2563eb)' : 'var(--color-border, #e5e7eb)'}`,
-                    borderRadius: '0.75rem',
-                    background: 'var(--color-surface, #ffffff)',
-                    cursor: 'pointer',
-                    transition: 'all 200ms ease-out',
-                    transform: isActive ? 'scale(1.05)' : 'scale(1)',
-                    boxShadow: isActive ? 'var(--shadow-hover, 0 8px 25px rgba(0, 0, 0, 0.15))' : 'var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.1))'
-                }}
-                onMouseEnter={(e) => {
-                    if (!isActive) {
-                        e.currentTarget.style.transform = 'scale(1.02)';
-                        e.currentTarget.style.borderColor = 'var(--color-primary, #2563eb)';
-                    }
-                }}
-                onMouseLeave={(e) => {
-                    if (!isActive) {
-                        e.currentTarget.style.transform = 'scale(1)';
-                        e.currentTarget.style.borderColor = 'var(--color-border, #e5e7eb)';
-                    }
-                }}
-            >
-                {/* Font Preview */}
-                <div
-                    className={`font-theme-${theme}`}
-                    style={{
-                        fontSize: '1.25rem',
-                        fontWeight: theme === 'future' ? 700 : theme === 'vintage' ? 400 : 500,
-                        marginBottom: '0.75rem',
-                        color: 'var(--color-text-primary, #1f2937)',
-                        textAlign: 'center',
-                        lineHeight: 1.2
-                    }}
-                >
-                    {info.example}
-                </div>
-
-                {/* Font Info */}
-                <h3
-                    style={{
-                        margin: '0 0 0.25rem 0',
-                        fontSize: '0.875rem',
-                        fontWeight: 600,
-                        color: 'var(--color-text-primary, #1f2937)'
-                    }}
-                >
-                    {info.name}
-                </h3>
-                <p
-                    style={{
-                        margin: 0,
-                        fontSize: '0.75rem',
-                        color: 'var(--color-text-secondary, #6b7280)',
-                        textAlign: 'center'
-                    }}
-                >
-                    {info.description}
-                </p>
-
-                {isActive && (
-                    <div
-                        style={{
-                            marginTop: '0.5rem',
-                            padding: '0.25rem 0.5rem',
-                            background: 'var(--color-primary, #2563eb)',
-                            color: 'white',
-                            borderRadius: '0.25rem',
-                            fontSize: '0.75rem',
-                            fontWeight: 500
-                        }}
-                    >
-                        Active
-                    </div>
-                )}
-            </button>
-        );
+    const handlePreview = (theme: ColorTheme) => {
+        setPreviewMode(theme);
+        // Apply preview temporarily
+        document.documentElement.setAttribute('data-theme', theme);
     };
 
-    return (
-        <Modal isOpen={isOpen} onClose={onClose} title="🎨 Theme Switcher" size="xl">
-            <div style={{ minHeight: '400px' }}>
-                {/* Tabs */}
-                <div
-                    style={{
-                        display: 'flex',
-                        borderBottom: '1px solid var(--color-border, #e5e7eb)',
-                        marginBottom: '1.5rem'
-                    }}
-                >
-                    <button
-                        onClick={() => setActiveTab('colors')}
-                        style={{
-                            padding: '0.75rem 1.5rem',
-                            border: 'none',
-                            background: 'none',
-                            color: activeTab === 'colors' ? 'var(--color-primary, #2563eb)' : 'var(--color-text-secondary, #6b7280)',
-                            borderBottom: activeTab === 'colors' ? '2px solid var(--color-primary, #2563eb)' : '2px solid transparent',
-                            cursor: 'pointer',
-                            fontWeight: activeTab === 'colors' ? 600 : 400,
-                            transition: 'all 150ms ease-out'
-                        }}
+    const cancelPreview = () => {
+        setPreviewMode(null);
+        // Restore current theme
+        document.documentElement.setAttribute('data-theme', colorTheme);
+    };
+
+    const exportThemeSettings = () => {
+        const settings = {
+            colorTheme,
+            fontTheme,
+            timestamp: new Date().toISOString(),
+            version: '1.0'
+        };
+
+        const blob = new Blob([JSON.stringify(settings, null, 2)], {
+            type: 'application/json'
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `theme-settings-${new Date().toISOString().split('T')[0]}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+    };
+
+    const importThemeSettings = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const settings = JSON.parse(e.target?.result as string);
+                if (settings.colorTheme && COLOR_THEMES[settings.colorTheme]) {
+                    setColorTheme(settings.colorTheme);
+                }
+                if (settings.fontTheme && FONT_THEMES[settings.fontTheme]) {
+                    setFontTheme(settings.fontTheme);
+                }
+            } catch (error) {
+                console.error('Error importing theme settings:', error);
+            }
+        };
+        reader.readAsText(file);
+    };
+
+    const renderColorThemes = () => (
+        <div className="theme-grid">
+            {Object.entries(COLOR_THEMES).map(([key, theme]) => {
+                const isActive = colorTheme === key;
+                const isPreviewing = previewMode === key;
+
+                return (
+                    <div
+                        key={key}
+                        className={`theme-card ${isActive ? 'active' : ''} ${isPreviewing ? 'previewing' : ''}`}
+                        onClick={() => handleColorThemeSelect(key as ColorTheme)}
+                        onMouseEnter={() => handlePreview(key as ColorTheme)}
+                        onMouseLeave={cancelPreview}
                     >
-                        🎨 Color Themes
-                    </button>
-                    <button
-                        onClick={() => setActiveTab('fonts')}
-                        style={{
-                            padding: '0.75rem 1.5rem',
-                            border: 'none',
-                            background: 'none',
-                            color: activeTab === 'fonts' ? 'var(--color-primary, #2563eb)' : 'var(--color-text-secondary, #6b7280)',
-                            borderBottom: activeTab === 'fonts' ? '2px solid var(--color-primary, #2563eb)' : '2px solid transparent',
-                            cursor: 'pointer',
-                            fontWeight: activeTab === 'fonts' ? 600 : 400,
-                            transition: 'all 150ms ease-out'
-                        }}
+                        <div className="theme-preview-window">
+                            <div
+                                className="preview-header"
+                                style={{ background: theme.preview.primary }}
+                            >
+                                <div className="preview-dots">
+                                    <span style={{ background: '#ff5f56' }}></span>
+                                    <span style={{ background: '#ffbd2e' }}></span>
+                                    <span style={{ background: '#27ca3f' }}></span>
+                                </div>
+                            </div>
+                            <div
+                                className="preview-body"
+                                style={{
+                                    background: theme.preview.background,
+                                    color: theme.preview.text
+                                }}
+                            >
+                                <div
+                                    className="preview-sidebar"
+                                    style={{ background: theme.preview.surface }}
+                                >
+                                    <div
+                                        className="sidebar-item active"
+                                        style={{ background: theme.preview.primary }}
+                                    ></div>
+                                    <div className="sidebar-item"></div>
+                                    <div className="sidebar-item"></div>
+                                </div>
+                                <div className="preview-content">
+                                    <div
+                                        className="content-card"
+                                        style={{ background: theme.preview.surface }}
+                                    >
+                                        <div
+                                            className="card-accent"
+                                            style={{ background: theme.preview.accent }}
+                                        ></div>
+                                        <div className="card-lines">
+                                            <div className="line long"></div>
+                                            <div className="line medium"></div>
+                                            <div className="line short"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="theme-info">
+                            <div className="theme-header">
+                                <span className="theme-icon">{theme.icon}</span>
+                                <h3 className="theme-name">{theme.name}</h3>
+                                {isActive && <FaCheck className="active-indicator" />}
+                            </div>
+                            <p className="theme-description">{theme.description}</p>
+
+                            <div className="color-palette">
+                                <div
+                                    className="color-swatch"
+                                    style={{ background: theme.preview.primary }}
+                                    title="Primary"
+                                ></div>
+                                <div
+                                    className="color-swatch"
+                                    style={{ background: theme.preview.accent }}
+                                    title="Accent"
+                                ></div>
+                                <div
+                                    className="color-swatch"
+                                    style={{ background: theme.preview.surface }}
+                                    title="Surface"
+                                ></div>
+                                <div
+                                    className="color-swatch"
+                                    style={{ background: theme.preview.text }}
+                                    title="Text"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
+    );
+
+    const renderFontThemes = () => (
+        <div className="font-grid">
+            {Object.entries(FONT_THEMES).map(([key, font]) => {
+                const isActive = fontTheme === key;
+
+                return (
+                    <div
+                        key={key}
+                        className={`font-card ${isActive ? 'active' : ''}`}
+                        onClick={() => setFontTheme(key as FontTheme)}
                     >
-                        🔤 Font Themes
+                        <div className="font-preview">
+                            <span className="font-icon">{font.icon}</span>
+                            <div className={`font-example ${font.className}`}>
+                                {font.example}
+                            </div>
+                        </div>
+
+                        <div className="font-info">
+                            <div className="font-header">
+                                <h3 className="font-name">{font.name}</h3>
+                                {isActive && <FaCheck className="active-indicator" />}
+                            </div>
+                            <p className="font-description">{font.description}</p>
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
+    );
+
+    const renderAdvancedSettings = () => (
+        <div className="advanced-settings">
+            <div className="settings-section">
+                <h3>
+                    <FaDownload />
+                    Export & Import
+                </h3>
+                <div className="settings-actions">
+                    <button
+                        className="btn btn-outline"
+                        onClick={exportThemeSettings}
+                    >
+                        <FaDownload />
+                        Export Settings
                     </button>
+
+                    <label className="btn btn-outline">
+                        <FaUpload />
+                        Import Settings
+                        <input
+                            type="file"
+                            accept=".json"
+                            onChange={importThemeSettings}
+                            style={{ display: 'none' }}
+                        />
+                    </label>
                 </div>
+            </div>
 
-                {/* Color Themes */}
-                {activeTab === 'colors' && (
-                    <div>
-                        <div
-                            style={{
-                                display: 'grid',
-                                gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-                                gap: '1rem',
-                                marginBottom: '1.5rem'
-                            }}
-                        >
-                            {(Object.keys(COLOR_THEME_INFO) as ColorTheme[]).map((theme) => (
-                                <ThemeCard
-                                    key={theme}
-                                    theme={theme}
-                                    isActive={colorTheme === theme}
-                                    onClick={() => setColorTheme(theme)}
-                                />
-                            ))}
-                        </div>
+            <div className="settings-section">
+                <h3>
+                    <FaEye />
+                    Preview Mode
+                </h3>
+                <p className="settings-description">
+                    Hover über Theme-Karten für eine Live-Vorschau. Verwende die Pfeiltasten
+                    zur Navigation und Enter zum Bestätigen.
+                </p>
+            </div>
 
-                        <div
-                            style={{
-                                padding: '1rem',
-                                background: 'var(--color-background-secondary, #f9fafb)',
-                                borderRadius: '0.5rem',
-                                fontSize: '0.875rem',
-                                color: 'var(--color-text-secondary, #6b7280)'
-                            }}
-                        >
-                            💡 <strong>Tip:</strong> Use keyboard shortcuts 1-5 to quickly switch themes!
-                        </div>
+            <div className="settings-section">
+                <h3>
+                    <FaKeyboard />
+                    Keyboard Shortcuts
+                </h3>
+                <div className="shortcuts-grid">
+                    <div className="shortcut-item">
+                        <kbd>Ctrl/Cmd + T</kbd>
+                        <span>Theme Switcher öffnen/schließen</span>
                     </div>
-                )}
-
-                {/* Font Themes */}
-                {activeTab === 'fonts' && (
-                    <div>
-                        <div
-                            style={{
-                                display: 'grid',
-                                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                                gap: '1rem',
-                                marginBottom: '1.5rem'
-                            }}
-                        >
-                            {(Object.keys(FONT_THEME_INFO) as FontTheme[]).map((theme) => (
-                                <FontCard
-                                    key={theme}
-                                    theme={theme}
-                                    isActive={fontTheme === theme}
-                                    onClick={() => setFontTheme(theme)}
-                                />
-                            ))}
-                        </div>
-
-                        <div
-                            style={{
-                                padding: '1rem',
-                                background: 'var(--color-background-secondary, #f9fafb)',
-                                borderRadius: '0.5rem',
-                                fontSize: '0.875rem',
-                                color: 'var(--color-text-secondary, #6b7280)'
-                            }}
-                        >
-                            📝 <strong>Font Examples:</strong><br />
-                            • Default: Clean, professional sans-serif<br />
-                            • Future: Monospace with cyber effects<br />
-                            • Vintage: Classical serif with elegant styling
-                        </div>
+                    <div className="shortcut-item">
+                        <kbd>1-5</kbd>
+                        <span>Direkte Theme-Auswahl</span>
                     </div>
-                )}
-
-                {/* Footer Actions */}
-                <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        marginTop: '2rem',
-                        paddingTop: '1rem',
-                        borderTop: '1px solid var(--color-border, #e5e7eb)'
-                    }}
-                >
-                    <button
-                        onClick={resetThemes}
-                        style={{
-                            padding: '0.5rem 1rem',
-                            border: '1px solid var(--color-border, #e5e7eb)',
-                            background: 'var(--color-surface, #ffffff)',
-                            color: 'var(--color-text-secondary, #6b7280)',
-                            borderRadius: '0.375rem',
-                            cursor: 'pointer',
-                            fontSize: '0.875rem',
-                            transition: 'all 150ms ease-out'
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = 'var(--color-background-secondary, #f9fafb)';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = 'var(--color-surface, #ffffff)';
-                        }}
-                    >
-                        🔄 Reset to Default
-                    </button>
-
-                    <div style={{ fontSize: '0.75rem', color: 'var(--color-text-tertiary, #9ca3af)' }}>
-                        Press <kbd style={{ padding: '0.125rem 0.25rem', background: 'var(--color-background-secondary, #f9fafb)', borderRadius: '0.25rem' }}>ESC</kbd> to close
+                    <div className="shortcut-item">
+                        <kbd>Tab</kbd>
+                        <span>Zwischen Tabs wechseln</span>
+                    </div>
+                    <div className="shortcut-item">
+                        <kbd>← →</kbd>
+                        <span>Theme-Navigation</span>
+                    </div>
+                    <div className="shortcut-item">
+                        <kbd>Enter</kbd>
+                        <span>Vorschau bestätigen</span>
+                    </div>
+                    <div className="shortcut-item">
+                        <kbd>Esc</kbd>
+                        <span>Schließen</span>
+                    </div>
+                    <div className="shortcut-item">
+                        <kbd>H</kbd>
+                        <span>Hilfe ein/ausblenden</span>
                     </div>
                 </div>
             </div>
-        </Modal>
+
+            <div className="settings-section">
+                <h3>
+                    <FaHeart />
+                    Über das Theme System
+                </h3>
+                <p className="settings-description">
+                    Unser Theme-System nutzt CSS Custom Properties für dynamisches Theming
+                    ohne Page-Reload. Alle Themes sind vollständig responsiv und
+                    accessibility-optimiert.
+                </p>
+                <div className="theme-stats">
+                    <div className="stat">
+                        <strong>5</strong> Color Themes
+                    </div>
+                    <div className="stat">
+                        <strong>3</strong> Font Themes
+                    </div>
+                    <div className="stat">
+                        <strong>15</strong> CSS Variables
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+
+    const renderKeyboardHelp = () => (
+        <div className="keyboard-help-overlay">
+            <div className="keyboard-help">
+                <div className="help-header">
+                    <h3>
+                        <FaKeyboard />
+                        Keyboard Shortcuts
+                    </h3>
+                    <button
+                        className="btn btn-icon btn-ghost"
+                        onClick={() => setShowKeyboardHelp(false)}
+                    >
+                        <FaTimes />
+                    </button>
+                </div>
+                <div className="help-content">
+                    <div className="help-section">
+                        <h4>Navigation</h4>
+                        <div className="help-shortcuts">
+                            <div><kbd>Tab</kbd> Zwischen Tabs wechseln</div>
+                            <div><kbd>← →</kbd> Theme-Navigation</div>
+                            <div><kbd>Enter</kbd> Auswahl bestätigen</div>
+                            <div><kbd>Esc</kbd> Schließen</div>
+                        </div>
+                    </div>
+                    <div className="help-section">
+                        <h4>Themes</h4>
+                        <div className="help-shortcuts">
+                            <div><kbd>1</kbd> Light Theme</div>
+                            <div><kbd>2</kbd> Dark Theme</div>
+                            <div><kbd>3</kbd> Purple Theme</div>
+                            <div><kbd>4</kbd> Red Theme</div>
+                            <div><kbd>5</kbd> Olive Theme</div>
+                        </div>
+                    </div>
+                    <div className="help-section">
+                        <h4>Global</h4>
+                        <div className="help-shortcuts">
+                            <div><kbd>Ctrl/Cmd + T</kbd> Theme Switcher</div>
+                            <div><kbd>H</kbd> Diese Hilfe</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+
+    return (
+        <div className="theme-switcher-container" ref={switcherRef}>
+            {/* Trigger Button */}
+            <button
+                className="theme-switcher-trigger"
+                onClick={() => setIsOpen(!isOpen)}
+                title="Theme Switcher (Ctrl+T)"
+            >
+                <FaPalette />
+                <span className="trigger-badge">{colorTheme}</span>
+            </button>
+
+            {/* Main Panel */}
+            {isOpen && (
+                <div className="theme-switcher-panel">
+                    <div className="panel-header">
+                        <div className="header-left">
+                            <h2>
+                                <FaPalette />
+                                Theme Switcher
+                            </h2>
+                            <span className="theme-status">
+                                {COLOR_THEMES[colorTheme].name} • {FONT_THEMES[fontTheme].name}
+                            </span>
+                        </div>
+                        <div className="header-actions">
+                            <button
+                                className="btn btn-icon btn-ghost"
+                                onClick={() => setShowKeyboardHelp(!showKeyboardHelp)}
+                                title="Keyboard Shortcuts (H)"
+                            >
+                                <FaKeyboard />
+                            </button>
+                            <button
+                                className="btn btn-icon btn-ghost"
+                                onClick={() => setIsOpen(false)}
+                                title="Schließen (Esc)"
+                            >
+                                <FaTimes />
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="panel-tabs">
+                        <button
+                            className={`tab ${activeTab === 'colors' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('colors')}
+                        >
+                            <FaPalette />
+                            Colors
+                        </button>
+                        <button
+                            className={`tab ${activeTab === 'fonts' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('fonts')}
+                        >
+                            <FaFont />
+                            Fonts
+                        </button>
+                        <button
+                            className={`tab ${activeTab === 'advanced' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('advanced')}
+                        >
+                            <FaCog />
+                            Advanced
+                        </button>
+                    </div>
+
+                    <div className="panel-content">
+                        {activeTab === 'colors' && renderColorThemes()}
+                        {activeTab === 'fonts' && renderFontThemes()}
+                        {activeTab === 'advanced' && renderAdvancedSettings()}
+                    </div>
+
+                    {previewMode && (
+                        <div className="preview-banner">
+                            <div className="preview-info">
+                                <FaEye />
+                                <span>Vorschau: {COLOR_THEMES[previewMode].name}</span>
+                            </div>
+                            <div className="preview-actions">
+                                <button
+                                    className="btn btn-sm btn-primary"
+                                    onClick={() => handleColorThemeSelect(previewMode)}
+                                >
+                                    <FaCheck />
+                                    Übernehmen
+                                </button>
+                                <button
+                                    className="btn btn-sm btn-ghost"
+                                    onClick={cancelPreview}
+                                >
+                                    <FaTimes />
+                                    Abbrechen
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
+                    <div className="panel-footer">
+                        <div className="footer-info">
+                            <kbd>Ctrl+T</kbd> zum Öffnen • <kbd>H</kbd> für Hilfe • <kbd>Esc</kbd> zum Schließen
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Keyboard Help Overlay */}
+            {showKeyboardHelp && renderKeyboardHelp()}
+        </div>
     );
 };
