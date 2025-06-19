@@ -1,312 +1,160 @@
-/* ========================================== */
-/* ============== DARK THEME ================ */
-/* ========================================== */
-/* Modernes Dark Theme mit Neon-Akzenten */
+// src/Assets/Style/Base/Themes/_DarkTheme.scss - CYBERPUNK FUTURE DESIGN
 
-// WICHTIG: Variablen importieren
 @use "../Variables" as *;
 
 /* ========================================== */
-// Dark Theme Konfiguration
-/* ========================================== */
-
-[data-theme="dark"],
-.theme-dark {
-    color-scheme: dark;
-
-    /* ========================================== */
-    // Base Colors - Dark Mode Foundation
-    /* ========================================== */
-
-    // Backgrounds - Tiefe, dunkle Töne
-    --color-background: #{$gray-950};
-    --color-background-secondary: #{$gray-900};
-    --color-background-tertiary: #{$gray-800};
-    --color-surface: #{$gray-900};
-    --color-surface-secondary: #{$gray-800};
-    --color-surface-elevated: #{$gray-800};
-
-    // Text Colors - Helle Kontraste
-    --color-text-primary: #{$gray-100};
-    --color-text-secondary: #{$gray-300};
-    --color-text-tertiary: #{$gray-500};
-    --color-text-inverse: #{$gray-900};
-    --color-text-muted: #{$gray-400};
-    --color-text-disabled: #{$gray-600};
-
-    // Primary Colors - Heller für Kontrast
-    --color-primary: #{$blue-500};
-    --color-primary-hover: #{$blue-400};
-    --color-primary-active: #{$blue-300};
-    --color-primary-50: #{rgba($blue-500, 0.05)};
-    --color-primary-100: #{rgba($blue-500, 0.1)};
-    --color-primary-200: #{rgba($blue-500, 0.2)};
-
-    // Secondary Colors
-    --color-secondary: #{$gray-800};
-    --color-secondary-hover: #{$gray-700};
-    --color-secondary-active: #{$gray-600};
-
-    // Accent Colors - Cyan für Sci-Fi Look
-    --color-accent: #{$cyan-400};
-    --color-accent-hover: #{$cyan-300};
-    --color-accent-active: #{$cyan-200};
-
-    // Borders - Subtile dunkle Linien
-    --color-border: #{$gray-700};
-    --color-border-secondary: #{$gray-600};
-    --color-border-focus: #{$blue-400};
-    --color-divider: #{$gray-800};
-
-    // Semantic Colors - Angepasst für Dark Mode
-    --color-success: #{$green-400};
-    --color-warning: #{$yellow-400};
-    --color-error: #{$red-400};
-    --color-info: #{$blue-400};
-
-    // Status Backgrounds
-    --color-success-bg: #{rgba($green-400, 0.1)};
-    --color-warning-bg: #{rgba($yellow-400, 0.1)};
-    --color-error-bg: #{rgba($red-400, 0.1)};
-    --color-info-bg: #{rgba($blue-400, 0.1)};
-
-    // Status Text Colors
-    --color-success-text: #{$green-300};
-    --color-warning-text: #{$yellow-300};
-    --color-error-text: #{$red-300};
-    --color-info-text: #{$blue-300};
-
-    /* ========================================== */
-    // Shadows & Effects - Dark Mode optimiert
-    /* ========================================== */
-
-    --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    --shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    --shadow-focus: 0 0 0 3px #{rgba($blue-500, 0.3)};
-    --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    --shadow-card-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-    --shadow-modal: 0 40px 80px rgba(0, 0, 0, 0.6);
-
-    // Glow Effects - Aktiviert für Dark Theme
-    --glow-effect: #{$glow-blue};
-    --text-glow: 0 0 10px #{rgba($blue-400, 0.5)};
-
-    /* ========================================== */
-    // Component Colors - Dark Theme spezifisch
-    /* ========================================== */
-
-    // Navigation - Dunkle Kopfzeile
-    --color-nav-bg: #{rgba($gray-900, 0.95)};
-    --color-nav-text: #{$gray-300};
-    --color-nav-text-hover: #{$blue-400};
-    --color-nav-text-active: #{$blue-300};
-    --color-nav-border: #{$gray-700};
-    --color-nav-backdrop: #{rgba($gray-950, 0.9)};
-
-    // Header
-    --color-header-bg: #{$gray-900};
-    --color-header-text: #{$gray-100};
-    --color-header-text-secondary: #{$gray-300};
-    --color-header-border: #{$gray-700};
-
-    // Footer
-    --color-footer-bg: #{$gray-950};
-    --color-footer-text: #{$gray-300};
-    --color-footer-text-secondary: #{$gray-500};
-    --color-footer-border: #{$gray-800};
-
-    // Sidebar
-    --color-sidebar-bg: #{rgba($gray-900, 0.8)};
-    --color-sidebar-text: #{$gray-300};
-    --color-sidebar-text-hover: #{$blue-400};
-    --color-sidebar-border: #{$gray-700};
-    --color-sidebar-active: #{rgba($blue-500, 0.2)};
-
-    // Cards
-    --color-card-bg: #{$gray-900};
-    --color-card-bg-hover: #{$gray-800};
-    --color-card-border: #{$gray-700};
-    --color-card-border-hover: #{$gray-600};
-
-    /* ========================================== */
-    // Buttons - Dark Theme optimiert
-    /* ========================================== */
-
-    // Primary Button
-    --color-btn-primary-bg: #{$blue-500};
-    --color-btn-primary-bg-hover: #{$blue-400};
-    --color-btn-primary-bg-active: #{$blue-300};
-    --color-btn-primary-text: #{$gray-900};
-    --color-btn-primary-border: #{$blue-500};
-
-    // Secondary Button
-    --color-btn-secondary-bg: #{$gray-800};
-    --color-btn-secondary-bg-hover: #{$gray-700};
-    --color-btn-secondary-bg-active: #{$gray-600};
-    --color-btn-secondary-text: #{$gray-300};
-    --color-btn-secondary-border: #{$gray-700};
-
-    // Ghost Button
-    --color-btn-ghost-bg: transparent;
-    --color-btn-ghost-bg-hover: #{rgba($blue-500, 0.1)};
-    --color-btn-ghost-text: #{$blue-400};
-    --color-btn-ghost-text-hover: #{$blue-300};
-    --color-btn-ghost-border: transparent;
-
-    // Danger Button
-    --color-btn-danger-bg: #{$red-500};
-    --color-btn-danger-bg-hover: #{$red-400};
-    --color-btn-danger-text: #{$white};
-
-    /* ========================================== */
-    // Forms - Dark Mode optimiert
-    /* ========================================== */
-
-    --color-input-bg: #{$gray-800};
-    --color-input-text: #{$gray-100};
-    --color-input-border: #{$gray-600};
-    --color-input-border-focus: #{$blue-400};
-    --color-input-placeholder: #{$gray-500};
-    --color-input-disabled-bg: #{$gray-900};
-    --color-input-disabled-text: #{$gray-600};
-
-    /* ========================================== */
-    // Interactive States - Dark Mode
-    /* ========================================== */
-
-    // Hover States
-    --hover-overlay: #{rgba($blue-500, 0.08)};
-    --hover-lift-shadow: var(--shadow-hover);
-
-    // Active States
-    --active-overlay: #{rgba($blue-500, 0.15)};
-    --active-scale: 0.98;
-
-    // Focus States
-    --focus-ring: 0 0 0 2px #{rgba($blue-500, 0.4)};
-    --focus-ring-offset: 2px;
-
-    // Disabled States
-    --disabled-opacity: 0.5;
-    --disabled-cursor: not-allowed;
-
-    /* ========================================== */
-    // Animation & Transition
-    /* ========================================== */
-
-    --transition-theme: background-color 300ms #{$ease-out},
-    color 300ms #{$ease-out},
-    border-color 300ms #{$ease-out},
-    box-shadow 300ms #{$ease-out};
-
-    --transition-glow: box-shadow 400ms #{$ease-out};
-    --transition-neon: all 300ms #{$ease-out};
-
-    /* ========================================== */
-    // Special Dark Theme Elements
-    /* ========================================== */
-
-    // Neon Colors
-    --neon-blue: #{$cyan-400};
-    --neon-purple: #{$purple-400};
-    --neon-green: #{$green-400};
-    --neon-pink: #{$pink-400};
-
-    // Gradients - Cyber/Sci-Fi
-    --gradient-cyber: linear-gradient(135deg, #{$blue-500} 0%, #{$cyan-400} 50%, #{$purple-500} 100%);
-    --gradient-neon: linear-gradient(45deg, #{$cyan-400} 0%, #{$blue-500} 50%, #{$purple-500} 100%);
-    --gradient-matrix: linear-gradient(180deg, #{$green-400} 0%, #{$cyan-400} 100%);
-
-    // Backdrop Effects
-    --backdrop-filter: blur(20px) saturate(180%);
-    --backdrop-filter-strong: blur(40px) saturate(200%);
-}
-
-/* ========================================== */
-// Dark Theme Component Enhancements
+/* ============ DARK CYBERPUNK THEME ======= */
 /* ========================================== */
 
 [data-theme="dark"] {
+    // Cyberpunk Color Palette
+    --color-primary: #00ffff;
+    --color-primary-hover: #00e6e6;
+    --color-primary-active: #00cccc;
+    --color-secondary: #ff0080;
+    --color-accent: #8000ff;
 
-    // Enhanced image contrast in dark mode
-    img {
-        opacity: 0.9;
-        transition: opacity $duration-200 $ease-out;
+    --color-background: #0a0a0f;
+    --color-background-secondary: #1a1a2e;
+    --color-background-tertiary: #16213e;
+    --color-surface: #16213e;
+    --color-surface-glass: rgba(22, 33, 62, 0.8);
 
-        &:hover {
-            opacity: 1;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #00ffff;
+    --color-text-tertiary: #8892b0;
+    --color-text-inverse: #0a0a0f;
+
+    --color-border: #233554;
+    --color-border-focus: #00ffff;
+
+    // Cyberpunk Gradients
+    --gradient-primary: linear-gradient(135deg, #00ffff, #8000ff);
+    --gradient-secondary: linear-gradient(135deg, #ff0080, #00ffff);
+    --gradient-bg: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+
+    // Neon Shadows & Glows
+    --shadow-neon: 0 0 20px rgba(0, 255, 255, 0.5);
+    --shadow-neon-lg: 0 0 40px rgba(0, 255, 255, 0.3), 0 0 60px rgba(128, 0, 255, 0.2);
+    --glow-primary: 0 0 20px rgba(0, 255, 255, 0.8);
+    --glow-accent: 0 0 20px rgba(128, 0, 255, 0.8);
+
+    /* ========================================== */
+    // CYBERPUNK BODY & BACKGROUND
+    /* ========================================== */
+
+    body {
+        background: var(--color-background);
+        background-image:
+            radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(128, 0, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%);
+        background-attachment: fixed;
+        color: var(--color-text-primary);
+
+        &::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 255, 0.03) 2px,
+                    rgba(0, 255, 255, 0.03) 4px);
+            pointer-events: none;
+            z-index: 1;
         }
     }
 
-    // Code blocks in dark theme
-    pre,
-    code {
-        background-color: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: var(--color-text-primary);
-    }
+    /* ========================================== */
+    // CYBERPUNK NAVIGATION
+    /* ========================================== */
 
-    // Selection styling
-    ::selection {
-        background: rgba($blue-500, 0.3);
-        color: var(--color-text-primary);
-        text-shadow: none;
-    }
+    .navbar {
+        background: rgba(22, 33, 62, 0.9);
+        backdrop-filter: blur(15px);
+        border-bottom: 2px solid var(--color-primary);
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        position: relative;
 
-    ::-moz-selection {
-        background: rgba($blue-500, 0.3);
-        color: var(--color-text-primary);
-        text-shadow: none;
-    }
-
-    // Dark scrollbar styling
-    ::-webkit-scrollbar {
-        width: 12px;
-        height: 12px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: var(--color-background-secondary);
-        border-radius: 6px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: var(--color-border);
-        border-radius: 6px;
-        border: 2px solid var(--color-background-secondary);
-
-        &:hover {
-            background: var(--color-border-secondary);
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    var(--color-primary) 50%,
+                    transparent 100%);
+            animation: cyber-line 3s infinite;
         }
     }
-}
 
-/* ========================================== */
-// Dark Theme Utilities
-/* ========================================== */
+    .navbar-brand {
+        font-family: 'JetBrains Mono', monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--color-primary);
+        text-shadow: var(--glow-primary);
+        position: relative;
 
-.theme-dark {
-
-    // Glow utilities
-    .glow-primary {
-        box-shadow: var(--glow-effect);
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            animation: brand-glow 2s infinite alternate;
+        }
     }
 
-    .glow-text {
-        text-shadow: var(--text-glow);
+    .nav-link {
+        font-family: 'JetBrains Mono', monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-text-secondary);
+        position: relative;
+
+        &::before {
+            content: '>';
+            position: absolute;
+            left: -15px;
+            opacity: 0;
+            transition: all 300ms ease;
+            color: var(--color-primary);
+        }
+
+        &:hover {
+            color: var(--color-primary);
+            text-shadow: var(--glow-primary);
+
+            &::before {
+                opacity: 1;
+                left: -10px;
+            }
+        }
     }
 
-    // Neon effects
-    .neon-border {
-        border: 1px solid var(--neon-blue);
-        box-shadow: 0 0 10px rgba($cyan-400, 0.5);
-    }
+    /* ========================================== */
+    // CYBERPUNK BUTTONS
+    /* ========================================== */
 
-    .cyber-card {
-        background: var(--gradient-cyber);
-        border: 1px solid var(--neon-blue);
-        border-radius: $radius-lg;
-        padding: $space-6;
+    .btn-primary {
+        background: transparent;
+        border: 2px solid var(--color-primary);
+        color: var(--color-primary);
+        font-family: 'JetBrains Mono', monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
         position: relative;
         overflow: hidden;
 
@@ -317,82 +165,322 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            animation: shimmer 3s infinite;
+            background: var(--gradient-primary);
+            transition: left 400ms ease;
+            z-index: -1;
+        }
+
+        &:hover {
+            color: var(--color-text-inverse);
+            box-shadow: var(--shadow-neon);
+            text-shadow: none;
+
+            &::before {
+                left: 0;
+            }
         }
     }
 
-    @keyframes shimmer {
-        0% {
-            left: -100%;
-        }
+    .btn-gradient {
+        background: var(--gradient-primary);
+        border: none;
+        box-shadow: var(--shadow-neon);
+        animation: neon-pulse 2s infinite;
 
-        100% {
-            left: 100%;
+        &:hover {
+            animation-duration: 0.5s;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-neon-lg);
         }
     }
 
-    // Matrix effect
-    .matrix-bg {
-        background: var(--gradient-matrix);
+    /* ========================================== */
+    // CYBERPUNK HERO SECTION
+    /* ========================================== */
+
+    .hero-section {
+        background: var(--gradient-bg);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 0v20M0 10h20M5 5h10M5 15h10" stroke="%2300ffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
+            opacity: 0.3;
+            animation: circuit-flow 10s linear infinite;
+        }
+
+        .hero-title {
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: var(--glow-primary);
+
+            .hero-title-accent {
+                background: var(--gradient-primary);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: title-glow 3s infinite alternate;
+            }
+        }
+
+        .hero-bg-elements {
+            .bg-circle {
+                background: radial-gradient(circle, rgba(0, 255, 255, 0.1), transparent);
+                animation: cyber-orbit 20s linear infinite;
+
+                &.bg-circle-2 {
+                    background: radial-gradient(circle, rgba(128, 0, 255, 0.1), transparent);
+                    animation-direction: reverse;
+                    animation-duration: 15s;
+                }
+
+                &.bg-circle-3 {
+                    background: radial-gradient(circle, rgba(255, 0, 128, 0.1), transparent);
+                    animation-duration: 25s;
+                }
+            }
+        }
+    }
+
+    /* ========================================== */
+    // CYBERPUNK CARDS
+    /* ========================================== */
+
+    .card,
+    .feature-card,
+    .theme-card {
+        background: rgba(22, 33, 62, 0.8);
+        border: 1px solid var(--color-border);
+        backdrop-filter: blur(10px);
         position: relative;
 
-        &::after {
+        &::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background-image: radial-gradient(circle at 25% 25%, #{rgba($green-400, 0.1)} 0%, transparent 50%),
-            radial-gradient(circle at 75% 75%, #{rgba($cyan-400, 0.1)} 0%, transparent 50%);
-            animation: matrixPulse 4s ease-in-out infinite;
+            height: 2px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 300ms ease;
+        }
+
+        &:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-neon);
+
+            &::before {
+                opacity: 1;
+            }
         }
     }
 
-    @keyframes matrixPulse {
+    .feature-icon {
+        filter: drop-shadow(var(--glow-primary));
+        animation: icon-float 3s ease-in-out infinite;
+    }
+
+    /* ========================================== */
+    // CYBERPUNK FORMS
+    /* ========================================== */
+
+    input,
+    textarea,
+    select {
+        background: rgba(10, 10, 15, 0.8);
+        border: 1px solid var(--color-border);
+        color: var(--color-text-primary);
+        font-family: 'JetBrains Mono', monospace;
+
+        &:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.2);
+            text-shadow: var(--glow-primary);
+        }
+
+        &::placeholder {
+            color: var(--color-text-tertiary);
+            opacity: 0.7;
+        }
+    }
+
+    /* ========================================== */
+    // CYBERPUNK ANIMATIONS
+    /* ========================================== */
+
+    @keyframes cyber-line {
 
         0%,
         100% {
-            opacity: 0.3;
+            transform: translateX(-100%);
         }
 
         50% {
-            opacity: 0.6;
+            transform: translateX(100%);
         }
     }
 
-    // Glass morphism effects
-    .glass-dark {
-        background: rgba($gray-900, 0.7);
-        backdrop-filter: var(--backdrop-filter);
-        border: 1px solid rgba($gray-600, 0.3);
-        border-radius: $radius-lg;
+    @keyframes brand-glow {
+        0% {
+            transform: scaleX(0);
+        }
+
+        100% {
+            transform: scaleX(1);
+        }
     }
 
-    .frosted-dark {
-        background: rgba($gray-800, 0.8);
-        backdrop-filter: var(--backdrop-filter-strong);
-        border: 1px solid rgba($gray-500, 0.2);
-        border-radius: $radius-xl;
+    @keyframes neon-pulse {
+
+        0%,
+        100% {
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        50% {
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 40px rgba(128, 0, 255, 0.3);
+        }
+    }
+
+    @keyframes circuit-flow {
+        0% {
+            transform: translateX(0) translateY(0);
+        }
+
+        100% {
+            transform: translateX(-20px) translateY(-20px);
+        }
+    }
+
+    @keyframes title-glow {
+        0% {
+            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.8));
+        }
+
+        100% {
+            filter: drop-shadow(0 0 20px rgba(128, 0, 255, 0.8));
+        }
+    }
+
+    @keyframes cyber-orbit {
+        0% {
+            transform: rotate(0deg) translateX(100px) rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg) translateX(100px) rotate(-360deg);
+        }
+    }
+
+    @keyframes icon-float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    /* ========================================== */
+    // CYBERPUNK SCROLLBAR
+    /* ========================================== */
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        background: var(--color-background);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 4px;
+        box-shadow: var(--glow-primary);
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--color-background-secondary);
+    }
+
+    /* ========================================== */
+    // CYBERPUNK TEXT EFFECTS
+    /* ========================================== */
+
+    .title-gradient {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+    }
+
+    .section-title {
+        font-family: 'JetBrains Mono', monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    /* ========================================== */
+    // CYBERPUNK FOOTER
+    /* ========================================== */
+
+    .footer {
+        background: var(--color-background-secondary);
+        border-top: 2px solid var(--color-primary);
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-primary);
+            animation: cyber-line 4s infinite;
+        }
+    }
+
+    /* ========================================== */
+    // CYBERPUNK GLASS EFFECTS
+    /* ========================================== */
+
+    .glass-effect {
+        background: rgba(22, 33, 62, 0.6);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(0, 255, 255, 0.2);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(0, 255, 255, 0.1);
+    }
+
+    .glass-light {
+        background: rgba(22, 33, 62, 0.4);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 255, 255, 0.15);
     }
 }
 
 /* ========================================== */
-// Reduced Motion Support
+// CYBERPUNK RESPONSIVE
 /* ========================================== */
 
-@media (prefers-reduced-motion: reduce) {
-    .theme-dark {
-        .cyber-card::before {
-            animation: none;
+@media (max-width: $breakpoint-md) {
+    [data-theme="dark"] {
+        .hero-title {
+            font-size: clamp(2rem, 6vw, 4rem);
         }
 
-        .matrix-bg::after {
-            animation: none;
+        .navbar-brand {
+            font-size: $font-size-lg;
         }
-
-        --transition-glow: none;
-        --transition-neon: none;
     }
 }

@@ -1,357 +1,97 @@
-/* ========================================== */
-/* =============== RED THEME ================ */
-/* ========================================== */
-/* Kraftvolles Red Theme mit energetischen Akzenten */
+// src/Assets/Style/Base/Themes/_RedTheme.scss - AGGRESSIVE ENERGY DESIGN
 
-// WICHTIG: Variablen importieren
 @use "../Variables" as *;
 
 /* ========================================== */
-// Red Theme Konfiguration
-/* ========================================== */
-
-[data-theme="red"],
-.theme-red {
-    color-scheme: light;
-
-    /* ========================================== */
-    // Base Colors - Red Foundation
-    /* ========================================== */
-
-    // Backgrounds - Rot-getönte Basis
-    --color-background: #{$white};
-    --color-background-secondary: #{$red-50};
-    --color-background-tertiary: #{$red-100};
-    --color-surface: #{$white};
-    --color-surface-secondary: #{$red-50};
-    --color-surface-elevated: #{$white};
-
-    // Text Colors - Rot Kontraste
-    --color-text-primary: #{$gray-900};
-    --color-text-secondary: #{$red-700};
-    --color-text-tertiary: #{$red-400};
-    --color-text-inverse: #{$white};
-    --color-text-muted: #{$red-400};
-    --color-text-disabled: #{$red-300};
-
-    // Primary Colors - Kräftiges Rot
-    --color-primary: #{$red-600};
-    --color-primary-hover: #{$red-700};
-    --color-primary-active: #{$red-800};
-    --color-primary-50: #{rgba($red-600, 0.05)};
-    --color-primary-100: #{rgba($red-600, 0.1)};
-    --color-primary-200: #{rgba($red-600, 0.2)};
-
-    // Secondary Colors
-    --color-secondary: #{$red-100};
-    --color-secondary-hover: #{$red-200};
-    --color-secondary-active: #{$red-300};
-
-    // Accent Colors - Kontrastierendes Orange
-    --color-accent: #{$orange-500};
-    --color-accent-hover: #{$orange-600};
-    --color-accent-active: #{$orange-700};
-
-    // Borders - Rote Linien
-    --color-border: #{$red-200};
-    --color-border-secondary: #{$red-300};
-    --color-border-focus: #{$red-500};
-    --color-divider: #{$red-100};
-
-    // Semantic Colors - Rot-harmonische Farben
-    --color-success: #{$green-500};
-    --color-warning: #{$orange-500};
-    --color-error: #{$red-600};
-    --color-info: #{$blue-500};
-
-    // Status Backgrounds
-    --color-success-bg: #{$green-50};
-    --color-warning-bg: #{$orange-50};
-    --color-error-bg: #{$red-50};
-    --color-info-bg: #{$blue-50};
-
-    // Status Text Colors
-    --color-success-text: #{$green-700};
-    --color-warning-text: #{$orange-700};
-    --color-error-text: #{$red-700};
-    --color-info-text: #{$blue-700};
-
-    /* ========================================== */
-    // Shadows & Effects - Red optimiert
-    /* ========================================== */
-
-    --shadow: 0 4px 12px rgba(#{red($red-600)}, #{green($red-600)}, #{blue($red-600)}, 0.15);
-    --shadow-hover: 0 8px 25px rgba(#{red($red-600)}, #{green($red-600)}, #{blue($red-600)}, 0.2);
-    --shadow-focus: 0 0 0 3px #{rgba($red-600, 0.2)};
-    --shadow-card: 0 2px 8px rgba(#{red($red-600)}, #{green($red-600)}, #{blue($red-600)}, 0.08);
-    --shadow-card-hover: 0 8px 20px rgba(#{red($red-600)}, #{green($red-600)}, #{blue($red-600)}, 0.12);
-    --shadow-modal: 0 20px 40px rgba(#{red($red-600)}, #{green($red-600)}, #{blue($red-600)}, 0.15);
-
-    // Glow Effects - Red Glow
-    --glow-effect: #{$glow-red};
-    --text-glow: 0 0 10px #{rgba($red-500, 0.5)};
-
-    /* ========================================== */
-    // Component Colors - Red Theme spezifisch
-    /* ========================================== */
-
-    // Navigation - Rote Kopfzeile
-    --color-nav-bg: #{rgba($white, 0.95)};
-    --color-nav-text: #{$red-700};
-    --color-nav-text-hover: #{$red-600};
-    --color-nav-text-active: #{$red-800};
-    --color-nav-border: #{$red-200};
-    --color-nav-backdrop: #{rgba($red-50, 0.9)};
-
-    // Header
-    --color-header-bg: #{$white};
-    --color-header-text: #{$gray-900};
-    --color-header-text-secondary: #{$red-600};
-    --color-header-border: #{$red-200};
-
-    // Footer
-    --color-footer-bg: #{$red-50};
-    --color-footer-text: #{$red-700};
-    --color-footer-text-secondary: #{$red-500};
-    --color-footer-border: #{$red-200};
-
-    // Sidebar
-    --color-sidebar-bg: #{rgba($red-50, 0.8)};
-    --color-sidebar-text: #{$red-700};
-    --color-sidebar-text-hover: #{$red-800};
-    --color-sidebar-border: #{$red-200};
-    --color-sidebar-active: #{rgba($red-600, 0.1)};
-
-    // Cards
-    --color-card-bg: #{$white};
-    --color-card-bg-hover: #{$red-50};
-    --color-card-border: #{$red-200};
-    --color-card-border-hover: #{$red-300};
-
-    /* ========================================== */
-    // Buttons - Red Theme optimiert
-    /* ========================================== */
-
-    // Primary Button - Rote Call-to-Action
-    --color-btn-primary-bg: #{$red-600};
-    --color-btn-primary-bg-hover: #{$red-700};
-    --color-btn-primary-bg-active: #{$red-800};
-    --color-btn-primary-text: #{$white};
-    --color-btn-primary-border: #{$red-600};
-
-    // Secondary Button - Rote Alternative
-    --color-btn-secondary-bg: #{$red-100};
-    --color-btn-secondary-bg-hover: #{$red-200};
-    --color-btn-secondary-bg-active: #{$red-300};
-    --color-btn-secondary-text: #{$red-700};
-    --color-btn-secondary-border: #{$red-200};
-
-    // Ghost Button - Minimales Rot
-    --color-btn-ghost-bg: transparent;
-    --color-btn-ghost-bg-hover: #{$red-100};
-    --color-btn-ghost-text: #{$red-700};
-    --color-btn-ghost-text-hover: #{$red-800};
-    --color-btn-ghost-border: transparent;
-
-    // Accent Button - Orange Highlight
-    --color-btn-accent-bg: #{$orange-500};
-    --color-btn-accent-bg-hover: #{$orange-600};
-    --color-btn-accent-text: #{$white};
-
-    /* ========================================== */
-    // Forms - Red Mode optimiert
-    /* ========================================== */
-
-    --color-input-bg: #{$white};
-    --color-input-text: #{$gray-900};
-    --color-input-border: #{$red-300};
-    --color-input-border-focus: #{$red-500};
-    --color-input-placeholder: #{$red-400};
-    --color-input-disabled-bg: #{$red-100};
-    --color-input-disabled-text: #{$red-500};
-
-    /* ========================================== */
-    // Interactive States - Red Mode
-    /* ========================================== */
-
-    // Hover States
-    --hover-overlay: #{rgba($red-600, 0.06)};
-    --hover-lift-shadow: var(--shadow-hover);
-
-    // Active States
-    --active-overlay: #{rgba($red-600, 0.12)};
-    --active-scale: 0.96;
-
-    // Focus States
-    --focus-ring: 0 0 0 2px #{rgba($red-600, 0.25)};
-    --focus-ring-offset: 2px;
-
-    // Disabled States
-    --disabled-opacity: 0.6;
-    --disabled-cursor: not-allowed;
-
-    /* ========================================== */
-    // Animation & Transition - Aggressiv & schnell
-    /* ========================================== */
-
-    --transition-theme: all 200ms #{$ease-in-out};
-    --transition-aggressive: all 150ms #{$ease-in};
-    --transition-sharp: all 100ms linear;
-
-    /* ========================================== */
-    // Red Theme Special Elements
-    /* ========================================== */
-
-    // Power Colors
-    --power-red: #{$red-600};
-    --power-orange: #{$orange-500};
-    --power-crimson: #{$red-700};
-    --power-scarlet: #{$red-500};
-
-    // Gradients - Energetisch & kraftvoll
-    --gradient-fire: linear-gradient(135deg, #{$red-600} 0%, #{$orange-500} 50%, #{$red-700} 100%);
-    --gradient-energy: radial-gradient(circle, #{$red-400} 0%, #{$red-600} 50%, #{$red-800} 100%);
-    --gradient-power: linear-gradient(45deg, #{$red-600} 0%, #{$orange-600} 25%, #{$red-500} 50%, #{$red-800} 100%);
-    --gradient-intensity: linear-gradient(135deg, #{$red-500} 0%, #{$red-700} 100%);
-
-    // Special Red Effects
-    --border-radius-default: #{$radius-sm};
-}
-
-/* ========================================== */
-// Red Theme Component Enhancements
+/* =========== RED AGGRESSIVE THEME ======== */
 /* ========================================== */
 
 [data-theme="red"] {
+    // Aggressive Color Palette
+    --color-primary: #dc2626;
+    --color-primary-hover: #b91c1c;
+    --color-primary-active: #991b1b;
+    --color-secondary: #ea580c;
+    --color-accent: #f59e0b;
 
-    // Selection styling
-    ::selection {
-        background: rgba($red-600, 0.25);
-        color: var(--color-text-primary);
-        text-shadow: none;
-    }
+    --color-background: #fef2f2;
+    --color-background-secondary: #fee2e2;
+    --color-background-tertiary: #fecaca;
+    --color-surface: #ffffff;
+    --color-surface-glass: rgba(255, 255, 255, 0.9);
 
-    ::-moz-selection {
-        background: rgba($red-600, 0.25);
-        color: var(--color-text-primary);
-        text-shadow: none;
-    }
+    --color-text-primary: #7f1d1d;
+    --color-text-secondary: #991b1b;
+    --color-text-tertiary: #dc2626;
+    --color-text-inverse: #ffffff;
 
-    // Red scrollbar styling
-    ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-    }
+    --color-border: #fecaca;
+    --color-border-focus: #dc2626;
 
-    ::-webkit-scrollbar-track {
-        background: var(--color-background-secondary);
-        border-radius: 4px;
-    }
+    // Aggressive Gradients
+    --gradient-primary: linear-gradient(135deg, #dc2626, #ea580c);
+    --gradient-fire: linear-gradient(45deg, #dc2626, #ea580c, #f59e0b, #dc2626);
+    --gradient-energy: linear-gradient(90deg, #dc2626 0%, #ea580c 25%, #f59e0b 50%, #ea580c 75%, #dc2626 100%);
 
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg, #{$red-500}, #{$orange-500});
-        border-radius: 4px;
+    // Aggressive Shadows & Effects
+    --shadow-aggressive: 0 0 25px rgba(220, 38, 38, 0.4);
+    --shadow-intense: 0 0 40px rgba(220, 38, 38, 0.3), 0 0 60px rgba(234, 88, 12, 0.2);
+    --glow-fire: 0 0 20px rgba(220, 38, 38, 0.8);
 
-        &:hover {
-            background: linear-gradient(45deg, #{$red-600}, #{$orange-600});
-        }
-    }
+    /* ========================================== */
+    // AGGRESSIVE BODY & BACKGROUND
+    /* ========================================== */
 
-    // Enhanced typography weight
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-weight: $font-weight-bold;
-    }
-
-    strong,
-    b {
-        font-weight: $font-weight-extrabold;
-    }
-
-    // Sharp button animations
-    button {
-        transition: var(--transition-sharp);
-        font-weight: $font-weight-semibold;
-
-        &:hover {
-            transform: translateY(-1px);
-        }
-
-        &:active {
-            transform: translateY(0) scale(0.96);
-        }
-    }
-}
-
-/* ========================================== */
-// Red Theme Utilities
-/* ========================================== */
-
-.theme-red {
-
-    // Fire card effects
-    .fire-card {
-        background: var(--gradient-fire);
-        color: white;
-        border: 2px solid var(--power-red);
-        border-radius: $radius;
-        padding: $space-6;
+    body {
+        background: var(--color-background);
+        background-image:
+            radial-gradient(circle at 30% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 70% 80%, rgba(234, 88, 12, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 90% 10%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
         position: relative;
-        overflow: hidden;
-        transition: var(--transition-aggressive);
 
         &::before {
-            content: '🔥';
-            position: absolute;
-            top: $space-2;
-            right: $space-2;
-            font-size: $font-size-lg;
-            animation: fireFlicker 1.5s ease-in-out infinite;
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(220, 38, 38, 0.02) 10px,
+                    rgba(220, 38, 38, 0.02) 20px);
+            pointer-events: none;
+            z-index: 1;
+            animation: energy-pulse 4s ease-in-out infinite;
         }
 
         &::after {
             content: '';
-            position: absolute;
-            bottom: 0;
+            position: fixed;
+            top: 0;
             left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-intensity);
-        }
-
-        &:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: var(--shadow-hover), var(--glow-effect);
-            border-color: var(--power-orange);
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="lightning" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M25 5L35 25L20 25L30 45L15 25L30 25L25 5Z" fill="%23dc2626" opacity="0.05"><animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="2s" repeatCount="indefinite"/></path></pattern></defs><rect width="100" height="100" fill="url(%23lightning)"/></svg>');
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.3;
         }
     }
 
-    @keyframes fireFlicker {
+    /* ========================================== */
+    // AGGRESSIVE NAVIGATION
+    /* ========================================== */
 
-        0%,
-        100% {
-            opacity: 0.8;
-            transform: scale(1);
-        }
-
-        50% {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-    }
-
-    // Power elements
-    .power-element {
-        background: var(--gradient-power);
-        border: 1px solid var(--power-crimson);
-        border-radius: $radius-sm;
-        padding: $space-4;
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        border-bottom: 3px solid var(--color-primary);
+        box-shadow: 0 4px 20px rgba(220, 38, 38, 0.2);
         position: relative;
-        transition: var(--transition-aggressive);
 
         &::before {
             content: '';
@@ -359,104 +99,89 @@
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg,
-                    transparent 30%,
-                    rgba(255, 255, 255, 0.1) 50%,
-                    transparent 70%);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
+            height: 2px;
+            background: var(--gradient-energy);
+            background-size: 400% 100%;
+            animation: energy-flow 2s linear infinite;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--color-primary);
+            animation: pulse-border 1.5s ease-in-out infinite;
+        }
+    }
+
+    .navbar-brand {
+        font-family: 'Inter', sans-serif;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-primary);
+        text-shadow: 0 0 10px rgba(220, 38, 38, 0.3);
+        position: relative;
+
+        &::before {
+            content: '⚡';
+            position: absolute;
+            left: -30px;
+            animation: lightning-flash 1s ease-in-out infinite alternate;
+            color: var(--color-accent);
         }
 
         &:hover {
-            transform: scale(1.03);
+            animation: aggressive-shake 0.5s ease-in-out;
+        }
+    }
+
+    .nav-link {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--color-text-secondary);
+        position: relative;
+        transition: all 200ms ease;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transition: width 200ms ease;
+        }
+
+        &:hover {
+            color: var(--color-primary);
+            text-shadow: var(--glow-fire);
+            transform: translateY(-2px);
 
             &::before {
-                transform: translateX(100%);
+                width: 100%;
             }
         }
     }
 
-    // Energy background
-    .energy-bg {
-        background: var(--gradient-energy);
-        position: relative;
+    /* ========================================== */
+    // AGGRESSIVE BUTTONS
+    /* ========================================== */
 
-        &::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-            animation: energyPulse 2s ease-in-out infinite;
-        }
-    }
-
-    @keyframes energyPulse {
-
-        0%,
-        100% {
-            opacity: 0.5;
-            transform: scale(1);
-        }
-
-        50% {
-            opacity: 0.8;
-            transform: scale(1.02);
-        }
-    }
-
-    // Intense hero section
-    .intense-hero {
-        background: var(--gradient-fire);
+    .btn-primary {
+        background: var(--gradient-primary);
+        border: none;
         color: white;
-        text-align: center;
-        padding: $space-16 $space-6;
-        border-radius: $radius;
-        position: relative;
-        overflow: hidden;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(45deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(255, 255, 255, 0.03) 2px,
-                    rgba(255, 255, 255, 0.03) 4px);
-            animation: intensityPattern 10s linear infinite;
-        }
-    }
-
-    @keyframes intensityPattern {
-        0% {
-            transform: translate(-50%, -50%) rotate(0deg);
-        }
-
-        100% {
-            transform: translate(-50%, -50%) rotate(360deg);
-        }
-    }
-
-    // Aggressive buttons
-    .aggressive-btn {
-        background: var(--gradient-intensity);
-        border: 2px solid var(--power-red);
-        color: white;
-        padding: $space-3 $space-6;
-        border-radius: $radius-sm;
-        font-weight: $font-weight-bold;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: $letter-spacing-wide;
-        transition: var(--transition-sharp);
+        letter-spacing: 0.05em;
         position: relative;
         overflow: hidden;
 
@@ -467,14 +192,17 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: all 0.4s ease;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.4) 50%,
+                    transparent 100%);
+            transition: left 300ms ease;
         }
 
         &:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--power-orange);
+            box-shadow: var(--shadow-aggressive);
+            transform: translateY(-3px) scale(1.02);
+            animation: button-pulse 0.3s ease;
 
             &::before {
                 left: 100%;
@@ -482,94 +210,451 @@
         }
 
         &:active {
-            transform: translateY(0) scale(0.96);
+            transform: translateY(-1px) scale(0.98);
         }
     }
 
-    // Intensity text effects
-    .intensity-text {
+    .btn-gradient {
         background: var(--gradient-fire);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        color: transparent;
-        font-weight: $font-weight-bold;
-        text-transform: uppercase;
-        letter-spacing: $letter-spacing-wide;
-        position: relative;
-
-        &::after {
-            content: '⚡';
-            position: absolute;
-            top: -2px;
-            right: -25px;
-            font-size: 0.8em;
-            -webkit-text-fill-color: var(--power-orange);
-            color: var(--power-orange);
-            animation: fireFlicker 1.5s ease-in-out infinite;
-        }
-    }
-
-    // Red glow utilities
-    .glow-red {
-        box-shadow: var(--glow-effect);
-        transition: var(--transition-aggressive);
+        background-size: 200% 200%;
+        animation: fire-shift 2s ease infinite;
+        border: 2px solid rgba(220, 38, 38, 0.3);
 
         &:hover {
-            box-shadow: var(--glow-effect), var(--shadow-hover);
+            animation-duration: 0.5s;
+            box-shadow: var(--shadow-intense);
+            border-color: var(--color-primary);
         }
     }
 
-    // Alert/Warning styles
-    .alert-critical {
-        background: linear-gradient(135deg, #{$red-600} 0%, #{$red-700} 100%);
-        color: white;
-        border: 2px solid #{$red-800};
-        border-radius: $radius-sm;
-        padding: $space-4;
-        font-weight: $font-weight-semibold;
-        animation: criticalAlert 2s ease-in-out infinite;
+    /* ========================================== */
+    // AGGRESSIVE HERO SECTION
+    /* ========================================== */
+
+    .hero-section {
+        background: var(--color-background);
+        position: relative;
+        overflow: hidden;
 
         &::before {
-            content: '⚠️';
-            margin-right: $space-2;
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 45deg,
+                    rgba(220, 38, 38, 0.1) 0deg,
+                    rgba(234, 88, 12, 0.1) 90deg,
+                    rgba(245, 158, 11, 0.1) 180deg,
+                    rgba(234, 88, 12, 0.1) 270deg,
+                    rgba(220, 38, 38, 0.1) 360deg);
+            animation: aggressive-spin 10s linear infinite;
+            z-index: 0;
+        }
+
+        .hero-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            text-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+            position: relative;
+            z-index: 2;
+
+            .hero-title-accent {
+                background: var(--gradient-primary);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: energy-pulse-text 2s ease-in-out infinite;
+            }
+        }
+
+        .hero-actions {
+            .btn:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+
+            .btn:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+        }
+
+        .hero-bg-elements {
+            .bg-circle {
+                background: radial-gradient(circle, rgba(220, 38, 38, 0.15), transparent);
+                animation: aggressive-bounce 3s ease-in-out infinite;
+
+                &.bg-circle-2 {
+                    background: radial-gradient(circle, rgba(234, 88, 12, 0.15), transparent);
+                    animation-delay: -1s;
+                    animation-duration: 2.5s;
+                }
+
+                &.bg-circle-3 {
+                    background: radial-gradient(circle, rgba(245, 158, 11, 0.15), transparent);
+                    animation-delay: -2s;
+                    animation-duration: 3.5s;
+                }
+            }
         }
     }
 
-    @keyframes criticalAlert {
+    /* ========================================== */
+    // AGGRESSIVE CARDS
+    /* ========================================== */
+
+    .card,
+    .feature-card,
+    .theme-card {
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid var(--color-border);
+        position: relative;
+        transition: all 200ms ease;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 300ms ease;
+            transform-origin: left;
+        }
+
+        &:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-aggressive);
+
+            &::before {
+                transform: scaleX(1);
+            }
+        }
+    }
+
+    .feature-icon {
+        filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.4));
+        animation: icon-energy 2s ease-in-out infinite;
+    }
+
+    /* ========================================== */
+    // AGGRESSIVE FORMS
+    /* ========================================== */
+
+    input,
+    textarea,
+    select {
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid var(--color-border);
+        color: var(--color-text-primary);
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: all 200ms ease;
+
+        &:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+            background: white;
+            transform: scale(1.02);
+        }
+
+        &::placeholder {
+            color: var(--color-text-tertiary);
+            font-weight: 400;
+        }
+    }
+
+    /* ========================================== */
+    // AGGRESSIVE ANIMATIONS
+    /* ========================================== */
+
+    @keyframes energy-pulse {
 
         0%,
         100% {
+            opacity: 0.5;
+        }
+
+        50% {
+            opacity: 0.8;
+        }
+    }
+
+    @keyframes energy-flow {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        100% {
+            background-position: 400% 50%;
+        }
+    }
+
+    @keyframes pulse-border {
+
+        0%,
+        100% {
+            transform: scaleY(1);
             opacity: 1;
+        }
+
+        50% {
+            transform: scaleY(1.5);
+            opacity: 0.7;
+        }
+    }
+
+    @keyframes lightning-flash {
+
+        0%,
+        100% {
+            opacity: 0.7;
             transform: scale(1);
         }
 
         50% {
-            opacity: 0.9;
+            opacity: 1;
+            transform: scale(1.2);
+        }
+    }
+
+    @keyframes aggressive-shake {
+
+        0%,
+        100% {
+            transform: translateX(0);
+        }
+
+        25% {
+            transform: translateX(-2px);
+        }
+
+        75% {
+            transform: translateX(2px);
+        }
+    }
+
+    @keyframes button-pulse {
+        0% {
+            box-shadow: var(--shadow-aggressive);
+        }
+
+        50% {
+            box-shadow: var(--shadow-intense);
+        }
+
+        100% {
+            box-shadow: var(--shadow-aggressive);
+        }
+    }
+
+    @keyframes fire-shift {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    @keyframes aggressive-spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes energy-pulse-text {
+
+        0%,
+        100% {
+            filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.5));
+            transform: scale(1);
+        }
+
+        50% {
+            filter: drop-shadow(0 0 20px rgba(234, 88, 12, 0.7));
             transform: scale(1.01);
         }
+    }
+
+    @keyframes aggressive-bounce {
+
+        0%,
+        100% {
+            transform: translateY(0) scale(1);
+        }
+
+        25% {
+            transform: translateY(-15px) scale(1.1);
+        }
+
+        50% {
+            transform: translateY(-5px) scale(0.95);
+        }
+
+        75% {
+            transform: translateY(-10px) scale(1.05);
+        }
+    }
+
+    @keyframes icon-energy {
+
+        0%,
+        100% {
+            transform: translateY(0);
+            filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.4));
+        }
+
+        50% {
+            transform: translateY(-5px);
+            filter: drop-shadow(0 0 15px rgba(234, 88, 12, 0.6));
+        }
+    }
+
+    /* ========================================== */
+    // AGGRESSIVE SCROLLBAR
+    /* ========================================== */
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        background: var(--color-background-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 5px;
+        border: 1px solid var(--color-background-secondary);
+
+        &:hover {
+            box-shadow: inset 0 0 5px rgba(220, 38, 38, 0.5);
+        }
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--color-background-secondary);
+        border-radius: 5px;
+    }
+
+    /* ========================================== */
+    // AGGRESSIVE TEXT EFFECTS
+    /* ========================================== */
+
+    .title-gradient {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.4));
+    }
+
+    .section-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            width: 30px;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: translateY(-50%);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            width: 30px;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: translateY(-50%);
+        }
+    }
+
+    /* ========================================== */
+    // AGGRESSIVE FOOTER
+    /* ========================================== */
+
+    .footer {
+        background: var(--color-background-secondary);
+        border-top: 4px solid var(--color-primary);
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-energy);
+            background-size: 400% 100%;
+            animation: energy-flow 3s linear infinite;
+        }
+    }
+
+    /* ========================================== */
+    // AGGRESSIVE GLASS EFFECTS
+    /* ========================================== */
+
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(15px);
+        border: 2px solid rgba(220, 38, 38, 0.2);
+        box-shadow:
+            0 8px 32px rgba(220, 38, 38, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+
+    .glass-light {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(220, 38, 38, 0.15);
     }
 }
 
 /* ========================================== */
-// Reduced Motion Support
+// AGGRESSIVE RESPONSIVE
 /* ========================================== */
 
-@media (prefers-reduced-motion: reduce) {
-    .theme-red {
-        --transition-theme: none;
-        --transition-aggressive: none;
-        --transition-sharp: none;
+@media (max-width: $breakpoint-md) {
+    [data-theme="red"] {
+        .section-title {
 
-        .fire-card::before,
-        .energy-bg::after,
-        .intense-hero::before,
-        .alert-critical {
-            animation: none;
+            &::before,
+            &::after {
+                display: none;
+            }
         }
 
-        button:hover {
-            transform: none;
+        .navbar-brand {
+            &::before {
+                left: -20px;
+                font-size: 0.8em;
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 7vw, 5rem);
         }
     }
 }

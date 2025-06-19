@@ -9,6 +9,7 @@
 ./public
 ./README.md
 ./src
+./src/App.scss
 ./src/App.tsx
 ./src/Assets
 ./src/Assets/Fonts
@@ -19,6 +20,8 @@
 ./src/Assets/Style
 ./src/Assets/Style/Base
 ./src/Assets/Style/Base/_Animation.scss
+./src/Assets/Style/Base/_Components.scss
+./src/Assets/Style/Base/_ComprehensiveTest.scss
 ./src/Assets/Style/Base/_Global.scss
 ./src/Assets/Style/Base/_Index.scss
 ./src/Assets/Style/Base/_Mixin.scss
@@ -62,9 +65,16 @@
 ./src/Components/Layout/User_Layout/User_Sidebar.tsx
 ./src/Components/Loaders
 ./src/Components/Loaders/Skelettons
+./src/Components/Loaders/Skelettons/SkeletonLoaders.scss
+./src/Components/Loaders/Skelettons/SkeletonLoaders.tsx
 ./src/Components/Pages
 ./src/Components/Pages/Admin_Components
+./src/Components/Pages/ComprehensiveTestPage.tsx
 ./src/Components/Pages/Landingpage_Components
+./src/Components/Pages/Landingpage_Components/DesignShowcase.tsx
+./src/Components/Pages/Landingpage_Components/HeroSection.tsx
+./src/Components/Pages/Landingpage_Components/ThemeShowcase.tsx
+./src/Components/Pages/ThemeTestPage.tsx
 ./src/Components/Pages/User_Components
 ./src/Components/Shared
 ./src/Components/Shared/Backgrounds
@@ -74,6 +84,8 @@
 ./src/Components/Shared/Buttons/Navigation_Buttons
 ./src/Components/Shared/Cards
 ./src/Components/UI
+./src/Components/UI/Modal.tsx
+./src/Components/UI/ThemeSwitcher.tsx
 ./src/Composables
 ./src/main.tsx
 ./src/Plugins
@@ -85,6 +97,7 @@
 ./src/Types
 ./src/Utils
 ./src/Utils/GSAP_Scrollobserver.tsx
+./src/Utils/useTheme.ts
 ./src/vite-env.d.ts
 ./tsconfig.app.json
 ./tsconfig.json

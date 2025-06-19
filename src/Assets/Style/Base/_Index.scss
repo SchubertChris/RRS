@@ -43,13 +43,19 @@
 @use "Themes/Fonts/Default" as *;
 
 /* ========================================== */
+// COMPONENT STYLES - Neue UI-Komponenten-Klassen
+/* ========================================== */
+
+@use "Components" as *;
+
+/* ========================================== */
 // Performance & Debug Information
 /* ========================================== */
 
 // Uncomment für Development-Debugging:
 // @debug "✅ All SASS modules loaded successfully";
 // @debug "✅ Variables available: duration-500 = #{$duration-500}";
-// @debug "✅ Import order: Variables → Mixins → Reset → Animation → Global → Themes";
+// @debug "✅ Import order: Variables → Mixins → Reset → Animation → Global → Themes → Components";
 
 /* ========================================== */
 // Critical CSS Performance Hint

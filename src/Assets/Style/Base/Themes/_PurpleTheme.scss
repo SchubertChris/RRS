@@ -1,337 +1,415 @@
-/* ========================================== */
-/* ============= PURPLE THEME =============== */
-/* ========================================== */
-/* Kreatives Purple Theme mit verspielten Animationen */
+// src/Assets/Style/Base/Themes/_PurpleTheme.scss - MYSTICAL MAGIC DESIGN
 
-// WICHTIG: Variablen importieren
 @use "../Variables" as *;
 
 /* ========================================== */
-// Purple Theme Konfiguration
-/* ========================================== */
-
-[data-theme="purple"],
-.theme-purple {
-    color-scheme: light;
-
-    /* ========================================== */
-    // Base Colors - Purple Foundation
-    /* ========================================== */
-
-    // Backgrounds - Lila-getönte Basis
-    --color-background: #{$white};
-    --color-background-secondary: #{$purple-50};
-    --color-background-tertiary: #{$purple-100};
-    --color-surface: #{$white};
-    --color-surface-secondary: #{$purple-50};
-    --color-surface-elevated: #{$white};
-
-    // Text Colors - Lila Kontraste
-    --color-text-primary: #{$gray-900};
-    --color-text-secondary: #{$purple-700};
-    --color-text-tertiary: #{$purple-400};
-    --color-text-inverse: #{$white};
-    --color-text-muted: #{$purple-400};
-    --color-text-disabled: #{$purple-300};
-
-    // Primary Colors - Kräftiges Purple
-    --color-primary: #{$purple-600};
-    --color-primary-hover: #{$purple-700};
-    --color-primary-active: #{$purple-800};
-    --color-primary-50: #{rgba($purple-600, 0.05)};
-    --color-primary-100: #{rgba($purple-600, 0.1)};
-    --color-primary-200: #{rgba($purple-600, 0.2)};
-
-    // Secondary Colors
-    --color-secondary: #{$purple-100};
-    --color-secondary-hover: #{$purple-200};
-    --color-secondary-active: #{$purple-300};
-
-    // Accent Colors - Kontrastierendes Pink
-    --color-accent: #{$pink-500};
-    --color-accent-hover: #{$pink-600};
-    --color-accent-active: #{$pink-700};
-
-    // Borders - Lila Linien
-    --color-border: #{$purple-200};
-    --color-border-secondary: #{$purple-300};
-    --color-border-focus: #{$purple-500};
-    --color-divider: #{$purple-100};
-
-    // Semantic Colors - Lila-harmonische Farben
-    --color-success: #{$green-500};
-    --color-warning: #{$yellow-500};
-    --color-error: #{$red-500};
-    --color-info: #{$purple-500};
-
-    // Status Backgrounds
-    --color-success-bg: #{$green-50};
-    --color-warning-bg: #{$yellow-50};
-    --color-error-bg: #{$red-50};
-    --color-info-bg: #{$purple-50};
-
-    // Status Text Colors
-    --color-success-text: #{$green-700};
-    --color-warning-text: #{$yellow-700};
-    --color-error-text: #{$red-700};
-    --color-info-text: #{$purple-700};
-
-    /* ========================================== */
-    // Shadows & Effects - Purple optimiert
-    /* ========================================== */
-
-    --shadow: 0 4px 12px rgba(#{red($purple-600)}, #{green($purple-600)}, #{blue($purple-600)}, 0.15);
-    --shadow-hover: 0 8px 25px rgba(#{red($purple-600)}, #{green($purple-600)}, #{blue($purple-600)}, 0.2);
-    --shadow-focus: 0 0 0 3px #{rgba($purple-600, 0.2)};
-    --shadow-card: 0 2px 8px rgba(#{red($purple-600)}, #{green($purple-600)}, #{blue($purple-600)}, 0.08);
-    --shadow-card-hover: 0 8px 20px rgba(#{red($purple-600)}, #{green($purple-600)}, #{blue($purple-600)}, 0.12);
-    --shadow-modal: 0 20px 40px rgba(#{red($purple-600)}, #{green($purple-600)}, #{blue($purple-600)}, 0.15);
-
-    // Glow Effects - Purple Glow
-    --glow-effect: #{$glow-purple};
-    --text-glow: 0 0 10px #{rgba($purple-500, 0.5)};
-
-    /* ========================================== */
-    // Component Colors - Purple Theme spezifisch
-    /* ========================================== */
-
-    // Navigation - Lila Kopfzeile
-    --color-nav-bg: #{rgba($white, 0.95)};
-    --color-nav-text: #{$purple-700};
-    --color-nav-text-hover: #{$purple-600};
-    --color-nav-text-active: #{$purple-800};
-    --color-nav-border: #{$purple-200};
-    --color-nav-backdrop: #{rgba($purple-50, 0.9)};
-
-    // Header
-    --color-header-bg: #{$white};
-    --color-header-text: #{$gray-900};
-    --color-header-text-secondary: #{$purple-600};
-    --color-header-border: #{$purple-200};
-
-    // Footer
-    --color-footer-bg: #{$purple-50};
-    --color-footer-text: #{$purple-700};
-    --color-footer-text-secondary: #{$purple-500};
-    --color-footer-border: #{$purple-200};
-
-    // Sidebar
-    --color-sidebar-bg: #{rgba($purple-50, 0.8)};
-    --color-sidebar-text: #{$purple-700};
-    --color-sidebar-text-hover: #{$purple-800};
-    --color-sidebar-border: #{$purple-200};
-    --color-sidebar-active: #{rgba($purple-600, 0.1)};
-
-    // Cards
-    --color-card-bg: #{$white};
-    --color-card-bg-hover: #{$purple-50};
-    --color-card-border: #{$purple-200};
-    --color-card-border-hover: #{$purple-300};
-
-    /* ========================================== */
-    // Buttons - Purple Theme optimiert
-    /* ========================================== */
-
-    // Primary Button - Lila Call-to-Action
-    --color-btn-primary-bg: #{$purple-600};
-    --color-btn-primary-bg-hover: #{$purple-700};
-    --color-btn-primary-bg-active: #{$purple-800};
-    --color-btn-primary-text: #{$white};
-    --color-btn-primary-border: #{$purple-600};
-
-    // Secondary Button - Lila Alternative
-    --color-btn-secondary-bg: #{$purple-100};
-    --color-btn-secondary-bg-hover: #{$purple-200};
-    --color-btn-secondary-bg-active: #{$purple-300};
-    --color-btn-secondary-text: #{$purple-700};
-    --color-btn-secondary-border: #{$purple-200};
-
-    // Ghost Button - Minimales Lila
-    --color-btn-ghost-bg: transparent;
-    --color-btn-ghost-bg-hover: #{$purple-100};
-    --color-btn-ghost-text: #{$purple-700};
-    --color-btn-ghost-text-hover: #{$purple-800};
-    --color-btn-ghost-border: transparent;
-
-    // Accent Button - Pink Highlight
-    --color-btn-accent-bg: #{$pink-500};
-    --color-btn-accent-bg-hover: #{$pink-600};
-    --color-btn-accent-text: #{$white};
-
-    /* ========================================== */
-    // Forms - Purple Mode optimiert
-    /* ========================================== */
-
-    --color-input-bg: #{$white};
-    --color-input-text: #{$gray-900};
-    --color-input-border: #{$purple-300};
-    --color-input-border-focus: #{$purple-500};
-    --color-input-placeholder: #{$purple-400};
-    --color-input-disabled-bg: #{$purple-100};
-    --color-input-disabled-text: #{$purple-500};
-
-    /* ========================================== */
-    // Interactive States - Purple Mode
-    /* ========================================== */
-
-    // Hover States
-    --hover-overlay: #{rgba($purple-600, 0.06)};
-    --hover-lift-shadow: var(--shadow-hover);
-
-    // Active States
-    --active-overlay: #{rgba($purple-600, 0.12)};
-    --active-scale: 0.98;
-
-    // Focus States
-    --focus-ring: 0 0 0 2px #{rgba($purple-600, 0.25)};
-    --focus-ring-offset: 2px;
-
-    // Disabled States
-    --disabled-opacity: 0.6;
-    --disabled-cursor: not-allowed;
-
-    /* ========================================== */
-    // Animation & Transition - Verspielt & bouncy
-    /* ========================================== */
-
-    --transition-theme: all 400ms #{$ease-bounce};
-    --transition-playful: all 300ms #{$ease-elastic};
-    --transition-bounce: all 250ms #{$ease-back};
-
-    /* ========================================== */
-    // Purple Theme Special Elements
-    /* ========================================== */
-
-    // Magic Colors
-    --magic-purple: #{$purple-600};
-    --magic-pink: #{$pink-500};
-    --magic-violet: #{$purple-700};
-    --magic-lavender: #{$purple-300};
-
-    // Gradients - Magisch & kreativ
-    --gradient-magic: linear-gradient(135deg, #{$purple-600} 0%, #{$pink-500} 50%, #{$purple-700} 100%);
-    --gradient-dreamy: radial-gradient(circle, #{$purple-300} 0%, #{$purple-600} 50%, #{$purple-900} 100%);
-    --gradient-cosmic: linear-gradient(45deg, #{$purple-600} 0%, #{$blue-600} 25%, #{$pink-500} 50%, #{$purple-800} 100%);
-    --gradient-crystal: linear-gradient(135deg, #{$purple-200} 0%, #{$purple-400} 50%, #{$purple-600} 100%);
-
-    // Backdrop Effects
-    --backdrop-filter: blur(15px) saturate(160%);
-    --backdrop-filter-magic: blur(25px) saturate(200%) hue-rotate(30deg);
-}
-
-/* ========================================== */
-// Purple Theme Component Enhancements
+/* =========== PURPLE MYSTICAL THEME ======= */
 /* ========================================== */
 
 [data-theme="purple"] {
+    // Mystical Color Palette
+    --color-primary: #8b5cf6;
+    --color-primary-hover: #7c3aed;
+    --color-primary-active: #6d28d9;
+    --color-secondary: #ec4899;
+    --color-accent: #f59e0b;
 
-    // Selection styling
-    ::selection {
-        background: rgba($purple-600, 0.25);
-        color: var(--color-text-primary);
-        text-shadow: none;
-    }
+    --color-background: #faf5ff;
+    --color-background-secondary: #f3e8ff;
+    --color-background-tertiary: #ede9fe;
+    --color-surface: #ffffff;
+    --color-surface-glass: rgba(255, 255, 255, 0.9);
 
-    ::-moz-selection {
-        background: rgba($purple-600, 0.25);
-        color: var(--color-text-primary);
-        text-shadow: none;
-    }
+    --color-text-primary: #581c87;
+    --color-text-secondary: #7c2d92;
+    --color-text-tertiary: #a855f7;
+    --color-text-inverse: #ffffff;
 
-    // Purple scrollbar styling
-    ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-    }
+    --color-border: #e9d5ff;
+    --color-border-focus: #8b5cf6;
 
-    ::-webkit-scrollbar-track {
-        background: var(--color-background-secondary);
-        border-radius: 5px;
-    }
+    // Magical Gradients
+    --gradient-primary: linear-gradient(135deg, #8b5cf6, #ec4899, #f59e0b);
+    --gradient-mystical: linear-gradient(45deg, #8b5cf6, #ec4899, #f59e0b, #8b5cf6);
+    --gradient-aurora: linear-gradient(90deg, #8b5cf6 0%, #ec4899 25%, #f59e0b 50%, #10b981 75%, #8b5cf6 100%);
 
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg, #{$purple-500}, #{$pink-500});
-        border-radius: 5px;
-        border: 1px solid var(--color-background-secondary);
+    // Magical Shadows & Effects
+    --shadow-mystical: 0 0 30px rgba(139, 92, 246, 0.4);
+    --shadow-enchanted: 0 0 50px rgba(139, 92, 246, 0.3), 0 0 100px rgba(236, 72, 153, 0.2);
+    --glow-magical: 0 0 20px rgba(139, 92, 246, 0.8);
 
-        &:hover {
-            background: linear-gradient(45deg, #{$purple-600}, #{$pink-600});
-        }
-    }
+    /* ========================================== */
+    // MYSTICAL BODY & BACKGROUND
+    /* ========================================== */
 
-    // Enhanced button animations
-    button {
-        transition: var(--transition-bounce);
-
-        &:hover {
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        &:active {
-            transform: translateY(0) scale(0.98);
-        }
-    }
-}
-
-/* ========================================== */
-// Purple Theme Utilities
-/* ========================================== */
-
-.theme-purple {
-
-    // Magic card effects
-    .magic-card {
-        background: var(--gradient-magic);
-        color: white;
-        border: 1px solid var(--magic-purple);
-        border-radius: $radius-xl;
-        padding: $space-6;
+    body {
+        background: var(--color-background);
+        background-image:
+            radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
         position: relative;
-        overflow: hidden;
-        transition: var(--transition-playful);
+
+        &::before {
+            content: '✦ ✧ ⋆ ✦ ✧ ⋆ ✦ ✧ ⋆ ✦ ✧ ⋆ ✦ ✧ ⋆ ✦ ✧ ⋆';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            font-size: 1.5rem;
+            color: rgba(139, 92, 246, 0.1);
+            pointer-events: none;
+            z-index: 1;
+            animation: stars-drift 20s linear infinite;
+            white-space: pre;
+            line-height: 3;
+        }
+
+        &::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="sparkles" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="%23a855f7" opacity="0.3"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/></circle><circle cx="25" cy="15" r="0.5" fill="%23ec4899" opacity="0.4"><animate attributeName="opacity" values="0.4;0.9;0.4" dur="2s" repeatCount="indefinite"/></circle><circle cx="15" cy="30" r="1.5" fill="%23f59e0b" opacity="0.2"><animate attributeName="opacity" values="0.2;0.7;0.2" dur="4s" repeatCount="indefinite"/></circle></pattern></defs><rect width="200" height="200" fill="url(%23sparkles)"/></svg>');
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+    }
+
+    /* ========================================== */
+    // MYSTICAL NAVIGATION
+    /* ========================================== */
+
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 2px solid transparent;
+        border-image: var(--gradient-primary) 1;
+        box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-aurora);
+            background-size: 400% 100%;
+            animation: aurora-flow 8s linear infinite;
+        }
+    }
+
+    .navbar-brand {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--color-primary);
+        text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+        position: relative;
 
         &::before {
             content: '✨';
             position: absolute;
-            top: $space-2;
-            right: $space-2;
-            font-size: $font-size-lg;
-            animation: sparkle 2s ease-in-out infinite;
+            left: -25px;
+            animation: sparkle-dance 2s ease-in-out infinite;
         }
 
         &::after {
+            content: '✨';
+            position: absolute;
+            right: -25px;
+            animation: sparkle-dance 2s ease-in-out infinite 1s;
+        }
+    }
+
+    .nav-link {
+        font-family: 'Playfair Display', serif;
+        color: var(--color-text-secondary);
+        position: relative;
+        transition: all 400ms ease;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: all 400ms ease;
+            transform: translateX(-50%);
+        }
+
+        &:hover {
+            color: var(--color-primary);
+            text-shadow: var(--glow-magical);
+
+            &::before {
+                width: 100%;
+            }
+        }
+    }
+
+    /* ========================================== */
+    // MYSTICAL BUTTONS
+    /* ========================================== */
+
+    .btn-primary {
+        background: var(--gradient-primary);
+        border: none;
+        color: white;
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            animation: magicShimmer 4s linear infinite;
-            pointer-events: none;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 600ms ease;
         }
 
         &:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-hover), var(--glow-effect);
+            box-shadow: var(--shadow-mystical);
+            transform: translateY(-2px);
+
+            &::before {
+                transform: scale(1);
+                animation: mystical-ripple 600ms ease;
+            }
         }
     }
 
-    @keyframes sparkle {
+    .btn-gradient {
+        background: var(--gradient-mystical);
+        background-size: 200% 200%;
+        animation: gradient-shift 4s ease infinite;
+        border: 2px solid rgba(255, 255, 255, 0.3);
 
-        0%,
+        &:hover {
+            animation-duration: 1s;
+            box-shadow: var(--shadow-enchanted);
+        }
+    }
+
+    /* ========================================== */
+    // MYSTICAL HERO SECTION
+    /* ========================================== */
+
+    .hero-section {
+        background: var(--color-background);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg,
+                    rgba(139, 92, 246, 0.1) 0deg,
+                    rgba(236, 72, 153, 0.1) 120deg,
+                    rgba(245, 158, 11, 0.1) 240deg,
+                    rgba(139, 92, 246, 0.1) 360deg);
+            animation: magical-rotate 30s linear infinite;
+            z-index: 0;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+            position: relative;
+            z-index: 2;
+
+            .hero-title-accent {
+                background: var(--gradient-primary);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: enchanted-pulse 3s ease-in-out infinite;
+            }
+        }
+
+        .hero-bg-elements {
+            .bg-circle {
+                background: radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent);
+                animation: mystical-float 15s ease-in-out infinite;
+
+                &.bg-circle-2 {
+                    background: radial-gradient(circle, rgba(236, 72, 153, 0.15), transparent);
+                    animation-delay: -5s;
+                    animation-duration: 20s;
+                }
+
+                &.bg-circle-3 {
+                    background: radial-gradient(circle, rgba(245, 158, 11, 0.15), transparent);
+                    animation-delay: -10s;
+                    animation-duration: 25s;
+                }
+            }
+        }
+    }
+
+    /* ========================================== */
+    // MYSTICAL CARDS
+    /* ========================================== */
+
+    .card,
+    .feature-card,
+    .theme-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        backdrop-filter: blur(10px);
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient-mystical);
+            background-size: 400% 400%;
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 400ms ease;
+            animation: gradient-shift 6s ease infinite;
+        }
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-mystical);
+
+            &::before {
+                opacity: 1;
+            }
+        }
+    }
+
+    .feature-icon {
+        filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.4));
+        animation: enchanted-float 4s ease-in-out infinite;
+    }
+
+    /* ========================================== */
+    // MYSTICAL FORMS
+    /* ========================================== */
+
+    input,
+    textarea,
+    select {
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid var(--color-border);
+        color: var(--color-text-primary);
+        font-family: 'Playfair Display', serif;
+        border-radius: 12px;
+
+        &:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        &::placeholder {
+            color: var(--color-text-tertiary);
+            font-style: italic;
+        }
+    }
+
+    /* ========================================== */
+    // MYSTICAL ANIMATIONS
+    /* ========================================== */
+
+    @keyframes stars-drift {
+        0% {
+            transform: translateX(0);
+        }
+
         100% {
-            opacity: 0.5;
-            transform: scale(1) rotate(0deg);
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes aurora-flow {
+        0% {
+            background-position: 0% 50%;
         }
 
         50% {
-            opacity: 1;
-            transform: scale(1.2) rotate(180deg);
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
         }
     }
 
-    @keyframes magicShimmer {
+    @keyframes sparkle-dance {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0.8;
+        }
+
+        25% {
+            transform: translateY(-5px) rotate(90deg);
+            opacity: 1;
+        }
+
+        50% {
+            transform: translateY(-8px) rotate(180deg);
+            opacity: 0.9;
+        }
+
+        75% {
+            transform: translateY(-5px) rotate(270deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes mystical-ripple {
+        0% {
+            transform: scale(0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
+
+    @keyframes gradient-shift {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    @keyframes magical-rotate {
         0% {
             transform: rotate(0deg);
         }
@@ -341,85 +419,110 @@
         }
     }
 
-    // Crystal effects
-    .crystal-card {
-        background: var(--gradient-crystal);
-        border: 2px solid var(--magic-lavender);
-        border-radius: $radius-2xl;
-        padding: $space-8;
-        position: relative;
-        transition: var(--transition-playful);
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(45deg,
-                    transparent,
-                    transparent 10px,
-                    rgba(255, 255, 255, 0.1) 10px,
-                    rgba(255, 255, 255, 0.1) 20px);
-            border-radius: inherit;
-            pointer-events: none;
-        }
-
-        &:hover {
-            transform: rotate(1deg) scale(1.05);
-            border-color: var(--magic-purple);
-        }
-    }
-
-    // Dreamy elements
-    .dreamy-bg {
-        background: var(--gradient-dreamy);
-        position: relative;
-
-        &::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-            animation: dreamyFloat 6s ease-in-out infinite;
-        }
-    }
-
-    @keyframes dreamyFloat {
+    @keyframes enchanted-pulse {
 
         0%,
         100% {
-            transform: translateY(0px);
-            opacity: 0.7;
+            filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
+            transform: scale(1);
         }
 
-        33% {
-            transform: translateY(-10px);
-            opacity: 0.9;
-        }
-
-        66% {
-            transform: translateY(-5px);
-            opacity: 0.8;
+        50% {
+            filter: drop-shadow(0 0 20px rgba(236, 72, 153, 0.7));
+            transform: scale(1.02);
         }
     }
 
-    // Cosmic background
-    .cosmic-hero {
-        background: var(--gradient-cosmic);
-        color: white;
-        text-align: center;
-        padding: $space-20 $space-6;
-        border-radius: $radius-3xl;
+    @keyframes mystical-float {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        33% {
+            transform: translateY(-20px) rotate(120deg);
+        }
+
+        66% {
+            transform: translateY(-10px) rotate(240deg);
+        }
+    }
+
+    @keyframes enchanted-float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+
+    /* ========================================== */
+    // MYSTICAL SCROLLBAR
+    /* ========================================== */
+
+    ::-webkit-scrollbar {
+        width: 12px;
+        background: var(--color-background-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 6px;
+        border: 2px solid var(--color-background-secondary);
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--color-background-secondary);
+        border-radius: 6px;
+    }
+
+    /* ========================================== */
+    // MYSTICAL TEXT EFFECTS
+    /* ========================================== */
+
+    .title-gradient {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.4));
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
         position: relative;
-        overflow: hidden;
+
+        &::before {
+            content: '✦';
+            position: absolute;
+            left: -30px;
+            color: var(--color-accent);
+            animation: sparkle-dance 3s ease-in-out infinite;
+        }
+
+        &::after {
+            content: '✦';
+            position: absolute;
+            right: -30px;
+            color: var(--color-accent);
+            animation: sparkle-dance 3s ease-in-out infinite 1.5s;
+        }
+    }
+
+    /* ========================================== */
+    // MYSTICAL FOOTER
+    /* ========================================== */
+
+    .footer {
+        background: var(--color-background-secondary);
+        border-top: 3px solid transparent;
+        border-image: var(--gradient-primary) 1;
+        position: relative;
 
         &::before {
             content: '';
@@ -427,123 +530,53 @@
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background-image:
-                radial-gradient(2px 2px at 20px 30px, white, transparent),
-                radial-gradient(2px 2px at 40px 70px, white, transparent),
-                radial-gradient(1px 1px at 90px 40px, white, transparent),
-                radial-gradient(1px 1px at 130px 80px, white, transparent),
-                radial-gradient(2px 2px at 160px 30px, white, transparent);
-            background-size: 200px 100px;
-            animation: starfield 20s linear infinite;
-            opacity: 0.6;
+            height: 1px;
+            background: var(--gradient-aurora);
+            background-size: 400% 100%;
+            animation: aurora-flow 6s linear infinite;
         }
     }
 
-    @keyframes starfield {
-        0% {
-            transform: translateY(0);
-        }
+    /* ========================================== */
+    // MYSTICAL GLASS EFFECTS
+    /* ========================================== */
 
-        100% {
-            transform: translateY(-100px);
-        }
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        box-shadow:
+            0 8px 32px rgba(139, 92, 246, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
 
-    // Bouncy buttons
-    .bouncy-btn {
-        background: var(--gradient-magic);
-        border: none;
-        color: white;
-        padding: $space-3 $space-6;
-        border-radius: $radius-full;
-        font-weight: $font-weight-semibold;
-        transition: var(--transition-bounce);
-        position: relative;
-        overflow: hidden;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-            transition: all 0.6s ease;
-            border-radius: 50%;
-        }
-
-        &:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: var(--shadow-hover);
-
-            &::before {
-                width: 300px;
-                height: 300px;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        &:active {
-            transform: translateY(-1px) scale(1.02);
-        }
-    }
-
-    // Magical text effects
-    .magic-text {
-        background: var(--gradient-magic);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        color: transparent;
-        font-weight: $font-weight-bold;
-        position: relative;
-
-        &::after {
-            content: '✨';
-            position: absolute;
-            top: -5px;
-            right: -20px;
-            font-size: 0.8em;
-            -webkit-text-fill-color: var(--magic-pink);
-            color: var(--magic-pink);
-            animation: sparkle 2s ease-in-out infinite;
-        }
-    }
-
-    // Purple glow utilities
-    .glow-purple {
-        box-shadow: var(--glow-effect);
-        transition: var(--transition-playful);
-
-        &:hover {
-            box-shadow: var(--glow-effect), var(--shadow-hover);
-        }
+    .glass-light {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(139, 92, 246, 0.15);
     }
 }
 
 /* ========================================== */
-// Reduced Motion Support
+// MYSTICAL RESPONSIVE
 /* ========================================== */
 
-@media (prefers-reduced-motion: reduce) {
-    .theme-purple {
-        --transition-theme: none;
-        --transition-playful: none;
-        --transition-bounce: none;
+@media (max-width: $breakpoint-md) {
+    [data-theme="purple"] {
+        .section-title {
 
-        .magic-card::before,
-        .magic-card::after,
-        .dreamy-bg::after,
-        .cosmic-hero::before {
-            animation: none;
+            &::before,
+            &::after {
+                display: none;
+            }
         }
 
-        button:hover {
-            transform: none;
+        .navbar-brand {
+
+            &::before,
+            &::after {
+                display: none;
+            }
         }
     }
 }

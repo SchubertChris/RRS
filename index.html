@@ -1,15 +1,200 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop Site</title>
+  <meta name="theme-color" content="#2563eb" />
+  <meta name="color-scheme" content="light dark" />
+
+  <!-- PWA & Mobile -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+  <!-- SEO -->
+  <meta name="description" content="Theme System Test - Erlebe Design wie nie zuvor mit dynamischen Themes" />
+  <meta name="keywords" content="theme, design, UI, UX, react, typescript, scss" />
+  <meta name="author" content="ThemeTest" />
+
+  <!-- Preload Critical Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <title>ThemeTest - Design System</title>
+
+  <!-- Critical CSS für FOUC Prevention -->
+  <style>
+    /* Critical styles to prevent flash of unstyled content */
+    :root {
+      --color-background: #ffffff;
+      --color-text-primary: #1f2937;
+      --color-primary: #2563eb;
+      --font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background-color: var(--color-background);
+      color: var(--color-text-primary);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--color-background);
+      color: var(--color-text-primary);
+      transition: background-color 300ms ease-out, color 300ms ease-out;
+      overflow-x: hidden;
+    }
+
+    #root {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Loading fallback */
+    .loading-fallback {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--color-background);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      font-family: var(--font-family);
+    }
+
+    .loading-content {
+      text-align: center;
+    }
+
+    .loading-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    .loading-text {
+      font-size: 1.1rem;
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.6;
+      }
+    }
+
+    /* Dark mode system preference */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-background: #030712;
+        --color-text-primary: #f9fafb;
+        --color-primary: #3b82f6;
+      }
+    }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* High contrast mode */
+    @media (prefers-contrast: high) {
+      :root {
+        --color-primary: #0000ff;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div id="root"></div>
+  <!-- Loading Fallback (wird durch React ersetzt) -->
+  <div id="root">
+    <div class="loading-fallback">
+      <div class="loading-content">
+        <div class="loading-icon">🎨</div>
+        <div class="loading-text">Theme wird geladen...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Script -->
   <script type="module" src="/src/main.tsx"></script>
+
+  <!-- Theme Detection Script (runs before React) -->
+  <script>
+    // System theme detection before React loads
+    (function () {
+      const savedTheme = localStorage.getItem('colorTheme');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (savedTheme && ['light', 'dark', 'purple', 'red', 'olive'].includes(savedTheme)) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (systemDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+
+      // Font theme
+      const savedFont = localStorage.getItem('fontTheme');
+      if (savedFont && ['default', 'future', 'vintage'].includes(savedFont)) {
+        document.documentElement.setAttribute('data-font-theme', savedFont);
+      } else {
+        document.documentElement.setAttribute('data-font-theme', 'default');
+      }
+
+      // Update meta theme-color based on theme
+      const themeColors = {
+        light: '#ffffff',
+        dark: '#030712',
+        purple: '#faf5ff',
+        red: '#fef2f2',
+        olive: '#f7f8f3'
+      };
+
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', themeColors[currentTheme]);
+      }
+    })();
+  </script>
 </body>
 
 </html>

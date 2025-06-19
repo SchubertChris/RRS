@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Modal } from './Modal';
-import { useTheme, ColorTheme, FontTheme } from '../../Utils/useTheme';
+import { useTheme, type ColorTheme, type FontTheme } from '../../Utils/useTheme';
 
 interface ThemeSwitcherProps {
     isOpen: boolean;

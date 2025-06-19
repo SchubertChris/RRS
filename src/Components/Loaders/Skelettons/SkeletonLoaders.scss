@@ -1,0 +1,376 @@
+// src/Components/Loaders/Skelettons/SkeletonLoaders.scss
+
+@use "../../../Assets/Style/Base/Variables" as *;
+
+/* ========================================== */
+// Base Skeleton Styles
+/* ========================================== */
+
+.skeleton {
+    background: var(--skeleton-bg, linear-gradient(90deg,
+                var(--color-border) 25%,
+                var(--color-background-secondary) 50%,
+                var(--color-border) 75%));
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: $radius;
+
+    &.skeleton-box {
+        display: block;
+    }
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ========================================== */
+// Skeleton Components
+/* ========================================== */
+
+.skeleton-text {
+    .skeleton-line {
+        margin-bottom: $space-2;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.skeleton-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: $radius-lg;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+
+    .skeleton-card-content {
+        padding: $space-4;
+
+        .skeleton-title {
+            margin-bottom: $space-3;
+        }
+
+        .skeleton-description {
+            margin-bottom: $space-4;
+        }
+
+        .skeleton-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
+
+.skeleton-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: $space-4;
+
+    .skeleton-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: $container-xl;
+        margin: 0 auto;
+
+        .skeleton-nav-items {
+            display: flex;
+            gap: $space-6;
+        }
+    }
+}
+
+.skeleton-profile {
+    display: flex;
+    gap: $space-4;
+    padding: $space-6;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: $radius-lg;
+
+    .skeleton-profile-info {
+        flex: 1;
+
+        .skeleton-name {
+            margin-bottom: $space-2;
+        }
+
+        .skeleton-role {
+            margin-bottom: $space-4;
+        }
+    }
+}
+
+.skeleton-table {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: $radius-lg;
+    overflow: hidden;
+
+    .skeleton-table-header {
+        display: grid;
+        grid-template-columns: repeat(var(--columns, 4), 1fr);
+        gap: $space-4;
+        padding: $space-4;
+        background: var(--color-background-secondary);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .skeleton-table-body {
+        .skeleton-table-row {
+            display: grid;
+            grid-template-columns: repeat(var(--columns, 4), 1fr);
+            gap: $space-4;
+            padding: $space-4;
+            border-bottom: 1px solid var(--color-border);
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+.skeleton-dashboard {
+    .skeleton-dashboard-content {
+        max-width: $container-xl;
+        margin: 0 auto;
+        padding: $space-6;
+
+        .skeleton-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: $space-6;
+            margin-bottom: $space-8;
+
+            .skeleton-stat-card {
+                background: var(--color-surface);
+                border: 1px solid var(--color-border);
+                border-radius: $radius-lg;
+                padding: $space-6;
+                text-align: center;
+
+                .skeleton-stat-icon {
+                    margin: 0 auto $space-3 auto;
+                    border-radius: $radius;
+                }
+
+                .skeleton-stat-number {
+                    margin: 0 auto $space-2 auto;
+                }
+
+                .skeleton-stat-label {
+                    margin: 0 auto;
+                }
+            }
+        }
+
+        .skeleton-main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: $space-8;
+
+            .skeleton-charts {
+                display: grid;
+                gap: $space-6;
+
+                .skeleton-chart {
+                    background: var(--color-surface);
+                    border: 1px solid var(--color-border);
+                    border-radius: $radius-lg;
+                }
+            }
+        }
+    }
+}
+
+/* ========================================== */
+// Skeleton Showcase Layout
+/* ========================================== */
+
+.skeleton-showcase {
+    padding: $space-8;
+
+    .showcase-section {
+        margin-bottom: $space-12;
+
+        h3 {
+            margin-bottom: $space-6;
+            color: var(--color-text-primary);
+            font-size: $font-size-xl;
+            font-weight: $font-weight-semibold;
+        }
+    }
+
+    .skeleton-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: $space-6;
+    }
+
+    .skeleton-profiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: $space-6;
+    }
+}
+
+/* ========================================== */
+// Theme-Specific Skeleton Styles
+/* ========================================== */
+
+// Light Theme Skeletons
+[data-theme="light"] {
+    --skeleton-bg: linear-gradient(90deg,
+            #e5e7eb 25%,
+            #f3f4f6 50%,
+            #e5e7eb 75%);
+
+    .skeleton {
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.6) 50%,
+                    transparent 100%);
+            animation: skeleton-shimmer 2s infinite;
+        }
+    }
+}
+
+// Dark Theme Skeletons
+[data-theme="dark"] {
+    --skeleton-bg: linear-gradient(90deg,
+            #374151 25%,
+            #4b5563 50%,
+            #374151 75%);
+
+    .skeleton {
+        &::after {
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(156, 163, 175, 0.3) 50%,
+                    transparent 100%);
+        }
+    }
+}
+
+// Purple Theme Skeletons
+[data-theme="purple"] {
+    --skeleton-bg: linear-gradient(90deg,
+            #e9d5ff 25%,
+            #f3e8ff 50%,
+            #e9d5ff 75%);
+
+    .skeleton {
+        &::after {
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(147, 51, 234, 0.2) 50%,
+                    transparent 100%);
+        }
+    }
+}
+
+// Red Theme Skeletons
+[data-theme="red"] {
+    --skeleton-bg: linear-gradient(90deg,
+            #fecaca 25%,
+            #fee2e2 50%,
+            #fecaca 75%);
+
+    .skeleton {
+        animation-duration: 1s; // Faster for energetic feel
+
+        &::after {
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(220, 38, 38, 0.3) 50%,
+                    transparent 100%);
+        }
+    }
+}
+
+// Olive Theme Skeletons
+[data-theme="olive"] {
+    --skeleton-bg: linear-gradient(90deg,
+            #d3d6c7 25%,
+            #eeefe7 50%,
+            #d3d6c7 75%);
+
+    .skeleton {
+        border-radius: $radius-lg; // More rounded for organic feel
+
+        &::after {
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(112, 122, 105, 0.2) 50%,
+                    transparent 100%);
+        }
+    }
+}
+
+@keyframes skeleton-shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ========================================== */
+// Responsive Skeleton Styles
+/* ========================================== */
+
+@media (max-width: $breakpoint-md) {
+    .skeleton-dashboard {
+        .skeleton-dashboard-content {
+            .skeleton-main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    .skeleton-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .skeleton-table {
+
+        .skeleton-table-header,
+        .skeleton-table-row {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+/* ========================================== */
+// Accessibility
+/* ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .skeleton {
+        animation: none !important;
+
+        &::after {
+            animation: none !important;
+        }
+    }
+}
